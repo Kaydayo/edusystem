@@ -1,21 +1,18 @@
 declare module "*.css";
-declare module "*.module.css";
-
-// types.d.ts
 declare module "*.css" {
-  const url: string;
-  export default url;
+  const css: { [key: string]: string };
+  export default css;
 }
 declare module "*.scss" {
-  const url: string;
-  export default url;
+  const css: { [key: string]: string };
+  export default css;
 }
 declare module "*.sass" {
-  const url: string;
-  export default url;
+  const css: { [key: string]: string };
+  export default css;
 }
-declare module "*.styl" {
-  const url: string;
-  export default url;
-}
-
+declare module "react-markup";
+declare module "*.webp";
+declare module "*.png";
+declare module "*.jpg";
+declare module "*.jpeg";
