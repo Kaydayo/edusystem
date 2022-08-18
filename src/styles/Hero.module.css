@@ -1,0 +1,8 @@
+.homeHero{
+    /* background-attachment: fixed; */
+    background: url('../Assets/Images/home-hero-background.png');
+    height: 808px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
