@@ -1,7 +1,9 @@
 .homeHero{
-    /* background-attachment: fixed; */
+    background-attachment: fixed;
     background: url('../Assets/Images/home-hero-background.png');
-    height: 808px;
+    height: 820px;
+    background-size: 100% 100%;
+    
     /* width: auto; */
     
 }
@@ -10,7 +12,7 @@
     align-items: flex-start;
     gap: 10rem;
     justify-content: center;
-    padding: 4rem;
+    padding: 48px;
 }
 .leftContent{
     width: 617px;
@@ -21,9 +23,10 @@
 .leftContent h1{
     font-size: 60px;
     text-align: left;
-    line-height: 77px;
+    line-height: 67px;
     font-weight: 600;
     font-stretch: condensed;
+    letter-spacing: 0px;
     /* height: 245px; */
 }
 

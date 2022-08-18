@@ -1,12 +1,14 @@
 import React from 'react'
 import Nav from '../components/Nav'
-import Hero from '../layouts/Hero'
+import FeaturedPrograms from '../layouts/Home/FeaturedPrograms'
+import Hero from '../layouts/Home/Hero'
 
 const Home = () => {
   return (
     <>
       <Nav />
-      <Hero/>
+      <Hero />
+      <FeaturedPrograms/>
       </>
   )
 }
