@@ -2,7 +2,35 @@
     /* background-attachment: fixed; */
     background: url('../Assets/Images/home-hero-background.png');
     height: 808px;
-    width: auto;
-    display: flex;
-    flex-direction: column;
+    /* width: auto; */
+    
 }
+.heroContent{
+    display: flex;
+    align-items: flex-start;
+    gap: 10rem;
+    justify-content: center;
+    padding: 4rem;
+}
+.leftContent{
+    width: 617px;
+    text-align: left;
+    gap: 1.5rem;
+}
+
+.leftContent h1{
+    font-size: 60px;
+    text-align: left;
+    line-height: 77px;
+    font-weight: 600;
+    font-stretch: condensed;
+    /* height: 245px; */
+}
+
+.leftContent p{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+
