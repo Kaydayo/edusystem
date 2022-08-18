@@ -17,8 +17,10 @@ const Tags = ({mainTxt, subText}:TagProps) => {
               <img src={tagImage} alt="onculture-tag-image" />
           </div>
           <div className={tagsStyle.txt}>
-              <h4 className={tagsStyle.mkbold}>{mainTxt}</h4>
-              <h5 className={ hover ? tagsStyle.hoverEfx : tagsStyle.counterHoverEfx}>{subText}</h5>
+              <div className={tagsStyle.txtContent}>
+                   <h4 className={tagsStyle.mkbold}>{mainTxt}</h4>
+                    <h5 className={ hover ? tagsStyle.hoverEfx : tagsStyle.counterHoverEfx}>{subText}</h5>
+             </div>
               <Button className={hover ? `${tagsStyle.btn} ${tagsStyle.btnHoverEfx}` : `${tagsStyle.btn} ${tagsStyle.btnHoverEfxCnt}` }>
                   see details
               </Button>

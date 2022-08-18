@@ -28,12 +28,17 @@
     justify-content: center;
     
 }
-.txt h4{
+.txtContent{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+}
+.txtContent h4{
     width: 253px;
     font-size: 24px;
     margin: 0 auto;
 }
-.txt h5{
+.txtContent h5{
     width: 100%;
     text-align: center;
     font-weight: 300;
@@ -48,7 +53,7 @@
     border: none;
     cursor: pointer;
     font-weight: 600;
-    margin-top: 25px;
+    /* margin-top: 25px; */
 }
 
 .hoverEfx{

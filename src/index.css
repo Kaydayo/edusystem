@@ -6,11 +6,18 @@
   --padding-gap: 1rem;
   --button-height: 56px;
   --button-width: 116px;
+ 
 
 }
 body {
   margin: 0;
   font-family:  'Inter', sans-serif;
+  height: 100%;
+  
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 code {
