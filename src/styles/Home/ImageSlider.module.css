@@ -1,6 +1,8 @@
 .boxContent{
     padding: 5rem;
     background-color:  #EEF1FF;
+    align-items: center;
+    text-align: center;
 ;
 }
 

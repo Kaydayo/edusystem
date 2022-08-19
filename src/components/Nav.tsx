@@ -2,6 +2,8 @@ import React from 'react'
 import navStyle from '../styles/Home/Nav.module.css'
 import OncultureLogo from '../Assets/Images/onculture-logo.png'
 import Button from './Button'
+import { Link } from 'react-router-dom'
+import {navData} from '../constants/data'
 
 const Nav = () => {
     return (
@@ -11,10 +13,9 @@ const Nav = () => {
             </div>
             <div className={navStyle.links}>
                 <ul className={navStyle.linksElement}>
-                    <li>The People</li>
-                    <li>Resource</li>
-                    <li>Contact</li>
-                    <li>FAQ</li>
+                    {navData.map(navs => (
+                        <li><Link to={navs.to} className={navStyle.linkTo}>{navs.title}</Link></li>
+                    ))}
                 </ul>
             </div>
             <div className={navStyle.buttons}>

@@ -12,12 +12,21 @@
 
 }
 
+.linkTo{
+    text-decoration: none;
+}
+
+
+
 .linksElement li{
     display: inline;
     margin: 2rem;
+    text-decoration: none;
 }
 
-.linksElement li:hover{
+
+
+.linksElement li:hover, .linkTo:hover{
     color: var(--primary-color);
     cursor: pointer;
 }

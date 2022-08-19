@@ -76,3 +76,28 @@ export const reviewData = [
         companyRole: "CEO, ABC Corporation"
     }
 ]
+
+export const navData = [{ title: "The People", to: '/' }, { title: "Resource", to: '/resource' }, { title: "Contact", to: '/contact' }, { title: "FAQ", to: '/faq' }]
+
+export const faqData = [{
+    title: "What is The People Practice?",
+    content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna sed ac scelerisque et mauris. Porttitor molestie proin integer arcu elit et risus ac vivamus. Libero nulla leo facilisi lorem ipsum id at ac. Risus ut scelerisque interdum penatibus vitae, lectus consequat. Nibh ut libero, massa nibh pharetra nibh vestibulum amet. Ullamcorper viverra ut gravida enim turpis adipiscing non. Magna lectus sit donec maecenas arcu. Rutrum tincidunt turpis elementum ac, rutrum lacus. "
+},
+    {
+        title: "What is The People Practice?",
+        content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna sed ac scelerisque et mauris. Porttitor molestie proin integer arcu elit et risus ac vivamus. Libero nulla leo facilisi lorem ipsum id at ac. Risus ut scelerisque interdum penatibus vitae, lectus consequat. Nibh ut libero, massa nibh pharetra nibh vestibulum amet. Ullamcorper viverra ut gravida enim turpis adipiscing non. Magna lectus sit donec maecenas arcu. Rutrum tincidunt turpis elementum ac, rutrum lacus. "
+    },
+    {
+        title: "What is The People Practice?",
+        content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna sed ac scelerisque et mauris. Porttitor molestie proin integer arcu elit et risus ac vivamus. Libero nulla leo facilisi lorem ipsum id at ac. Risus ut scelerisque interdum penatibus vitae, lectus consequat. Nibh ut libero, massa nibh pharetra nibh vestibulum amet. Ullamcorper viverra ut gravida enim turpis adipiscing non. Magna lectus sit donec maecenas arcu. Rutrum tincidunt turpis elementum ac, rutrum lacus. "
+    },
+    {
+        title: "What is The People Practice?",
+        content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed magna sed ac scelerisque et mauris. Porttitor molestie proin integer arcu elit et risus ac vivamus. Libero nulla leo facilisi lorem ipsum id at ac. Risus ut scelerisque interdum penatibus vitae, lectus consequat. Nibh ut libero, massa nibh pharetra nibh vestibulum amet. Ullamcorper viverra ut gravida enim turpis adipiscing non. Magna lectus sit donec maecenas arcu. Rutrum tincidunt turpis elementum ac, rutrum lacus. "
+    }
+  
+]
