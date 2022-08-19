@@ -1,7 +1,9 @@
 import React from 'react'
 import Nav from '../components/Nav'
 import Carousel from '../layouts/Home/Carousel'
+import Companys from '../layouts/Home/Companys'
 import FeaturedPrograms from '../layouts/Home/FeaturedPrograms'
+import Footer from '../layouts/Home/Footer'
 import Hero from '../layouts/Home/Hero'
 import Label from '../layouts/Home/Label'
 import Review from '../layouts/Home/Review'
@@ -14,7 +16,9 @@ const Home = () => {
       <FeaturedPrograms />
       <Carousel />
       <Label />
-      <Review/>
+      <Review />
+      <Companys />
+      <Footer/>
       </>
   )
 }

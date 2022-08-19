@@ -1,0 +1,21 @@
+.main{
+    padding: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.main h4{
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.logos{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    width: fit-content;
+    align-items: center;
+}
