@@ -1,6 +1,6 @@
 import React from 'react'
 import Tags from '../../components/Tags'
-import fProgramStyles from '../../styles/FeaturesPrograms.module.css'
+import fProgramStyles from '../../styles/Home/FeaturesPrograms.module.css'
 import lineSvg from '../../Assets/Images/line.svg'
 
 const FeaturedPrograms = () => {

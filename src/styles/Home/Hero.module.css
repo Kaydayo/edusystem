@@ -1,6 +1,6 @@
 .homeHero{
     background-attachment: fixed;
-    background: url('../Assets/Images/home-hero-background.png');
+    background: url('../../Assets/Images/home-hero-background.png');
     height: 820px;
     background-size: 100% 100%;
     

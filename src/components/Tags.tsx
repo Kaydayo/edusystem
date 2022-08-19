@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import tagImage from '../Assets/Images/tags.png'
 import Button from './Button'
-import tagsStyle from '../styles/Tags.module.css'
+import tagsStyle from '../styles/Home/Tags.module.css'
 type TagProps = {
     mainTxt: string,
     subText: string;

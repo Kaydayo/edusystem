@@ -1,5 +1,5 @@
 import React from 'react'
-import navStyle from '../styles/Nav.module.css'
+import navStyle from '../styles/Home/Nav.module.css'
 import OncultureLogo from '../Assets/Images/onculture-logo.png'
 import Button from './Button'
 

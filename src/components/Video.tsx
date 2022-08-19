@@ -1,7 +1,7 @@
 import React, {useRef} from 'react'
 import video from '../Assets/Videos/video-sample.mp4'
 import useVideoPlayer from '../hooks/useVideoPlayer'
-import videoStyle from '../styles/Video.module.css' 
+import videoStyle from '../styles/Home/Video.module.css' 
 import videoPoster from '../Assets/Images/home-video-poster.png'
 import {BsFillPlayCircleFill, BsFillPauseCircleFill} from 'react-icons/bs'
 

@@ -15,6 +15,31 @@ body {
   height: 100%;
   
 }
+.slick-dots li
+{
+  
+    
+}
+
+.slick-dots li.slick-active button:before {
+  color: var(--primary-color) !important;
+  font-size: 0.75rem;
+}
+
+.slick-dots li button:before {
+  color: var(--primary-color) !important;
+  font-size: 0.75rem !important;
+}
+
+.slick-slide{
+  padding: 0 -5px !important;
+   margin-bottom: 6rem;
+}
+
+.slick-list{
+  margin-bottom: 6rem;
+}
+
 
 body::-webkit-scrollbar {
   display: none;

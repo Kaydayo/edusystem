@@ -1,5 +1,5 @@
 import React from 'react';
-import buttonStyle from '../styles/Button.module.css'
+import buttonStyle from '../styles/Home/Button.module.css'
 
 type ButtonProps = {
   className?: string,

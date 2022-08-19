@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import groupIcon from '../Assets/Images/group-icon.png'
-import boxStyle from '../styles/Box.module.css'
+import boxStyle from '../styles/Home/Box.module.css'
 
 type BoxProp = {
     data: {head: string, content:string}

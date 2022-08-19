@@ -1,0 +1,56 @@
+.content{
+    background-color: var(--primary-color);
+    width: 100%;
+    height: 25rem;
+    padding: 5rem;
+    box-sizing: border-box;
+    text-align: center;
+    background-image: url('../../Assets/Images/background-pattern.png');
+}
+
+.content h1{
+    color: white;
+    width: 31rem;
+    margin: auto;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.labelBtns{
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 1rem;
+    height: fit-content;
+}
+
+.btnWhite{
+    width: 196px;
+    color: var(--primary-color);
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 56px;
+}
+
+.btnWhite:hover{
+     transition: 0.4s;
+    transform: scale(0.9);
+}
+
+.btnOutline{
+    width: 196px;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 56px;
+} 
+
+.btnOutline:hover{
+    color: rgb(251, 34, 251);
+    border: 1px solid rgb(251, 34, 251);
+}

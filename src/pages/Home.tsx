@@ -3,6 +3,8 @@ import Nav from '../components/Nav'
 import Carousel from '../layouts/Home/Carousel'
 import FeaturedPrograms from '../layouts/Home/FeaturedPrograms'
 import Hero from '../layouts/Home/Hero'
+import Label from '../layouts/Home/Label'
+import Review from '../layouts/Home/Review'
 
 const Home = () => {
   return (
@@ -10,7 +12,9 @@ const Home = () => {
       <Nav />
       <Hero />
       <FeaturedPrograms />
-      <Carousel/>
+      <Carousel />
+      <Label />
+      <Review/>
       </>
   )
 }

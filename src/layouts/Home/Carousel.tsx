@@ -1,7 +1,7 @@
 import React from 'react'
 import { boxData } from '../../constants/data'
 import Box from '../../components/Box'
-import carouselStyle from '../../styles/Carousel.module.css'
+import carouselStyle from '../../styles/Home/Carousel.module.css'
 import lineSvg from '../../Assets/Images/line2.svg'
 
 

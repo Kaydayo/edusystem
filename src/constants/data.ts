@@ -1,7 +1,7 @@
 export const boxData = [
     {
-        head:"Team Connection and Collaboration",
-        content:"Connect people to work on culture exercises together, regardless of geographical location or unit",
+        head: "Team Connection and Collaboration",
+        content: "Connect people to work on culture exercises together, regardless of geographical location or unit",
     },
     {
         head: "Solid Culture Framework",
@@ -24,4 +24,55 @@ export const boxData = [
         head: "Workplace Harassment Awareness",
         content: "Educate employees on forms and types of workplace harassment(Sexual and Non Sexual)",
     },
+]
+
+export const reviewData = [
+    {
+        title: "Dependable, Responsive, Professional Partner",
+        content:
+            "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
+        author: "Jane Cooper",
+        companyRole: "CEO, ABC Corporation"
+    },
+    {
+        title: "Dependable, Responsive, Professional Partner",
+        content:
+            "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
+        author: "Jane Cooper",
+        companyRole: "CEO, ABC Corporation"
+    },
+    {
+        title: "Dependable, Responsive, Professional Partner",
+        content:
+            "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
+        author: "Jane Cooper",
+        companyRole: "CEO, ABC Corporation"
+    },
+    {
+        title: "Dependable, Responsive, Professional Partner",
+        content:
+            "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
+        author: "Jane Cooper",
+        companyRole: "CEO, ABC Corporation"
+    },
+    {
+        title: "Dependable, Responsive, Professional Partner",
+        content:
+            "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
+        author: "Jane Cooper",
+        companyRole: "CEO, ABC Corporation"
+    },
+    {
+        title: "Dependable, Responsive, Professional Partner",
+        content:
+            "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
+        author: "Jane Cooper",
+        companyRole: "CEO, ABC Corporation"
+    }, {
+        title: "Dependable, Responsive, Professional Partner",
+        content:
+            "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
+        author: "Jane Cooper",
+        companyRole: "CEO, ABC Corporation"
+    }
 ]
