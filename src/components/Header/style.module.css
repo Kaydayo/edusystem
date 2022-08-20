@@ -3,14 +3,20 @@
     height: 10vh;
     display: flex;
     align-items: center;
-    padding: 0 30px;
+    /* padding: 0 10px; */
     justify-content: space-around;
+    
+}
+
+.body {
+    font-family: 'Inter', sans-serif;
 }
 
 
 
 .logoContainer  {
  /* margin: 0 30px; */
+ margin: 0 0 0 -10px;
 }
 
 .linksContainer ul {
@@ -27,7 +33,7 @@
     list-style-type: none;
     color: #000;
     font-weight: 600;
-    margin: 0 8px;
+    margin: 0 10px;
     cursor: pointer;
 }
 
@@ -45,7 +51,7 @@
 .signup {
     color: #5C00DD;
     border: 2px solid #5C00DD;
-    margin: 0 5px;
+    margin: 0 7px;
     background: transparent;
 }
 
@@ -53,7 +59,7 @@
     background: #5C00DD;
     color: #fff;
     border: none;
-    margin: 0 5px;
+    margin: 0 7px;
     border: 2px solid #5C00DD;
 }
 
