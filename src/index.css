@@ -15,11 +15,7 @@ body {
   height: 100%;
   
 }
-.slick-dots li
-{
-  
-    
-}
+
 
 .slick-dots li.slick-active button:before {
   color: var(--primary-color) !important;

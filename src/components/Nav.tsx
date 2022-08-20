@@ -20,7 +20,11 @@ const Nav = () => {
             </div>
             <div className={navStyle.buttons}>
                 <div>
-                    <Button className={navStyle.signUpBtn}>Sign up</Button>
+                    <Link to='/signup'>
+                        <Button className={navStyle.signUpBtn}>
+                            Sign up
+                        </Button>
+                    </Link>
                 </div>
                 <div>
                     <Button className={navStyle.bookADemo}>Book a demo</Button>

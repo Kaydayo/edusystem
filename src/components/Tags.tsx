@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import tagImage from '../Assets/Images/tags.png'
+import tagImae from '../Assets/Images/tags.png'
 import Button from './Button'
 import tagsStyle from '../styles/Home/Tags.module.css'
 type TagProps = {
@@ -14,7 +14,7 @@ const Tags = ({mainTxt, subText}:TagProps) => {
           onMouseEnter={() => setHover(false)}
           onMouseLeave={()=>setHover(true)}>
           <div className={tagsStyle.tagImage}>
-              <img src={tagImage} alt="onculture-tag-image" />
+              <img src={tagImae} alt="onculture-tag" />
           </div>
           <div className={tagsStyle.txt}>
               <div className={tagsStyle.txtContent}>
