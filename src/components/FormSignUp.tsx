@@ -42,7 +42,7 @@ const FormSignUp = ({ text }: FormType) => {
                       <SpecialButton className={signUpStyle.googlebtn}>
                           <>
                               <img src={googleIcon} alt="onculture-google" />
-                              Sign Up with Google
+                              {text} with Google
                           </>
                       </SpecialButton>
                       <p>

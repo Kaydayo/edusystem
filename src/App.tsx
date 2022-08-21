@@ -17,7 +17,12 @@ function App() {
 
 
       <Route path='signup' element={<Signup />} />
-      <Route path='company-onboarding' element={<CompanyOnBoarding />} />
+      <Route path='/company-onboarding' element={<CompanyOnBoarding />} >
+        {/* <Route path="admin" element={<AdminForm />} />
+        <Route path="organization" element={<OrganizationForm />} />
+        <Route path="subscription" element={<SubscriptionForm />} /> */}
+      </Route>
+      
     </Routes>
   </Router>;
 }

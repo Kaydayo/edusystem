@@ -1,0 +1,299 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.mainStepper{
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.header h4{
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.header p{
+    color: #8692A6;
+}
+.setLink{
+text-decoration: none;
+  color:#FF22FF;
+  font-weight: 600;
+  margin-left: 3px;
+}
+
+.allForm{
+    width: 440px;
+    margin: 0 auto;
+    align-items: left;
+    text-align: left;
+    margin-top: 3rem;
+}
+
+.admin{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.subContent{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    
+}
+
+.txtArea{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.toggleSub label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 55px;
+	height: 25px;
+	background: #EEF1FF;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+.toggleSub label:after {
+	content: '';
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 15px;
+	height: 15px;
+	background: #FF22FF;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+.toggleSub input[type="checkbox"]  {
+   display: none;
+}
+
+.toggleSub input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+.toggleSub label:active:after {
+	width: 30px;
+}
+
+.toggleSub{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 700px;
+    align-self: center;
+    
+}
+
+.toggleSub h4{
+    width: 200px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    opacity: 10%;
+}
+
+.toggleSub h4>span{
+    font-weight: 400;
+}
+
+.toggleSub .hashCol{
+    color: black;
+    opacity: 100%;
+    transition: opacity 0.5s ease-in;
+}
+
+.boxSub{
+    width: 314px;
+    height: 369px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    padding:  1rem 3rem;
+    position: relative;
+   
+}
+
+.boxSub h4{
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.boxSub h3{
+    font-weight: 700;
+    font-size: 24px;
+    width: 200px;
+}
+
+.boxSub ul{
+    list-style-type: none;
+    margin-top: -0.3rem;
+
+}
+
+.boxSub ul li::before{
+    content: "✓";
+}
+
+.boxSub ul li{
+    margin-left: -2rem;
+    margin-top: 0.5rem;
+}
+
+.boxSub hr{
+    border: 0.5px solid #8692a622;
+    padding: 0;
+    margin-left: -50px;
+    margin-right: -50px;
+}
+
+
+.pickBtn{
+    display: flex;
+    flex-direction: column;
+}
+
+.pickBtn p{
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.pickBtn button{
+    height: 48px;
+    width: 212px;
+    margin-top: -0.7rem;
+    background-color: #F7F2FD;
+    color: #5c00dd96;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 17px;
+}
+
+.pickBtn button:hover{
+    border: 0.5px solid var(--primary-color);
+
+}
+
+.pickBtn button>span{
+    font-weight: 700;
+    font-size: 25px;
+    color: var(--primary-color) !important;
+    
+}
+
+.btnPicked button{
+    background-color: var(--primary-color);
+    color: #f7f2fd59;
+}
+
+.btnPicked button>span{
+    color: white !important;
+}
+
+.popSub{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10rem;
+    width: auto;
+}
+
+.checkMark{
+  width: 10px;
+  height: 10px;
+  /* background-color: white; */
+  border-radius: 50%;
+  margin-left: 1rem;
+
+}
+.checkMark::before{
+    content: "\2713";
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--primary-color);
+    background-color: white;
+    border-radius: 30%;
+    padding: 0.2rem;
+}
+
+.lines{
+      border: 0.5px solid #8692a622;
+    padding: 0;
+    margin-left: -100%;
+    margin-right: -100%;
+}
+
+.popSubDown{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10rem;
+    padding-top: 1rem;
+   
+}
+
+.btnSteps{
+    padding: 3rem 0;
+    display: flex;
+    gap :1rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btnBack{
+    background-color: transparent;
+    color: #B1BCD3;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btnSkip{
+    width: 97px;
+    height: 56px;
+    background-color: transparent;
+    color: var(--primary-color);
+    border-radius: 4px;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btnSkip:hover{
+    background-color: var(--primary-color);
+    color:white;
+}
+
+.btnNext{
+    width: 97px;
+    height: 56px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btnNext:hover{
+    transition: 0.4s;
+    transform: scale(0.9);
+}

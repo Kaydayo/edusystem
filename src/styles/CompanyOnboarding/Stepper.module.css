@@ -2,6 +2,7 @@
     width: 70%;
     color: #BBC4D9;
     cursor: pointer;
+    margin: 0 auto;
 }
 
 .progressBar li {

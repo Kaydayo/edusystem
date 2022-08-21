@@ -101,3 +101,121 @@ export const faqData = [{
     }
   
 ]
+
+export const employeeCount = [
+    { key: "1-20", value: "1-20" },
+    { key: "21-50", value: "21-50" },
+    { key: "51-100", value: "51-100" },
+    { key: "100-200", value: "100-200" },
+    { key: "Above 200", value: "Above 200" }
+]
+
+export const subScriptionCourse = [
+    {"subscriptionName": "tribe",
+    "description": "for team less than 100",
+    "information": [
+        "2 months access",
+        "quarterly reporting"
+    ],
+    "price": "5",
+    "staySafe": true,
+        "cultureClinic": true,
+    "others":false
+    },
+    {
+        "subscriptionName": "village",
+        "description": "for team of 101-500",
+        "information": [
+            "2 months access",
+            "quarterly reporting"
+        ],
+        "price": "5",
+        "staySafe": true,
+        "cultureClinic": true,
+        "others": false
+    },
+    {
+        "subscriptionName": "city",
+        "description": "for teams more than 500",
+        "information": [
+            "2 months access",
+            "quarterly reporting"
+        ],
+        "price": "5",
+        "staySafe": true,
+        "cultureClinic": true,
+        "others": false
+    },
+    {
+        "subscriptionName": "tribe",
+        "description": "for team less than 100",
+        "information": [
+            "2 months access",
+            "quarterly reporting"
+        ],
+        "price": "3",
+        "staySafe": true,
+        "cultureClinic": false,
+        "others": false
+    },
+    {
+        "subscriptionName": "village",
+        "description": "for team of 101-500",
+        "information": [
+            "2 months access",
+            "quarterly reporting"
+        ],
+        "price": "3",
+        "staySafe": true,
+        "cultureClinic": false,
+        "others": false
+    },
+    {
+        "subscriptionName": "city",
+        "description": "for teams more than 500",
+        "information": [
+            "2 months access",
+            "quarterly reporting"
+        ],
+        "price": "3",
+        "staySafe": true,
+        "cultureClinic": false,
+        "others": false
+    },
+    {
+        "subscriptionName": "Increment",
+        "description": "Custom",
+        "information": [],
+        "price": "5",
+        "staySafe": true,
+        "cultureClinic": true,
+        "others": true
+    },
+    {
+        "subscriptionName": "Refresher Course",
+        "description": "Custom",
+        "information": [],
+        "price": "5",
+        "staySafe": true,
+        "cultureClinic": true,
+        "others": true
+    },
+    {
+        "subscriptionName": "Increment",
+        "description": "Custom",
+        "information": [],
+        "price": "3",
+        "staySafe": true,
+        "cultureClinic": false,
+        "others": true
+    },
+    {
+        "subscriptionName": "Refresher Course",
+        "description": "Custom",
+        "information": [],
+        "price": "3",
+        "staySafe": true,
+        "cultureClinic": false,
+        "others": true
+    }
+]
