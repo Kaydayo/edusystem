@@ -4,12 +4,13 @@ import buttonStyle from '../styles/Home/Button.module.css'
 type ButtonProps = {
   className?: string ,
   onClick?: () => void,
-  children?: string
+  children?: string,
+  type?:any
     
 }
-const Button = ({className, onClick, children}:ButtonProps) => {
+const Button = ({className, onClick, children, type}:ButtonProps) => {
   return (
-    <button onClick={onClick} className={className ? className: buttonStyle.default} >
+    <button onClick={onClick} type={type} className={className ? className: buttonStyle.default} >
       {children}
     </button>
   )

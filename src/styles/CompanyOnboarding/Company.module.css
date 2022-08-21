@@ -297,3 +297,10 @@ text-decoration: none;
     transition: 0.4s;
     transform: scale(0.9);
 }
+
+.checkoutMain{
+  height: 360px;
+  width:1440px;
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}

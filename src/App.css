@@ -60,7 +60,8 @@
 }
 
 .fieldInput p{
-  color:red
+  color:red;
+  margin-top: -0.6rem;
 }
 
 

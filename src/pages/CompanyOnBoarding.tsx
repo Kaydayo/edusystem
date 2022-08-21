@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import onCulture from "../Assets/Images/onculture-logo.png"
 import FieldType from '../components/FieldType'
 import Stepper from '../components/Stepper'
@@ -9,16 +9,36 @@ import CompanyForm from '../layouts/CompanyForms/CompanyForm'
 import AdminForm from '../layouts/CompanyForms/AdminForm'
 import Subscription from '../layouts/CompanyForms/Subscription'
 import Button from '../components/Button'
+import { useSelector } from 'react-redux'
+import { RootState } from '../redux/store'
+import { useDispatch } from 'react-redux'
+import { handleErrors } from '../redux/companyonboard'
+import Checkout from '../layouts/CompanyForms/Checkout'
+
 
 const CompanyOnBoarding = () => {
   const [step, setStep] = useState<number>(0)
-  console.log(step)
+  const [findError, setFindError] = useState<boolean>(false)
+
+  const dispatch = useDispatch()
+  const checkError = useSelector((state: RootState) => state.companyonboard.errorfound)
+  const getCompanyField = useSelector((state: RootState) => state.companyonboard.info.companyName)
+
+
   const nextBtn = () => {
-    if (step >= multiSteps.length ) {
-      setStep(multiSteps.length)
-    } else {
-      setStep(step + 1)
+    dispatch(handleErrors())
+
+    if (step >= 1 && getCompanyField === '') {
+      return
     }
+    if (step >= multiSteps.length - 1) {
+      setStep(multiSteps.length - 1)
+    } else {
+      if (!checkError) {
+        setStep(step + 1)
+      }
+    }
+
 
   }
 
@@ -30,7 +50,9 @@ const CompanyOnBoarding = () => {
     }
 
   }
-  const multiSteps = [<AdminForm />, <CompanyForm />, <Subscription />]
+  const multiSteps = [<AdminForm />, <CompanyForm />, <Subscription />, <><Subscription /></>]
+
+
   return (
     <>
       <Nav pure={true} />
@@ -43,19 +65,29 @@ const CompanyOnBoarding = () => {
           <Stepper step={step} />
         </div>
         <div className={companyStyle.allForm}>
+
           {multiSteps[step]}
+
         </div>
         <div className={companyStyle.btnSteps}>
-          <Button className={companyStyle.btnBack} onClick={prevBtn}>
-            Back
-          </Button>
-         { step > 2 && <Button className={companyStyle.btnSkip} >
+          {
+            step > 0 && <Button className={companyStyle.btnBack} onClick={prevBtn}>
+              Back
+            </Button>
+          }
+          {step > 1 && <Link to="/dashboard"><Button className={companyStyle.btnSkip} >
             Skip
-          </Button>}
-          <Button className={companyStyle.btnNext} onClick={nextBtn}>
-            Next
           </Button>
+          </Link>}
 
+          {
+            step !== 3 && <Button type={step === 3 ? "submit" : ''} className={companyStyle.btnNext} onClick={nextBtn}>
+              Next
+            </Button>
+          }
+        </div>
+        <div>
+          {step === multiSteps.length - 1 && <Checkout />}
         </div>
 
       </div>
