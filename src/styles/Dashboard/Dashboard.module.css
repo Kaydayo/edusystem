@@ -151,6 +151,9 @@
     font-size: 18px;
     color: var(--primary-color);
     cursor: pointer;
+    float: right;
+    clear: left;
+    margin-top: -40px;
 }
 
 .slot{

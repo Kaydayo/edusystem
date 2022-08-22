@@ -56,10 +56,7 @@ const Profile = () => {
                       <h4>2</h4>
                       <h4>60</h4>
                   </div>
-
               </div>
-              
-
           </div>
     </div>
   )
