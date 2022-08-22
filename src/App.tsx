@@ -1,5 +1,5 @@
-import React from 'react';
 
+import React from 'react';
 import './App.css';
 import Home from './pages/Home';
 import Faq from './pages/Faq'
@@ -23,7 +23,7 @@ function App() {
        
       
     </Routes>
-  </Router>;
+  </Router>
 }
 
 export default App;
