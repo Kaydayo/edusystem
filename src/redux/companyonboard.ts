@@ -68,7 +68,7 @@ export const companyonboardSlice = createSlice({
                 state.errors.email = '';
             }
 
-            if (state.info.firstName !== '' && state.info.surnName !== '' && state.info.email !== '') {
+            if (state.info.firstName !== '' && state.info.surnName !== '' && state.info.email !== '' && (/\S+@\S+\.\S+/.test(state.info.email))) {
                 state.errorfound = false
             } else {
                 state.errorfound=true
