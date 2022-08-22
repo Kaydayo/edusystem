@@ -1,0 +1,44 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 10rem;
+}
+
+.content h3{
+    font-weight: 700;
+    font-size: 32px;
+    width: 500px;
+}
+
+.pText{
+    width: 565px;
+
+}
+
+.gridContainer{
+    display: grid;
+  grid-template-columns: auto auto auto;
+  gap:4rem;
+  padding: 10px; 
+}
+
+.bgObjectline{
+    position: absolute;
+    right: 0;
+    z-index: -5;
+}
+
+.bgBlurObject{
+   background-color: rgba(92, 0, 221, 0.712);
+   width: 240px;
+   height: 240px; 
+   filter: blur(16rem);
+   position: absolute;
+   right: 0;
+   z-index: -5;
+   bottom: -80rem;
+}

@@ -1,0 +1,28 @@
+.main{
+    width:660px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: #F4F4F4;
+    padding: 1rem 3rem;
+    cursor: pointer;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.title h4{
+    font-weight: 600;
+    font-size: 18px;
+} 
+
+.accodContent{
+    transition: all 0.9s;
+}
+
+

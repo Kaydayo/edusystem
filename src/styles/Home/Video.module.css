@@ -1,0 +1,83 @@
+video {
+  width: 100%;
+ 
+}
+
+.videoWrapper {
+  width: 30rem;
+  max-width: 700px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px;
+  height: 35rem;
+}
+
+.videoWrapper:hover .controls {
+  transform: translateY(0%);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+}
+
+.controls {
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: space-evenly; */
+  position: absolute;
+  bottom: -10px;
+  padding: 14px;
+  width: 100%;
+  max-width: 500px;
+  /* flex-wrap: wrap; */
+  /* background: rgba(255, 255, 255, 0.25); */
+  /* box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1); */
+  /* backdrop-filter: blur(4px); */
+  /* -webkit-backdrop-filter: blur(4px); */
+  /* border-radius: 10px; */
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  /* transform: translateY(150%); */
+  transition: all 0.3s ease-in-out;
+}
+
+.actions{
+  background-color: none;
+  color: white;
+} 
+
+.actions button{
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.playBtn{
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.customControl{
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.btnText{
+  text-align: left;
+}
+.btnText p{
+  font: 'Raleway', sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+}
+.btnText p:first-of-type{
+  font-weight: 700;
+  margin-bottom: -0.5rem;
+  font-size: 16px;
+}

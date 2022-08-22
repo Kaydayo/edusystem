@@ -1,0 +1,82 @@
+.headers{
+    display: flex;
+    padding: var(--padding-gap);
+    justify-content: space-between;
+    font-weight: 600;
+    align-items: center
+
+}
+.links ul li{
+    list-style: none;
+    list-style-type: none;
+
+}
+
+.linkTo{
+    text-decoration: none;
+}
+
+
+
+.linksElement li{
+    display: inline;
+    margin: 2rem;
+    text-decoration: none;
+}
+
+
+
+.linksElement li:hover, .linkTo:hover{
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.buttons{
+    display: flex;
+    gap: 0.6rem;
+}
+
+.signUpBtn{
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    height: var(--button-height);
+    width: var(--button-width);
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.signUpBtn:hover{
+    transition: all 0.8s;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.bookADemo{
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    height: 56px;
+    width: 155px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+
+}
+
+.bookADemo:hover{
+    transition: 0.4s;
+    transform: scale(0.9);
+
+}
+
+.addShadow{
+     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+     height: 119px;
+     box-sizing: border-box;
+}
