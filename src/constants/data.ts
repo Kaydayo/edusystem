@@ -219,3 +219,10 @@ export const subScriptionCourse = [
         "others": true
     }
 ]
+
+
+export const dashboardLinks = [
+    "bio","courses","employees","teams","report","subscription"
+]
+
+

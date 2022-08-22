@@ -75,7 +75,7 @@ const CompanyOnBoarding = () => {
               Back
             </Button>
           }
-          {step > 1 && <Link to="/dashboard"><Button className={companyStyle.btnSkip} >
+          {step > 1 && <Link to="/dashboard/bio"><Button className={companyStyle.btnSkip} >
             Skip
           </Button>
           </Link>}
