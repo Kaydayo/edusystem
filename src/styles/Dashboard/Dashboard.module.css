@@ -1,0 +1,163 @@
+.mainBoard{
+    background-color: #F5F8FE !important;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+.mainNav{
+    padding: 1rem;
+    box-shadow:  rgba(100, 100, 111, 0.066) 0px 7px 29px 0px;
+    height: 119px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.boardBtn{
+    display: flex;
+    gap: 2rem;
+}
+
+.createTeam{
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    width: 164px;
+    height: 56px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.createTeam:hover{
+    background-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.5s;
+}
+
+.inviteEmployee{
+     background-color: var(--primary-color);
+    border: none;
+    width: 164px;
+    height: 56px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+
+}
+
+.inviteEmployee:hover{
+    transform: scale(0.8);
+    transition: transform 0.4s;
+}
+
+.picBox{
+    width: 52px;
+    height: 48px;
+    background-color: #dee9ff;
+    border-radius: 100%;
+}
+
+.profileBoard{
+    width: 95%;
+    height: 40vh;
+    background-color: white;
+    margin: 0 auto;
+    box-shadow: rgba(100, 100, 111, 0.046) 0px 7px 29px 0px;
+    padding: 1rem 3rem;
+    box-sizing: border-box;
+    display: flex;
+    gap: 30%;
+    /* justify-content: space-between; */
+    align-items: center;
+    align-content: flex-start;
+}
+
+.leftBoard{
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    align-content: flex-start;
+
+}
+
+.ppBoard{
+    background-color: #F5F8FE;
+    width: 186px;
+    height: 186px;
+    border-radius: 100%;
+
+}
+
+.ppBoard span{
+    position: relative;
+    float: right;
+    margin-top: 70%;
+    cursor: pointer;
+}
+
+.profileInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.profileInfoHead{
+   text-align: left;
+
+}
+
+.profileInfoHead h2{
+    font-weight: 600;
+    font-size: 32px;
+
+}
+
+.profileInfoHead p{
+    margin-top: -1.3rem;
+    font-size: 14px;
+    color: #8790A3;
+    font-weight: 400;
+}
+.otherInfo {
+    display: flex;
+    gap: 1rem;
+}
+
+.otherInfo p{
+    font-size: 14px;
+    color: #8790A3;
+    font-weight: 400;
+}
+
+.otherInfo .valInfo p{
+    
+    color: black;
+    font-weight: 400;
+    
+}
+
+.editInfo{
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    width: 101px;
+    height: 56px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.slot{
+    display: flex;
+    gap: 2rem;
+}
+.slotSub{
+    display: flex;
+    gap: 8rem;
+}

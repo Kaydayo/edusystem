@@ -7,8 +7,9 @@ import {navData} from '../constants/data'
 
 type NavProp = {
     pure?: boolean;
+    board?: boolean;
 }
-const Nav = ({pure}:NavProp) => {
+const Nav = ({pure, board}:NavProp) => {
     return (
         <div className={`${navStyle.headers} ${pure && navStyle.addShadow}`}>
             <div className={navStyle.logo}>
