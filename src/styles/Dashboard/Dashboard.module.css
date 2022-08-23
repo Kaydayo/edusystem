@@ -241,3 +241,23 @@ font-weight: 700;
     font-weight: 400;
     font-size: 16px;
 }
+
+.successState{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 3rem;
+}
+
+.successState img{
+    width: 152px;
+    height: 152px;
+    margin-bottom: 1rem;
+}
+
+.successState p{
+    font-size: 16px;
+}
