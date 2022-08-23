@@ -3,7 +3,11 @@
     background-color:  #EEF1FF;
     align-items: center;
     text-align: center;
-;
+    background-image: url('../../Assets/Images/quote.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position-y: 2rem;
+   
 }
 
 

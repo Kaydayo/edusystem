@@ -4,10 +4,11 @@ import onCultureLogo from "../../Assets/Images/onculture-logo.png"
 import { Link } from 'react-router-dom';
 
 type BoardProp = {
-    profileImage?: any
+    profileImage?: any;
+    setShowModal: (showModal:boolean) => void;
 }
 
-const DashboardNav = ({profileImage}:BoardProp) => {
+const DashboardNav = ({profileImage, setShowModal}:BoardProp) => {
   return (
       <div className={boardStyle.mainNav}>
           <div className={boardStyle.boardLogo}>
@@ -19,7 +20,7 @@ const DashboardNav = ({profileImage}:BoardProp) => {
                       Create a Team
                   </button>
               </Link>
-              <button className={boardStyle.inviteEmployee}>
+              <button className={boardStyle.inviteEmployee} onClick={()=> setShowModal(true)}>
                   Invite Employee
               </button>
               <div className={boardStyle.picBox}>

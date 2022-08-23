@@ -10,7 +10,10 @@ export interface InputValue {
     key: CompanyFormEnum,
     value: string ;
 }
-
+export interface InviteInput{
+    key: InviteFormEnum,
+    value:string
+}
 export enum CompanyFormEnum {
     EMAIL = "email",
     FIRSTNAME = "firstName",
@@ -22,6 +25,14 @@ export enum CompanyFormEnum {
     VISION = "vision",
     VALUES = "values",
     // SUBSCRIOTION="subscription"
+}
+
+export enum InviteFormEnum {
+    FULLNAME = "fullName",
+    EMAIL = "email",
+    JOB_ROLE = 'jobRole',
+    DEPARTMENT = "department",
+    COURSE="course"
 }
 
 export interface CompanyFInal {
@@ -40,4 +51,24 @@ export interface CompanyFInal {
     errors: any,
     errorfound: boolean,
     showError: boolean,
+}
+
+export interface InviteData {
+    info: {
+        fullName: string,
+        email: string,
+        jobRole: string,
+        department: string,
+        course: string
+    },
+    errors: {
+        fullName: boolean,
+        email: boolean,
+        jobRole: boolean,
+        department: boolean,
+        course: boolean
+    },
+    errorfound: boolean,
+    showError: boolean,
+
 }
