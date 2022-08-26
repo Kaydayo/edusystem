@@ -14,6 +14,7 @@
     "axios": "^0.27.2",
     "formik": "^2.2.9",
     "gapi-script": "^1.2.0",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",
@@ -59,5 +60,6 @@
     "@types/react-slick": "^0.23.10",
     "dotenv": "^16.0.1"
   },
-  "proxy":"http://159.223.174.163/"
+  "proxy": "http://159.223.174.163",
+  "homepage":"https://onculture-frontend.vercel.app/"
 }
