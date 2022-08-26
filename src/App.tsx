@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Home from './pages/Home';
 import Faq from './pages/Faq'
@@ -14,8 +14,27 @@ import Team from './layouts/Dashboard/Team';
 import Report from './layouts/Dashboard/Report';
 import Subscription from './layouts/CompanyForms/Subscription';
 import Payments from './layouts/Dashboard/Payments';
+import Login from './components/Login';
+import { useDispatch } from 'react-redux';
+import { RootState, useAppDispatch, useAppSelector } from './redux/store';
+import { getUserDetails } from './redux/actions/usersAction';
+import ProtectedRoute from './components/ProtectedRoute';
+import {gapi} from 'gapi-script'
 
+
+console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID)
 function App() {
+  const { userInfo, userToken } = useAppSelector((state:RootState) => state.user)
+  const dispatch = useAppDispatch()
+  
+ 
+  // automatically authenticate user if token is found
+  useEffect(() => {  
+    if (userToken) {
+      dispatch(getUserDetails())
+    }
+  }, [userToken, dispatch])
+
   return <Router>
     <Routes>
       {/* Home */}
@@ -25,6 +44,8 @@ function App() {
 
 
       <Route path='signup' element={<Signup />} />
+      <Route path='login' element={<Login />} />
+      <Route element={<ProtectedRoute/>}>
       <Route path='company-onboarding' element={<CompanyOnBoarding />} />
       <Route path='/dashboard' element={<Dashboard />}>
         <Route path="bio" element={<Bio />} />
@@ -33,6 +54,7 @@ function App() {
         <Route path="teams" element={<Team />} />
         <Route path="report" element={<Report />} />
         <Route path="subscription" element={<Payments />} />
+        </Route>
       </Route>
        
       

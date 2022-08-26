@@ -13,8 +13,8 @@ const Carousel = () => {
         shared behaviors of your entire company, while promoting
         practices like;</p>
       <div className={carouselStyle.gridContainer}>
-        {boxData.map(data => (
-          <Box data={data}/>
+        {boxData.map((data,index) => (
+          <Box key={index} data={data}/>
         ))}
       </div>
       <div className={carouselStyle.bgObjectline}>

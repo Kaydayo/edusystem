@@ -1,34 +1,45 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+import { inviteEmployees } from '../../redux/actions/inviteEmployeeAction'
 import { handleInviteErrors, handleInviteInput } from '../../redux/inviteEmployee'
-import { RootState } from '../../redux/store'
+import { RootState, useAppDispatch, useAppSelector } from '../../redux/store'
 import inviteStyle from '../../styles/Dashboard/Invite.module.css'
 import { InviteFormEnum } from '../../types/interfaces'
 import SuccessState from './EmptyStates/SuccessState'
+import { ToastContainer, toast } from 'react-toastify';
 
 const InviteEmployee = () => {
     const [success, setSuccess] = useState<boolean>(false)
 
-    const dispatch = useDispatch()
-    const inviteFormData = useSelector((state: RootState) => state.inviteEmployee.info)
-    const getErrors = useSelector((state: RootState) => state.inviteEmployee.errors)
-    const errorFound = useSelector((state: RootState) => state.inviteEmployee.errorfound)
-    console.log("success",success)
+    const dispatch = useAppDispatch()
+    const inviteFormData = useAppSelector((state: RootState) => state.inviteEmployee.info)
+    const getErrors = useAppSelector((state: RootState) => state.inviteEmployee.errors)
+    const errorFound = useAppSelector((state: RootState) => state.inviteEmployee.errorfound)
+    const error = useAppSelector((state:RootState)=> state.inviteEmployee.error)
     const submitInvite = () => {
+        toast(error)
         dispatch(handleInviteErrors())
         if (errorFound) {
             setSuccess(false)
 
         } else {
+            dispatch(inviteEmployees({
+                fullName: inviteFormData.fullName,
+                email: inviteFormData.email,
+                role: inviteFormData.jobRole,
+                department: inviteFormData.department,
+                course: inviteFormData.course
+            }))
             setSuccess(true)
         }
     }
     return (
         <div className={inviteStyle.inviteBox}>
+            <ToastContainer/>
             {!success ? <><h4>Invite Employee</h4>
                 <div>
-                    <label htmlFor="fullname">Fullname*</label>
+                    <label htmlFor="fullname">Your Fullname*</label>
                     <input type="text" name="fullname" id="fullname"
                         className={`${getErrors.fullName ? inviteStyle.redError : ''}`}
                         placeholder='Fullname' value={inviteFormData.fullName} onChange={(e) => {

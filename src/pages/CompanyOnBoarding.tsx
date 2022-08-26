@@ -10,27 +10,37 @@ import AdminForm from '../layouts/CompanyForms/AdminForm'
 import Subscription from '../layouts/CompanyForms/Subscription'
 import Button from '../components/Button'
 import { useSelector } from 'react-redux'
-import { RootState } from '../redux/store'
+import { RootState, useAppDispatch, useAppSelector } from '../redux/store'
 import { useDispatch } from 'react-redux'
 import { handleErrors } from '../redux/companyonboard'
 import Checkout from '../layouts/CompanyForms/Checkout'
+import { registerCompany } from '../redux/actions/companyAction'
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const CompanyOnBoarding = () => {
   const [step, setStep] = useState<number>(0)
   const [findError, setFindError] = useState<boolean>(false)
 
-  const dispatch = useDispatch()
-  const checkError = useSelector((state: RootState) => state.companyonboard.errorfound)
-  const getCompanyField = useSelector((state: RootState) => state.companyonboard.info.companyName)
+  const dispatch = useAppDispatch()
+  const checkError = useAppSelector((state: RootState) => state.companyonboard.errorfound)
+  const getCompany = useAppSelector((state: RootState) => state.companyonboard.info)
+  const getCompanyField = useAppSelector((state: RootState) => state.companyonboard.info.companyName)
+  const {error} = useAppSelector((state:RootState)=> state.companyonboard)
 
 
   const nextBtn = () => {
     dispatch(handleErrors())
-
+   toast(error)
+    if(step === 1) {
+      dispatch(registerCompany(getCompany))
+    }
     if (step >= 1 && getCompanyField === '') {
       return
-    }
+    } 
+
+    
+    
     if (step >= multiSteps.length - 1) {
       setStep(multiSteps.length - 1)
     } else {
@@ -56,6 +66,7 @@ const CompanyOnBoarding = () => {
   return (
     <>
       <Nav pure={true} />
+      <ToastContainer/>
       <div className={companyStyle.main}>
         <div className={companyStyle.header}>
           <h4>Create Company Profile</h4>

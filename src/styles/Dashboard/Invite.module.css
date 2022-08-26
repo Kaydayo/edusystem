@@ -2,6 +2,7 @@
     /* padding: 0.5rem; */
     display: flex;
     flex-direction: column;
+    height: fit-content;
 }
 .inviteBox h4{
     font-weight: 700;
@@ -14,12 +15,18 @@
     flex-direction: column;
     gap: 0.4em;
     margin-bottom: 0.4rem;
+    height: fit-content;
 }
 
 .inviteBox div input{
     height: 48px;
     padding: 1rem;
     box-sizing: border-box;
+}
+
+.inviteBox div label{
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .inviteBox div button{
