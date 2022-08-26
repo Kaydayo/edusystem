@@ -45,7 +45,7 @@ export const registerCompany = createAsyncThunk(
             }
             // make request to backend
            const {data} = await axios.post(
-                '/company/create-account',
+                `${process.env.REACT_APP_BACKEND}/company/create-account`,
                 {
                     firstName,
                     surnName,
