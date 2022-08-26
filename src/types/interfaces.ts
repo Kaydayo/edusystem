@@ -51,6 +51,8 @@ export interface CompanyFInal {
     errors: any,
     errorfound: boolean,
     showError: boolean,
+    loading: boolean,
+    error: string|null
 }
 
 export interface InviteData {
@@ -70,5 +72,26 @@ export interface InviteData {
     },
     errorfound: boolean,
     showError: boolean,
+    loading: boolean,
+    success: boolean,
+    error:any
 
+}
+
+export interface UserState {
+    loading: boolean,
+    userInfo: {
+        email: string,
+        password: string
+    },
+    userToken: string|null,
+    error: string|null,
+    success: boolean,
+    profileInfo:any
+}
+
+
+export enum SingUp{
+    EMAIL = 'email',
+    PASSWORD='password'
 }

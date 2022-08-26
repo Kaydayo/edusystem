@@ -18,8 +18,8 @@ const Nav = ({pure, board}:NavProp) => {
             {!pure && <>
                 <div className={navStyle.links}>
                     <ul className={navStyle.linksElement}>
-                        {navData.map(navs => (
-                            <li><Link to={navs.to} className={navStyle.linkTo}>{navs.title}</Link></li>
+                        {navData.map((navs, index) => (
+                            <li key={index}><Link to={navs.to} className={navStyle.linkTo}>{navs.title}</Link></li>
                         ))}
                     </ul>
                 </div>
@@ -32,7 +32,11 @@ const Nav = ({pure, board}:NavProp) => {
                         </Link>
                     </div>
                     <div>
-                        <Button className={navStyle.bookADemo}>Book a demo</Button>
+                        <Link to='/login'>
+                            <Button className={navStyle.bookADemo}>
+                                Login
+                            </Button>
+                        </Link>
                     </div>
                     </div>
                 </>

@@ -3,6 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { stat } from 'fs'
 import { AdminSignup, CompanyFInal, CompanyFormEnum, InputValue, InviteData, InviteInput} from '../types/interfaces'
 import { act } from 'react-dom/test-utils'
+import { inviteEmployees } from './actions/inviteEmployeeAction'
 
 
 
@@ -23,6 +24,9 @@ const initialState:InviteData = {
     },
     errorfound: true,
     showError: false,
+    loading: false,
+    success: false,
+    error:null
 
 }
 
@@ -71,8 +75,22 @@ export const inviteEmployeeSlice = createSlice({
             let key = action.payload.key
             state.info[key] = action.payload.value
         },
-       
     },
+    extraReducers: {
+        [inviteEmployees.pending.toString()]: (state) => {
+            state.loading = true
+            state.error = null
+        },
+        [inviteEmployees.fulfilled.toString()]: (state, { payload }) => {
+            console.log(payload)
+            state.loading = false
+            state.success = true
+        },
+        [inviteEmployees.rejected.toString()]: (state, { payload }) => {
+            state.loading = false
+            state.error = payload
+        },
+    }
 })
 
 // Action creators are generated for each case reducer function

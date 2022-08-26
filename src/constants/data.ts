@@ -103,11 +103,11 @@ export const faqData = [{
 ]
 
 export const employeeCount = [
-    { key: "1-20", value: "1-20" },
-    { key: "21-50", value: "21-50" },
-    { key: "51-100", value: "51-100" },
-    { key: "100-200", value: "100-200" },
-    { key: "Above 200", value: "Above 200" }
+    { key: '1-20', value: '1-20' },
+    { key: '21-50', value: '21-50' },
+    { key: '51-100', value: '51-100' },
+    { key: '100-200', value: '100-200' },
+    { key: 'Above 200', value: 'Above 200' }
 ]
 
 export const subScriptionCourse = [

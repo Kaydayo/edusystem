@@ -3,8 +3,12 @@ import boardStyle from '../../styles/Dashboard/Dashboard.module.css'
 import editIcon from '../../Assets/Images/edit-icon.svg'
 import { CgPen } from 'react-icons/cg'
 import { Link } from 'react-router-dom'
+import Subscription from '../CompanyForms/Subscription'
 
-const Profile = () => {
+type ProfileProp =  {
+    data:any
+}
+const Profile = ({data}:ProfileProp) => {
   return (
       <div className={boardStyle.profileBoard}>
           <div className={boardStyle.leftBoard}>
@@ -16,7 +20,7 @@ const Profile = () => {
               </div>
               <div className={boardStyle.profileInfo}>
                   <div className={boardStyle.profileInfoHead}>
-                      <h2>The People Practice</h2>
+                      <h2>{data?.company?.companyName}</h2>
                       <p>Lagos, Nigeria</p>
                   </div>
                   <div className={boardStyle.otherInfo}>
@@ -27,10 +31,10 @@ const Profile = () => {
                           <p>Role:</p>
                       </div>
                       <div className={boardStyle.valInfo}>
-                          <p>Imisi Adenekan</p>
-                          <p>Imisi@thepeoplepractice.wxy</p>
-                          <p>090202030348</p>
-                          <p>People Manager</p>
+                          <p>{data?.company?.admin?.firstName}</p>
+                          <p>{data?.user?.email}</p>
+                          <p>{data?.user?.phoneNumber}</p>
+                          <p>{data?.user?.role}</p>
                       </div>
                   </div>
               </div>
@@ -53,8 +57,8 @@ const Profile = () => {
                       <p>Total Slot Purchased</p>
                   </div>
                   <div className={boardStyle.slotSub}>
-                      <h4>2</h4>
-                      <h4>60</h4>
+                      <h4>0</h4>
+                      <h4>0</h4>
                   </div>
               </div>
           </div>

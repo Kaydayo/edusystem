@@ -3,6 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { stat } from 'fs'
 import { AdminSignup, CompanyFInal, CompanyFormEnum, InputValue } from '../types/interfaces'
 import { act } from 'react-dom/test-utils'
+import { registerCompany } from './actions/companyAction'
 
 
 
@@ -31,7 +32,9 @@ const initialState: CompanyFInal = {
         values: '',
     },
     errorfound: true,
-    showError:false,
+    showError: false,
+    loading: false,
+    error: null
 
 }
 
@@ -94,6 +97,19 @@ export const companyonboardSlice = createSlice({
             // state.errorfound = checkIsEmpty
         }
     },
+    extraReducers: {
+        [registerCompany.pending.toString()]: (state) => {
+            state.loading = true
+            state.error = null
+        },
+        [registerCompany.fulfilled.toString()]: (state, { payload }) => {
+            state.loading = false
+        },
+        [registerCompany.rejected.toString()]: (state, { payload }) => {
+            state.loading = false
+            state.error = payload
+        }
+    }
 })
 
 // Action creators are generated for each case reducer function
