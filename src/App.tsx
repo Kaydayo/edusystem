@@ -22,7 +22,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import {gapi} from 'gapi-script'
 
 
-console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID)
+console.log(process.env.REACT_APP_BACKEND)
 function App() {
   const { userInfo, userToken } = useAppSelector((state:RootState) => state.user)
   const dispatch = useAppDispatch()

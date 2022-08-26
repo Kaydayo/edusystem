@@ -21,7 +21,7 @@ export const registerUser = createAsyncThunk(
             // make request to backend
             const { data
         } = await axios.post(
-            `${process.env.REACT_APP_BACKEND}/users/sign-up`,
+                '/users/sign-up',
                 { email, password },
                 config
            )
@@ -55,7 +55,7 @@ export const userLogin = createAsyncThunk(
                 },
             }
             const { data } = await axios.post(
-                `${process.env.REACT_APP_BACKEND}/users/login`,
+                '/users/login',
                 { username:email, password },
                 config
             )
@@ -89,7 +89,7 @@ export const getUserDetails = createAsyncThunk(
                     Authorization: `Bearer ${user.userToken}`,
                 },
             }
-            const { data } = await axios.get(`${process.env.REACT_APP_BACKEND}/users/me`, config)
+            const { data } = await axios.get(`/users/me`, config)
             return data
         } catch (error:any) {
             if (error.response && error.response.data.message) {
