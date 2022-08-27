@@ -1,38 +1,44 @@
-import { createProxyMiddleware } from 'http-proxy-middleware'
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = app => {
     app.use(
-        createProxyMiddleware('/users/login', {
+        '/users/login',
+        createProxyMiddleware( {
             target: 'http://159.223.174.163',
             changeOrigin: true
         })
     ),
         app.use(
-            createProxyMiddleware('/company/create-account', {
+            '/company/create-account',
+            createProxyMiddleware( {
                 target: 'http://159.223.174.163',
                 changeOrigin: true
             })
         ),
         app.use(
-            createProxyMiddleware('/users/me', {
+            '/users/me',
+            createProxyMiddleware( {
                 target: 'http://159.223.174.163',
                 changeOrigin: true
             })
         ),
         app.use(
-            createProxyMiddleware('user/signup', {
+            'user/signup',
+            createProxyMiddleware( {
                 target: 'http://159.223.174.163',
                 changeOrigin: true
             })
         ),
         app.use(
-            createProxyMiddleware('user/getUserDetails', {
+            'user/getUserDetails',
+            createProxyMiddleware( {
                 target: 'http://159.223.174.163',
                 changeOrigin: true
             })
         ),
         app.use(
-            createProxyMiddleware('/employee/invite', {
+            '/employee/invite',
+            createProxyMiddleware( {
                 target: 'http://159.223.174.163',
                 changeOrigin: true
             })
