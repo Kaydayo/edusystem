@@ -21,7 +21,7 @@ export const registerUser = createAsyncThunk(
             // make request to backend
             const { data
         } = await axios.post(
-            `${process.env.REACT_APP_BACKEND}/users/sign-up`,
+            `/users/sign-up`,
                 { email, password },
                 config
            )
