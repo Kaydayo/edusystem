@@ -31,10 +31,10 @@ const Profile = ({data}:ProfileProp) => {
                           <p>Role:</p>
                       </div>
                       <div className={boardStyle.valInfo}>
-                          <p>{data?.company?.admin?.firstName}</p>
-                          <p>{data?.user?.email}</p>
-                          <p>{data?.user?.phoneNumber}</p>
-                          <p>{data?.user?.role}</p>
+                          <p>{data.company.admin.firstName}</p>
+                          <p>{data.user.email}</p>
+                          <p>{data.user.phoneNumber}</p>
+                          <p>{data.user.role}</p>
                       </div>
                   </div>
               </div>
