@@ -20,7 +20,7 @@ const Profile = ({data}:ProfileProp) => {
               </div>
               <div className={boardStyle.profileInfo}>
                   <div className={boardStyle.profileInfoHead}>
-                      <h2>{data?.company?.companyName}</h2>
+                      <h2>{data.company.companyName}</h2>
                       <p>Lagos, Nigeria</p>
                   </div>
                   <div className={boardStyle.otherInfo}>
