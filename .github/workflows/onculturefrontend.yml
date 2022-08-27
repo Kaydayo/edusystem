@@ -1,0 +1,30 @@
+name: Onculture CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Use Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{matrix.node-version}}
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo REACT_APP_GOOGLE_CLIENT_ID=${{secrets.REACT_APP_GOOGLE_CLIENT_ID}} >> .env
+          echo REACT_APP_BACKEND=${{secrets.REACT_APP_BACKEND}} >> .env
+          cat .env
+      - run: |
+          npm install
+          npm run build
+          
