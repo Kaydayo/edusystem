@@ -23,8 +23,13 @@ jobs:
           touch .env
           echo REACT_APP_GOOGLE_CLIENT_ID=${{secrets.REACT_APP_GOOGLE_CLIENT_ID}} >> .env
           echo REACT_APP_BACKEND=${{secrets.REACT_APP_BACKEND}} >> .env
+          echo DANGEROUSLY_DISABLE_HOST_CHECK=${{secrets.DANGEROUSLY_DISABLE_HOST_CHECK}} >> .env
           cat .env
       - run: |
           npm install
           npm run build
+          pm2 stop 0
+          pm2 start 0
+          pm2 save
+          sudo service nginx restart
           
