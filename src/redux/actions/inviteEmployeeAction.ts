@@ -35,7 +35,7 @@ export const inviteEmployees = createAsyncThunk(
             }
             // make request to backend
             const { data } = await axios.post(
-                '/employee/invite',
+                `${process.env.REACT_APP_BACKEND}/employee/invite`,
                 {
                     fullName,
                     email,

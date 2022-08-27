@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import axios from 'axios'
 import { UserState } from "../../types/interfaces";
-
+console.log(process.env.REACT_APP_BACKEND)
 
 export interface companyData {
     firstName: string;
@@ -45,7 +45,7 @@ export const registerCompany = createAsyncThunk(
             }
             // make request to backend
            const {data} = await axios.post(
-                '/company/create-account',
+               `${process.env.REACT_APP_BACKEND}/company/create-account`,
                 {
                     firstName,
                     surnName,
