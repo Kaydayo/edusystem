@@ -25,4 +25,17 @@
     transition: all 0.9s;
 }
 
+@media all and (max-width:900px) {
+    .main{
+        width: 305px;
+        padding: 3rem 1rem;
+    }
+    .title{
+        margin: 0;
+        width: 100%;
+    }
 
+    .title h4{
+        margin: 0;
+    }
+}

@@ -42,3 +42,22 @@
    z-index: -5;
    bottom: -55rem;
 }
+
+@media all and (max-width:900px){
+    .content{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        padding: 0;
+    }
+    .tags{
+        flex-direction: column;
+    }
+    .bgObjectline{
+        display: none;
+    }
+
+    .content p{
+        width: 305px;
+    }
+}

@@ -5,10 +5,10 @@ import { getUserDetails } from '../redux/actions/usersAction'
 import { useAppDispatch, useAppSelector } from '../redux/store'
 
 const ProtectedRoute = () => {
-    const { profileInfo } = useAppSelector((state) => state.user)
+    const { userToken } = useAppSelector((state) => state.user)
 
     // show unauthorized screen if no user is found in redux store
-    if (!profileInfo) {
+    if (!userToken) {
         return <div className='unauthorized'>
                 <h1>Unauthorized :(</h1>
                 <span>

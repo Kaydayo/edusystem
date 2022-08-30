@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Home from './pages/Home';
 import Faq from './pages/Faq'
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Signup from './pages/Signup';
 import CompanyOnBoarding from './pages/CompanyOnBoarding';
 import Dashboard from './pages/Dashboard';
@@ -19,47 +19,54 @@ import { useDispatch } from 'react-redux';
 import { RootState, useAppDispatch, useAppSelector } from './redux/store';
 import { getUserDetails } from './redux/actions/usersAction';
 import ProtectedRoute from './components/ProtectedRoute';
-import {gapi} from 'gapi-script'
+import { gapi } from 'gapi-script'
+import { GoogleOAuthProvider } from '@react-oauth/google'
 
 
 console.log(process.env.REACT_APP_BACKEND)
 function App() {
-  const { userInfo, userToken } = useAppSelector((state:RootState) => state.user)
+  const { userInfo, userToken } = useAppSelector((state: RootState) => state.user)
   const dispatch = useAppDispatch()
-  
- 
+    
+
   // automatically authenticate user if token is found
-  useEffect(() => {  
+  useEffect(() => {
+    
     if (userToken) {
       dispatch(getUserDetails())
     }
+    
   }, [userToken, dispatch])
 
-  return <Router>
-    <Routes>
-      {/* Home */}
-      <Route path='/' element={<Home />} />
+  return <>
+    <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}>
+      <Router>
+        <Routes>
+          {/* Home */}
+          <Route path='/' element={<Home />} />
 
-      <Route  path='faq' element={<Faq />} />
+          <Route path='faq' element={<Faq />} />
 
 
-      <Route path='signup' element={<Signup />} />
-      <Route path='login' element={<Login />} />
-      <Route element={<ProtectedRoute/>}>
-      <Route path='company-onboarding' element={<CompanyOnBoarding />} />
-      <Route path='/dashboard' element={<Dashboard />}>
-        <Route path="bio" element={<Bio />} />
-        <Route path="courses" element={<Courses />} />
-        <Route path="employees" element={<BoardEmployee />} />
-        <Route path="teams" element={<Team />} />
-        <Route path="report" element={<Report />} />
-        <Route path="subscription" element={<Payments />} />
-        </Route>
-      </Route>
-       
-      
-    </Routes>
-  </Router>
+          <Route path='signup' element={<Signup />} />
+          <Route path='login' element={<Login />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path='company-onboarding' element={<CompanyOnBoarding />} />
+            <Route path='/dashboard' element={<Dashboard />}>
+              <Route path="bio" element={<Bio />} />
+              <Route path="courses" element={<Courses />} />
+              <Route path="employees" element={<BoardEmployee />} />
+              <Route path="teams" element={<Team />} />
+              <Route path="report" element={<Report />} />
+              <Route path="subscription" element={<Payments />} />
+            </Route>
+          </Route>
+
+
+        </Routes>
+      </Router>
+    </GoogleOAuthProvider>
+  </>
 }
 
 export default App;

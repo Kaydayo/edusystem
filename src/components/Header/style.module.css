@@ -1,23 +1,23 @@
-.container {
+/* .container {
     max-width: 100%;
     height: 10vh;
     display: flex;
     align-items: center;
     /* padding: 0 10px; */
-    justify-content: space-around;
+    /* justify-content: space-around; */
     
-}
+/* }  */
 
-.body {
+/* .body {
     font-family: 'Inter', sans-serif;
-}
+} */
 
 
-
+/* 
 .logoContainer  {
  /* margin: 0 30px; */
- margin: 0 0 0 -10px;
-}
+ /* margin: 0 0 0 -10px; */
+/* } */ */
 
 .linksContainer ul {
     height: 90%;

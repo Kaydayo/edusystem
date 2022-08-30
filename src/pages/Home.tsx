@@ -10,7 +10,7 @@ import Review from '../layouts/Home/Review'
 
 const Home = () => {
   return (
-    <>
+    <div className='homepage'>
       <Nav />
       <Hero />
       <FeaturedPrograms />
@@ -19,7 +19,7 @@ const Home = () => {
       <Review />
       <Companys />
       <Footer/>
-      </>
+      </div>
   )
 }
 

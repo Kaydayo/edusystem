@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-oauth/google": "^0.2.6",
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -15,6 +16,7 @@
     "babel-preset-es2015": "^6.24.1",
     "formik": "^2.2.9",
     "gapi-script": "^1.2.0",
+    "google-auth-library": "^8.4.0",
     "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -30,7 +32,8 @@
     "slick-carousel": "^1.8.1",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "zustand": "^4.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -61,6 +64,6 @@
     "@types/react-slick": "^0.23.10",
     "dotenv": "^16.0.1"
   },
-  "proxy": "http://159.223.174.163",
+  "proxy": "http://localhost:4000",
   "homepage": "https://onculture-frontend.vercel.app/"
 }

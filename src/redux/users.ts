@@ -1,5 +1,6 @@
 // features/user/userSlice.js
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { stat } from 'fs'
 import { SingUp, UserState } from '../types/interfaces'
 import { getUserDetails, registerUser, userLogin } from './actions/usersAction'
 
@@ -26,6 +27,12 @@ const userSlice = createSlice({
         handleInputSignup: (state, action: PayloadAction<{ key: SingUp, value: string }>) => {
             let key = action.payload.key
             state.userInfo[key] = action.payload.value
+        },
+        updateToken: (state, action: PayloadAction<any>) => {
+            state.userToken = action.payload
+        },
+        updateUserEmail: (state, action: PayloadAction<any>) => {
+            state.userInfo.email = action.payload
         }
     },
     extraReducers: {
@@ -52,6 +59,7 @@ const userSlice = createSlice({
         },
         [userLogin.fulfilled.toString()]: (state, { payload }) => {
             state.loading = false
+            console.log(state)
             state.success = true
             state.userToken = payload.payload.accessToken
             state.userInfo.email = payload.payload.email
@@ -62,19 +70,25 @@ const userSlice = createSlice({
         },
         [getUserDetails.pending.toString()]: (state) => {
             state.loading = true
+            state.error=null
         },
         [getUserDetails.fulfilled.toString()]: (state, { payload }) => {
+
             state.loading = false
-            state.profileInfo = payload.payload
+            state.success = true
+            // state.userInfo.email=payload.payload?payload.payload.user.email:''
+            // state.profileInfo = payload.payload
         },
         [getUserDetails.rejected.toString()]: (state, { payload }) => {
             state.loading = false
+            state.error = payload
+            state.success =false
         },
         
     },
    
 })
 
-export const { handleInputSignup} = userSlice.actions
+export const { handleInputSignup, updateToken, updateUserEmail } = userSlice.actions
 
 export default userSlice.reducer

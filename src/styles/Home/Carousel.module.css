@@ -42,3 +42,42 @@
    z-index: -5;
    bottom: -80rem;
 }
+
+@media all and (max-width:900px){
+    .gridContainer{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .content{
+        margin: 0;
+        margin-bottom: 2rem;
+    }
+    .content h3{
+        width: 305px;
+        height: 96px;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .content p{
+        width: 305px;
+        height: 63px;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .bgObjectline{
+        display: none;
+    }
+
+    .bgBlurObject{
+        width: 322px;
+        height: 336px;
+        background-color: rgba(92, 0, 221, 0.349);
+        bottom: 0;
+    }
+}

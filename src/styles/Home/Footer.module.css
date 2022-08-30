@@ -67,3 +67,18 @@
      cursor: pointer;
 }
 
+
+@media all and (max-width:900px){
+    .container{
+        height: fit-content;
+    }
+    .content{
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+    }
+    .contact{
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState, useAppDispatch, useAppSelector } from '../redux/store'
 import { useDispatch } from 'react-redux'
-import { registerUser, userLogin } from '../redux/actions/usersAction'
+import { getUserDetails, registerUser, userLogin } from '../redux/actions/usersAction'
 import { useNavigate } from 'react-router-dom'
 import { handleInputSignup } from '../redux/users'
 import Signup from '../pages/Signup'
@@ -17,10 +17,11 @@ import { handleFormInput } from '../redux/companyonboard'
 import PasswordStrengthBar from 'react-password-strength-bar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+// import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import axios from 'axios'
 import { gapi } from 'gapi-script'
 import useGoogleAuthentication from '../hooks/useGoogleAuthentication'
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
 
 
 
@@ -43,16 +44,7 @@ const FormSignUp = ({ text }: FormType) => {
 
     const navigate = useNavigate()
 
-    useEffect(() => {
-        function start() {
-            gapi.client.init({
-                clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-                scope: "email"
-            })
-        }
-        gapi.load('client:auth2', start)
-    })
-
+   
     const onSignUp = (data: { email: string, password: string }) => {
         if (text === FormName.SIGNUP) {
             dispatch(registerUser(data))
@@ -65,6 +57,17 @@ const FormSignUp = ({ text }: FormType) => {
 
         }
     }
+
+   
+   
+
+    // automatically authenticate user if token is found
+    // useEffect(() => {
+    //     console.log(userToken, 'user token')
+    //     if (userToken) {
+    //         dispatch(getUserDetails())
+    //     }
+    // }, [userToken, dispatch])
     
     useEffect(() => {
         // if (success) navigate('/login')
@@ -77,7 +80,7 @@ const FormSignUp = ({ text }: FormType) => {
 
             } else {
 
-                if (!profileInfo.company) {
+                if (profileInfo === null) {
                     navigate('/company-onboarding')
                 } else {
                     navigate('/dashboard')
@@ -118,10 +121,7 @@ const FormSignUp = ({ text }: FormType) => {
                     {text}
                 </Button>
                 {/* </Link> */}
-                <GoogleLogin
-                    className={signUpStyle.googlebtn}
-                    clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
-                    buttonText={`${text} with google`}
+                <GoogleLogin width='2800px' logo_alignment='center'
                     onSuccess={handleSuccess}
                 />
                
