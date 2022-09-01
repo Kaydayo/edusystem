@@ -19,3 +19,17 @@
     width: fit-content;
     align-items: center;
 }
+
+@media all and (max-width:900px){
+    .main{
+    padding: 3rem;
+    display: flex;
+}
+.logos{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.logos img{
+    max-width: 137px;
+}
+}

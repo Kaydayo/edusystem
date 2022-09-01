@@ -81,3 +81,64 @@ video {
   margin-bottom: -0.5rem;
   font-size: 16px;
 }
+
+@media all and (max-width:900px){
+  .container{
+    padding: 0;
+    width: fit-content;
+    margin: 0 auto;
+
+  }
+  video{
+    /* width: 304px; */
+    margin: 0 auto;
+    width: 304px;
+    height: 347px;
+    padding: 0;
+    /* height: 60%; */
+    /* margin-left: 5%; */
+    /* margin-right: 2rem; */
+  }
+
+  .videoWrapper {
+  /* width: 25rem; */
+  /* width: 100%; */
+  text-align: center;
+  margin-top: -15rem;
+  /*margin-left: -0.1rem; */
+  width: fit-content;
+  height: fit-content;
+  max-width: 700px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px;
+  /* height: 35rem; */
+}
+.actions{
+  color: white;
+}
+.actions button{
+  color:white;
+  padding: 0;
+}
+.controls{
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  width: fit-content;
+  height: fit-content;
+  padding: 0;
+}
+.customControl{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0;
+}
+.btnText{
+  text-align: center;
+}
+}

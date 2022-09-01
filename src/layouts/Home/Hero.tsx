@@ -18,7 +18,7 @@ const Hero = () => {
                   on healthy workplace practices while uniting
                   teams, even across different locations.
               </p>
-              <div>
+              <div className={heroStyles.heroBtn}>
                   <Button>
                   Book a Demo
               </Button>

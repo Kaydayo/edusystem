@@ -76,3 +76,66 @@
     font-weight: 700;
     font-size: 18px;
 }
+
+@media all and (max-width:900px){
+  .boxContent{
+    padding: 3rem;
+    height: 1196px;
+    /* width: 375px; */
+  }
+  
+  .callout{
+    display: flex;
+    flex-direction: column;
+    gap: -0.1rem;
+  /* position: relative; */
+	 width: 304.1px;
+    /* height:fit-content; */
+   padding: 1rem;
+	background-color: #fff;
+	border-radius: 4px;
+    margin-bottom: 0;
+     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
+.callout:before {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 90px;
+	bottom: -42px;
+  border: 30px solid transparent;
+  z-index: 20;
+}
+
+.callout:after {
+  content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 120px;
+	bottom: -40px;
+  border: 30px solid transparent;
+  border-top: 24px solid #fff;
+  z-index: 99;
+ 
+}
+  .callout h4{
+    font-size: 16px;
+    font-weight: 700;
+    width: 259px;
+  }
+
+.callout h5{
+    font-weight: 400;
+    line-height: 24px;
+    max-width: 261px;
+    font-size: 16px;
+  }
+
+  .boxContent div{
+    margin-top: 0
+}
+}

@@ -4,6 +4,7 @@ import { stat } from 'fs'
 import { AdminSignup, CompanyFInal, CompanyFormEnum, InputValue } from '../types/interfaces'
 import { act } from 'react-dom/test-utils'
 import { registerCompany } from './actions/companyAction'
+import { getUserDetails, userLogin } from './actions/usersAction'
 
 
 
@@ -104,10 +105,22 @@ export const companyonboardSlice = createSlice({
         },
         [registerCompany.fulfilled.toString()]: (state, { payload }) => {
             state.loading = false
+            state.info= payload.company
         },
         [registerCompany.rejected.toString()]: (state, { payload }) => {
             state.loading = false
             state.error = payload
+        },
+        [getUserDetails.fulfilled.toString()]: (state, { payload }) => {
+            state.info.email = payload.user.email
+            state.info.firstName = payload.user.firstName
+            state.info.surnName = payload.user.surnName
+            if (payload.company) {
+                state.info.companyName = payload.company.companyName
+            }
+        },
+        [userLogin.fulfilled.toString()]: (state, { payload }) => {
+            state.loading = false
         }
     }
 })

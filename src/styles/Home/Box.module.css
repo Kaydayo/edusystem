@@ -26,16 +26,26 @@
     height: 3rem;
 }
 
+.hidBox{
+    opacity: 0%;
+    visibility: hidden;
+}
+
 .mainBox h2{
     font-weight: 700;
     font-size: 16px;
     width: 190px;
 }
 
+
+
 .boxHoverEfx{
     /* transition: all 0.8s; */
     background-color: var(--primary-color);
 }
+
+
+
 
 .moveUp{
     
@@ -53,6 +63,8 @@
     position: relative;
     top: -5rem;
     color: white;
+    visibility:visible;
+    
     /* opacity: 0%; */
 }
 
@@ -78,7 +90,7 @@
 
 
 @keyframes movementDown {
-    0%{transform: translateY(0); opacity: 0%;}
+    0%{transform: translateY(0); opacity: 0%; visibility: visible;}
     100%{transform: translateY(-50px); opacity: 100%;}
 }
 
@@ -101,4 +113,61 @@
     0%{transform: translateY(-30px); opacity: 0%;}
     100%{transform: translateY(0); opacity: 100%;}
     
+}
+
+
+@media all and (max-width:900px){
+    .mainBox{
+        width: 305px;
+        height: 280px;
+        gap: 0;
+    }
+    .boxHoverEfx{
+    /* transition: all 0.8s; */
+    background-color: white;
+    }
+    .moveUp{
+    
+    animation-name: none;
+    animation-duration: none;
+    position: relative;
+    color: black;
+    opacity: 100%;
+}
+.moveDown{
+    
+    animation-name: none;
+    animation-duration: 0.8s;
+    transform: none;
+    position: relative;
+    top: 0;
+    color: black;
+    
+    /* opacity: 0%; */
+}
+
+.move{
+    animation-name: none;
+    animation-duration: 0.8s;
+    position: relative;
+    transform: none;
+    opacity: 100%;
+}
+.resDown {
+     animation-name: none;
+    animation-duration: 0.8s;
+    transform: none;
+}
+
+.restore{
+    animation-name: none;
+    animation-duration: 0.8s;
+    transform: none;
+}
+
+.hidBox{
+    opacity: 100%;
+    visibility: visible;
+    font-weight: 200;
+}
 }

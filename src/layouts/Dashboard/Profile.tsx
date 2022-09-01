@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import boardStyle from '../../styles/Dashboard/Dashboard.module.css'
 import editIcon from '../../Assets/Images/edit-icon.svg'
 import { CgPen } from 'react-icons/cg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Subscription from '../CompanyForms/Subscription'
 
 type ProfileProp =  {
     data:any
 }
-const Profile = ({data}:ProfileProp) => {
+
+const Profile: React.FC<ProfileProp> = ({ data }: ProfileProp) => {
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (data.company.length === 0) {
+            navigate(-1)
+        }
+
+    }, [data])
+
+    
   return (
       <div className={boardStyle.profileBoard}>
           <div className={boardStyle.leftBoard}>
@@ -20,7 +31,7 @@ const Profile = ({data}:ProfileProp) => {
               </div>
               <div className={boardStyle.profileInfo}>
                   <div className={boardStyle.profileInfoHead}>
-                      <h2>{data.company.companyName}</h2>
+                      <h2>{data.company ? data.company.companyName:""}</h2>
                       <p>Lagos, Nigeria</p>
                   </div>
                   <div className={boardStyle.otherInfo}>
@@ -31,7 +42,7 @@ const Profile = ({data}:ProfileProp) => {
                           <p>Role:</p>
                       </div>
                       <div className={boardStyle.valInfo}>
-                          <p>{data.company.admin.firstName}</p>
+                          <p>{data.company?data.company.admin.firstName:""}</p>
                           <p>{data.user.email}</p>
                           <p>{data.user.phoneNumber}</p>
                           <p>{data.user.role}</p>

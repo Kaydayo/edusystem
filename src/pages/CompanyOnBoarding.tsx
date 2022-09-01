@@ -4,7 +4,7 @@ import FieldType from '../components/FieldType'
 import Stepper from '../components/Stepper'
 import Nav from '../components/Nav'
 import companyStyle from '../styles/CompanyOnboarding/Company.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import CompanyForm from '../layouts/CompanyForms/CompanyForm'
 import AdminForm from '../layouts/CompanyForms/AdminForm'
 import Subscription from '../layouts/CompanyForms/Subscription'
@@ -21,13 +21,20 @@ import { ToastContainer, toast } from 'react-toastify';
 const CompanyOnBoarding = () => {
   const [step, setStep] = useState<number>(0)
   const [findError, setFindError] = useState<boolean>(false)
-
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const checkError = useAppSelector((state: RootState) => state.companyonboard.errorfound)
   const getCompany = useAppSelector((state: RootState) => state.companyonboard.info)
   const getCompanyField = useAppSelector((state: RootState) => state.companyonboard.info.companyName)
   const {error} = useAppSelector((state:RootState)=> state.companyonboard)
 
+  const skipBtn = () => {
+    if (!error) {
+      navigate('/dashboard/bio')
+    } else {
+      toast(error)
+    }
+  }
 
   const nextBtn = () => {
     dispatch(handleErrors())
@@ -86,10 +93,10 @@ const CompanyOnBoarding = () => {
               Back
             </Button>
           }
-          {step > 1 && <Link to="/dashboard/bio"><Button className={companyStyle.btnSkip} >
+          {step > 1 && <Button className={companyStyle.btnSkip} onClick={skipBtn}>
             Skip
           </Button>
-          </Link>}
+       }
 
           {
             step !== 3 && <Button type={step === 3 ? "submit" : ''} className={companyStyle.btnNext} onClick={nextBtn}>

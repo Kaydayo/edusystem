@@ -91,3 +91,13 @@
     border-top-right-radius: 4px;
 }
 
+@media all and (max-width:900px){
+    .main{
+        width: 305px;
+        height: 375px;
+    }
+
+    .tagImage img{
+        width: 305px;
+    }
+}
