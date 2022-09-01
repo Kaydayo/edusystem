@@ -60,8 +60,7 @@ const FormSignUp = ({ text }: FormType) => {
     }
 
    
-   
-
+    
     // automatically authenticate user if token is found
  
     
@@ -87,6 +86,7 @@ const FormSignUp = ({ text }: FormType) => {
         }
 
     }, [navigate, userInfo, userToken,success, error])
+   
 
     return (
         <div className={signUpStyle.mainBox}>
@@ -117,9 +117,11 @@ const FormSignUp = ({ text }: FormType) => {
                     {text}
                 </Button>
                 {/* </Link> */}
-                <GoogleLogin width='2800px' logo_alignment='center'
+                <div className={signUpStyle.gbtn}>
+                    <GoogleLogin width='900px' shape='rectangular' logo_alignment='center' size='large' text={text === FormName.LOGIN ? "signin_with" : "signup_with"}
                     onSuccess={handleSuccess}
-                />
+                    />
+                </div>
                
                 {text === FormName.SIGNUP && <p>
                     Already have an account?<span>

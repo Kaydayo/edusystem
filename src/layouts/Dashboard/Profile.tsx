@@ -24,7 +24,7 @@ const Profile: React.FC<ProfileProp> = ({ data }: ProfileProp) => {
       <div className={boardStyle.profileBoard}>
           <div className={boardStyle.leftBoard}>
               <div className={boardStyle.ppBoard}>
-                  {/* <img src="" alt="" /> */}
+                  <img src={data.user.profilePicture} alt="profile icon" className={boardStyle.rmPP} />
                   <span>
                       <img src={editIcon} alt="onculture-edit-icon" />
                   </span>

@@ -9,12 +9,12 @@ import { updateToken, updateUserEmail } from '../redux/users';
 function useGoogleAuthentication() {
     const dispatch = useAppDispatch()
     const handleSuccess = async (response: any) => {
-        // console.log(response)
+        console.log(response)
         let result: any;
 
         console.log(response.credential)
 
-        result = await axios.post(`/google-authentication`, {
+        result = await axios.post('/google-authentication', {
             token: response.credential
         }, {
             headers: {

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Home from './pages/Home';
 import Faq from './pages/Faq'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom"
 import Signup from './pages/Signup';
 import CompanyOnBoarding from './pages/CompanyOnBoarding';
 import Dashboard from './pages/Dashboard';
@@ -27,13 +27,14 @@ console.log(process.env.REACT_APP_BACKEND)
 function App() {
   const { userInfo, userToken } = useAppSelector((state: RootState) => state.user)
   const dispatch = useAppDispatch()
-    
+
 
   // automatically authenticate user if token is found
   useEffect(() => {
     
     if (userToken) {
       dispatch(getUserDetails())
+    
     }
     
   }, [userToken, dispatch])
