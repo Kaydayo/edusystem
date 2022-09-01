@@ -4,42 +4,49 @@ module.exports = app => {
     app.use(
         '/users/login',
         createProxyMiddleware( {
-            target: 'http://159.223.174.163',
+            target: 'http://localhost:4000',
             changeOrigin: true
         })
     ),
         app.use(
             '/company/create-account',
             createProxyMiddleware( {
-                target: 'http://159.223.174.163',
+                target: 'https://api.onculture.io',
                 changeOrigin: true
             })
         ),
         app.use(
             '/users/me',
             createProxyMiddleware( {
-                target: 'http://159.223.174.163',
+                target: 'https://api.onculture.io',
                 changeOrigin: true
             })
         ),
         app.use(
             'user/signup',
             createProxyMiddleware( {
-                target: 'http://159.223.174.163',
+                target: 'https://api.onculture.io',
                 changeOrigin: true
             })
         ),
         app.use(
             'user/getUserDetails',
             createProxyMiddleware( {
-                target: 'http://159.223.174.163',
+                target: 'https://api.onculture.io',
                 changeOrigin: true
             })
         ),
         app.use(
             '/employee/invite',
             createProxyMiddleware( {
-                target: 'http://159.223.174.163',
+                target: 'https://api.onculture.io',
+                changeOrigin: true
+            })
+        ),
+        app.use(
+            '/google-authentication',
+            createProxyMiddleware( {
+                target: 'https://api.onculture.io',
                 changeOrigin: true
             })
         )

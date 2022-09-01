@@ -71,6 +71,12 @@
     font-size: 16px;
 }
 
+.gbtn{
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
 .formBtns p{
     margin: 0 auto;
     color: #8790A3;
@@ -90,4 +96,28 @@ text-decoration: none;
 .setRed{
     color: red;
     margin-top: -2rem;
+}
+
+
+@media all and (max-width:900px){
+    .mainBox{
+        width: 100%;
+        padding: 0 1rem;
+        gap: 2rem;
+        box-sizing: border-box;
+        
+        
+    }
+
+    .mainBox h4{
+        font-size: 24px;
+        margin: 0;
+        width: fit-content;
+        
+    }
+
+    .formInput input{
+        width: 100%;
+    }
+   
 }

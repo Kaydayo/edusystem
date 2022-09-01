@@ -92,13 +92,25 @@
     width: 186px;
     height: 186px;
     border-radius: 100%;
+    
 
 }
+
+.ppBoard .rmPP{
+     width:186px;
+  height:186px;
+  object-fit:cover;
+  border-radius:50%;
+  margin: 0;
+}
+
+
 
 .ppBoard span{
     position: relative;
     float: right;
-    margin-top: 70%;
+    margin-top: -30%;
+    /* margin-top: 70%; */
     cursor: pointer;
 }
 
