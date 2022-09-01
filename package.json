@@ -1,5 +1,6 @@
 {
   "name": "onculture-frontend",
+  "proxy": "https://api.onculture.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -63,7 +64,5 @@
     "@types/react-redux": "^7.1.24",
     "@types/react-slick": "^0.23.10",
     "dotenv": "^16.0.1"
-  },
-  "proxy": "http://localhost:4000",
-  "homepage": "https://onculture-frontend.vercel.app/"
+  }
 }

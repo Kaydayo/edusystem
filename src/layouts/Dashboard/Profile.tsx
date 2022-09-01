@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import boardStyle from '../../styles/Dashboard/Dashboard.module.css'
 import editIcon from '../../Assets/Images/edit-icon.svg'
 import { CgPen } from 'react-icons/cg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Subscription from '../CompanyForms/Subscription'
 
 type ProfileProp =  {
     data:any
 }
-const Profile:React.FC<ProfileProp> = ({data}:ProfileProp) => {
+
+const Profile: React.FC<ProfileProp> = ({ data }: ProfileProp) => {
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (data.company.length === 0) {
+            navigate(-1)
+        }
+
+    }, [data])
+
+    
   return (
       <div className={boardStyle.profileBoard}>
           <div className={boardStyle.leftBoard}>

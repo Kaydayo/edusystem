@@ -7,7 +7,7 @@ import { getUserDetails, registerUser, userLogin } from './actions/usersAction'
 const userToken = localStorage.getItem('userToken')
     ? localStorage.getItem('userToken')
     : null
-
+const profileInfo = localStorage.getItem('userDetails') ? JSON.parse(localStorage.getItem('userDetails') as string): null
 const initialState : UserState= {
     loading: false,
     userInfo: {
@@ -17,7 +17,7 @@ const initialState : UserState= {
     userToken,
     error: null,
     success: false,
-    profileInfo: null
+    profileInfo
 }
 
 const userSlice = createSlice({
@@ -73,11 +73,11 @@ const userSlice = createSlice({
             state.error=null
         },
         [getUserDetails.fulfilled.toString()]: (state, { payload }) => {
-
             state.loading = false
             state.success = true
-            // state.userInfo.email=payload.payload?payload.payload.user.email:''
-            // state.profileInfo = payload.payload
+            console.log(payload, 'from login in')
+            state.userInfo.email=payload.user.email
+            state.profileInfo = payload
         },
         [getUserDetails.rejected.toString()]: (state, { payload }) => {
             state.loading = false

@@ -52,6 +52,7 @@ const FormSignUp = ({ text }: FormType) => {
             dispatch(handleFormInput({ key: CompanyFormEnum.EMAIL, value: data.email }))
         } else {
             dispatch(userLogin(data))
+            dispatch(getUserDetails())
             dispatch(handleFormInput({ key: CompanyFormEnum.EMAIL, value: data.email }))
             toast(error)
 
@@ -62,12 +63,7 @@ const FormSignUp = ({ text }: FormType) => {
    
 
     // automatically authenticate user if token is found
-    // useEffect(() => {
-    //     console.log(userToken, 'user token')
-    //     if (userToken) {
-    //         dispatch(getUserDetails())
-    //     }
-    // }, [userToken, dispatch])
+ 
     
     useEffect(() => {
         // if (success) navigate('/login')
@@ -80,7 +76,7 @@ const FormSignUp = ({ text }: FormType) => {
 
             } else {
 
-                if (profileInfo === null) {
+                if (profileInfo === null || profileInfo.company.length === 0) {
                     navigate('/company-onboarding')
                 } else {
                     navigate('/dashboard')
@@ -90,7 +86,7 @@ const FormSignUp = ({ text }: FormType) => {
 
         }
 
-    }, [navigate, userInfo, success, error])
+    }, [navigate, userInfo, userToken,success, error])
 
     return (
         <div className={signUpStyle.mainBox}>

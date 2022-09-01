@@ -63,7 +63,6 @@ export const userLogin = createAsyncThunk(
                 return rejectWithValue(data.message)
             }
             localStorage.setItem('userToken', data.payload.accessToken)
-
             return data
         } catch (error: any) {
             // return custom error message from API if any
@@ -87,30 +86,23 @@ export const getUserDetails = createAsyncThunk(
             // configure authorization header with user's token
             const config = {
                 headers: {
-                    Authorization: `Bearer ${user.userToken}`,
                     'Cache-control': 'no-cache'
                 },
             }
-            const res = await fetch('users/me', {
-                method: 'GET',
-                mode: 'cors',
-                cache: 'no-cache',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${user.userToken}`
-                }
-            })
+            const { data } = await axios.post('users/find-me', {
+                token: user.userToken
+            }, config)
 
-            console.log("RESPONSE:", res)
+            console.log("RESPONSE:", data)
 
-            const data = await res.json()
+         
             // const {data }  = req
             console.log(data, 'getUserDetails')
             if (data.success !== true) {
                 return false
             }
-
-            return data.payload.user
+            localStorage.setItem('userDetails',JSON.stringify(data.payload))
+            return data.payload
         } catch (error: any) {
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)

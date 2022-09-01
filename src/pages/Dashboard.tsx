@@ -6,23 +6,30 @@ import DashboardNav from '../layouts/Dashboard/DashboardNav'
 import DashboardPages from '../layouts/Dashboard/DashboardPages'
 import InviteEmployee from '../layouts/Dashboard/InviteEmployee'
 import Profile from '../layouts/Dashboard/Profile'
-import { RootState, useAppSelector } from '../redux/store'
+import { getUserDetails } from '../redux/actions/usersAction'
+import { RootState, useAppDispatch, useAppSelector } from '../redux/store'
 import dashBoardStyle from '../styles/Dashboard/Dashboard.module.css'
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
-  const { profileInfo } = useAppSelector((state: RootState) => state.user)
+  const { profileInfo, userToken } = useAppSelector((state: RootState) => state.user)
 
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+
+  console.log(profileInfo, userToken)
 
   useEffect(() => {
-    if (!profileInfo) {
+    if ( profileInfo.company === null) {
       navigate('/company-onboarding')
+    }
 
+    if (!profileInfo && userToken) {
+      dispatch(getUserDetails())
     }
 
 
-  }, [profileInfo])
+  }, [profileInfo, userToken])
 
   return (
     <div className={dashBoardStyle.mainBoard}>
