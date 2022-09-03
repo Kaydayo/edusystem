@@ -75,7 +75,6 @@ const userSlice = createSlice({
         [getUserDetails.fulfilled.toString()]: (state, { payload }) => {
             state.loading = false
             state.success = true
-            console.log(payload, 'from login in')
             state.userInfo.email=payload.user.email
             state.profileInfo = payload
         },

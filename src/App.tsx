@@ -21,6 +21,7 @@ import { getUserDetails } from './redux/actions/usersAction';
 import ProtectedRoute from './components/ProtectedRoute';
 import { gapi } from 'gapi-script'
 import { GoogleOAuthProvider } from '@react-oauth/google'
+import Contact from './pages/Contact';
 
 
 console.log(process.env.REACT_APP_BACKEND)
@@ -51,6 +52,7 @@ function App() {
 
           <Route path='signup' element={<Signup />} />
           <Route path='login' element={<Login />} />
+          <Route path='contact' element={<Contact />} />
           <Route element={<ProtectedRoute />}>
             <Route path='company-onboarding' element={<CompanyOnBoarding />} />
             <Route path='/dashboard' element={<Dashboard />}>

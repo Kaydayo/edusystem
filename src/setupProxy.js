@@ -4,49 +4,49 @@ module.exports = app => {
     app.use(
         '/users/login',
         createProxyMiddleware( {
-            target: 'http://localhost:4000',
+            target: process.env.REACT_APP_BACKEND,
             changeOrigin: true
         })
     ),
         app.use(
-            '/company/create-account',
+            'account/company',
             createProxyMiddleware( {
-                target: 'https://api.onculture.io',
+                target: process.env.REACT_APP_BACKEND,
                 changeOrigin: true
             })
         ),
         app.use(
             '/users/me',
             createProxyMiddleware( {
-                target: 'https://api.onculture.io',
+                target: process.env.REACT_APP_BACKEND,
                 changeOrigin: true
             })
         ),
         app.use(
             'user/signup',
             createProxyMiddleware( {
-                target: 'https://api.onculture.io',
+                target: process.env.REACT_APP_BACKEND,
                 changeOrigin: true
             })
         ),
         app.use(
             'user/getUserDetails',
             createProxyMiddleware( {
-                target: 'https://api.onculture.io',
+                target: process.env.REACT_APP_BACKEND,
                 changeOrigin: true
             })
         ),
         app.use(
             '/employee/invite',
             createProxyMiddleware( {
-                target: 'https://api.onculture.io',
+                target: process.env.REACT_APP_BACKEND,
                 changeOrigin: true
             })
         ),
         app.use(
             '/google-authentication',
             createProxyMiddleware( {
-                target: 'https://api.onculture.io',
+                target: process.env.REACT_APP_BACKEND,
                 changeOrigin: true
             })
         )

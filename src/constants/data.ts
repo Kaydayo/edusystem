@@ -4,6 +4,9 @@ import notesIcon from '../Assets/Images/notes-icon.svg'
 import arrowIcon from '../Assets/Images/arrows-icon.svg'
 import starIcon from '../Assets/Images/star-icon.svg'
 import plusIcon from '../Assets/Images/plus-icon.svg'
+import emailIcon from '../Assets/Images/email-icon.svg'
+import instagramIcon from '../Assets/Images/instagram-icon.svg'
+import linkedinIcon from '../Assets/Images/linkedin-icon.svg'
 
 export const boxData = [
     {
@@ -242,4 +245,23 @@ export const dashboardLinks = [
 export const courses = {
 
 }
+
+
+export const socialContacts = [
+    {
+        icon: emailIcon,
+        head: 'Email',
+        sub: 'Get@OnCulture.io'
+    },
+    {
+        icon: linkedinIcon,
+        head: 'Linkedin',
+        sub: 'OnCulture'
+    },
+    {
+        icon: instagramIcon,
+        head: 'Instagram',
+        sub: 'OnCulture.io'
+    }
+]
 
