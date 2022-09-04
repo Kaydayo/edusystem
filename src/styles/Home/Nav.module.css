@@ -17,6 +17,8 @@
 
 .linkTo{
     text-decoration: none;
+    font-size: 14px;
+    color: black;
 }
 
 
@@ -30,7 +32,7 @@
 
 
 .linksElement li:hover, .linkTo:hover{
-    color: var(--primary-color);
+    color: #FF22FF;
     cursor: pointer;
 }
 

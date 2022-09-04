@@ -1,0 +1,32 @@
+.card{
+    background-color: #EEF1FF;
+    height: 463px;
+    width: 365px;
+}
+
+
+.topP{
+    background-color: var(--primary-color);
+    width: fit-content;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+}
+
+.cardBottom{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    width: 283px;
+    height: 87px;
+    margin: 0 auto;
+}
+
+.cardBottom p{
+    color: #FF22FF;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.lnk{
+    text-decoration: none;
+}

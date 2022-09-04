@@ -7,6 +7,8 @@ import plusIcon from '../Assets/Images/plus-icon.svg'
 import emailIcon from '../Assets/Images/email-icon.svg'
 import instagramIcon from '../Assets/Images/instagram-icon.svg'
 import linkedinIcon from '../Assets/Images/linkedin-icon.svg'
+import classImage from '../Assets/Images/class.png'
+import bookImage from '../Assets/Images/book.png'
 
 export const boxData = [
     {
@@ -93,7 +95,7 @@ export const reviewData = [
     }
 ]
 
-export const navData = [{ title: "The People", to: '/' }, { title: "Resource", to: '/resource' }, { title: "Contact", to: '/contact' }, { title: "FAQ", to: '/faq' }]
+export const navData = [{ title: "The People", to: '/' }, { title: "Resource", to: '/resource/articles' }, { title: "Contact", to: '/contact' }, { title: "FAQ", to: '/faq' }]
 
 export const faqData = [{
     title: "What is The People Practice?",
@@ -242,6 +244,8 @@ export const dashboardLinks = [
     "bio", "courses", "employees", "teams", "report", "subscription"
 ]
 
+export const resourceLinks = ["articles","books"]
+
 export const courses = {
 
 }
@@ -262,6 +266,55 @@ export const socialContacts = [
         icon: instagramIcon,
         head: 'Instagram',
         sub: 'OnCulture.io'
+    }
+]
+
+
+export const apiArticles = [
+    {
+        id: "fefewfwf234",
+        textLabel: "Diversity & Inclusion",
+        headBg: classImage,
+        mainContent: "How to start an employee resource group at your company"
+    },
+    {
+        id: "sr342rf439",
+        textLabel: "Diversity & Inclusion",
+        headBg: classImage,
+        mainContent: "How to start an employee resource group at your company"
+    },
+    {
+        id: "ef32823934",
+        textLabel: "Diversity & Inclusion",
+        headBg: classImage,
+        mainContent: "How to start an employee resource group at your company"
+    },
+    {
+        id: "r494302nl34of",
+        textLabel: "Diversity & Inclusion",
+        headBg: classImage,
+        mainContent: "How to start an employee resource group at your company"
+    },
+    {
+        id: "efbefu220202",
+        textLabel: "Diversity & Inclusion",
+        headBg: classImage,
+        mainContent: "How to start an employee resource group at your company"
+    },
+    {
+        id: "vdve3213kr23",
+        textLabel: "Diversity & Inclusion",
+        headBg: classImage,
+        mainContent: "How to start an employee resource group at your company"
+    }
+]
+
+export const apiBooks = [
+    {
+        id: "efei3348229dwuw",
+        textLabel: "",
+        headBg: bookImage,
+        mainContent: "Your Interview Cheat Code"
     }
 ]
 
