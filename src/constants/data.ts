@@ -10,6 +10,7 @@ import linkedinIcon from '../Assets/Images/linkedin-icon.svg'
 import classImage from '../Assets/Images/class.png'
 import bookImage from '../Assets/Images/book.png'
 import bookCover from '../Assets/Images/book-sample.svg'
+import articleCover from '../Assets/Images/article-sample.svg'
 
 export const boxData = [
     {
@@ -276,37 +277,79 @@ export const apiArticles = [
         id: "fefewfwf234",
         textLabel: "Diversity & Inclusion",
         headBg: classImage,
-        mainContent: "How to start an employee resource group at your company"
+        mainContent: "How to start an employee resource group at your company",
+        coverBg: articleCover,
+        textContent: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales hendrerit suscipit tempor fringilla posuere. Proin ullamcorper nibh consectetur duis tellus, libero, nibh nibh vitae. Ornare semper risus orci nunc sit aliquam leo, nec purus. Amet fermentum non dignissim molestie viverra felis massa, senectus. Ullamcorper cum nunc amet mi donec et suspendisse lobortis. At amet risus suspendisse integer volutpat dictum suspendisse mattis. Habitasse libero, tempus egestas amet bibendum quis sollicitudin. In id adipiscing odio pulvinar nec integer suspendisse sem morbi. Id amet lorem sollicitudin sed nulla egestas elementum.
+Ullamcorper scelerisque semper sagittis, purus elementum, arcu. Aliquam interdum volutpat magna leo at felis diam. Nunc at tortor amet vel dolor tincidunt dignissim tellus. Donec ultrices justo, tempor urna, non euismod est pulvinar. Morbi eget dis ut dui mauris faucibus ut. Montes, maecenas quam enim, mattis aliquam nisl, blandit tortor curabitur. Diam aliquam tempus bibendum vel odio dolor. Risus hac volutpat purus venenatis amet, amet tristique in ante. Volutpat posuere mi risus habitasse. Lectus erat orci, fermentum feugiat. Sagittis nulla dui quam dictum ullamcorper ac lectus. Magna diam quis diam semper ultrices turpis. Et et, vel aliquet tristique leo magna.
+Eget suspendisse praesent ut arcu habitasse nibh sed. Egestas elementum ac aliquet nulla justo, consectetur elementum nibh. Pulvinar turpis volutpat lacus, dui id laoreet sollicitudin. At odio vestibulum suspendisse etiam diam ac egestas. Tempus, rhoncus, varius ullamcorper adipiscing semper neque, mattis.
+Nec nibh sed risus imperdiet. Purus egestas pulvinar aliquet maecenas sit egestas leo. Ullamcorper in convallis suspendisse pharetra. Sem pretium in hac diam, elit nunc, tincidunt sit laoreet. Mi, malesuada a, vitae vitae neque cursus. Non vulputate tempor sit vel vivamus condimentum suspendisse at pellentesque.
+Vitae nisl sit vulputate tristique. Eros ac luctus ligula tristique nisl erat sapien. At arcu penatibus augue auctor morbi. Sit nascetur quam ornare vel ultrices id porttitor. Nisl augue eu mattis non ullamcorper massa viverra pellentesque justo. Condimentum lacus ut ut malesuada id elementum non ut.
+Dolor arcu in vulputate augue. Aliquam purus fames facilisi nunc, consequat. Mi purus vitae, in risus. In bibendum sit adipiscing aliquet. Nulla id eu eget a, ullamcorper massa gravida tellus. In fermentum, nec ut nulla massa fringilla vel.`
     },
     {
         id: "sr342rf439",
         textLabel: "Diversity & Inclusion",
         headBg: classImage,
-        mainContent: "How to start an employee resource group at your company"
+        mainContent: "How to start an employee resource group at your company",
+        coverBg: articleCover,
+        textContent:`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales hendrerit suscipit tempor fringilla posuere. Proin ullamcorper nibh consectetur duis tellus, libero, nibh nibh vitae. Ornare semper risus orci nunc sit aliquam leo, nec purus. Amet fermentum non dignissim molestie viverra felis massa, senectus. Ullamcorper cum nunc amet mi donec et suspendisse lobortis. At amet risus suspendisse integer volutpat dictum suspendisse mattis. Habitasse libero, tempus egestas amet bibendum quis sollicitudin. In id adipiscing odio pulvinar nec integer suspendisse sem morbi. Id amet lorem sollicitudin sed nulla egestas elementum.
+Ullamcorper scelerisque semper sagittis, purus elementum, arcu. Aliquam interdum volutpat magna leo at felis diam. Nunc at tortor amet vel dolor tincidunt dignissim tellus. Donec ultrices justo, tempor urna, non euismod est pulvinar. Morbi eget dis ut dui mauris faucibus ut. Montes, maecenas quam enim, mattis aliquam nisl, blandit tortor curabitur. Diam aliquam tempus bibendum vel odio dolor. Risus hac volutpat purus venenatis amet, amet tristique in ante. Volutpat posuere mi risus habitasse. Lectus erat orci, fermentum feugiat. Sagittis nulla dui quam dictum ullamcorper ac lectus. Magna diam quis diam semper ultrices turpis. Et et, vel aliquet tristique leo magna.
+Eget suspendisse praesent ut arcu habitasse nibh sed. Egestas elementum ac aliquet nulla justo, consectetur elementum nibh. Pulvinar turpis volutpat lacus, dui id laoreet sollicitudin. At odio vestibulum suspendisse etiam diam ac egestas. Tempus, rhoncus, varius ullamcorper adipiscing semper neque, mattis.
+Nec nibh sed risus imperdiet. Purus egestas pulvinar aliquet maecenas sit egestas leo. Ullamcorper in convallis suspendisse pharetra. Sem pretium in hac diam, elit nunc, tincidunt sit laoreet. Mi, malesuada a, vitae vitae neque cursus. Non vulputate tempor sit vel vivamus condimentum suspendisse at pellentesque.
+Vitae nisl sit vulputate tristique. Eros ac luctus ligula tristique nisl erat sapien. At arcu penatibus augue auctor morbi. Sit nascetur quam ornare vel ultrices id porttitor. Nisl augue eu mattis non ullamcorper massa viverra pellentesque justo. Condimentum lacus ut ut malesuada id elementum non ut.
+Dolor arcu in vulputate augue. Aliquam purus fames facilisi nunc, consequat. Mi purus vitae, in risus. In bibendum sit adipiscing aliquet. Nulla id eu eget a, ullamcorper massa gravida tellus. In fermentum, nec ut nulla massa fringilla vel.`
     },
     {
         id: "ef32823934",
         textLabel: "Diversity & Inclusion",
         headBg: classImage,
-        mainContent: "How to start an employee resource group at your company"
+        mainContent: "How to start an employee resource group at your company",
+         coverBg: articleCover,
+         textContent:`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales hendrerit suscipit tempor fringilla posuere. Proin ullamcorper nibh consectetur duis tellus, libero, nibh nibh vitae. Ornare semper risus orci nunc sit aliquam leo, nec purus. Amet fermentum non dignissim molestie viverra felis massa, senectus. Ullamcorper cum nunc amet mi donec et suspendisse lobortis. At amet risus suspendisse integer volutpat dictum suspendisse mattis. Habitasse libero, tempus egestas amet bibendum quis sollicitudin. In id adipiscing odio pulvinar nec integer suspendisse sem morbi. Id amet lorem sollicitudin sed nulla egestas elementum.
+Ullamcorper scelerisque semper sagittis, purus elementum, arcu. Aliquam interdum volutpat magna leo at felis diam. Nunc at tortor amet vel dolor tincidunt dignissim tellus. Donec ultrices justo, tempor urna, non euismod est pulvinar. Morbi eget dis ut dui mauris faucibus ut. Montes, maecenas quam enim, mattis aliquam nisl, blandit tortor curabitur. Diam aliquam tempus bibendum vel odio dolor. Risus hac volutpat purus venenatis amet, amet tristique in ante. Volutpat posuere mi risus habitasse. Lectus erat orci, fermentum feugiat. Sagittis nulla dui quam dictum ullamcorper ac lectus. Magna diam quis diam semper ultrices turpis. Et et, vel aliquet tristique leo magna.
+Eget suspendisse praesent ut arcu habitasse nibh sed. Egestas elementum ac aliquet nulla justo, consectetur elementum nibh. Pulvinar turpis volutpat lacus, dui id laoreet sollicitudin. At odio vestibulum suspendisse etiam diam ac egestas. Tempus, rhoncus, varius ullamcorper adipiscing semper neque, mattis.
+Nec nibh sed risus imperdiet. Purus egestas pulvinar aliquet maecenas sit egestas leo. Ullamcorper in convallis suspendisse pharetra. Sem pretium in hac diam, elit nunc, tincidunt sit laoreet. Mi, malesuada a, vitae vitae neque cursus. Non vulputate tempor sit vel vivamus condimentum suspendisse at pellentesque.
+Vitae nisl sit vulputate tristique. Eros ac luctus ligula tristique nisl erat sapien. At arcu penatibus augue auctor morbi. Sit nascetur quam ornare vel ultrices id porttitor. Nisl augue eu mattis non ullamcorper massa viverra pellentesque justo. Condimentum lacus ut ut malesuada id elementum non ut.
+Dolor arcu in vulputate augue. Aliquam purus fames facilisi nunc, consequat. Mi purus vitae, in risus. In bibendum sit adipiscing aliquet. Nulla id eu eget a, ullamcorper massa gravida tellus. In fermentum, nec ut nulla massa fringilla vel.`
     },
     {
         id: "r494302nl34of",
         textLabel: "Diversity & Inclusion",
         headBg: classImage,
-        mainContent: "How to start an employee resource group at your company"
+        mainContent: "How to start an employee resource group at your company",
+         coverBg: articleCover,
+         textContent:`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales hendrerit suscipit tempor fringilla posuere. Proin ullamcorper nibh consectetur duis tellus, libero, nibh nibh vitae. Ornare semper risus orci nunc sit aliquam leo, nec purus. Amet fermentum non dignissim molestie viverra felis massa, senectus. Ullamcorper cum nunc amet mi donec et suspendisse lobortis. At amet risus suspendisse integer volutpat dictum suspendisse mattis. Habitasse libero, tempus egestas amet bibendum quis sollicitudin. In id adipiscing odio pulvinar nec integer suspendisse sem morbi. Id amet lorem sollicitudin sed nulla egestas elementum.
+Ullamcorper scelerisque semper sagittis, purus elementum, arcu. Aliquam interdum volutpat magna leo at felis diam. Nunc at tortor amet vel dolor tincidunt dignissim tellus. Donec ultrices justo, tempor urna, non euismod est pulvinar. Morbi eget dis ut dui mauris faucibus ut. Montes, maecenas quam enim, mattis aliquam nisl, blandit tortor curabitur. Diam aliquam tempus bibendum vel odio dolor. Risus hac volutpat purus venenatis amet, amet tristique in ante. Volutpat posuere mi risus habitasse. Lectus erat orci, fermentum feugiat. Sagittis nulla dui quam dictum ullamcorper ac lectus. Magna diam quis diam semper ultrices turpis. Et et, vel aliquet tristique leo magna.
+Eget suspendisse praesent ut arcu habitasse nibh sed. Egestas elementum ac aliquet nulla justo, consectetur elementum nibh. Pulvinar turpis volutpat lacus, dui id laoreet sollicitudin. At odio vestibulum suspendisse etiam diam ac egestas. Tempus, rhoncus, varius ullamcorper adipiscing semper neque, mattis.
+Nec nibh sed risus imperdiet. Purus egestas pulvinar aliquet maecenas sit egestas leo. Ullamcorper in convallis suspendisse pharetra. Sem pretium in hac diam, elit nunc, tincidunt sit laoreet. Mi, malesuada a, vitae vitae neque cursus. Non vulputate tempor sit vel vivamus condimentum suspendisse at pellentesque.
+Vitae nisl sit vulputate tristique. Eros ac luctus ligula tristique nisl erat sapien. At arcu penatibus augue auctor morbi. Sit nascetur quam ornare vel ultrices id porttitor. Nisl augue eu mattis non ullamcorper massa viverra pellentesque justo. Condimentum lacus ut ut malesuada id elementum non ut.
+Dolor arcu in vulputate augue. Aliquam purus fames facilisi nunc, consequat. Mi purus vitae, in risus. In bibendum sit adipiscing aliquet. Nulla id eu eget a, ullamcorper massa gravida tellus. In fermentum, nec ut nulla massa fringilla vel.`
     },
     {
         id: "efbefu220202",
         textLabel: "Diversity & Inclusion",
         headBg: classImage,
-        mainContent: "How to start an employee resource group at your company"
+        mainContent: "How to start an employee resource group at your company",
+        coverBg: articleCover,
+        textContent:`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales hendrerit suscipit tempor fringilla posuere. Proin ullamcorper nibh consectetur duis tellus, libero, nibh nibh vitae. Ornare semper risus orci nunc sit aliquam leo, nec purus. Amet fermentum non dignissim molestie viverra felis massa, senectus. Ullamcorper cum nunc amet mi donec et suspendisse lobortis. At amet risus suspendisse integer volutpat dictum suspendisse mattis. Habitasse libero, tempus egestas amet bibendum quis sollicitudin. In id adipiscing odio pulvinar nec integer suspendisse sem morbi. Id amet lorem sollicitudin sed nulla egestas elementum.
+Ullamcorper scelerisque semper sagittis, purus elementum, arcu. Aliquam interdum volutpat magna leo at felis diam. Nunc at tortor amet vel dolor tincidunt dignissim tellus. Donec ultrices justo, tempor urna, non euismod est pulvinar. Morbi eget dis ut dui mauris faucibus ut. Montes, maecenas quam enim, mattis aliquam nisl, blandit tortor curabitur. Diam aliquam tempus bibendum vel odio dolor. Risus hac volutpat purus venenatis amet, amet tristique in ante. Volutpat posuere mi risus habitasse. Lectus erat orci, fermentum feugiat. Sagittis nulla dui quam dictum ullamcorper ac lectus. Magna diam quis diam semper ultrices turpis. Et et, vel aliquet tristique leo magna.
+Eget suspendisse praesent ut arcu habitasse nibh sed. Egestas elementum ac aliquet nulla justo, consectetur elementum nibh. Pulvinar turpis volutpat lacus, dui id laoreet sollicitudin. At odio vestibulum suspendisse etiam diam ac egestas. Tempus, rhoncus, varius ullamcorper adipiscing semper neque, mattis.
+Nec nibh sed risus imperdiet. Purus egestas pulvinar aliquet maecenas sit egestas leo. Ullamcorper in convallis suspendisse pharetra. Sem pretium in hac diam, elit nunc, tincidunt sit laoreet. Mi, malesuada a, vitae vitae neque cursus. Non vulputate tempor sit vel vivamus condimentum suspendisse at pellentesque.
+Vitae nisl sit vulputate tristique. Eros ac luctus ligula tristique nisl erat sapien. At arcu penatibus augue auctor morbi. Sit nascetur quam ornare vel ultrices id porttitor. Nisl augue eu mattis non ullamcorper massa viverra pellentesque justo. Condimentum lacus ut ut malesuada id elementum non ut.
+Dolor arcu in vulputate augue. Aliquam purus fames facilisi nunc, consequat. Mi purus vitae, in risus. In bibendum sit adipiscing aliquet. Nulla id eu eget a, ullamcorper massa gravida tellus. In fermentum, nec ut nulla massa fringilla vel.`
     },
     {
         id: "vdve3213kr23",
         textLabel: "Diversity & Inclusion",
         headBg: classImage,
-        mainContent: "How to start an employee resource group at your company"
+        mainContent: "How to start an employee resource group at your company",
+         coverBg: articleCover,
+         textContent:`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales hendrerit suscipit tempor fringilla posuere. Proin ullamcorper nibh consectetur duis tellus, libero, nibh nibh vitae. Ornare semper risus orci nunc sit aliquam leo, nec purus. Amet fermentum non dignissim molestie viverra felis massa, senectus. Ullamcorper cum nunc amet mi donec et suspendisse lobortis. At amet risus suspendisse integer volutpat dictum suspendisse mattis. Habitasse libero, tempus egestas amet bibendum quis sollicitudin. In id adipiscing odio pulvinar nec integer suspendisse sem morbi. Id amet lorem sollicitudin sed nulla egestas elementum.
+Ullamcorper scelerisque semper sagittis, purus elementum, arcu. Aliquam interdum volutpat magna leo at felis diam. Nunc at tortor amet vel dolor tincidunt dignissim tellus. Donec ultrices justo, tempor urna, non euismod est pulvinar. Morbi eget dis ut dui mauris faucibus ut. Montes, maecenas quam enim, mattis aliquam nisl, blandit tortor curabitur. Diam aliquam tempus bibendum vel odio dolor. Risus hac volutpat purus venenatis amet, amet tristique in ante. Volutpat posuere mi risus habitasse. Lectus erat orci, fermentum feugiat. Sagittis nulla dui quam dictum ullamcorper ac lectus. Magna diam quis diam semper ultrices turpis. Et et, vel aliquet tristique leo magna.
+Eget suspendisse praesent ut arcu habitasse nibh sed. Egestas elementum ac aliquet nulla justo, consectetur elementum nibh. Pulvinar turpis volutpat lacus, dui id laoreet sollicitudin. At odio vestibulum suspendisse etiam diam ac egestas. Tempus, rhoncus, varius ullamcorper adipiscing semper neque, mattis.
+Nec nibh sed risus imperdiet. Purus egestas pulvinar aliquet maecenas sit egestas leo. Ullamcorper in convallis suspendisse pharetra. Sem pretium in hac diam, elit nunc, tincidunt sit laoreet. Mi, malesuada a, vitae vitae neque cursus. Non vulputate tempor sit vel vivamus condimentum suspendisse at pellentesque.
+Vitae nisl sit vulputate tristique. Eros ac luctus ligula tristique nisl erat sapien. At arcu penatibus augue auctor morbi. Sit nascetur quam ornare vel ultrices id porttitor. Nisl augue eu mattis non ullamcorper massa viverra pellentesque justo. Condimentum lacus ut ut malesuada id elementum non ut.
+Dolor arcu in vulputate augue. Aliquam purus fames facilisi nunc, consequat. Mi purus vitae, in risus. In bibendum sit adipiscing aliquet. Nulla id eu eget a, ullamcorper massa gravida tellus. In fermentum, nec ut nulla massa fringilla vel.`
     }
 ]
 

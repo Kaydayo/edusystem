@@ -88,4 +88,69 @@ a .active{
     line-height: 2rem;
 }
 
+.article{
+     padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    
+}
+.article div{
+     padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 
+.article div h1{
+    width: 829px;
+    font-size: 48px;
+}
+
+.article div p{
+        line-height: 2rem;
+}
+
+.article .vArticles{
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    gap: 4rem;
+    /* justify-content: right; */
+    margin-top: 5rem;
+    margin-bottom: 8rem;
+    
+  
+}
+
+.vArticles div{
+    padding: 0;
+    height: fit-content;
+    /* margin: 0 auto; */
+    
+}
+
+.articleLink{
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    text-align: right;
+    font-weight: 700;
+  position: relative;
+  /* z-index : 1; */
+    /* border-bottom: 1px solid #FF22FF; */
+}
+
+.articleLink:before{
+    content : "";
+  position: absolute;
+  /* left    : 0; */
+  right: 0;
+  bottom  : -2px;
+  height  : 1px;
+  width   : 10%;  /* or 100px */
+  border-bottom:2px solid #FF22FF;
+}

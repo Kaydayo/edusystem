@@ -22,7 +22,7 @@ const Book = () => {
         console.log(content)
         
       
-    }, [])
+    }, [content])
     
     
   return (

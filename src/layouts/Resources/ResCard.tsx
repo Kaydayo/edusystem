@@ -20,7 +20,7 @@ const ResCard = ({ classBg, topLabel, mainLabel, contentId, routeTo }: resCardPr
               height: "234px",
               padding: "0.5rem 1rem",
               fontSize: "10px",
-              color:"white"
+              color: "white",
               
           }}>
               {topLabel && <p className={cardStyle.topP}>{topLabel}</p>}
