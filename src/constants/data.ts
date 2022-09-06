@@ -9,6 +9,7 @@ import instagramIcon from '../Assets/Images/instagram-icon.svg'
 import linkedinIcon from '../Assets/Images/linkedin-icon.svg'
 import classImage from '../Assets/Images/class.png'
 import bookImage from '../Assets/Images/book.png'
+import bookCover from '../Assets/Images/book-sample.svg'
 
 export const boxData = [
     {
@@ -314,7 +315,18 @@ export const apiBooks = [
         id: "efei3348229dwuw",
         textLabel: "",
         headBg: bookImage,
-        mainContent: "Your Interview Cheat Code"
+        mainContent: "Your Interview Cheat Code",
+        coverBg: bookCover,
+        textContent:`Ullamcorper scelerisque semper sagittis, purus elementum, arcu. Aliquam interdum volutpat magna leo at felis diam. Nunc at tortor amet vel dolor tincidunt dignissim tellus. Donec ultrices justo, tempor urna, non euismod est pulvinar. Morbi eget dis ut dui mauris faucibus ut. Montes, maecenas quam enim, mattis aliquam nisl, blandit tortor curabitur. Diam aliquam tempus bibendum vel odio dolor. Risus hac volutpat purus venenatis amet, amet tristique in ante. Volutpat posuere mi risus habitasse. Lectus erat orci, fermentum feugiat. Sagittis nulla dui quam dictum ullamcorper ac lectus. Magna diam quis diam semper ultrices turpis. Et et, vel aliquet tristique leo magna.
+
+Eget suspendisse praesent ut arcu habitasse nibh sed. Egestas elementum ac aliquet nulla justo, consectetur elementum nibh. Pulvinar turpis volutpat lacus, dui id laoreet sollicitudin. At odio vestibulum suspendisse etiam diam ac egestas. Tempus, rhoncus, varius ullamcorper adipiscing semper neque, mattis.
+
+Nec nibh sed risus imperdiet. Purus egestas pulvinar aliquet maecenas sit egestas leo. Ullamcorper in convallis suspendisse pharetra. Sem pretium in hac diam, elit nunc, tincidunt sit laoreet. Mi, malesuada a, vitae vitae neque cursus. Non vulputate tempor sit vel vivamus condimentum suspendisse at pellentesque.
+
+Vitae nisl sit vulputate tristique. Eros ac luctus ligula tristique nisl erat sapien. At arcu penatibus augue auctor morbi. Sit nascetur quam ornare vel ultrices id porttitor. Nisl augue eu mattis non ullamcorper massa viverra pellentesque justo. Condimentum lacus ut ut malesuada id elementum non ut.
+
+Dolor arcu in vulputate augue. Aliquam purus fames facilisi nunc, consequat. Mi purus vitae, in risus. In bibendum sit adipiscing aliquet. Nulla id eu eget a, ullamcorper massa gravida tellus. In fermentum, nec ut nulla massa fringilla vel.`
+
     }
 ]
 

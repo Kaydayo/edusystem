@@ -77,3 +77,15 @@ a .active{
     /* width: 100%; */
 }
 
+.book{
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.book p{
+    line-height: 2rem;
+}
+
+

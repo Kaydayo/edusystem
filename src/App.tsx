@@ -25,6 +25,7 @@ import Contact from './pages/Contact';
 import Resources from './pages/Resources';
 import Articles from './layouts/Resources/Articles';
 import Books from './layouts/Resources/Books';
+import Book from './components/Book';
 
 
 
@@ -57,6 +58,7 @@ function App() {
           <Route path='signup' element={<Signup />} />
           <Route path='login' element={<Login />} />
           <Route path='contact' element={<Contact />} />
+          <Route path='book/:id' element={<Book />} />
           <Route path='/resource' element={<Resources />} >
             <Route path='articles' element={<Articles />} />
             <Route path='books' element={<Books/>}/>

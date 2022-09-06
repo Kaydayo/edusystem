@@ -13,7 +13,7 @@ const Books = () => {
               classBg={book.headBg}
               topLabel={book.textLabel}
               mainLabel={book.mainContent}
-              routeTo="books"
+              routeTo="book"
               contentId={book.id} />
           )
         })}
