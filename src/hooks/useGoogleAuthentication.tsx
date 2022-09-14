@@ -10,19 +10,22 @@ function useGoogleAuthentication() {
     const dispatch = useAppDispatch()
     const handleSuccess = async (response: any) => {
         console.log(response)
+        if (response.error !== undefined) {
+            console.log(response.error, 'ooooo')
+        }
         let result: any;
 
         console.log(response.credential)
 
         result = await axios.post('/google-authentication', {
-            token: response.credential
+            token: response.tokenId
         }, {
             headers: {
                 'Content-Type': 'application/json',
                
             }
         })
-        console.log(result)
+        // console.log(result)
 
 
         localStorage.setItem('userToken', result.data.token)

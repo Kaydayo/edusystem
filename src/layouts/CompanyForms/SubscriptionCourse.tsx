@@ -34,7 +34,7 @@ const SubscriptionCourse = ({ data }: SubCourseProp) => {
             <div>
                 <hr />
                 <div className={`${companyStyle.pickBtn} ${click && companyStyle.btnPicked}`}>
-                    <p>{data.staySafe && "Stay Safe"} {data.cultureClinic && "& Culture"}</p>
+                    <p>{data.staySafe && "Harrassment in the workplace"} {data.cultureClinic && "& Culture Clinic"}</p>
                     <button onClick={() => setClick(!click)} >
                         $<span>{data.price}</span>/ per user{click && <span className={companyStyle.checkMark}></span>}
                     </button>

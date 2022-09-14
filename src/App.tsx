@@ -45,7 +45,28 @@ function App() {
 
     }
 
+    const onUnload = () => {
+      localStorage.clear()
+    };
+    window.addEventListener('beforeunload', onUnload);
+    return () => {
+      window.removeEventListener('beforeunload', onUnload);
+    };
+
   }, [userToken, dispatch])
+
+  useEffect(() => {
+  
+    const initClient = () => {
+      gapi.auth2.init({
+        clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+        scope: ''
+      });
+    };
+    gapi.load('client:auth2', initClient);
+  });
+
+  
 
   return <>
     <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}>

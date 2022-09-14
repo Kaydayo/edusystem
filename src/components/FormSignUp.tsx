@@ -21,7 +21,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import { gapi } from 'gapi-script'
 import useGoogleAuthentication from '../hooks/useGoogleAuthentication'
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
+import { GoogleLogin } from 'react-google-login'
+// import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
 
 
 
@@ -85,8 +86,12 @@ const FormSignUp = ({ text }: FormType) => {
 
         }
 
-    }, [navigate, userInfo, userToken,success, error])
-   
+    }, [navigate, userInfo, userToken, success, error])
+    
+  
+    const onFailure = (err:any) => {
+        console.log('failed:', err);
+    };
 
     return (
         <div className={signUpStyle.mainBox}>
@@ -117,9 +122,16 @@ const FormSignUp = ({ text }: FormType) => {
                     {text}
                 </Button>
                 {/* </Link> */}
-                <div className={signUpStyle.gbtn}>
-                    <GoogleLogin width='900px' shape='rectangular' logo_alignment='center' size='large' text={text === FormName.LOGIN ? "signin_with" : "signup_with"}
-                    onSuccess={handleSuccess}
+                <div>
+                    <GoogleLogin clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
+                        onSuccess={handleSuccess}
+                        onFailure={onFailure}
+                        cookiePolicy={'single_host_origin'}
+                        render={renderProps => (
+                            <button onClick={renderProps.onClick} disabled={renderProps.disabled} className={signUpStyle.gbtn}><img src={googleIcon} alt="google-onculture" /> {text} with Google</button>
+                        )}
+                        uxMode={'redirect'}
+                        redirectUri={""}
                     />
                 </div>
                
