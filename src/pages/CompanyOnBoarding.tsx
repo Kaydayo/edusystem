@@ -80,7 +80,7 @@ const CompanyOnBoarding = () => {
           <p>Already have an account? <span><Link className={companyStyle.setLink} to='/login'>Login</Link></span></p>
         </div>
         <div className={companyStyle.mainStepper}>
-          <Stepper step={step} />
+          <Stepper step={step} setStep={setStep}/>
         </div>
         <div className={companyStyle.allForm}>
 

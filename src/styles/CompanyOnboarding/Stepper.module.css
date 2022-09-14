@@ -11,20 +11,23 @@
     width: 33%;
     position: relative;
     text-align: center;
+    font-weight: 600;
 }
 
 .progressBar li:before {
-    content: "\2714\0020";
+    content: "✓";
     line-height: 20px;
     border-radius: 50%;
     width: 20px;
     height: 20px;
-    border: 2px solid var(--primary-color);
+    border: 2px solid #BBC4D9;
     display: block;
     text-align: center;
     margin: 0 auto 20px;
     background-color: white;
     color: white;
+    font-family: sans-serif;
+    font-weight: 100;
     
    
 }
@@ -46,6 +49,8 @@
 
 .progressBar li.active {
     color: var(--primary-color);
+    border-color: var(--primary-color);
+   
 }
 
 .progressBar li.active:before {
@@ -56,5 +61,6 @@
 
 .progressBar li.active:after {
     background-color: var(--primary-color);
+      border-color: var(--primary-color);
 
 }

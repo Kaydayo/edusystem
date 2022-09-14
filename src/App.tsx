@@ -21,6 +21,14 @@ import { getUserDetails } from './redux/actions/usersAction';
 import ProtectedRoute from './components/ProtectedRoute';
 import { gapi } from 'gapi-script'
 import { GoogleOAuthProvider } from '@react-oauth/google'
+import Contact from './pages/Contact';
+import Resources from './pages/Resources';
+import Articles from './layouts/Resources/Articles';
+import Books from './layouts/Resources/Books';
+import Book from './components/Book';
+import Article from './components/Article';
+import ScrollToTop from './components/ScrollToTop';
+
 
 
 console.log(process.env.REACT_APP_BACKEND)
@@ -31,40 +39,70 @@ function App() {
 
   // automatically authenticate user if token is found
   useEffect(() => {
-    
+
     if (userToken) {
       dispatch(getUserDetails())
-    
+
     }
-    
+
+    const onUnload = () => {
+      localStorage.clear()
+    };
+    window.addEventListener('beforeunload', onUnload);
+    return () => {
+      window.removeEventListener('beforeunload', onUnload);
+    };
+
   }, [userToken, dispatch])
+
+  useEffect(() => {
+  
+    const initClient = () => {
+      gapi.auth2.init({
+        clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+        scope: ''
+      });
+    };
+    gapi.load('client:auth2', initClient);
+  });
+
+  
 
   return <>
     <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}>
       <Router>
-        <Routes>
-          {/* Home */}
-          <Route path='/' element={<Home />} />
+        <ScrollToTop>
+          <Routes>
+            {/* Home */}
+            <Route path='/' element={<Home />} />
 
-          <Route path='faq' element={<Faq />} />
+            <Route path='faq' element={<Faq />} />
 
 
-          <Route path='signup' element={<Signup />} />
-          <Route path='login' element={<Login />} />
-          <Route element={<ProtectedRoute />}>
-            <Route path='company-onboarding' element={<CompanyOnBoarding />} />
-            <Route path='/dashboard' element={<Dashboard />}>
-              <Route path="bio" element={<Bio />} />
-              <Route path="courses" element={<Courses />} />
-              <Route path="employees" element={<BoardEmployee />} />
-              <Route path="teams" element={<Team />} />
-              <Route path="report" element={<Report />} />
-              <Route path="subscription" element={<Payments />} />
+            <Route path='signup' element={<Signup />} />
+            <Route path='login' element={<Login />} />
+            <Route path='contact' element={<Contact />} />
+            <Route path='book/:id' element={<Book />} />
+            <Route path='article/:id' element={<Article />} />
+            <Route path='/resource' element={<Resources />} >
+              <Route path='articles' element={<Articles />} />
+              <Route path='books' element={<Books />} />
             </Route>
-          </Route>
+            <Route element={<ProtectedRoute />}>
+              <Route path='company-onboarding' element={<CompanyOnBoarding />} />
+              <Route path='/dashboard' element={<Dashboard />}>
+                <Route path="bio" element={<Bio />} />
+                <Route path="courses" element={<Courses />} />
+                <Route path="employees" element={<BoardEmployee />} />
+                <Route path="teams" element={<Team />} />
+                <Route path="report" element={<Report />} />
+                <Route path="subscription" element={<Payments />} />
+              </Route>
+            </Route>
 
 
-        </Routes>
+          </Routes>
+        </ScrollToTop>
       </Router>
     </GoogleOAuthProvider>
   </>

@@ -77,7 +77,7 @@ export const registerCompany = createAsyncThunk(
             // },)
 
             // console.log(await res.json())
-            console.log(data)
+            console.log(data,'whaaaa am prri')
             if (data.success === false) {
                 return rejectWithValue(data.message)
             }

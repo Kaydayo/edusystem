@@ -8,9 +8,9 @@ const Subscription = () => {
     return (
         <div className={companyStyle.admin}>
             <div className={companyStyle.toggleSub}>
-                <h4 className={!checkTwo ?  companyStyle.hashCol : ''}>Stay Safe & Culture Clinic <span>(Recommended)</span> </h4>
+                <h4 className={!checkTwo ?  companyStyle.hashCol : ''}>Harrassment in the workplace & Culture Clinic <span>(Recommended)</span> </h4>
                 <input type="checkbox" id="switch" onClick={() => setCheckTwo(!checkTwo)} /><label htmlFor="switch">Toggle</label>
-                <h4 className={checkTwo ? companyStyle.hashCol : ''}>Stay Safe</h4>
+                <h4 className={checkTwo ? companyStyle.hashCol : ''}>Harrassment in the workplace</h4>
             </div>
             <div className={companyStyle.subContent}>
                 <div className={companyStyle.popSub}>

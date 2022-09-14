@@ -1,0 +1,156 @@
+.rsContainer{
+    height: fit-content;
+    padding: 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.rsContainer h1{
+    font-size: 48px;
+    font-weight: 700;
+    width: 849px;
+    height: 116px;
+}
+
+.linkResource{
+     width: fit-content;
+    /* margin: -2rem auto; */
+    /* padding: 1rem 3rem; */
+    box-sizing: border-box;
+    display: flex;
+    gap: 50px;
+    /* font-size: 18px; */
+    /* justify-content: space-between; */
+    align-items: center;
+    align-content: flex-start;
+    text-decoration: none;
+}
+
+.linkRes{
+    list-style-type: none;
+    text-decoration: none;
+    color: black;
+    font-weight: 200; 
+    font-size: 18px; 
+}
+
+a .active{
+        font-weight: 700;
+  position: relative;
+  z-index : 1;
+}
+
+.hoverLink{
+    font-weight: 700;
+  position: relative;
+  z-index : 1;
+}
+
+.hoverLink:before, a.active::before{
+    content : "";
+  position: absolute;
+  left    : 0;
+  bottom  : -2px;
+  height  : 1px;
+  width   : 80%;  /* or 100px */
+  border-bottom:2px solid #FF22FF;
+}
+
+.bfArticles{
+    width: fit-content;
+    padding: 1rem;
+    margin-left: 3rem;
+}
+
+.articles{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* column-gap: 2rem; */
+    padding: auto;
+    gap: 4rem 4rem;
+    padding: 3rem 0;
+    /* width: fit-content; */
+    /* margin-left: 3rem; */
+    /* padding-left: 3rem 0; */
+    /* box-sizing: content-box; */
+    /* width: 100%; */
+}
+
+.book{
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.book p{
+    line-height: 2rem;
+}
+
+.article{
+     padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    
+}
+.article div{
+     padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.article div h1{
+    width: 829px;
+    font-size: 48px;
+}
+
+.article div p{
+        line-height: 2rem;
+}
+
+.article .vArticles{
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    gap: 4rem;
+    /* justify-content: right; */
+    margin-top: 5rem;
+    margin-bottom: 8rem;
+    
+  
+}
+
+.vArticles div{
+    padding: 0;
+    height: fit-content;
+    /* margin: 0 auto; */
+    
+}
+
+.articleLink{
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    text-align: right;
+    font-weight: 700;
+  position: relative;
+  /* z-index : 1; */
+    /* border-bottom: 1px solid #FF22FF; */
+}
+
+.articleLink:before{
+    content : "";
+  position: absolute;
+  /* left    : 0; */
+  right: 0;
+  bottom  : -2px;
+  height  : 1px;
+  width   : 10%;  /* or 100px */
+  border-bottom:2px solid #FF22FF;
+}
