@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState, useAppDispatch, useAppSelector } from '../redux/store'
 import { useDispatch } from 'react-redux'
-import { getUserDetails, registerUser, userLogin } from '../redux/actions/usersAction'
+import { getUserDetails, googleLogin, registerUser, userLogin } from '../redux/actions/usersAction'
 import { useNavigate } from 'react-router-dom'
 import { handleInputSignup } from '../redux/users'
 import Signup from '../pages/Signup'
@@ -22,6 +22,7 @@ import axios from 'axios'
 import { gapi } from 'gapi-script'
 import useGoogleAuthentication from '../hooks/useGoogleAuthentication'
 import { GoogleLogin } from 'react-google-login'
+import { unwrapResult } from '@reduxjs/toolkit'
 // import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
 
 
@@ -37,16 +38,16 @@ type FormType = {
 }
 const FormSignUp = ({ text }: FormType) => {
     const [showPassword, setShowPassword] = useState<boolean>(false)
-    const [ggle, setGgle] = useState<any>('')
-    
+
+
     const { handleSuccess } = useGoogleAuthentication();
     const { loading, error, userInfo, success, userToken, profileInfo } = useAppSelector((state: RootState) => state.user)
     const dispatch = useAppDispatch()
 
     const navigate = useNavigate()
 
-   
-    const onSignUp = (data: { email: string, password: string }) => {
+
+    const onSignUp = async (data: { email: string, password: string }) => {
         if (text === FormName.SIGNUP) {
             dispatch(registerUser(data))
             toast(error)
@@ -54,97 +55,126 @@ const FormSignUp = ({ text }: FormType) => {
         } else {
             dispatch(userLogin(data))
             dispatch(getUserDetails())
+
+            // try {
+            //     unwrapResult(getUser)
+            //     navigate('/dashboard/bio')
+            // } catch (error) {
+
+            // }
             dispatch(handleFormInput({ key: CompanyFormEnum.EMAIL, value: data.email }))
             toast(error)
 
         }
     }
 
-   
-    
+
+
     // automatically authenticate user if token is found
- 
-    
+
+
     useEffect(() => {
         // if (success) navigate('/login')
+
         if (success) {
 
+            // console.log(profileInfo.company, "ppp")
             // alert("signed up successfully")
             if (text === FormName.SIGNUP) {
                 toast(" sign up was successful")
                 navigate('/company-onboarding')
-
             } else {
-
-                if (profileInfo === null || profileInfo.company.length === 0) {
-                    navigate('/company-onboarding')
+                console.log('untrigerred')
+                console.log(profileInfo, "llaolao")
+                if (profileInfo === null || !profileInfo.company) {
+                    if (profileInfo.user.isEmployee) {
+                        navigate('/')
+                    } else {
+                        navigate('/company-onboarding')
+                    }
+                    
                 } else {
-                    navigate('/dashboard')
+                    if (profileInfo.user.isEmployee) {
+                        navigate('/')
+                    } else {
+                        navigate('/dashboard/bio')
+                    }
+                    
                 }
-
             }
 
         }
 
     }, [navigate, userInfo, userToken, success, error])
-    
-  
-    const onFailure = (err:any) => {
-        console.log('failed:', err);
+
+
+    const onFailure = (err: any) => {
+
     };
 
-    return (
-        <div className={signUpStyle.mainBox}>
-            <ToastContainer />
-            <h4>{text}</h4>
-            {error && <p className={signUpStyle.setRed}>🔺 {error}</p>}
-            <div className={signUpStyle.formInput}>
-                <label htmlFor="email">Email Address<sup>*</sup></label>
-                <input type="email" name="email" id="email" placeholder='Email Address' value={userInfo.email}
-                    onChange={(e) => dispatch(handleInputSignup({ key: SingUp.EMAIL, value: e.target.value }))}
-                    onInput={(e) => dispatch(handleInputSignup({ key: SingUp.EMAIL, value: e.currentTarget.value }))} />
+    if (loading) {
+        return (<p>loading...</p>)
+    } else {
+        return (
+            <div className={signUpStyle.mainBox}>
+                <ToastContainer />
+                <h4>{text}</h4>
+                {error && <p className={signUpStyle.setRed}>🔺 {error}</p>}
+                <div className={signUpStyle.formInput}>
+                    <label htmlFor="email">Email Address<sup>*</sup></label>
+                    <input type="email" name="email" id="email" placeholder='Email Address' value={userInfo.email}
+                        onChange={(e) => dispatch(handleInputSignup({ key: SingUp.EMAIL, value: e.target.value }))}
+                        onInput={(e) => dispatch(handleInputSignup({ key: SingUp.EMAIL, value: e.currentTarget.value }))} />
 
-            </div>
-            <div className={signUpStyle.formInput}>
-                <label htmlFor="password">Password</label>
-                <input type={showPassword ? "text" : "password"} name="password" id="password" value={userInfo.password}
-                    onInput={(e) => dispatch(handleInputSignup({ key: SingUp.PASSWORD, value: e.currentTarget.value }))}
-                    onChange={(e) => dispatch(handleInputSignup({ key: SingUp.PASSWORD, value: e.target.value }))} />
-                <span>
-                    {showPassword ? <FiEye className={signUpStyle.eyeForm} onClick={() => setShowPassword(!showPassword)} /> :
-                        <FiEyeOff className={signUpStyle.eyeForm} onClick={() => setShowPassword(!showPassword)} />}
-                </span>
-                {/* {text === FormName.SIGNUP && <PasswordStrengthBar password={userInfo.password} />} */}
-            </div>
-            <div className={signUpStyle.formBtns}>
-                {/* <Link to="/company-onboarding"> */}
-                <Button disabled={loading} onClick={() => onSignUp({ email: userInfo.email, password: userInfo.password })}>
-                    {text}
-                </Button>
-                {/* </Link> */}
-                <div>
-                    <GoogleLogin clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
-                        onSuccess={handleSuccess}
-                        onFailure={onFailure}
-                        cookiePolicy={'single_host_origin'}
-                        render={renderProps => (
-                            <button onClick={renderProps.onClick} disabled={renderProps.disabled} className={signUpStyle.gbtn}><img src={googleIcon} alt="google-onculture" /> {text} with Google</button>
-                        )}
-                        uxMode={'redirect'}
-                        redirectUri={""}
-                    />
                 </div>
-               
-                {text === FormName.SIGNUP && <p>
-                    Already have an account?<span>
-                        <Link className={signUpStyle.setLink} to='/login'>Login</Link>
+                <div className={signUpStyle.formInput}>
+                    <label htmlFor="password">Password</label>
+                    <input type={showPassword ? "text" : "password"} name="password" id="password" value={userInfo.password}
+                        onInput={(e) => dispatch(handleInputSignup({ key: SingUp.PASSWORD, value: e.currentTarget.value }))}
+                        onChange={(e) => dispatch(handleInputSignup({ key: SingUp.PASSWORD, value: e.target.value }))} />
+                    <span>
+                        {showPassword ? <FiEye className={signUpStyle.eyeForm} onClick={() => setShowPassword(!showPassword)} /> :
+                            <FiEyeOff className={signUpStyle.eyeForm} onClick={() => setShowPassword(!showPassword)} />}
                     </span>
-                </p>
-                }
+                    {/* {text === FormName.SIGNUP && <PasswordStrengthBar password={userInfo.password} />} */}
+                </div>
+                <div className={signUpStyle.formBtns}>
+                    {/* <Link to="/company-onboarding"> */}
+                    <Button disabled={loading} onClick={() =>
+                        onSignUp({ email: userInfo.email, password: userInfo.password })
 
+                    }>
+                        {text}
+                    </Button>
+                    {/* </Link> */}
+                    <div>
+                        <GoogleLogin clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
+                            onSuccess={(res) => {
+                                dispatch(googleLogin(res))
+                                dispatch(getUserDetails())
+                            }}
+                            onFailure={onFailure}
+                            cookiePolicy={'single_host_origin'}
+                            render={renderProps => (
+                                <button onClick={renderProps.onClick} disabled={renderProps.disabled} className={signUpStyle.gbtn}><img src={googleIcon} alt="google-onculture" /> {text} with Google</button>
+                            )}
+                            isSignedIn={false}
+                            uxMode={'redirect'}
+                            redirectUri={"localhost:3000/company-onboarding"}
+                        />
+                    </div>
+
+                    {text === FormName.SIGNUP && <p>
+                        Already have an account?<span>
+                            <Link className={signUpStyle.setLink} to='/login'>Login</Link>
+                        </span>
+                    </p>
+                    }
+
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default FormSignUp

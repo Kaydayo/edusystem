@@ -16,29 +16,41 @@ import { handleErrors } from '../redux/companyonboard'
 import Checkout from '../layouts/CompanyForms/Checkout'
 import { registerCompany } from '../redux/actions/companyAction'
 import { ToastContainer, toast } from 'react-toastify';
+import { getUserDetails } from '../redux/actions/usersAction'
 
 
 const CompanyOnBoarding = () => {
   const [step, setStep] = useState<number>(0)
-  const [findError, setFindError] = useState<boolean>(false)
+  
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const checkError = useAppSelector((state: RootState) => state.companyonboard.errorfound)
   const getCompany = useAppSelector((state: RootState) => state.companyonboard.info)
   const getCompanyField = useAppSelector((state: RootState) => state.companyonboard.info.companyName)
-  const {error} = useAppSelector((state:RootState)=> state.companyonboard)
+  const {  errorfound, info } = useAppSelector((state: RootState) => state.companyonboard)
+  const {error} = useAppSelector((state:RootState)=>state.user)
 
+  // dispatch(handleErrors())
+ 
+console.log(error)
+  useEffect(() => {
+    dispatch(handleErrors)
+  }, [])
+  
   const skipBtn = () => {
+    dispatch(getUserDetails())
     if (!error) {
       navigate('/dashboard/bio')
     } else {
       toast(error)
+      return
     }
   }
-
+console.log(step,'step')
   const nextBtn = () => {
     dispatch(handleErrors())
-   toast(error)
+    toast(error)
+    
     if(step === 1) {
       dispatch(registerCompany(getCompany))
     }

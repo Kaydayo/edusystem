@@ -19,7 +19,7 @@ const Book = () => {
       const findContent = apiBooks.find((book)=>book.id === params.id)
         setContent(findContent)
 
-        console.log(content)
+
         
       
     }, [content])

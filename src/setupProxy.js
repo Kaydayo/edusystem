@@ -49,6 +49,20 @@ module.exports = app => {
                 target: process.env.REACT_APP_BACKEND,
                 changeOrigin: true
             })
+        ),
+        app.use(
+            '/users/createPassword',
+            createProxyMiddleware( {
+                target: process.env.REACT_APP_BACKEND,
+                changeOrigin: true
+            })
+        ),
+        app.use(
+            '/users/getMeVerify',
+            createProxyMiddleware({
+                target: process.env.REACT_APP_BACKEND,
+                changeOrigin: true
+            })
         )
 
         

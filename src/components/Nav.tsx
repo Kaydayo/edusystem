@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import navStyle from '../styles/Home/Nav.module.css'
 import OncultureLogo from '../Assets/Images/onculture-logo.png'
 import Button from './Button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { navData } from '../constants/data'
 import { FaBars } from 'react-icons/fa'
 import { IoCloseSharp } from 'react-icons/io5'
@@ -14,13 +14,16 @@ type NavProp = {
 const Nav = ({ pure, board }: NavProp) => {
     const [sidebar, setSideBar] = useState<boolean>(false)
 
+    const navigate = useNavigate()
+
     const showSideBar = () => {
         setSideBar(!sidebar)
     }
     return (
-        <>        <div className={`${navStyle.headers} ${pure && navStyle.addShadow}`}>
+        <>
+            <div className={`${navStyle.headers} ${pure && navStyle.addShadow}`}>
             <div className={navStyle.logo}>
-                <img src={OncultureLogo} alt="onculture logo" />
+                <img src={OncultureLogo} alt="onculture logo" onClick={()=> navigate('/')}/>
             </div>
             {!pure && <>
                 <div className={navStyle.links}>

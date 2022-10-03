@@ -17,9 +17,16 @@ const Dashboard = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
-  console.log(profileInfo, userToken)
-
+  
+console.log(profileInfo, 'gotcha')
   useEffect(() => {
+
+    if (profileInfo === null) {
+      dispatch(getUserDetails())
+    }
+    if (profileInfo === null) {
+      navigate('/login')
+    }
     if ( profileInfo.company === null) {
       navigate('/company-onboarding')
     }
@@ -31,25 +38,29 @@ const Dashboard = () => {
 
   }, [profileInfo, userToken])
 
-  return (
-    <div className={dashBoardStyle.mainBoard}>
-      <div>
-        <DashboardNav setShowModal={setShowModal} />
+ 
+    return (
+      <div className={dashBoardStyle.mainBoard}>
+        <div>
+          <DashboardNav setShowModal={setShowModal} profileImage={profileInfo.user.profilePicture} />
+        </div>
+        <div>
+          <Profile userEmail={profileInfo.user.email} userProfilePicture={profileInfo.user.profilePicture} companyName={profileInfo.company.companyName} adminFirstName={profileInfo.company.admin.firstName} userRole={profileInfo.user.role} userPhoneNumber={profileInfo.user.phoneNumber} />
+        </div>
+        <div>
+          <DashboardPages />
+        </div>
+        <div className={dashBoardStyle.mdashboard}>
+          <Outlet />
+        </div>
+        <div>
+          <Modal show={showModal} setShowModal={setShowModal} children={<InviteEmployee />} />
+        </div>
       </div>
-      <div>
-        <Profile data={profileInfo} />
-      </div>
-      <div>
-        <DashboardPages />
-      </div>
-      <div className={dashBoardStyle.mdashboard}>
-        <Outlet />
-      </div>
-      <div>
-        <Modal show={showModal} setShowModal={setShowModal} children={<InviteEmployee />} />
-      </div>
-    </div>
-  )
-}
+    )
+  }
+
+  
+
 
 export default Dashboard

@@ -4,7 +4,7 @@ import companyStyle from '../../styles/CompanyOnboarding/Company.module.css'
 import { CompanyFormEnum } from '../../types/interfaces'
 
 const AdminForm = () => {
-  
+ 
   return (
       <div className={companyStyle.admin}>
           <FieldType type='text' name='Firstname*' placeHolder='Firstname' formType={CompanyFormEnum.FIRSTNAME}/>

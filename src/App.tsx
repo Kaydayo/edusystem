@@ -28,35 +28,50 @@ import Books from './layouts/Resources/Books';
 import Book from './components/Book';
 import Article from './components/Article';
 import ScrollToTop from './components/ScrollToTop';
+import VerifyPassword from './pages/VerifyPassword';
 
 
 
-console.log(process.env.REACT_APP_BACKEND)
+
 function App() {
   const { userInfo, userToken } = useAppSelector((state: RootState) => state.user)
   const dispatch = useAppDispatch()
 
 
+
   // automatically authenticate user if token is found
   useEffect(() => {
+    const handleTabClose = () => {
+      sessionStorage.clear()
+    };
 
-    if (userToken) {
+    const storeToken = sessionStorage.getItem('userToken') ?
+      sessionStorage.getItem('userToken') : null
+
+    if (userToken || storeToken) {
+      console.log(userToken, 'global')
       dispatch(getUserDetails())
-
     }
 
-    const onUnload = () => {
-      localStorage.clear()
-    };
-    window.addEventListener('beforeunload', onUnload);
+
+    // const onUnload = () => {
+    //   sessionStorage.clear()
+    // };
+    // window.addEventListener('beforeunload', onUnload);
+    // return () => {
+    //   window.removeEventListener('beforeunload', onUnload);
+    // };
+
+    window.addEventListener('beforeunload', handleTabClose);
+
     return () => {
-      window.removeEventListener('beforeunload', onUnload);
+      window.removeEventListener('beforeunload', handleTabClose);
     };
 
-  }, [userToken, dispatch])
+  }, [userToken])
 
   useEffect(() => {
-  
+
     const initClient = () => {
       gapi.auth2.init({
         clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
@@ -66,7 +81,7 @@ function App() {
     gapi.load('client:auth2', initClient);
   });
 
-  
+
 
   return <>
     <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}>
@@ -81,6 +96,7 @@ function App() {
 
             <Route path='signup' element={<Signup />} />
             <Route path='login' element={<Login />} />
+            <Route path='verify/:token' element={<VerifyPassword />} />
             <Route path='contact' element={<Contact />} />
             <Route path='book/:id' element={<Book />} />
             <Route path='article/:id' element={<Article />} />

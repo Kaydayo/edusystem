@@ -24,12 +24,12 @@ const FieldType = ({ type, name, placeHolder, error, errorTxt, id, value, formTy
   const dispatch = useAppDispatch()
   const errors = useAppSelector((state: RootState) => state.companyonboard.errors)
   const form = useAppSelector((state: RootState) => state.companyonboard)
-  
+
   
     return (
       <div className={`fieldInput ${error ? 'fieldInputRed':''}`}>
      <label htmlFor={name}>{name}</label>
-        <input type={type} name={name}  disabled={formType === CompanyFormEnum.EMAIL}  id={name} placeholder={placeHolder} value={form.info[formType]} onChange={(e) => {
+        <input type={type} name={name}  disabled={formType === CompanyFormEnum.EMAIL && form.info[formType] !== ""}  id={name} placeholder={placeHolder} value={form.info[formType]} onChange={(e) => {
           dispatch(handleFormInput({
             key: formType, value: e.target.value
           }))

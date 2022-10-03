@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import axios from 'axios'
 import { UserState } from "../../types/interfaces";
-console.log(process.env.REACT_APP_BACKEND)
+import { getUserDetails } from "./usersAction";
+
 
 export interface companyData {
     firstName: string;
@@ -30,18 +31,18 @@ export const registerCompany = createAsyncThunk(
         vision,
         values,
         email
-    }: companyData, { getState, rejectWithValue }) => {
+    }: companyData, { getState, rejectWithValue, dispatch }) => {
         try {
 
             const { user } = getState() as { user: UserState };
             // user.
 
-            console.log(user.userToken, "the user")
+
             const config = {
                 headers: {
                     'Content-Type': 'application/json',
                     'Cache-control': 'no-cache',
-                    'mode':'cors',
+                    'mode': 'cors',
                     Authorization: `Bearer ${user.userToken}`
                 },
             }
@@ -76,11 +77,14 @@ export const registerCompany = createAsyncThunk(
             //     })
             // },)
 
-            // console.log(await res.json())
-            console.log(data,'whaaaa am prri')
+
             if (data.success === false) {
                 return rejectWithValue(data.message)
             }
+            sessionStorage.setItem('userDetails', JSON.stringify(data.payload))
+            dispatch(getUserDetails())
+
+            console.log(data, 'regCompany')
             return data.payload
         } catch (error: any) {
             // return custom error message from API if any

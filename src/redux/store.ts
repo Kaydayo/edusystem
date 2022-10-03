@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { Action, configureStore} from '@reduxjs/toolkit'
 import userReducer from './users'
 import companyonboardReducer from './companyonboard'
 import inviteemployeeReducer from './inviteEmployee'

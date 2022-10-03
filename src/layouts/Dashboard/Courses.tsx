@@ -5,7 +5,7 @@ import emptstateBio from '../../Assets/Images/Course.svg'
 const Courses = () => {
   return (
       <div>
-          <EmptyState imag={emptstateBio} text="Looks like you have not completed your profile yet Click here to get it completed." />
+          <EmptyState imag={emptstateBio} text="Looks like you have not picked a course yet." />
     </div>
   )
 }

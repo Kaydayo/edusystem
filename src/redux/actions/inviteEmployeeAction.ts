@@ -26,7 +26,7 @@ export const inviteEmployees = createAsyncThunk(
             const { user } = getState() as { user: UserState };
             // user.
 
-            console.log(user.userToken, "the user")
+          
             const config = {
                 headers: {
                     'Content-Type': 'application/json',

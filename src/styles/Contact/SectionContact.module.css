@@ -74,6 +74,19 @@
     color: red;
 }
 
+.eyeShow{
+    font-size: 1rem;
+    color: #8790A3;
+    align-self: center;
+    position: relative;
+    float: right;
+    top: -2rem;
+    cursor: pointer;
+    right: -25rem;      
+    /* margin-left: -100px; */
+    /* float: left; */
+}
+
 .inputField{
     width: 440px;
     height: 48px;
@@ -120,4 +133,24 @@
    /* z-index: -15; */
    top: 60rem;
    /* bottom: -80rem; */
+}
+
+.userVerify{
+    margin: 0 auto;
+    width: fit-content;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+   /* line-height: -0.1rem; */
+}
+
+.userVerify h3{
+    font-weight: 700;
+    font-size: 40px;
+    color: #5C00DD;
+    margin-bottom: 0;
+}
+
+.welcome{
+    line-height: 4px;
 }

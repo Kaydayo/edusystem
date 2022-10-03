@@ -5,7 +5,9 @@ import emptStateBio  from '../../Assets/Images/employee.svg'
 const BoardEmployee = () => {
   return (
       <div>
-          < EmptyState imag={emptStateBio} text="Looks like you have not completed your profile yet Click here to get it completed." />
+      < EmptyState imag={emptStateBio} text={`Looks like you haven't added any employee. Click here to
+          invite your employees and assign them course seats
+          `} />
     </div>
   )
 }

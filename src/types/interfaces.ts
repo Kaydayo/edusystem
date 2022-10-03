@@ -52,7 +52,7 @@ export interface CompanyFInal {
     errorfound: boolean,
     showError: boolean,
     loading: boolean,
-    error: string|null
+    error: boolean
 }
 
 export interface InviteData {
