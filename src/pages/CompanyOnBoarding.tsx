@@ -21,22 +21,23 @@ import { getUserDetails } from '../redux/actions/usersAction'
 
 const CompanyOnBoarding = () => {
   const [step, setStep] = useState<number>(0)
-  
+
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const checkError = useAppSelector((state: RootState) => state.companyonboard.errorfound)
   const getCompany = useAppSelector((state: RootState) => state.companyonboard.info)
   const getCompanyField = useAppSelector((state: RootState) => state.companyonboard.info.companyName)
-  const {  errorfound, info } = useAppSelector((state: RootState) => state.companyonboard)
-  const {error} = useAppSelector((state:RootState)=>state.user)
+  const { errorfound, info } = useAppSelector((state: RootState) => state.companyonboard)
+  const { selections } = useAppSelector((state: RootState) => state.subscription)
+  const { error } = useAppSelector((state: RootState) => state.user)
 
   // dispatch(handleErrors())
- 
-console.log(error)
+
+  console.log(error)
   useEffect(() => {
     dispatch(handleErrors)
   }, [])
-  
+
   const skipBtn = () => {
     dispatch(getUserDetails())
     if (!error) {
@@ -46,20 +47,23 @@ console.log(error)
       return
     }
   }
-console.log(step,'step')
+  console.log(step, 'step')
   const nextBtn = () => {
     dispatch(handleErrors())
-    toast(error)
-    
-    if(step === 1) {
+    if (step > 1) {
+      toast(error)
+    }
+
+
+    if (step === 1) {
       dispatch(registerCompany(getCompany))
     }
     if (step >= 1 && getCompanyField === '') {
       return
-    } 
+    }
 
-    
-    
+
+
     if (step >= multiSteps.length - 1) {
       setStep(multiSteps.length - 1)
     } else {
@@ -79,20 +83,20 @@ console.log(step,'step')
     }
 
   }
-  const multiSteps = [<AdminForm />, <CompanyForm />, <Subscription />, <><Subscription /></>]
+  const multiSteps = [<AdminForm />, <CompanyForm />, <Subscription />, <Checkout step={step} setStep={setStep} />]
 
 
   return (
     <>
       <Nav pure={true} />
-      <ToastContainer/>
+      <ToastContainer />
       <div className={companyStyle.main}>
         <div className={companyStyle.header}>
           <h4>Create Company Profile</h4>
           <p>Already have an account? <span><Link className={companyStyle.setLink} to='/login'>Login</Link></span></p>
         </div>
         <div className={companyStyle.mainStepper}>
-          <Stepper step={step} setStep={setStep}/>
+          <Stepper step={step} setStep={setStep} />
         </div>
         <div className={companyStyle.allForm}>
 
@@ -108,7 +112,7 @@ console.log(step,'step')
           {step > 1 && <Button className={companyStyle.btnSkip} onClick={skipBtn}>
             Skip
           </Button>
-       }
+          }
 
           {
             step !== 3 && <Button type={step === 3 ? "submit" : ''} className={companyStyle.btnNext} onClick={nextBtn}>
@@ -116,9 +120,9 @@ console.log(step,'step')
             </Button>
           }
         </div>
-        <div>
+        {/* <div>
           {step === multiSteps.length - 1 && <Checkout />}
-        </div>
+        </div> */}
 
       </div>
     </>

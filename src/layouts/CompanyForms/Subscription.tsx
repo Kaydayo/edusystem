@@ -1,10 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import companyStyle from '../../styles/CompanyOnboarding/Company.module.css'
-import SubscriptionCourse from './SubscriptionCourse'
-import {subScriptionCourse}from '../../constants/data' 
+import SubscriptionCourse from './SubscriptionCourse' 
+import { RootState, useAppDispatch, useAppSelector } from '../../redux/store'
+import { postAllSubscriptions } from '../../redux/subscription'
 
 const Subscription = () => {
     const [checkTwo, setCheckTwo] = useState<boolean>(false)
+    const dispatch = useAppDispatch()
+
+    const { subscriptions } = useAppSelector((state: RootState) => state.subscription)
+    console.log(subscriptions, 'log subs')
+    // useEffect(() => {
+    //     console.log(subScriptionCourse,subscriptions, "kkkkkkkk")
+    //     dispatch(postAllSubscriptions(subScriptionCourse))
+    // }, [subscriptions])
+    
+
     return (
         <div className={companyStyle.admin}>
             <div className={companyStyle.toggleSub}>
@@ -14,7 +25,7 @@ const Subscription = () => {
             </div>
             <div className={companyStyle.subContent}>
                 <div className={companyStyle.popSub}>
-                    {subScriptionCourse.filter((courses) => {
+                    {subscriptions.filter((courses) => {
                         if (checkTwo) {
                             return !courses.cultureClinic && courses.staySafe && !courses.others
                         } else {
@@ -26,7 +37,7 @@ const Subscription = () => {
                 </div>
                 <hr className={companyStyle.lines}/>
                 <div className={companyStyle.popSubDown}>
-                    {subScriptionCourse.filter((courses) => {
+                    {subscriptions.filter((courses) => {
                         if (checkTwo) {
                             return !courses.cultureClinic && courses.staySafe && courses.others
                         } else {
@@ -43,3 +54,7 @@ const Subscription = () => {
 }
 
 export default Subscription
+
+function postAllSubcriptions(subScriptionCourse: { id: string; subscriptionName: string; description: string; information: string[]; price: string; staySafe: boolean; cultureClinic: boolean; others: boolean; noOfSeats: number; amount: number; selected: boolean }[]): any {
+    throw new Error('Function not implemented.')
+}

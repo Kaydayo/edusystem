@@ -81,7 +81,7 @@ export const registerCompany = createAsyncThunk(
             if (data.success === false) {
                 return rejectWithValue(data.message)
             }
-            sessionStorage.setItem('userDetails', JSON.stringify(data.payload))
+            localStorage.setItem('userDetails', JSON.stringify(data.payload))
             dispatch(getUserDetails())
 
             console.log(data, 'regCompany')

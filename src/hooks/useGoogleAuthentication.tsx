@@ -9,7 +9,7 @@ import { updateToken, updateUserEmail } from '../redux/users';
 
 // const dispatch = useAppDispatch()
 function useGoogleAuthentication() {
-  
+
     const navigate = useNavigate()
     const handleSuccess = async (response: any) => {
 
@@ -28,9 +28,9 @@ function useGoogleAuthentication() {
 
             }
         })
-       
-        sessionStorage.setItem('userToken', result.data.token)
-       
+
+        localStorage.setItem('userToken', result.data.token)
+
         // dispatch(updateUserEmail(result.data.email))
     }
 

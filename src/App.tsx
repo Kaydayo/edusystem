@@ -42,11 +42,11 @@ function App() {
   // automatically authenticate user if token is found
   useEffect(() => {
     const handleTabClose = () => {
-      sessionStorage.clear()
+      localStorage.clear()
     };
 
-    const storeToken = sessionStorage.getItem('userToken') ?
-      sessionStorage.getItem('userToken') : null
+    const storeToken = localStorage.getItem('userToken') ?
+      localStorage.getItem('userToken') : null
 
     if (userToken || storeToken) {
       console.log(userToken, 'global')
@@ -55,7 +55,7 @@ function App() {
 
 
     // const onUnload = () => {
-    //   sessionStorage.clear()
+    //   localStorage.clear()
     // };
     // window.addEventListener('beforeunload', onUnload);
     // return () => {

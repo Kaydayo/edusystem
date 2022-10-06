@@ -5,10 +5,10 @@ import { platform } from 'os'
 import { SingUp, UserState } from '../types/interfaces'
 import { createPassword, getNameByVeify, getUserDetails, googleLogin, registerUser, userLogin } from './actions/usersAction'
 
-const userToken = sessionStorage.getItem('userToken')
-    ? sessionStorage.getItem('userToken')
+const userToken = localStorage.getItem('userToken')
+    ? localStorage.getItem('userToken')
     : null
-const profileInfo = sessionStorage.getItem('userDetails') ? JSON.parse(sessionStorage.getItem('userDetails') as string) : null
+const profileInfo = localStorage.getItem('userDetails') ? JSON.parse(localStorage.getItem('userDetails') as string) : null
 
 console.log(profileInfo, "for here ")
 const initialState: UserState = {

@@ -11,6 +11,7 @@ import classImage from '../Assets/Images/class.png'
 import bookImage from '../Assets/Images/book.png'
 import bookCover from '../Assets/Images/book-sample.svg'
 import articleCover from '../Assets/Images/article-sample.svg'
+import uuid from 'react-uuid';
 
 export const boxData = [
     {
@@ -132,6 +133,7 @@ export const employeeCount = [
 
 export const subScriptionCourse = [
     {
+        "id": uuid(),
         "subscriptionName": "tribe",
         "description": "for team less than 100",
         "information": [
@@ -141,9 +143,13 @@ export const subScriptionCourse = [
         "price": "5",
         "staySafe": true,
         "cultureClinic": true,
-        "others": false
+        "others": false,
+        "noOfSeats": 1,
+        "amount": 5,
+        "selected":false
     },
     {
+        "id": uuid(),
         "subscriptionName": "village",
         "description": "for team of 101-500",
         "information": [
@@ -153,9 +159,13 @@ export const subScriptionCourse = [
         "price": "5",
         "staySafe": true,
         "cultureClinic": true,
-        "others": false
+        "others": false,
+        "noOfSeats": 1,
+        "amount": 5,
+        "selected": false
     },
     {
+        "id": uuid(),
         "subscriptionName": "city",
         "description": "for teams more than 500",
         "information": [
@@ -165,9 +175,13 @@ export const subScriptionCourse = [
         "price": "5",
         "staySafe": true,
         "cultureClinic": true,
-        "others": false
+        "others": false,
+        "noOfSeats": 1,
+        "amount": 5,
+        "selected": false
     },
     {
+        "id": uuid(),
         "subscriptionName": "tribe",
         "description": "for team less than 100",
         "information": [
@@ -177,9 +191,13 @@ export const subScriptionCourse = [
         "price": "3",
         "staySafe": true,
         "cultureClinic": false,
-        "others": false
+        "others": false,
+        "noOfSeats": 1,
+        "amount": 3,
+        "selected": false
     },
     {
+        "id": uuid(),
         "subscriptionName": "village",
         "description": "for team of 101-500",
         "information": [
@@ -189,9 +207,13 @@ export const subScriptionCourse = [
         "price": "3",
         "staySafe": true,
         "cultureClinic": false,
-        "others": false
+        "others": false,
+        "noOfSeats": 1,
+        "amount": 3,
+        "selected": false
     },
     {
+        "id": uuid(),
         "subscriptionName": "city",
         "description": "for teams more than 500",
         "information": [
@@ -201,43 +223,62 @@ export const subScriptionCourse = [
         "price": "3",
         "staySafe": true,
         "cultureClinic": false,
-        "others": false
+        "others": false,
+        "noOfSeats": 1,
+        "amount": 3,
+        "selected": false
     },
     {
+        "id": uuid(),
         "subscriptionName": "Increment",
         "description": "Custom",
         "information": [],
         "price": "5",
         "staySafe": true,
         "cultureClinic": true,
-        "others": true
+        "others": true,
+        "noOfSeats": 1,
+        "amount": 5,
+        "selected": false
     },
     {
+        "id": uuid(),
         "subscriptionName": "Refresher Course",
         "description": "Custom",
         "information": [],
         "price": "5",
         "staySafe": true,
         "cultureClinic": true,
-        "others": true
+        "others": true,
+        "noOfSeats": 1,
+        "amount": 5,
+        "selected": false
     },
     {
+        "id": uuid(),
         "subscriptionName": "Increment",
         "description": "Custom",
         "information": [],
         "price": "3",
         "staySafe": true,
         "cultureClinic": false,
-        "others": true
+        "others": true,
+        "noOfSeats": 1,
+        "amount": 3,
+        "selected": false
     },
     {
+        "id": uuid(),
         "subscriptionName": "Refresher Course",
         "description": "Custom",
         "information": [],
         "price": "3",
         "staySafe": true,
         "cultureClinic": false,
-        "others": true
+        "others": true,
+        "noOfSeats": 1,
+        "amount": 3,
+        "selected": false
     }
 ]
 

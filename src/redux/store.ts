@@ -2,6 +2,7 @@ import { Action, configureStore} from '@reduxjs/toolkit'
 import userReducer from './users'
 import companyonboardReducer from './companyonboard'
 import inviteemployeeReducer from './inviteEmployee'
+import subscriptionReducer from './subscription'
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
@@ -12,7 +13,8 @@ const store = configureStore({
     reducer: {
         user: userReducer,
         companyonboard: companyonboardReducer,
-        inviteEmployee: inviteemployeeReducer
+        inviteEmployee: inviteemployeeReducer,
+        subscription: subscriptionReducer
 
     },
 

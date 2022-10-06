@@ -27,7 +27,7 @@ export const registerUser = createAsyncThunk(
                 { email, password },
                 config
             )
-            sessionStorage.setItem('userToken', data.payload.token)
+            localStorage.setItem('userToken', data.payload.token)
             console.log(data, 'see stuff')
             if (data.success === false) {
                 return rejectWithValue(data.message)
@@ -64,8 +64,8 @@ export const userLogin = createAsyncThunk(
             if (data.success !== true) {
                 return rejectWithValue(data.message)
             }
-            sessionStorage.setItem('userToken', data.payload.accessToken)
-            sessionStorage.setItem('userDetails', JSON.stringify(data.payload))
+            localStorage.setItem('userToken', data.payload.accessToken)
+            localStorage.setItem('userDetails', JSON.stringify(data.payload))
 
             dispatch(getUserDetails())
             return data
@@ -95,8 +95,8 @@ export const googleLogin = createAsyncThunk(
             })
 
             console.log(data, 'from redux')
-            sessionStorage.setItem('userToken', data.token)
-            sessionStorage.setItem('userDetails', JSON.stringify(data))
+            localStorage.setItem('userToken', data.token)
+            localStorage.setItem('userDetails', JSON.stringify(data))
 
             return data
         } catch (error: any) {
@@ -131,7 +131,7 @@ export const getUserDetails = createAsyncThunk(
             if (data.success !== true) {
                 return false
             }
-            sessionStorage.setItem('userDetails', JSON.stringify(data.payload))
+            localStorage.setItem('userDetails', JSON.stringify(data.payload))
             return data.payload
         } catch (error: any) {
             if (error.response && error.response.data.message) {
@@ -157,8 +157,8 @@ export const getNameByVeify = createAsyncThunk(
                 token: token
             }, config)
             console.log(data, 'from token param id')
-            sessionStorage.setItem('userDetails', JSON.stringify(data.payload))
-            sessionStorage.setItem('userToken', data.payload.token)
+            localStorage.setItem('userDetails', JSON.stringify(data.payload))
+            localStorage.setItem('userToken', data.payload.token)
             return data.payload
         } catch (error: any) {
             if (error.response && error.response.data.message) {
@@ -186,8 +186,8 @@ export const createPassword = createAsyncThunk(
             }, config)
 
             console.log(data, 'data from password')
-            sessionStorage.setItem('userDetails', JSON.stringify(data.payload))
-            sessionStorage.setItem('userToken', data.payload.token)
+            localStorage.setItem('userDetails', JSON.stringify(data.payload))
+            localStorage.setItem('userToken', data.payload.token)
 
 
             return data.payload

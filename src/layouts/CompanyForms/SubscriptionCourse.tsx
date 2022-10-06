@@ -1,23 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { subScriptionCourse } from '../../constants/data'
 import { capitalizeFirstLetter } from '../../utils/helper';
 import companyStyle from '../../styles/CompanyOnboarding/Company.module.css'
+import { useAppDispatch } from '../../redux/store';
+import { addCourseToSelectList } from '../../redux/subscription';
 
 export interface ISubCourse {
+    id: string;
     subscriptionName: string;
     description: string;
     information: string[];
     price: string;
     staySafe: boolean;
     cultureClinic: boolean;
-    others: boolean
+    others: boolean;
+    noOfSeats: number;
+    amount: number;
+    selected: boolean
 }
 
 type SubCourseProp = {
     data: ISubCourse;
 }
 const SubscriptionCourse = ({ data }: SubCourseProp) => {
-    const [click, setClick] = useState<boolean>(false)
+    const { selected } = data
+    const [click, setClick] = useState<boolean>(selected)
+
+    
+   
+    
+
+    const dispatch = useAppDispatch()
     return (
         <div className={companyStyle.boxSub}>
             <div>
@@ -33,10 +46,14 @@ const SubscriptionCourse = ({ data }: SubCourseProp) => {
             </div>
             <div>
                 <hr />
-                <div className={`${companyStyle.pickBtn} ${click && companyStyle.btnPicked}`}>
+                <div className={`${companyStyle.pickBtn} ${data.selected && companyStyle.btnPicked}`}>
                     <p>{data.staySafe && "Harrassment in the workplace"} {data.cultureClinic && "& Culture Clinic"}</p>
-                    <button onClick={() => setClick(!click)} >
-                        $<span>{data.price}</span>/ per user{click && <span className={companyStyle.checkMark}></span>}
+                    <button onClick={() => {
+                        // setClick(!click)
+                        dispatch(addCourseToSelectList({ ...data, selected:!data.selected}))
+
+                    }} >
+                        $<span>{data.price}</span>/ per user{data.selected && <span className={companyStyle.checkMark}></span>}
                     </button>
                 </div>
             </div>

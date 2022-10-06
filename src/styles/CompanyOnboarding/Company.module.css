@@ -299,8 +299,147 @@ text-decoration: none;
 }
 
 .checkoutMain{
-  height: 360px;
-  width:1440px;
-   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+     left: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	max-width: 100vw;
+	position: relative;
+	right: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  /* text-align: center; */
+ 
 
+}
+
+.tableHead{
+    
+    width: 1080px;
+    height: 48px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3rem;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #EEF1FF;
+}
+
+.tableHead h4{
+    font-size: 16px;
+    font-weight: 600;
+    width: 202px;
+    height: 24px;
+    text-align: center;
+}
+
+.entryCourse{
+    display: flex;
+    width: 1080px;
+    margin:  0 auto;
+    gap: 1rem;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    border-bottom: 1px solid #EEF1FF;
+   
+}
+
+.entryCourse div{
+    width: 220px;
+    text-align: center;
+}
+
+.course{
+    width: 202px;
+    text-align: left;
+}
+
+.course h3{
+    color: #5C00DD;
+    text-align: left;
+}
+
+.course p{
+    text-align: left;
+}
+
+.countBox{
+    width: 80px;
+    height: 40px;
+    background-color: #EEF1FF;
+    border: 1px solid #5C00DD;
+    border-radius: 4px;
+    font-size: 24px;
+    font-weight: 600;
+    padding-left: 0.4rem;
+
+}
+
+.delBtn{
+    color: #BBC4D9;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.priceSub{
+    font-size: 24px;
+    font-weight: 600;
+
+}
+
+.payCard{
+    display: flex;
+    width: 1080px;
+    justify-content: space-between;
+    align-items:flex-end;
+    margin:  0 auto;
+}
+
+.payCard div p{
+    font-weight: 600;
+}
+.payCard div:first-of-type  p{
+    cursor: pointer;
+}
+.subTotal{
+    display: flex;
+    justify-content: space-between;
+    width: 322px;
+
+
+}
+
+.subTotal div{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.subTotal div:first-of-type{
+    color: #8790A3;
+}
+
+.subTotal p{
+    font-weight: 600;
+}
+.subTotal div p{
+    font-weight: 600;
+
+}
+
+.subTotalBtn{
+    width: 100%;
+    height: 56px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    border: none;
+    font-weight: 600;
+}
+
+.selectPurple{
+    color: var(--primary-color)
 }

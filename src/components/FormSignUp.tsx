@@ -86,7 +86,7 @@ const FormSignUp = ({ text }: FormType) => {
             } else {
                 console.log('untrigerred')
                 console.log(profileInfo, "llaolao")
-                if (profileInfo === null || !profileInfo.company) {
+                if (profileInfo === null || !profileInfo.company||!profileInfo.company.length) {
                     if (profileInfo.user.isEmployee) {
                         navigate('/')
                     } else {

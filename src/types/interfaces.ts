@@ -1,3 +1,6 @@
+import { string } from "yup";
+import { ISubCourse } from "../layouts/CompanyForms/SubscriptionCourse";
+
 export interface AdminSignup {
     firstName: string;
     surnName: string;
@@ -89,6 +92,12 @@ export interface UserState {
     success: boolean,
     profileInfo:any
 }
+
+export interface SubscriptionState {
+    selections: ISubCourse[],
+    subscriptions:ISubCourse[]
+}
+
 
 
 export enum SingUp{
