@@ -11,7 +11,7 @@ const subscriptions = subScriptionCourse
 
 const initialState: SubscriptionState = {
     selections: [],
-    subscriptions
+    subscriptions:[]
 }
 
 const subscriptionSlice = createSlice({

@@ -29,6 +29,7 @@ import Book from './components/Book';
 import Article from './components/Article';
 import ScrollToTop from './components/ScrollToTop';
 import VerifyPassword from './pages/VerifyPassword';
+import EmployeeDashboard from './pages/EmployeeDashboard';
 
 
 
@@ -92,6 +93,11 @@ function App() {
             <Route path='/' element={<Home />} />
 
             <Route path='faq' element={<Faq />} />
+
+            {/* TODO: move to protected route */}
+            <Route path='/employeeDashboard' element={<EmployeeDashboard />}>
+
+            </Route>
 
 
             <Route path='signup' element={<Signup />} />

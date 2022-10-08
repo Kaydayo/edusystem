@@ -17,6 +17,8 @@ import Checkout from '../layouts/CompanyForms/Checkout'
 import { registerCompany } from '../redux/actions/companyAction'
 import { ToastContainer, toast } from 'react-toastify';
 import { getUserDetails } from '../redux/actions/usersAction'
+import axios from 'axios'
+import { postAllSubscriptions } from '../redux/subscription'
 
 
 const CompanyOnBoarding = () => {
@@ -31,11 +33,20 @@ const CompanyOnBoarding = () => {
   const { selections } = useAppSelector((state: RootState) => state.subscription)
   const { error } = useAppSelector((state: RootState) => state.user)
 
+  const getAllSubscriptions = async () => {
+    const { data } = await axios.get('subscription/all')
+
+    console.log('Data ree naah', data)
+      dispatch(postAllSubscriptions(data))
+    
+  }
   // dispatch(handleErrors())
 
-  console.log(error)
+  // console.log(error)
   useEffect(() => {
     dispatch(handleErrors)
+    getAllSubscriptions()
+
   }, [])
 
   const skipBtn = () => {

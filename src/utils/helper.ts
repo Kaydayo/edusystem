@@ -13,3 +13,13 @@ export const calculateTotalSelect = (data: ISubCourse[]) => {
     return data.reduce((prev, curr)=> prev + curr.amount, 0)
     
 }
+
+export const getColorGrade = (value: number):string => {
+    if (value <= 44) {
+        return "#FC665D"
+    } else if (value >= 45 && value < 50) {
+        return "#F2994A"
+    } else {
+        return "#1FC54E"
+    }
+}
