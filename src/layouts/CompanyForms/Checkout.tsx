@@ -47,14 +47,15 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
       toast(error)
     }
 
-    if (success) {
+    // if (success) {
       navigate('/dashboard/bio')
-    }
+    // }
 }
   
   
   return (
     <div className={companyStyle.checkoutMain}>
+      <ToastContainer />
       <div className={companyStyle.tableHead}>
         <h4>Course</h4>
         <h4>No Of Seats</h4>
@@ -90,7 +91,7 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
 
       <div className={companyStyle.payCard}>
 
-        <ToastContainer/>
+      
 
 
         <div>

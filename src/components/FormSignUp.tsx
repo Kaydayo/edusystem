@@ -68,7 +68,7 @@ const FormSignUp = ({ text }: FormType) => {
         }
     }
 
-
+    
 
     // automatically authenticate user if token is found
 
@@ -79,7 +79,7 @@ const FormSignUp = ({ text }: FormType) => {
 
         if (success) {
 
-            // console.log(profileInfo.company, "ppp")
+            console.log(profileInfo.company, "ppp")
             // alert("signed up successfully")
             if (text === FormName.SIGNUP) {
                 console.log("1111")

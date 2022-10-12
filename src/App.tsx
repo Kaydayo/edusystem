@@ -31,6 +31,7 @@ import ScrollToTop from './components/ScrollToTop';
 import VerifyPassword from './pages/VerifyPassword';
 import EmployeeDashboard from './pages/EmployeeDashboard';
 import EmployeeCourses from './layouts/EmployeeDashboard/EmployeeCourses';
+import CoursePage from './layouts/EmployeeDashboard/CoursePage';
 
 
 
@@ -73,11 +74,11 @@ function App() {
   }, [userToken])
 
   useEffect(() => {
-
+    const SCOPES = "https://www.googleapis.com/auth/drive.metadata.readonly"
     const initClient = () => {
       gapi.auth2.init({
         clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        scope: ''
+        scope: SCOPES
       });
     };
     gapi.load('client:auth2', initClient);
@@ -100,6 +101,7 @@ function App() {
               <Route path="courses" element={<EmployeeCourses />} />
             </Route>
 
+            <Route path='coursePage' element={<CoursePage />} />
 
             <Route path='signup' element={<Signup />} />
             <Route path='login' element={<Login />} />

@@ -128,9 +128,9 @@ export const getUserDetails = createAsyncThunk(
             }, config)
 
             console.log(data, 'na im be diud')
-            if (data.success !== true) {
-                return false
-            }
+            // if (data.success !== true) {
+            //     return false
+            // }
             localStorage.setItem('userDetails', JSON.stringify(data.payload))
             return data.payload
         } catch (error: any) {

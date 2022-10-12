@@ -66,6 +66,12 @@ export const companyonboardSlice = createSlice({
                 state.errors.companyName = '';
             }
 
+            if (state.info.phoneNumber === '') {
+                state.errors.phoneNumber = 'phone number is required'
+            } else {
+                state.errors.phoneNumber = '';
+            }
+
             if (state.info.email === '' || !(/\S+@\S+\.\S+/.test(state.info.email))) {
                 state.errors.email = 'Email is invalid';
             } else {

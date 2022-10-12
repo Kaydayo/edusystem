@@ -1,3 +1,4 @@
+import { number } from "yup";
 import { ISubCourse } from "../layouts/CompanyForms/SubscriptionCourse";
 
 export const  capitalizeFirstLetter = (str:string) => {
@@ -22,4 +23,12 @@ export const getColorGrade = (value: number):string => {
     } else {
         return "#1FC54E"
     }
+}
+
+export const addZeroToSingle = (value: number): string => {
+    const inc = value + 1
+    return  inc.toLocaleString('en-US', {
+        minimumIntegerDigits: 2,
+        useGrouping: false
+    })
 }
