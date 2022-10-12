@@ -95,7 +95,10 @@ export interface UserState {
 
 export interface SubscriptionState {
     selections: ISubCourse[],
-    subscriptions:ISubCourse[]
+    subscriptions: ISubCourse[],
+    loading: boolean,
+    error: any,
+    success:boolean
 }
 
 

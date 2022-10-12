@@ -16,7 +16,8 @@ const InviteEmployee = () => {
     const inviteFormData = useAppSelector((state: RootState) => state.inviteEmployee.info)
     const getErrors = useAppSelector((state: RootState) => state.inviteEmployee.errors)
     const errorFound = useAppSelector((state: RootState) => state.inviteEmployee.errorfound)
-    const error = useAppSelector((state:RootState)=> state.inviteEmployee.error)
+    const error = useAppSelector((state: RootState) => state.inviteEmployee.error)
+    
     const submitInvite = () => {
         toast(error)
         dispatch(handleInviteErrors())

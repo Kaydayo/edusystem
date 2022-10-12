@@ -1,9 +1,15 @@
 .main{
     background-color: #F5F8FE;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 6rem;
+}
+
+.subMain{
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
 }
 
 .navSection{
@@ -194,4 +200,125 @@
     float: right;
     clear: left;
     /* margin-top: -40px; */
+}
+
+.linkDashBoard{
+     width: 90%;
+    height: 9vh;
+    background-color: white;
+    margin: -2rem auto;
+    box-shadow: rgba(100, 100, 111, 0.046) 0px 7px 29px 0px;
+    padding: 1rem 3rem;
+    box-sizing: border-box;
+    display: flex;
+    gap: 60px;
+    /* justify-content: space-between; */
+    align-items: center;
+    align-content: flex-start;
+    text-decoration: none;
+}
+
+.linkDashLink{
+    list-style-type: none;
+    text-decoration: none;
+    color: black;
+    font-weight: 200; 
+    font-size: 14px; 
+}
+
+.hoverLink{
+font-weight: 700;
+  position: relative;
+  z-index : 1;
+  /* background: #eee; */
+}
+.hoverLink:before{
+    content : "";
+  position: absolute;
+  left    : 0;
+  bottom  : -2px;
+  height  : 1px;
+  width   : 80%;  /* or 100px */
+  border-bottom:2px solid #FF22FF;
+}
+
+.employeeCourse{
+    width: 365px;
+    height: 469px;
+    background-color: white;
+    text-align: center;
+
+}
+
+.employeeCourseMain{
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+}
+.courseCard{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0.5rem;
+    box-sizing: content-box;
+    border-bottom: 1px solid #BBC4D9;
+}
+
+.progressCourse{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.progressCourse p{
+    font-size: 10px;
+    font-weight: 600;
+}
+.trackProgress{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.perTrack{
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.perTrack p{
+    width: fit-content;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.perTrack p:first-of-type{
+    color:#BBC4D9;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.contBtn{
+    width: 248px;
+    height: 56px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: 2px solid #5C00DD;
+    color: #5C00DD;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.contBtn:hover{
+    background-color: #5C00DD;
+    color: white;
 }

@@ -30,6 +30,7 @@ import Article from './components/Article';
 import ScrollToTop from './components/ScrollToTop';
 import VerifyPassword from './pages/VerifyPassword';
 import EmployeeDashboard from './pages/EmployeeDashboard';
+import EmployeeCourses from './layouts/EmployeeDashboard/EmployeeCourses';
 
 
 
@@ -96,7 +97,7 @@ function App() {
 
             {/* TODO: move to protected route */}
             <Route path='/employeeDashboard' element={<EmployeeDashboard />}>
-
+              <Route path="courses" element={<EmployeeCourses />} />
             </Route>
 
 

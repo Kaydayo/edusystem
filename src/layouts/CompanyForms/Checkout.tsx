@@ -8,6 +8,9 @@ import { RootState, useAppDispatch, useAppSelector } from '../../redux/store'
 import { ISubCourse } from './SubscriptionCourse'
 import { addAmountToSelect } from '../../redux/subscription'
 import { calculateTotalSelect } from '../../utils/helper'
+import { paySubscription } from '../../redux/actions/subscriptionAction'
+import { toast, ToastContainer } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 type CheckoutProp = {
   step: number;
@@ -19,9 +22,10 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
   const [subTotal, setSubTotal]= useState<number>(0)
   const [totalCost, setTotalCost] = useState<number>(0)
   const [tax, setTax] = useState<number>(9)
-  const { selections, subscriptions } = useAppSelector((state: RootState) => state.subscription)
+  const { selections, subscriptions, error, success } = useAppSelector((state: RootState) => state.subscription)
   console.log(subscriptions,'lood check')
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     
@@ -35,6 +39,18 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
     setTotalCost(additions+tax)
    
   }, [selections])
+
+  const handlePaySubscription = () => {
+    dispatch(paySubscription())
+    
+    if (error) {
+      toast(error)
+    }
+
+    if (success) {
+      navigate('/dashboard/bio')
+    }
+}
   
   
   return (
@@ -74,6 +90,8 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
 
       <div className={companyStyle.payCard}>
 
+        <ToastContainer/>
+
 
         <div>
           <p onClick={()=> setStep(step -1)}>&lt; Subscription Plan</p>
@@ -103,7 +121,7 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
           </div>
           {/* button */}
           <div>
-            <Button className={companyStyle.subTotalBtn}>
+            <Button className={companyStyle.subTotalBtn} onClick={handlePaySubscription}>
               Pay
             </Button>
           </div>

@@ -7,17 +7,16 @@ import ProgressProvider from './ProgressProvider';
 
 
 type ProgressRound = {
-    width?: string,
-    height?: string,
+    widthHeight?: string,
     value: number,
     hexColor: string,
     label?:string,
 }
-const RoundProgress = ({width, height,value,hexColor,label}:ProgressRound) => {
+const RoundProgress = ({widthHeight,value,hexColor,label}:ProgressRound) => {
   return (
       <div>
           
-          <div style={{ width: `${width ? width : 94}px`, height: `${height ? height : 94}px` }}>
+          <div style={{ width: `${widthHeight ? widthHeight : 94}px`, height: `${widthHeight ? widthHeight : 94}px` }}>
               <ProgressProvider valueStart={1} valueEnd={value}>
                   
                   {(value:any) => <CircularProgressbar

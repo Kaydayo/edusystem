@@ -6,12 +6,16 @@ import SubscriptionCourse, { ISubCourse } from '../layouts/CompanyForms/Subscrip
 import { SingUp, SubscriptionState, UserState } from '../types/interfaces'
 import { createPassword, getNameByVeify, getUserDetails, googleLogin, registerUser, userLogin } from './actions/usersAction'
 import { subScriptionCourse } from '../constants/data'
+import { paySubscription } from './actions/subscriptionAction'
 
 const subscriptions = subScriptionCourse
 
 const initialState: SubscriptionState = {
     selections: [],
-    subscriptions:[]
+    subscriptions: [],
+    loading: false,
+    error: null,
+    success: false,
 }
 
 const subscriptionSlice = createSlice({
@@ -24,11 +28,11 @@ const subscriptionSlice = createSlice({
             } else {
                 state.selections = state.selections.filter((x) => x.id !== action.payload.id)
             }
-            
+
 
             const updateSubscriptions = state.subscriptions.map((item) => {
                 if (item.id === action.payload.id) {
-                    item = action.payload 
+                    item = action.payload
                 }
                 return item
             })
@@ -60,10 +64,24 @@ const subscriptionSlice = createSlice({
             state.subscriptions = action.payload
         }
 
+    },
+    extraReducers: {
+        [paySubscription.pending.toString()]: (state) => {
+            state.loading = true
+            state.error = null
+        },
+        [paySubscription.fulfilled.toString()]: (state, { payload }) => {
+            console.log(payload, 'getege')
+            state.loading = false
+            state.success = true
+        },
+        [paySubscription.rejected.toString()]: (state, { payload }) => {
+            state.loading = false
+            state.error = payload
+        },
     }
-}
 
-)
+})
 
 export const { addCourseToSelectList, addAmountToSelect, postAllSubscriptions } = subscriptionSlice.actions
 

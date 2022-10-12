@@ -287,6 +287,10 @@ export const dashboardLinks = [
     "bio", "courses", "employees", "teams", "report", "subscription"
 ]
 
+export const employeeLinks = [
+    "courses"
+]
+
 export const resourceLinks = ["articles","books"]
 
 export const courses = {
