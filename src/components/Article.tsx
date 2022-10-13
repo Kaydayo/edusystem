@@ -17,7 +17,7 @@ const Article = () => {
         const findContent = apiArticles.find((article) => article.id === params.id)
         setContent(findContent)
 
-        console.log(content)
+        
 
 
     }, [content])

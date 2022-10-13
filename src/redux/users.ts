@@ -1,18 +1,21 @@
 // features/user/userSlice.js
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { stat } from 'fs'
+import { platform } from 'os'
 import { SingUp, UserState } from '../types/interfaces'
-import { getUserDetails, registerUser, userLogin } from './actions/usersAction'
+import { createPassword, getNameByVeify, getUserDetails, googleLogin, registerUser, userLogin } from './actions/usersAction'
 
 const userToken = localStorage.getItem('userToken')
     ? localStorage.getItem('userToken')
     : null
-const profileInfo = localStorage.getItem('userDetails') ? JSON.parse(localStorage.getItem('userDetails') as string): null
-const initialState : UserState= {
+const profileInfo = localStorage.getItem('userDetails') ? JSON.parse(localStorage.getItem('userDetails') as string) : null
+
+console.log(profileInfo, "for here ")
+const initialState: UserState = {
     loading: false,
     userInfo: {
         email: '',
-        password:''
+        password: ''
     },
     userToken,
     error: null,
@@ -41,15 +44,15 @@ const userSlice = createSlice({
             state.error = null
         },
         [registerUser.fulfilled.toString()]: (state, { payload }) => {
-            console.log(payload)
+            console.log(payload, 'getege')
             state.loading = false
             state.success = true
             state.userToken = payload.payload.token
-            state.userInfo.email=payload.payload.user.email
-         
+            state.userInfo.email = payload.payload.user.email
+
         },
         [registerUser.rejected.toString()]: (state, { payload }) => {
-         
+
             state.loading = false
             state.error = payload
         },
@@ -59,10 +62,12 @@ const userSlice = createSlice({
         },
         [userLogin.fulfilled.toString()]: (state, { payload }) => {
             state.loading = false
-            console.log(state)
+
             state.success = true
             state.userToken = payload.payload.accessToken
             state.userInfo.email = payload.payload.email
+            state.profileInfo = payload.payload
+
         },
         [userLogin.rejected.toString()]: (state, { payload }) => {
             state.loading = false
@@ -70,22 +75,71 @@ const userSlice = createSlice({
         },
         [getUserDetails.pending.toString()]: (state) => {
             state.loading = true
-            state.error=null
+            state.error = null
         },
         [getUserDetails.fulfilled.toString()]: (state, { payload }) => {
+            console.log(payload, "ma pa neow")
             state.loading = false
             state.success = true
-            state.userInfo.email=payload.user.email
+            state.userInfo.email = payload.user.email
             state.profileInfo = payload
+
         },
         [getUserDetails.rejected.toString()]: (state, { payload }) => {
             state.loading = false
             state.error = payload
-            state.success =false
+            state.success = false
+        },//
+        [googleLogin.pending.toString()]: (state) => {
+            state.loading = true
+            state.error = null
         },
-        
+        [googleLogin.fulfilled.toString()]: (state, { payload }) => {
+            state.loading = false
+            state.success = true
+            state.userToken = payload.token
+            state.profileInfo = { user: payload.user._doc, company: payload.company._doc }
+
+        },
+        [googleLogin.rejected.toString()]: (state, { payload }) => {
+            state.loading = false
+            state.error = payload
+            state.success = false
+        },
+        [getNameByVeify.pending.toString()]: (state) => {
+            state.loading = true
+            state.error = null
+        },
+        [getNameByVeify.fulfilled.toString()]: (state, { payload }) => {
+            state.loading = false
+            state.success = true
+            state.userToken = payload.token
+            state.profileInfo = payload
+        },
+        [getNameByVeify.rejected.toString()]: (state, { payload }) => {
+            state.loading = false
+            state.error = payload
+            state.success = false
+        },
+        [createPassword.pending.toString()]: (state) => {
+            state.loading = true
+            state.error = null
+        },
+        [createPassword.fulfilled.toString()]: (state, { payload }) => {
+            state.loading = false
+            state.success = true
+            state.userToken = payload.token
+            state.profileInfo = payload
+        },
+        [createPassword.rejected.toString()]: (state, { payload }) => {
+            state.loading = false
+            state.error = payload
+            state.success = false
+        },
+
+
     },
-   
+
 })
 
 export const { handleInputSignup, updateToken, updateUserEmail } = userSlice.actions

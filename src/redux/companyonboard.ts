@@ -35,7 +35,7 @@ const initialState: CompanyFInal = {
     errorfound: true,
     showError: false,
     loading: false,
-    error: null
+    error: false,
 
 }
 
@@ -66,6 +66,12 @@ export const companyonboardSlice = createSlice({
                 state.errors.companyName = '';
             }
 
+            if (state.info.phoneNumber === '') {
+                state.errors.phoneNumber = 'phone number is required'
+            } else {
+                state.errors.phoneNumber = '';
+            }
+
             if (state.info.email === '' || !(/\S+@\S+\.\S+/.test(state.info.email))) {
                 state.errors.email = 'Email is invalid';
             } else {
@@ -73,9 +79,11 @@ export const companyonboardSlice = createSlice({
             }
 
             if (state.info.firstName !== '' && state.info.surnName !== '' && state.info.email !== '' && (/\S+@\S+\.\S+/.test(state.info.email))) {
+                state.error = false
                 state.errorfound = false
             } else {
-                state.errorfound=true
+                state.error = true
+                state.errorfound = true
             }
             
         },
@@ -94,29 +102,31 @@ export const companyonboardSlice = createSlice({
             state.errorfound = checkIsEmpty
         },
         companyStepError: (state) => {
-            // const checkIsEmpty = state.errors.companyName !== ''
-            // state.errorfound = checkIsEmpty
+            const checkIsEmpty = state.errors.companyName !== ''
+            state.errorfound = checkIsEmpty
         }
     },
     extraReducers: {
         [registerCompany.pending.toString()]: (state) => {
             state.loading = true
-            state.error = null
+            state.error = false
         },
         [registerCompany.fulfilled.toString()]: (state, { payload }) => {
             state.loading = false
+            state.error = false
             state.info= payload.company
         },
         [registerCompany.rejected.toString()]: (state, { payload }) => {
             state.loading = false
+            console.log(payload, 'from company')
             state.error = payload
         },
         [getUserDetails.fulfilled.toString()]: (state, { payload }) => {
-            state.info.email = payload.user.email
-            state.info.firstName = payload.user.firstName
-            state.info.surnName = payload.user.surnName
+            state.info.email = payload.user.email? payload.user.email:""
+            state.info.firstName = payload.user.firstName?payload.user.firstName: ""
+            state.info.surnName = payload.user.surnName?payload.user.surnName:""
             if (payload.company) {
-                state.info.companyName = payload.company.companyName
+                state.info.companyName = payload.company.companyName?payload.company.companyName:""
             }
         },
         [userLogin.fulfilled.toString()]: (state, { payload }) => {

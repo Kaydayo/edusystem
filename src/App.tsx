@@ -28,45 +28,63 @@ import Books from './layouts/Resources/Books';
 import Book from './components/Book';
 import Article from './components/Article';
 import ScrollToTop from './components/ScrollToTop';
+import VerifyPassword from './pages/VerifyPassword';
+import EmployeeDashboard from './pages/EmployeeDashboard';
+import EmployeeCourses from './layouts/EmployeeDashboard/EmployeeCourses';
+import CoursePage from './layouts/EmployeeDashboard/CoursePage';
 
 
 
-console.log(process.env.REACT_APP_BACKEND)
+
 function App() {
   const { userInfo, userToken } = useAppSelector((state: RootState) => state.user)
   const dispatch = useAppDispatch()
 
 
+
   // automatically authenticate user if token is found
   useEffect(() => {
-
-    if (userToken) {
-      dispatch(getUserDetails())
-
-    }
-
-    const onUnload = () => {
+    const handleTabClose = () => {
       localStorage.clear()
     };
-    window.addEventListener('beforeunload', onUnload);
+
+    const storeToken = localStorage.getItem('userToken') ?
+      localStorage.getItem('userToken') : null
+
+    if (userToken || storeToken) {
+      console.log(userToken, 'global')
+      dispatch(getUserDetails())
+    }
+
+
+    // const onUnload = () => {
+    //   localStorage.clear()
+    // };
+    // window.addEventListener('beforeunload', onUnload);
+    // return () => {
+    //   window.removeEventListener('beforeunload', onUnload);
+    // };
+
+    window.addEventListener('beforeunload', handleTabClose);
+
     return () => {
-      window.removeEventListener('beforeunload', onUnload);
+      window.removeEventListener('beforeunload', handleTabClose);
     };
 
-  }, [userToken, dispatch])
+  }, [userToken])
 
   useEffect(() => {
-  
+    const SCOPES = "https://www.googleapis.com/auth/drive.metadata.readonly"
     const initClient = () => {
       gapi.auth2.init({
         clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        scope: ''
+        scope: SCOPES
       });
     };
     gapi.load('client:auth2', initClient);
   });
 
-  
+
 
   return <>
     <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}>
@@ -78,9 +96,16 @@ function App() {
 
             <Route path='faq' element={<Faq />} />
 
+            {/* TODO: move to protected route */}
+            <Route path='/employeeDashboard' element={<EmployeeDashboard />}>
+              <Route path="courses" element={<EmployeeCourses />} />
+            </Route>
+
+            <Route path='coursePage' element={<CoursePage />} />
 
             <Route path='signup' element={<Signup />} />
             <Route path='login' element={<Login />} />
+            <Route path='verify/:token' element={<VerifyPassword />} />
             <Route path='contact' element={<Contact />} />
             <Route path='book/:id' element={<Book />} />
             <Route path='article/:id' element={<Article />} />

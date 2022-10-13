@@ -9,9 +9,9 @@ import Login from './Login'
 const ProtectedRoute = () => {
     const { userToken } = useAppSelector((state) => state.user)
 
-    useEffect(() => {
-      toast('Kindly login')
-    }, [])
+    // const getUser = async (token:string) => {
+
+    // }
     
     // show unauthorized screen if no user is found in redux store
     if (!userToken) {

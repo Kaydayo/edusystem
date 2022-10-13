@@ -82,6 +82,49 @@ video {
   font-size: 16px;
 }
 
+.courseVideo{
+    width: 9170px;
+  max-width: 917px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 10px;
+  height: 35rem;
+}
+
+
+.courseControls{
+  display: flex;
+ 
+  position: absolute;
+  justify-content: center;
+  top:35%;
+ 
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+ align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.coursePlayBtn{
+   font-size: 8rem;
+  cursor: pointer;
+}
+
+.courseActions{
+   background-color: none;
+  color: white;
+}
+
+.courseActions Button{
+background-color: transparent;
+  border: none;
+  color: white;
+ 
+}
+
 @media all and (max-width:900px){
   .container{
     padding: 0;

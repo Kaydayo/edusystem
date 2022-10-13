@@ -1,37 +1,38 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import boardStyle from '../../styles/Dashboard/Dashboard.module.css'
 import editIcon from '../../Assets/Images/edit-icon.svg'
 import { CgPen } from 'react-icons/cg'
 import { Link, useNavigate } from 'react-router-dom'
 import Subscription from '../CompanyForms/Subscription'
+import avatar from '../../Assets/Images/companyAvatar.svg'
 
 type ProfileProp =  {
-    data:any
+    userProfilePicture: any,
+    companyName: string,
+    adminFirstName: string,
+    userEmail: string,
+    userPhoneNumber: string,
+    userRole: string,
 }
 
-const Profile: React.FC<ProfileProp> = ({ data }: ProfileProp) => {
+const Profile: React.FC<ProfileProp> = ({ userPhoneNumber, companyName,adminFirstName,userEmail,userProfilePicture,userRole}: ProfileProp) => {
+    // const [profileInfo, setProfileInfo] = useState<any>({companyName:"", profilePicture:"", adminName:"", email:"", phoneNumber:"", role:""})
     const navigate = useNavigate()
-
-    useEffect(() => {
-        if (data.company.length === 0) {
-            navigate(-1)
-        }
-
-    }, [data])
-
     
   return (
       <div className={boardStyle.profileBoard}>
           <div className={boardStyle.leftBoard}>
               <div className={boardStyle.ppBoard}>
-                  <img src={data.user.profilePicture} alt="profile icon" className={boardStyle.rmPP} />
+                  {userProfilePicture ? <img src={userProfilePicture} alt="profile icon" className={boardStyle.rmPP} /> :
+                      <img src={avatar} alt="profile icon" className={boardStyle.rmPP} />
+                  }
                   <span>
                       <img src={editIcon} alt="onculture-edit-icon" />
                   </span>
               </div>
               <div className={boardStyle.profileInfo}>
                   <div className={boardStyle.profileInfoHead}>
-                      <h2>{data.company ? data.company.companyName:""}</h2>
+                      <h2>{companyName ? companyName:" "}</h2>
                       <p>Lagos, Nigeria</p>
                   </div>
                   <div className={boardStyle.otherInfo}>
@@ -42,10 +43,10 @@ const Profile: React.FC<ProfileProp> = ({ data }: ProfileProp) => {
                           <p>Role:</p>
                       </div>
                       <div className={boardStyle.valInfo}>
-                          <p>{data.company?data.company.admin.firstName:""}</p>
-                          <p>{data.user.email}</p>
-                          <p>{data.user.phoneNumber}</p>
-                          <p>{data.user.role}</p>
+                          <p>{adminFirstName?adminFirstName:""}</p>
+                          <p>{userEmail?userEmail:""}</p>
+                          <p>{userPhoneNumber?userPhoneNumber:""}</p>
+                          <p>{userRole?userRole:""}</p>
                       </div>
                   </div>
               </div>

@@ -1,3 +1,6 @@
+import { string } from "yup";
+import { ISubCourse } from "../layouts/CompanyForms/SubscriptionCourse";
+
 export interface AdminSignup {
     firstName: string;
     surnName: string;
@@ -52,7 +55,7 @@ export interface CompanyFInal {
     errorfound: boolean,
     showError: boolean,
     loading: boolean,
-    error: string|null
+    error: boolean
 }
 
 export interface InviteData {
@@ -88,6 +91,38 @@ export interface UserState {
     error: string|null,
     success: boolean,
     profileInfo:any
+}
+
+export interface SubscriptionState {
+    selections: ISubCourse[],
+    subscriptions: ISubCourse[],
+    loading: boolean,
+    error: any,
+    success:boolean
+}
+
+export interface Course{
+    constId: string;
+    name: string;
+    step: number;
+    contents: Content[]
+}
+
+export interface CourseState{
+    courses: any[],
+    activeCourse: any[],
+    loading: boolean,
+    error: any,
+    success: boolean
+}
+
+export interface Content{
+    id: string;
+    subTopic: string;
+    step: number;
+    media: string;
+    note: string;
+    completed: boolean;
 }
 
 

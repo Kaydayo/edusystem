@@ -26,7 +26,7 @@ const ContactForm = () => {
             }}
             validationSchema={contactSchema}
             onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
-                console.log('i clicked ir')
+               
                 setTimeout(() => {
                     alert(JSON.stringify(values, null, 2));
                     setSubmitting(false);

@@ -5,7 +5,7 @@ import emptStateBio from '../../Assets/Images/Team.svg'
 const Team = () => {
   return (
       <div>
-          < EmptyState imag={emptStateBio} text="Looks like you have not completed your profile yet Click here to get it completed." />
+          < EmptyState imag={emptStateBio} text="Click here to create teams for course collaboration" />
         </div>
   )
 }

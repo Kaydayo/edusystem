@@ -82,7 +82,7 @@ export const inviteEmployeeSlice = createSlice({
             state.error = null
         },
         [inviteEmployees.fulfilled.toString()]: (state, { payload }) => {
-            console.log(payload)
+           
             state.loading = false
             state.success = true
         },

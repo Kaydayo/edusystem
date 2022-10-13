@@ -1,5 +1,7 @@
+import { unwrapResult } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
+import { useNavigate } from 'react-router-dom';
 import { getUserDetails, userLogin } from '../redux/actions/usersAction';
 import { useAppDispatch } from '../redux/store';
 import { updateToken, updateUserEmail } from '../redux/users';
@@ -7,30 +9,28 @@ import { updateToken, updateUserEmail } from '../redux/users';
 
 // const dispatch = useAppDispatch()
 function useGoogleAuthentication() {
-    const dispatch = useAppDispatch()
+
+    const navigate = useNavigate()
     const handleSuccess = async (response: any) => {
-        console.log(response)
+
         if (response.error !== undefined) {
-            console.log(response.error, 'ooooo')
+
         }
         let result: any;
 
-        console.log(response.credential)
+        console.log(response, "na google")
 
         result = await axios.post('/google-authentication', {
             token: response.tokenId
         }, {
             headers: {
                 'Content-Type': 'application/json',
-               
+
             }
         })
-        // console.log(result)
-
 
         localStorage.setItem('userToken', result.data.token)
-        dispatch(getUserDetails)
-        // dispatch(updateToken(result.data.token))
+
         // dispatch(updateUserEmail(result.data.email))
     }
 

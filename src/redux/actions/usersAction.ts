@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import axios from 'axios'
+import { string } from "yup"
 import { UserState } from "../../types/interfaces"
+
 
 
 
@@ -26,7 +28,7 @@ export const registerUser = createAsyncThunk(
                 config
             )
             localStorage.setItem('userToken', data.payload.token)
-
+            console.log(data, 'see stuff')
             if (data.success === false) {
                 return rejectWithValue(data.message)
             }
@@ -46,7 +48,7 @@ export const registerUser = createAsyncThunk(
 
 export const userLogin = createAsyncThunk(
     'user/login',
-    async ({ email, password }: { email: string, password: string }, { rejectWithValue }) => {
+    async ({ email, password }: { email: string, password: string }, { rejectWithValue, dispatch }) => {
         try {
             // configure header's Content-Type as JSON
             const config = {
@@ -63,6 +65,9 @@ export const userLogin = createAsyncThunk(
                 return rejectWithValue(data.message)
             }
             localStorage.setItem('userToken', data.payload.accessToken)
+            localStorage.setItem('userDetails', JSON.stringify(data.payload))
+
+            dispatch(getUserDetails())
             return data
         } catch (error: any) {
             // return custom error message from API if any
@@ -75,6 +80,35 @@ export const userLogin = createAsyncThunk(
     }
 )
 
+export const googleLogin = createAsyncThunk(
+    'user/google',
+    async (res: any, { rejectWithValue }) => {
+        console.log(res, 'nvvhfjh')
+        try {
+            const { data } = await axios.post('/google-authentication', {
+                token: res.tokenId
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+
+                }
+            })
+
+            console.log(data, 'from redux')
+            localStorage.setItem('userToken', data.token)
+            localStorage.setItem('userDetails', JSON.stringify(data))
+
+            return data
+        } catch (error: any) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+
+    }
+)
 
 export const getUserDetails = createAsyncThunk(
     'user/getUserDetails',
@@ -82,26 +116,80 @@ export const getUserDetails = createAsyncThunk(
         try {
             // get user data from store
             const { user } = getState() as { user: UserState };
-            console.log(user.userToken, '======')
+            console.log(user.userToken, 'i dey fine')
             // configure authorization header with user's token
             const config = {
                 headers: {
                     'Cache-control': 'no-cache'
                 },
             }
-            const { data } = await axios.post('users/find-me', {
+            const { data } = await axios.post('/users/find-me', {
                 token: user.userToken
             }, config)
 
-            console.log("RESPONSE:", data)
-
-         
-            // const {data }  = req
-            console.log(data, 'getUserDetails')
-            if (data.success !== true) {
-                return false
+            console.log(data, 'na im be diud')
+            // if (data.success !== true) {
+            //     return false
+            // }
+            localStorage.setItem('userDetails', JSON.stringify(data.payload))
+            return data.payload
+        } catch (error: any) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
             }
-            localStorage.setItem('userDetails',JSON.stringify(data.payload))
+        }
+    }
+)
+
+
+export const getNameByVeify = createAsyncThunk(
+    'user/getMeVerify',
+    async (token: any, { rejectWithValue }) => {
+        try {
+            const config = {
+                headers: {
+                    'Cache-control': 'no-cache'
+                },
+            }
+            const { data } = await axios.post('/users/getMeVerify', {
+                token: token
+            }, config)
+            console.log(data, 'from token param id')
+            localStorage.setItem('userDetails', JSON.stringify(data.payload))
+            localStorage.setItem('userToken', data.payload.token)
+            return data.payload
+        } catch (error: any) {
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)
+
+export const createPassword = createAsyncThunk(
+    'user/createPass',
+    async ({ token, password }: { token: string, password: string }, { rejectWithValue }) => {
+        try {
+
+            const config = {
+                headers: {
+                    'Cache-control': 'no-cache'
+                },
+            }
+            const { data } = await axios.post('/users/createPassword', {
+                token: token,
+                password: password
+            }, config)
+
+            console.log(data, 'data from password')
+            localStorage.setItem('userDetails', JSON.stringify(data.payload))
+            localStorage.setItem('userToken', data.payload.token)
+
+
             return data.payload
         } catch (error: any) {
             if (error.response && error.response.data.message) {

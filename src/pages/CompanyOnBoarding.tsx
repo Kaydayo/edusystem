@@ -16,38 +16,65 @@ import { handleErrors } from '../redux/companyonboard'
 import Checkout from '../layouts/CompanyForms/Checkout'
 import { registerCompany } from '../redux/actions/companyAction'
 import { ToastContainer, toast } from 'react-toastify';
+import { getUserDetails } from '../redux/actions/usersAction'
+import axios from 'axios'
+import { postAllSubscriptions } from '../redux/subscription'
 
 
 const CompanyOnBoarding = () => {
   const [step, setStep] = useState<number>(0)
-  const [findError, setFindError] = useState<boolean>(false)
+
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const checkError = useAppSelector((state: RootState) => state.companyonboard.errorfound)
   const getCompany = useAppSelector((state: RootState) => state.companyonboard.info)
   const getCompanyField = useAppSelector((state: RootState) => state.companyonboard.info.companyName)
-  const {error} = useAppSelector((state:RootState)=> state.companyonboard)
+  const { errorfound, info } = useAppSelector((state: RootState) => state.companyonboard)
+  const { selections } = useAppSelector((state: RootState) => state.subscription)
+  const { error } = useAppSelector((state: RootState) => state.user)
+
+  const getAllSubscriptions = async () => {
+    const { data } = await axios.get('subscription/all')
+
+    console.log('Data ree naah', data)
+      dispatch(postAllSubscriptions(data))
+    
+  }
+  // dispatch(handleErrors())
+
+  // console.log(error)
+  useEffect(() => {
+    dispatch(handleErrors)
+    getAllSubscriptions()
+
+  }, [])
 
   const skipBtn = () => {
+    dispatch(getUserDetails())
     if (!error) {
       navigate('/dashboard/bio')
     } else {
       toast(error)
+      return
     }
   }
-
+  console.log(step, 'step')
   const nextBtn = () => {
     dispatch(handleErrors())
-   toast(error)
-    if(step === 1) {
+    if (step > 1) {
+      toast(error)
+    }
+
+
+    if (step === 1) {
       dispatch(registerCompany(getCompany))
     }
     if (step >= 1 && getCompanyField === '') {
       return
-    } 
+    }
 
-    
-    
+
+
     if (step >= multiSteps.length - 1) {
       setStep(multiSteps.length - 1)
     } else {
@@ -67,20 +94,20 @@ const CompanyOnBoarding = () => {
     }
 
   }
-  const multiSteps = [<AdminForm />, <CompanyForm />, <Subscription />, <><Subscription /></>]
+  const multiSteps = [<AdminForm />, <CompanyForm />, <Subscription />, <Checkout step={step} setStep={setStep} />]
 
 
   return (
     <>
       <Nav pure={true} />
-      <ToastContainer/>
+      <ToastContainer />
       <div className={companyStyle.main}>
         <div className={companyStyle.header}>
           <h4>Create Company Profile</h4>
           <p>Already have an account? <span><Link className={companyStyle.setLink} to='/login'>Login</Link></span></p>
         </div>
         <div className={companyStyle.mainStepper}>
-          <Stepper step={step} setStep={setStep}/>
+          <Stepper step={step} setStep={setStep} />
         </div>
         <div className={companyStyle.allForm}>
 
@@ -96,7 +123,7 @@ const CompanyOnBoarding = () => {
           {step > 1 && <Button className={companyStyle.btnSkip} onClick={skipBtn}>
             Skip
           </Button>
-       }
+          }
 
           {
             step !== 3 && <Button type={step === 3 ? "submit" : ''} className={companyStyle.btnNext} onClick={nextBtn}>
@@ -104,9 +131,9 @@ const CompanyOnBoarding = () => {
             </Button>
           }
         </div>
-        <div>
+        {/* <div>
           {step === multiSteps.length - 1 && <Checkout />}
-        </div>
+        </div> */}
 
       </div>
     </>

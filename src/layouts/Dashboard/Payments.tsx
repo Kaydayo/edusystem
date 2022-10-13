@@ -4,7 +4,7 @@ import emptStateBio from '../../Assets/Images/Payment.svg'
 const Payments = () => {
   return (
       <div>
-          < EmptyState imag={emptStateBio} text="Looks like you have not completed your profile yet Click here to get it completed." />
+          < EmptyState imag={emptStateBio} text="Click here to Subscribe" />
     </div>
   )
 }
