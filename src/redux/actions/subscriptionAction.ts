@@ -14,8 +14,8 @@ export const paySubscription = createAsyncThunk(
             const { subscription } = getState() as { subscription: SubscriptionState }
             const { user } = getState() as { user: UserState }
 
-            console.log(subscription.selections, 'the selections data'),
-            console.log(user.userToken,'selection token')
+            
+            
             const config = {
                 headers: {
                     'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export const paySubscription = createAsyncThunk(
                 config
             )
 
-            console.log(data)
+            
             
         } catch (error:any) {
             if (error.response && error.response.data.message) {

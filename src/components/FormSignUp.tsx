@@ -75,11 +75,11 @@ const FormSignUp = ({ text }: FormType) => {
 
     useEffect(() => {
         // if (success) navigate('/login')
-        console.log(text, "text")
+       
 
         if (success) {
 
-            console.log(profileInfo.company, "ppp")
+           
             // alert("signed up successfully")
             if (text === FormName.SIGNUP) {
                 

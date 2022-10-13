@@ -17,7 +17,7 @@ const SideNav = () => {
     const [progressCourse, setProgressCourse] = useState<number>(0)
     const [subProgress, setSubProgress] = useState<number>(0)
 
-    console.log(progressCourse, subProgress, 'check am')
+   
 
     return (
         <div className={courseStyle.sideNav}>

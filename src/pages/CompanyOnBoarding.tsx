@@ -36,13 +36,13 @@ const CompanyOnBoarding = () => {
   const getAllSubscriptions = async () => {
     const { data } = await axios.get('subscription/all')
 
-    console.log('Data ree naah', data)
+  
       dispatch(postAllSubscriptions(data))
     
   }
   // dispatch(handleErrors())
 
-  // console.log(error)
+ 
   useEffect(() => {
     dispatch(handleErrors)
     getAllSubscriptions()
@@ -58,7 +58,7 @@ const CompanyOnBoarding = () => {
       return
     }
   }
-  console.log(step, 'step')
+ 
   const nextBtn = () => {
     dispatch(handleErrors())
     if (step > 1) {

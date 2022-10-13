@@ -118,7 +118,7 @@ export const companyonboardSlice = createSlice({
         },
         [registerCompany.rejected.toString()]: (state, { payload }) => {
             state.loading = false
-            console.log(payload, 'from company')
+         
             state.error = payload
         },
         [getUserDetails.fulfilled.toString()]: (state, { payload }) => {

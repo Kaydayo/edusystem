@@ -34,7 +34,7 @@ const VerifyPassword = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     
-    console.log(loading, "loading")
+   
     
     const getData = async (token:any) => {
         const { data } = await axios.post('/users/getMeVerify', {

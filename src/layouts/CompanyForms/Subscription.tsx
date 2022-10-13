@@ -9,11 +9,8 @@ const Subscription = () => {
     const dispatch = useAppDispatch()
 
     const { subscriptions } = useAppSelector((state: RootState) => state.subscription)
-    console.log(subscriptions, 'log subs')
-    // useEffect(() => {
-    //     console.log(subScriptionCourse,subscriptions, "kkkkkkkk")
-    //     dispatch(postAllSubscriptions(subScriptionCourse))
-    // }, [subscriptions])
+   
+   
     
 
     return (

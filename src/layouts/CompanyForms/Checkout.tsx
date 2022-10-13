@@ -23,7 +23,7 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
   const [totalCost, setTotalCost] = useState<number>(0)
   const [tax, setTax] = useState<number>(9)
   const { selections, subscriptions, error, success } = useAppSelector((state: RootState) => state.subscription)
-  console.log(subscriptions,'lood check')
+ 
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
@@ -33,7 +33,7 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
 
     const additions = calculateTotalSelect(selections)
 
-    console.log(additions,"gbo gbo e je")
+    
 
     setSubTotal(additions)
     setTotalCost(additions+tax)
