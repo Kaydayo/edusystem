@@ -58,7 +58,7 @@ const CustomComment = () => {
               </div>
 
               <div>
-                <textarea name="comment" id="comment" placeholder='add a comment...'></textarea>
+                <textarea className={commentStyles.textComment} name="comment" id="comment" placeholder='add a comment...'></textarea>
               </div>
 
               <div>
