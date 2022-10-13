@@ -160,7 +160,7 @@ const FormSignUp = ({ text }: FormType) => {
                         )}
                         isSignedIn={false}
                         uxMode={'redirect'}
-                        redirectUri={"localhost:3000/company-onboarding"}
+                        redirectUri={"https://onculture.io/company-onboarding"}
                     />
                 </div>
 
