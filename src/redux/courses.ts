@@ -8,6 +8,7 @@ import { createPassword, getNameByVeify, getUserDetails, googleLogin, registerUs
 import { courseContent } from '../constants/data'
 import { paySubscription } from './actions/subscriptionAction'
 import { string } from 'prop-types'
+import * as immer from 'immer'
 
 const courses = [...courseContent]
 
@@ -23,19 +24,19 @@ const courseSlice = createSlice({
     name: 'courses',
     initialState,
     reducers: {
-        // toActiveCourse: (state, action: PayloadAction<{constId: string, contentId: string}>) => {
-        //     const presentCourse = state.courses.filter((course: any) => course.constId === action.payload.constId)
-            
-        //     // state.activeCourse = presentCourse[0].contents.filter((topics:any)=> topics.)
-        // },
-        completeCourse: (state, action: PayloadAction<{ constId?: string, subIndex: string }>) => {
-            const updatCourses = state.courses.map((item) => {
-                if (item.constId === action.payload.constId) {
-                    item.contents.subIndex.completed = true
-                }
-            })
 
-            state.courses = [...updatCourses]
+        completeCourse: (state, action: PayloadAction<{ id: number, subId: number }>) => {
+            // const updateCourse = (arr:any[],firstIndex:number , secondIndex:number) => {
+            //     return arr.map((item, index) => {
+            //         if (index === firstIndex) {
+                        
+            //         }
+            //     })
+            // }
+
+            state.courses = immer.produce(state.courses, draftState => {
+                draftState[action.payload.id].contents[action.payload.subId].completed = true 
+            })
         }
         
     }

@@ -1,13 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import onCultureLogo from '../../Assets/Images/onculture-logo.png';
 import { FaRegBell } from 'react-icons/fa'
 import { RiArrowDropDownLine } from 'react-icons/ri'
 import employeeStyle from '../../styles/EmployeeDashboard/EmployeeDashboard.module.css'
 import avatar from '../../Assets/Images/avatar.svg'
 import { useNavigate } from 'react-router-dom';
+import { RootState, useAppSelector } from '../../redux/store';
+
+
 
 const EmployeeNav = () => {
   const navigate = useNavigate()
+  const { profileInfo, userToken } = useAppSelector((state: RootState) => state.user)
+  const [employee, setEmployee] = useState<any>({firstName:"", lastName:""})
+  const [logout, setLogout] = useState<boolean>(false)
+
+  console.log(profileInfo,"Lbababa")
+  const getEmployee = (employees: any[], id: string) => {
+    const foundEmployee = employees.filter((employee: any) => employee._id === id)
+    console.log(foundEmployee,"foundEmployee")
+    setEmployee(foundEmployee[0])
+  }
+
+  console.log(employee,"1st attepmt")
+  useEffect(() => {
+    getEmployee(profileInfo.company[0].employees, profileInfo.user._id)
+
+  }, [profileInfo])
+
+
+  
+
+
+  
+
+
   return (
     <div className={employeeStyle.navSection}>
       {/* onculture logo */}
@@ -25,8 +52,8 @@ const EmployeeNav = () => {
 
         {/* name and job role */}
         <div className={employeeStyle.nameJob}> 
-          <p>Name</p>
-          <p>Job</p>
+          <p>{employee.firstName}</p>
+          <p>{employee.role}</p>
         </div>
 
 
@@ -38,8 +65,19 @@ const EmployeeNav = () => {
 
           {/* dropdown */}
           <div className={employeeStyle.drpDown}>
-            <RiArrowDropDownLine />
+            <RiArrowDropDownLine onClick={() => setLogout(!logout)}
+             
+            />
           </div>
+
+          {logout && <div className={employeeStyle.logout} onClick={() => {
+            localStorage.clear()
+            window.location.reload()
+          }}>
+            <p>
+              Logout
+            </p>
+          </div>}
        </div>
 
 

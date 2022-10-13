@@ -4,7 +4,8 @@ import EmployeeCourseCard from './EmployeeCourseCard'
 
 const EmployeeCourses = () => {
   return (
-      <div className={employeeStyle.employeeCourseMain}>
+    <div className={employeeStyle.employeeCourseMain}>
+      
           <EmployeeCourseCard
               courseTitle={"Harrassment in the workplace"}
               value={45}

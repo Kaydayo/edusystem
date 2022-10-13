@@ -23,30 +23,41 @@ interface ContentCourse {
     subTopic: string,
     step: number,
     media: string,
-    note: string
+    note: string,
+    completed: boolean
+    
 }
 
-const CourseAccordion = ({ data, index , progress}: FaqProp) => {
+const CourseAccordion = ({ data, index, progress }: FaqProp) => {
     const [clicked, setClicked] = useState<boolean>(false)
     return (
         <div className={`${accordStyle.accordMain}`} key={index}>
-            <div className={`${accordStyle.accordTitle} ${clicked ? accordStyle.accordActive : ''}`}>
+            <div className={`${accordStyle.accordTitle} ${clicked || progress === index ? accordStyle.accordActive : ''}`}>
                 <h4>{addZeroToSingle(index)}</h4>
                 <h4>{capitalizeFirstLetter(data.name)}</h4>
                 <div>
-                    {clicked ? <FaAngleDown onClick={() => setClicked(!clicked)
-                       } /> : <FaAngleUp onClick={() => setClicked(!clicked)} />}
+                    {clicked ? <FaAngleDown onClick={() => {
+                        if (index === progress) {
+                            setClicked(!clicked)
+                        }
+                    }
+                    } /> : <FaAngleUp onClick={() => {
+                            if (index === progress) {
+                                setClicked(!clicked)
+                            }
+                    }
+                    } />}
                 </div>
             </div>
-            <div className={`${accordStyle.accodContent} ${clicked ? accordStyle.rev : ''}`}>
-                {clicked && data.contents.map((data: any) => {
+            <div className={`${accordStyle.accodContent} ${clicked || progress === index ? accordStyle.rev : ''}`}>
+                {clicked || progress === index && data.contents.map((data: any) => {
                     return (<div key={data.id} className={accordStyle.accodList}>
                         <div>
-                            {data.completed?<AiFillCheckCircle className={accordStyle.accordComplete}/>:<GiCircle />}
+                            {data.completed ? <AiFillCheckCircle className={accordStyle.accordComplete} /> : <GiCircle />}
                         </div>
                         <div>
                             <p> {capitalizeFirstLetter(data.subTopic)}</p>
-                       </div>
+                        </div>
                     </div>)
                 })
                 }

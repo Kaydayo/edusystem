@@ -253,6 +253,7 @@ font-weight: 700;
 .employeeCourseMain{
     width: 90%;
     display: flex;
+    flex-wrap: wrap;
     margin: 0 auto;
     margin-bottom: 3rem;
 }
@@ -375,4 +376,20 @@ font-weight: 700;
 
 .accordComplete{
     color: var(--primary-color)
+}
+
+.logout{
+    position: absolute;
+    background-color: white;
+    box-shadow: 1px 1px 13px 5px #8790a325;
+    padding: 0 1rem;
+    top: 4rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    /* left: -2rem; */
+}
+
+.logout:hover{
+    background-color: rgb(245, 245, 245);
 }

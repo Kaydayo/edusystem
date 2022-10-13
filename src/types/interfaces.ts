@@ -109,7 +109,7 @@ export interface Course{
 }
 
 export interface CourseState{
-    courses: any[],
+    courses: Course[] | any[],
     activeCourse: any[],
     loading: boolean,
     error: any,

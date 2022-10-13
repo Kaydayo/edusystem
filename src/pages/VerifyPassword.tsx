@@ -45,13 +45,15 @@ const VerifyPassword = () => {
         } else {
             const { payload } = data
             setName(payload.user.firstName)
-            setCompany(payload.company.companyName)
+            setCompany(payload.company[0].companyName)
         }
         
     } 
     useEffect(() => {
-        getData(params.token)
 
+        
+        getData(params.token)
+        setIdToken(params.token)
         dispatch(getNameByVeify(params.token))
     }, [])
 
@@ -77,15 +79,13 @@ const VerifyPassword = () => {
                   }}
                   validationSchema={setPasswordSchema}
                   onSubmit={(values: PasswordValue, { setSubmitting }: FormikHelpers<PasswordValue>) => {
-                      
+                      console.log(idToken,"idtoken here")
                       dispatch(createPassword({ token: idToken, password: values.password }))
                       setTimeout(() => {
                           toast("Password Update successfull");
-                          navigate('/login')
+                          navigate('/employeeDashboard/courses')
                           setSubmitting(false);
                       }, 500)
-                          
-                          
                    
                   }}
               >
