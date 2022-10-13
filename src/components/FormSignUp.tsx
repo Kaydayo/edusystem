@@ -52,62 +52,86 @@ const FormSignUp = ({ text }: FormType) => {
             dispatch(registerUser(data))
             toast(error)
             dispatch(handleFormInput({ key: CompanyFormEnum.EMAIL, value: data.email }))
+            await userSignUpFetch(data.email, data.password)
         } else {
+           
             dispatch(userLogin(data))
             dispatch(getUserDetails())
-
-            // try {
-            //     unwrapResult(getUser)
-            //     navigate('/dashboard/bio')
-            // } catch (error) {
-
-            // }
             dispatch(handleFormInput({ key: CompanyFormEnum.EMAIL, value: data.email }))
+            await userLoginFetch(data.email, data.password)
             toast(error)
 
         }
     }
 
-    
+   
+    const userLoginFetch = async (email:string, password:string) => {
+        const { data } = await axios.post(
+            '/users/login',
+            { username: email, password }
+        )
+        if (!data.success) {
+            navigate('/')
+        } else {
+            const { payload } = data
+            if (payload.user.isEmployee) {
+                localStorage.setItem('userDetails', payload)
+                localStorage.setItem('userToken', payload.accessToken)
+                navigate('/employeeDashboard/courses')
+            } else {
+                localStorage.setItem('userDetails', payload)
+                localStorage.setItem('userToken', payload.token)
+                navigate('/dashboard/bio')
+            }
+            
+        }
+    }
+
+    const userSignUpFetch = async (email: string, password: string) => {
+        const { data} = await axios.post(`/users/sign-up`,{ email, password })
+        
+        console.log(data, "jsbgckgdgqwdugqwdah")
+        
+        // if (!data.success) {
+        //     navigate('/')
+        //     toast("Signup failed")
+        // } else {
+            localStorage.setItem('userToken', data.payload.accessToken)
+            // localStorage.setItem('userDetails', data.payload)
+            navigate('/company-onboarding')
+        // }
+        
+    }
+
 
     // automatically authenticate user if token is found
 
 
     useEffect(() => {
-        // if (success) navigate('/login')
-       
 
-        if (success) {
 
-           
-            // alert("signed up successfully")
-            if (text === FormName.SIGNUP) {
-                
-                toast(" sign up was successful")
-                navigate('/company-onboarding')
-            } else {
-                
-                if (profileInfo === null || !profileInfo.company || profileInfo.company.length === 0) {
-                    if (profileInfo.user.isEmployee) {
-                        
-                        // navigate('/')
-                    } else {
-                        
-                        navigate('/company-onboarding')
-                    }
+        // if (success) {
+        //     // alert("signed up successfully")
 
-                } else {
-                    if (profileInfo.user.isEmployee) {
-                       
-                        navigate('/employeeDashboard/courses')
-                    } else {
-                        navigate('/company-onboarding')
-                    }
+        //     if (profileInfo === null || !profileInfo.company || profileInfo.company.length === 0) {
+        //         if (profileInfo.user.isEmployee) {
+        //             navigate('/employeeDashboard/courses')
+        //         } else {
 
-                }
-            }
+        //             navigate('/dashboard/bio')
+        //         }
 
-        }
+        //     } else {
+        //         if (profileInfo.user.isEmployee) {
+        //             navigate('/employeeDashboard/courses')
+        //         } else {
+        //             navigate('/company-onboarding')
+        //         }
+
+        //     }
+
+
+        // }
 
     }, [navigate, userInfo, userToken, success, error])
 

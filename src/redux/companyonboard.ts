@@ -124,9 +124,10 @@ export const companyonboardSlice = createSlice({
         [getUserDetails.fulfilled.toString()]: (state, { payload }) => {
             state.info.email = payload.user.email? payload.user.email:""
             state.info.firstName = payload.user.firstName?payload.user.firstName: ""
-            state.info.surnName = payload.user.surnName?payload.user.surnName:""
-            if (payload.company) {
-                state.info.companyName = payload.company.companyName?payload.company.companyName:""
+            state.info.surnName = payload.user.surnName ? payload.user.surnName : ""
+            console.log(payload.company, "jghjgfjgyeg")
+            if (payload.company && payload.company.length) {
+                state.info.companyName = payload.company[0].companyName?payload.company.companyName:""
             }
         },
         [userLogin.fulfilled.toString()]: (state, { payload }) => {

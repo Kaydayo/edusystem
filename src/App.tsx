@@ -52,7 +52,7 @@ function App() {
       localStorage.getItem('userToken') : null
 
     if (userToken || storeToken) {
-     
+
       dispatch(getUserDetails())
     }
 
@@ -65,11 +65,11 @@ function App() {
     //   window.removeEventListener('beforeunload', onUnload);
     // };
 
-    window.addEventListener('beforeunload', handleTabClose);
+    // window.addEventListener('beforeunload', handleTabClose);
 
-    return () => {
-      window.removeEventListener('beforeunload', handleTabClose);
-    };
+    // return () => {
+    //   window.removeEventListener('beforeunload', handleTabClose);
+    // };
 
   }, [userToken])
 
@@ -97,11 +97,7 @@ function App() {
             <Route path='faq' element={<Faq />} />
 
             {/* TODO: move to protected route */}
-            <Route path='/employeeDashboard' element={<EmployeeDashboard />}>
-              <Route path="courses" element={<EmployeeCourses />} />
-            </Route>
 
-            <Route path='coursePage' element={<CoursePage />} />
 
             <Route path='signup' element={<Signup />} />
             <Route path='login' element={<Login />} />
@@ -123,6 +119,11 @@ function App() {
                 <Route path="report" element={<Report />} />
                 <Route path="subscription" element={<Payments />} />
               </Route>
+              <Route path='/employeeDashboard' element={<EmployeeDashboard />}>
+                <Route path="courses" element={<EmployeeCourses />} />
+              </Route>
+
+              <Route path='coursePage' element={<CoursePage />} />
             </Route>
 
 

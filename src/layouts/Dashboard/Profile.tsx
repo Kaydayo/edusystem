@@ -8,11 +8,11 @@ import avatar from '../../Assets/Images/companyAvatar.svg'
 
 type ProfileProp =  {
     userProfilePicture: any,
-    companyName: string,
-    adminFirstName: string,
-    userEmail: string,
-    userPhoneNumber: string,
-    userRole: string,
+    companyName: string | undefined,
+    adminFirstName: string | undefined,
+    userEmail: string |undefined,
+    userPhoneNumber: string | undefined,
+    userRole: string | undefined,
 }
 
 const Profile: React.FC<ProfileProp> = ({ userPhoneNumber, companyName,adminFirstName,userEmail,userProfilePicture,userRole}: ProfileProp) => {

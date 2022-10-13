@@ -33,6 +33,7 @@ export const inviteEmployees = createAsyncThunk(
                     Authorization: `Bearer ${user.userToken}`
                 },
             }
+            console.log(user.userToken,"here")
             // make request to backend
             const { data } = await axios.post(
                 `/employee/invite`,
@@ -45,6 +46,8 @@ export const inviteEmployees = createAsyncThunk(
                 },
                 config
             )
+
+            console.log(data,"data")
             if (data.success === false) {
                 return rejectWithValue(data.message)
             }

@@ -131,6 +131,7 @@ export const getUserDetails = createAsyncThunk(
             // if (data.success !== true) {
             //     return false
             // }
+            console.log(data,"userDetails")
             localStorage.setItem('userDetails', JSON.stringify(data.payload))
             return data.payload
         } catch (error: any) {
@@ -185,7 +186,7 @@ export const createPassword = createAsyncThunk(
                 password: password
             }, config)
 
-          
+            console.log(data.payload, "get data payload")
             localStorage.setItem('userDetails', JSON.stringify(data.payload))
             localStorage.setItem('userToken', data.payload.token)
 

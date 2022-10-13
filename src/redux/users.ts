@@ -61,12 +61,15 @@ const userSlice = createSlice({
             state.error = null
         },
         [userLogin.fulfilled.toString()]: (state, { payload }) => {
+            console.log(payload, "login")
             state.loading = false
 
             state.success = true
             state.userToken = payload.payload.accessToken
             state.userInfo.email = payload.payload.email
             state.profileInfo = payload.payload
+
+
 
         },
         [userLogin.rejected.toString()]: (state, { payload }) => {
@@ -78,7 +81,7 @@ const userSlice = createSlice({
             state.error = null
         },
         [getUserDetails.fulfilled.toString()]: (state, { payload }) => {
-          
+            console.log(payload, "getuserDetails")
             state.loading = false
             state.success = true
             state.userInfo.email = payload.user.email

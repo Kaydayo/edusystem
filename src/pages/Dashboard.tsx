@@ -18,7 +18,7 @@ const Dashboard = () => {
   const dispatch = useAppDispatch()
 
   
-
+console.log(profileInfo,"juju")
   useEffect(() => {
 
     if (profileInfo === null) {
@@ -45,7 +45,7 @@ const Dashboard = () => {
           <DashboardNav setShowModal={setShowModal} profileImage={profileInfo.user.profilePicture} />
         </div>
         <div>
-          <Profile userEmail={profileInfo.user.email} userProfilePicture={profileInfo.user.profilePicture} companyName={profileInfo.company.companyName} adminFirstName={profileInfo.company.admin.firstName} userRole={profileInfo.user.role} userPhoneNumber={profileInfo.user.phoneNumber} />
+          <Profile userEmail={profileInfo.user.email} userProfilePicture={profileInfo.user.profilePicture} companyName={profileInfo.company[0].companyName} adminFirstName={profileInfo.company[0].admin.firstName} userRole={profileInfo.user.role} userPhoneNumber={profileInfo.user.phoneNumber} />
         </div>
         <div>
           <DashboardPages />
