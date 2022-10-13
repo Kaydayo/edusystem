@@ -5,12 +5,15 @@
     /* flex-direction: column; */
     box-sizing: border-box;
     gap: 3rem;
+    height: 1270px;
+    background-color: #F5F8FE;
+   
     
 }
 
 .navigations{
     width: fit-content;
-    height: 100%;
+    height:fit-content;
    
     /* padding: 1rem 1rem; */
 }
@@ -20,13 +23,22 @@
     font-size: 20px;
 }
 
-.navigations p:first-of-type{
+.navigations .firstP{
     padding-left: 2rem;
+    background-color: white;
+    height: 40px;
+    margin-top: 0;
+     padding-top: 1rem;
+}
+
+.navigations p:first-of-type{
+     padding-left: 2rem;
+
 }
 
 .mainNavs{
      background-color: #F5F8FE;
-     height: 95vh;
+     height: fit-content;
 
 }
 
@@ -34,7 +46,8 @@
     padding-top: 1.5rem;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: fit-content;
+    /* overflow: scroll; */
 }
 
 .chatBtns{
@@ -74,3 +87,33 @@
     
 }
 
+.commentBox{
+    padding-top: 2rem;
+    height: fit-content;
+    /* overflow-y: hidden; */
+    /* height: 700px; */
+}
+
+.commentBox::-webkit-scrollbar{
+    width: 0px;
+    background: transparent;
+}
+
+.contentText{
+    line-height: 2.5rem;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.completeBtn{
+      width: 279px;
+    height:64px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
+}

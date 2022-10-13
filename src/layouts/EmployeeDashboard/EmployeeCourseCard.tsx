@@ -3,6 +3,7 @@ import Button from '../../components/Button';
 import RoundProgress from '../../components/RoundProgress';
 import { getColorGrade } from '../../utils/helper';
 import employeeStyle from '../../styles/EmployeeDashboard/EmployeeDashboard.module.css'
+import { useNavigate } from 'react-router';
 
 
 type EmployeeCourseCardProp = {
@@ -14,7 +15,9 @@ type EmployeeCourseCardProp = {
     description: string;
 
 }
-const EmployeeCourseCard = ({courseTitle, value,duration,timeLeft,classes, description}:EmployeeCourseCardProp) => {
+const EmployeeCourseCard = ({ courseTitle, value, duration, timeLeft, classes, description }: EmployeeCourseCardProp) => {
+    
+    const navigate = useNavigate()
   return (
       <div className={employeeStyle.employeeCourse}>
           <div className={employeeStyle.courseCard}>
@@ -47,7 +50,7 @@ const EmployeeCourseCard = ({courseTitle, value,duration,timeLeft,classes, descr
               </div>
           </div>
 
-          <Button className={employeeStyle.contBtn}>
+          <Button className={employeeStyle.contBtn} onClick={()=> navigate('/coursePage')}>
               Continue
           </Button>
     </div>

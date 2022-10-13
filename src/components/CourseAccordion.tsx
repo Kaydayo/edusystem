@@ -8,6 +8,8 @@ import { GiCircle } from 'react-icons/gi';
 type FaqProp = {
     data: FaqData,
     index: number,
+    progress: number,
+    setProgress?: (progress: number) => void;
 }
 interface FaqData {
     constId: string,
@@ -24,19 +26,20 @@ interface ContentCourse {
     note: string
 }
 
-const CourseAccordion = ({ data, index }: FaqProp) => {
+const CourseAccordion = ({ data, index , progress}: FaqProp) => {
     const [clicked, setClicked] = useState<boolean>(false)
     return (
-        <div className={`${accordStyle.accordMain}`}>
+        <div className={`${accordStyle.accordMain}`} key={index}>
             <div className={`${accordStyle.accordTitle} ${clicked ? accordStyle.accordActive : ''}`}>
                 <h4>{addZeroToSingle(index)}</h4>
                 <h4>{capitalizeFirstLetter(data.name)}</h4>
                 <div>
-                    {clicked ? <FaAngleDown onClick={() => setClicked(!clicked)} /> : <FaAngleUp onClick={() => setClicked(!clicked)} />}
+                    {clicked ? <FaAngleDown onClick={() => setClicked(!clicked)
+                       } /> : <FaAngleUp onClick={() => setClicked(!clicked)} />}
                 </div>
             </div>
             <div className={`${accordStyle.accodContent} ${clicked ? accordStyle.rev : ''}`}>
-                {clicked && data.contents.sort((a: any, b: any) => a.step - b.step).map((data: any) => {
+                {clicked && data.contents.map((data: any) => {
                     return (<div key={data.id} className={accordStyle.accodList}>
                         <div>
                             {data.completed?<AiFillCheckCircle className={accordStyle.accordComplete}/>:<GiCircle />}

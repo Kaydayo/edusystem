@@ -82,24 +82,24 @@ const FormSignUp = ({ text }: FormType) => {
             console.log(profileInfo.company, "ppp")
             // alert("signed up successfully")
             if (text === FormName.SIGNUP) {
-                console.log("1111")
+                
                 toast(" sign up was successful")
                 navigate('/company-onboarding')
             } else {
                 
                 if (profileInfo === null || !profileInfo.company || profileInfo.company.length === 0) {
                     if (profileInfo.user.isEmployee) {
-                        console.log("222")
+                        
                         // navigate('/')
                     } else {
-                        console.log("333")
+                        
                         navigate('/company-onboarding')
                     }
 
                 } else {
                     if (profileInfo.user.isEmployee) {
-                        console.log('4444')
-                        navigate('/')
+                       
+                        navigate('/employeeDashboard/courses')
                     } else {
                         navigate('/company-onboarding')
                     }

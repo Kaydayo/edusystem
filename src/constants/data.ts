@@ -11,6 +11,8 @@ import classImage from '../Assets/Images/class.png'
 import bookImage from '../Assets/Images/book.png'
 import bookCover from '../Assets/Images/book-sample.svg'
 import articleCover from '../Assets/Images/article-sample.svg'
+import cAvatar from '../Assets/Images/avatar2.svg'
+import bAvatar from '../Assets/Images/avatar.svg'
 import uuid from 'react-uuid';
 
 export const boxData = [
@@ -595,11 +597,51 @@ export const courseContent = [
 ]
 
 
-export const commentsTopic = [
+export const commentData = [
     {
-        "name": "amyrobson",
-        "time": "2hrs",
-        "comment":"Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You’ve nailed the design and the responsiveness at various breakpoints works really well."
-    },
+        userId: '01a',
+        comId: '012',
+        fullName: 'amyrobson',
+        profilePicture: cAvatar,
+        text: 'Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You’ve nailed the design and the responsiveness at various breakpoints works really well.',
+        time:'2hrs',
+        replies: [
+            {
+                userId: '02b',
+                comId: '017',
+                fullName: 'ramsesmiron',
+                text: '@amyrobson If you’re still new, I’d recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It’s very tempting to jump ahead but lay a solid foundation first.',
+                time:'30 min',
+                profilePicture: bAvatar,
+                replies: []
+            }
+        ]
+    }
+]
     
+export const users = [
+    {
+        id: "isaac",
+        display: "Isaac Newton",
+    },
+    {
+        id: "sam",
+        display: "Sam Victor",
+    },
+    {
+        id: "emma",
+        display: "emmanuel@nobody.com",
+    },
+    {
+        id: "amyrobson",
+        display: "amyrobson"
+    },
+    {
+        id: "amyrobson",
+        display: "amyrobson"
+    },
+    {
+        id: "ramsesmiron",
+        display:"ramsesmiron"
+    }
 ]

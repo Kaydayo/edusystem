@@ -101,6 +101,29 @@ export interface SubscriptionState {
     success:boolean
 }
 
+export interface Course{
+    constId: string;
+    name: string;
+    step: number;
+    contents: Content[]
+}
+
+export interface CourseState{
+    courses: any[],
+    activeCourse: any[],
+    loading: boolean,
+    error: any,
+    success: boolean
+}
+
+export interface Content{
+    id: string;
+    subTopic: string;
+    step: number;
+    media: string;
+    note: string;
+    completed: boolean;
+}
 
 
 export enum SingUp{
