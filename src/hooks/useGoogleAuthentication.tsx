@@ -18,7 +18,7 @@ function useGoogleAuthentication() {
         }
         let result: any;
 
-        console.log(response, "na google")
+       
 
         result = await axios.post('/google-authentication', {
             token: response.tokenId

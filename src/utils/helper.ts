@@ -10,7 +10,7 @@ export const  capitalizeFirstLetter = (str:string) => {
 }
 
 export const calculateTotalSelect = (data: ISubCourse[]) => {
-    console.log(data, 'data ihahin')
+   
     return data.reduce((prev, curr)=> prev + curr.amount, 0)
     
 }

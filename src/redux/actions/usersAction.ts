@@ -28,7 +28,7 @@ export const registerUser = createAsyncThunk(
                 config
             )
             localStorage.setItem('userToken', data.payload.token)
-            console.log(data, 'see stuff')
+           
             if (data.success === false) {
                 return rejectWithValue(data.message)
             }
@@ -83,7 +83,7 @@ export const userLogin = createAsyncThunk(
 export const googleLogin = createAsyncThunk(
     'user/google',
     async (res: any, { rejectWithValue }) => {
-        console.log(res, 'nvvhfjh')
+       
         try {
             const { data } = await axios.post('/google-authentication', {
                 token: res.tokenId
@@ -94,7 +94,7 @@ export const googleLogin = createAsyncThunk(
                 }
             })
 
-            console.log(data, 'from redux')
+         
             localStorage.setItem('userToken', data.token)
             localStorage.setItem('userDetails', JSON.stringify(data))
 
@@ -116,7 +116,7 @@ export const getUserDetails = createAsyncThunk(
         try {
             // get user data from store
             const { user } = getState() as { user: UserState };
-            console.log(user.userToken, 'i dey fine')
+           
             // configure authorization header with user's token
             const config = {
                 headers: {
@@ -127,7 +127,7 @@ export const getUserDetails = createAsyncThunk(
                 token: user.userToken
             }, config)
 
-            console.log(data, 'na im be diud')
+          
             // if (data.success !== true) {
             //     return false
             // }
@@ -156,7 +156,7 @@ export const getNameByVeify = createAsyncThunk(
             const { data } = await axios.post('/users/getMeVerify', {
                 token: token
             }, config)
-            console.log(data, 'from token param id')
+           
             localStorage.setItem('userDetails', JSON.stringify(data.payload))
             localStorage.setItem('userToken', data.payload.token)
             return data.payload
@@ -185,7 +185,7 @@ export const createPassword = createAsyncThunk(
                 password: password
             }, config)
 
-            console.log(data, 'data from password')
+          
             localStorage.setItem('userDetails', JSON.stringify(data.payload))
             localStorage.setItem('userToken', data.payload.token)
 

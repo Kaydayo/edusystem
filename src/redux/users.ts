@@ -10,7 +10,7 @@ const userToken = localStorage.getItem('userToken')
     : null
 const profileInfo = localStorage.getItem('userDetails') ? JSON.parse(localStorage.getItem('userDetails') as string) : null
 
-console.log(profileInfo, "for here ")
+
 const initialState: UserState = {
     loading: false,
     userInfo: {
@@ -44,7 +44,7 @@ const userSlice = createSlice({
             state.error = null
         },
         [registerUser.fulfilled.toString()]: (state, { payload }) => {
-            console.log(payload, 'getege')
+         
             state.loading = false
             state.success = true
             state.userToken = payload.payload.token
@@ -78,7 +78,7 @@ const userSlice = createSlice({
             state.error = null
         },
         [getUserDetails.fulfilled.toString()]: (state, { payload }) => {
-            console.log(payload, "ma pa neow")
+          
             state.loading = false
             state.success = true
             state.userInfo.email = payload.user.email

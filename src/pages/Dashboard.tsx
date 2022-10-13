@@ -18,7 +18,7 @@ const Dashboard = () => {
   const dispatch = useAppDispatch()
 
   
-console.log(profileInfo, 'gotcha')
+
   useEffect(() => {
 
     if (profileInfo === null) {

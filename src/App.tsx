@@ -52,7 +52,7 @@ function App() {
       localStorage.getItem('userToken') : null
 
     if (userToken || storeToken) {
-      console.log(userToken, 'global')
+     
       dispatch(getUserDetails())
     }
 

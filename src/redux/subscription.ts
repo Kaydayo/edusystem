@@ -71,7 +71,7 @@ const subscriptionSlice = createSlice({
             state.error = null
         },
         [paySubscription.fulfilled.toString()]: (state, { payload }) => {
-            console.log(payload, 'getege')
+         
             state.loading = false
             state.success = true
         },

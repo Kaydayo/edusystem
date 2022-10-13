@@ -84,7 +84,7 @@ export const registerCompany = createAsyncThunk(
             localStorage.setItem('userDetails', JSON.stringify(data.payload))
             dispatch(getUserDetails())
 
-            console.log(data, 'regCompany')
+           
             return data.payload
         } catch (error: any) {
             // return custom error message from API if any
