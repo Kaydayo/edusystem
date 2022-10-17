@@ -40,6 +40,8 @@ const VerifyPassword = () => {
         const { data } = await axios.post('/users/getMeVerify', {
             token: token
         })
+
+        console.log(data,"data reeee o")
         if (!data.success) {
             navigate('/')
         } else {
