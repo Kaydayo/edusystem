@@ -32,6 +32,7 @@ import VerifyPassword from './pages/VerifyPassword';
 import EmployeeDashboard from './pages/EmployeeDashboard';
 import EmployeeCourses from './layouts/EmployeeDashboard/EmployeeCourses';
 import CoursePage from './layouts/EmployeeDashboard/CoursePage';
+import EditAdminProfile from './layouts/Dashboard/EditAdminProfile';
 
 
 
@@ -97,6 +98,7 @@ function App() {
             <Route path='faq' element={<Faq />} />
 
             {/* TODO: move to protected route */}
+            <Route path='/editProfile' element={<EditAdminProfile/>}/>
 
 
             <Route path='signup' element={<Signup />} />

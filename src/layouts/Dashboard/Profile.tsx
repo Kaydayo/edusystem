@@ -54,7 +54,7 @@ const Profile: React.FC<ProfileProp> = ({ userPhoneNumber, companyName,adminFirs
           {/* break here */}
           <div>
               <div >
-                  <Link to="/edit-profile">
+                  <Link to="/editProfile">
                       <button className={boardStyle.editInfo}>
                           <CgPen />
                           Edit
