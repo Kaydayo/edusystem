@@ -1,6 +1,6 @@
 {
   "name": "onculture-frontend",
-  "proxy": "https:api.onculture.io",
+  "proxy": "https://api.onculture.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
