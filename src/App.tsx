@@ -32,6 +32,7 @@ import VerifyPassword from './pages/VerifyPassword';
 import EmployeeDashboard from './pages/EmployeeDashboard';
 import EmployeeCourses from './layouts/EmployeeDashboard/EmployeeCourses';
 import CoursePage from './layouts/EmployeeDashboard/CoursePage';
+import EditAdminProfile from './layouts/Dashboard/EditAdminProfile';
 
 
 
@@ -54,6 +55,10 @@ function App() {
     if (userToken || storeToken) {
 
       dispatch(getUserDetails())
+    }
+
+    if (userToken === undefined || storeToken === undefined) {
+      localStorage.clear()
     }
 
 
@@ -97,6 +102,7 @@ function App() {
             <Route path='faq' element={<Faq />} />
 
             {/* TODO: move to protected route */}
+           
 
 
             <Route path='signup' element={<Signup />} />
@@ -111,6 +117,7 @@ function App() {
             </Route>
             <Route element={<ProtectedRoute />}>
               <Route path='company-onboarding' element={<CompanyOnBoarding />} />
+
               <Route path='/dashboard' element={<Dashboard />}>
                 <Route path="bio" element={<Bio />} />
                 <Route path="courses" element={<Courses />} />
@@ -119,6 +126,7 @@ function App() {
                 <Route path="report" element={<Report />} />
                 <Route path="subscription" element={<Payments />} />
               </Route>
+              <Route path='editProfile' element={<EditAdminProfile />} />
               <Route path='/employeeDashboard' element={<EmployeeDashboard />}>
                 <Route path="courses" element={<EmployeeCourses />} />
               </Route>

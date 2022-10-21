@@ -9,6 +9,7 @@ import Profile from '../layouts/Dashboard/Profile'
 import { getUserDetails } from '../redux/actions/usersAction'
 import { RootState, useAppDispatch, useAppSelector } from '../redux/store'
 import dashBoardStyle from '../styles/Dashboard/Dashboard.module.css'
+import { calNoOfSlotTotal } from '../utils/helper'
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
@@ -45,7 +46,17 @@ console.log(profileInfo,"juju")
           <DashboardNav setShowModal={setShowModal} profileImage={profileInfo.user.profilePicture} />
         </div>
         <div>
-          <Profile userEmail={profileInfo.user.email} userProfilePicture={profileInfo.user.profilePicture} companyName={profileInfo.company[0].companyName} adminFirstName={profileInfo.company[0].admin.firstName} userRole={profileInfo.user.role} userPhoneNumber={profileInfo.user.phoneNumber} />
+          <Profile
+            userEmail={profileInfo.user.email}
+            userProfilePicture={profileInfo.user.profilePicture}
+            companyName={profileInfo.company[0].companyName}
+            adminFirstName={profileInfo.user.firstName}
+            userRole={profileInfo.user.role}
+            userPhoneNumber={profileInfo.user.phoneNumber}
+            noOfCourses={profileInfo.company[0].courses.length }
+            noOfSlots={calNoOfSlotTotal(profileInfo.company[0].courses)}
+          
+          />
         </div>
         <div>
           <DashboardPages />

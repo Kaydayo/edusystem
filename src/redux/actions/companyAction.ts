@@ -16,6 +16,19 @@ export interface companyData {
     email: string
 }
 
+export interface companyUpdate {
+    adminName: string,
+    adminEmail: string,
+    phoneNumber: string,
+    companyName: string,
+    employeeCount: string,
+    mission: string,
+    vision: string,
+    values: string,
+    file: any,
+
+}
+
 
 // userAction.js
 export const registerCompany = createAsyncThunk(
@@ -62,20 +75,7 @@ export const registerCompany = createAsyncThunk(
                 },
                 config
             )
-            // const res = await fetch('/company/create-account', {
-            //     method: 'POST',
-            //     body: JSON.stringify({
-            //         firstName,
-            //         surnName,
-            //         phoneNumber,
-            //         companyName,
-            //         employeeCount,
-            //         mission,
-            //         vision,
-            //         values,
-            //         email
-            //     })
-            // },)
+            
 
 
             if (data.success === false) {
@@ -97,4 +97,6 @@ export const registerCompany = createAsyncThunk(
 
     }
 )
+
+
 

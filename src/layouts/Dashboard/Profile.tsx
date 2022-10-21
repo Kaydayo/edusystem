@@ -13,9 +13,11 @@ type ProfileProp =  {
     userEmail: string |undefined,
     userPhoneNumber: string | undefined,
     userRole: string | undefined,
+    noOfCourses: number | undefined,
+    noOfSlots: number | undefined
 }
 
-const Profile: React.FC<ProfileProp> = ({ userPhoneNumber, companyName,adminFirstName,userEmail,userProfilePicture,userRole}: ProfileProp) => {
+const Profile: React.FC<ProfileProp> = ({ userPhoneNumber, companyName,adminFirstName,userEmail,userProfilePicture,userRole, noOfSlots, noOfCourses}: ProfileProp) => {
     // const [profileInfo, setProfileInfo] = useState<any>({companyName:"", profilePicture:"", adminName:"", email:"", phoneNumber:"", role:""})
     const navigate = useNavigate()
     
@@ -46,7 +48,7 @@ const Profile: React.FC<ProfileProp> = ({ userPhoneNumber, companyName,adminFirs
                           <p>{adminFirstName?adminFirstName:""}</p>
                           <p>{userEmail?userEmail:""}</p>
                           <p>{userPhoneNumber?userPhoneNumber:""}</p>
-                          <p>{userRole?userRole:""}</p>
+                          <p>{userRole?userRole:"Admin"}</p>
                       </div>
                   </div>
               </div>
@@ -54,7 +56,7 @@ const Profile: React.FC<ProfileProp> = ({ userPhoneNumber, companyName,adminFirs
           {/* break here */}
           <div>
               <div >
-                  <Link to="/edit-profile">
+                  <Link to="/editProfile">
                       <button className={boardStyle.editInfo}>
                           <CgPen />
                           Edit
@@ -69,8 +71,8 @@ const Profile: React.FC<ProfileProp> = ({ userPhoneNumber, companyName,adminFirs
                       <p>Total Slot Purchased</p>
                   </div>
                   <div className={boardStyle.slotSub}>
-                      <h4>0</h4>
-                      <h4>0</h4>
+                      <h4>{noOfCourses}</h4>
+                      <h4>{noOfSlots}</h4>
                   </div>
               </div>
           </div>

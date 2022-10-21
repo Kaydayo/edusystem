@@ -129,9 +129,6 @@ export const companyonboardSlice = createSlice({
             if (payload.company && payload.company.length) {
                 state.info.companyName = payload.company[0].companyName?payload.company.companyName:""
             }
-        },
-        [userLogin.fulfilled.toString()]: (state, { payload }) => {
-            state.loading = false
         }
     }
 })

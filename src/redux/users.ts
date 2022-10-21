@@ -3,7 +3,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { stat } from 'fs'
 import { platform } from 'os'
 import { SingUp, UserState } from '../types/interfaces'
-import { createPassword, getNameByVeify, getUserDetails, googleLogin, registerUser, userLogin } from './actions/usersAction'
+import { companyUpdate } from './actions/companyAction'
+import { createPassword, getNameByVeify, getUserDetails, googleLogin, registerUser, updateCompany, userLogin } from './actions/usersAction'
 
 const userToken = localStorage.getItem('userToken')
     ? localStorage.getItem('userToken')
@@ -36,6 +37,9 @@ const userSlice = createSlice({
         },
         updateUserEmail: (state, action: PayloadAction<any>) => {
             state.userInfo.email = action.payload
+        },
+        updateProfileInfo: (state, action: PayloadAction<any>) => {
+            state.profileInfo = action.payload
         }
     },
     extraReducers: {
@@ -44,7 +48,7 @@ const userSlice = createSlice({
             state.error = null
         },
         [registerUser.fulfilled.toString()]: (state, { payload }) => {
-         
+
             state.loading = false
             state.success = true
             state.userToken = payload.payload.token
@@ -139,12 +143,27 @@ const userSlice = createSlice({
             state.error = payload
             state.success = false
         },
+        [updateCompany.pending.toString()]: (state) => {
+            state.loading = true
+            state.error = null
+        },
+        [updateCompany.fulfilled.toString()]: (state, { payload }) => {
+            state.loading = false
+            state.success = true
+            state.profileInfo = payload.payload
+        },
+        [updateCompany.rejected.toString()]: (state, { payload }) => {
+            state.loading = false
+            state.error = payload
+            state.success = false
+
+        }
 
 
     },
 
 })
 
-export const { handleInputSignup, updateToken, updateUserEmail } = userSlice.actions
+export const { handleInputSignup, updateToken, updateUserEmail, updateProfileInfo } = userSlice.actions
 
 export default userSlice.reducer
