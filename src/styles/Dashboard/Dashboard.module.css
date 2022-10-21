@@ -355,7 +355,7 @@ font-weight: 700;
     font-weight: 400;
 }
 
-.formBoxes span{
+.errorMsg{
     font-size: 12px;
     color: red;
 }

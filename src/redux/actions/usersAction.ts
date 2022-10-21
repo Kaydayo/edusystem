@@ -1,7 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import axios from 'axios'
+import { toast } from "react-toastify"
 import { string } from "yup"
 import { UserState } from "../../types/interfaces"
+import { companyUpdate } from "./companyAction"
 
 
 
@@ -202,3 +204,46 @@ export const createPassword = createAsyncThunk(
     }
 )
 
+export const updateCompany = createAsyncThunk(
+    'company/update',
+    async (payload: companyUpdate, { rejectWithValue, getState }) => {
+        try {
+
+            const { user } = getState() as { user: UserState };
+
+
+
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cache-control': 'no-cache',
+                    'mode': 'cors',
+                    Authorization: `Bearer ${user.userToken}`
+                },
+            }
+
+            const { data } = await axios.post(
+                '/updateCompany',
+                payload,
+                config
+            )
+                console.log(data,'se mee see')
+
+            if (data.success === false) {
+                return rejectWithValue(data.message)
+            }
+            localStorage.setItem('userDetails', JSON.stringify(data.payload))
+            toast(data.message)
+            return data
+        } catch (error: any) {
+            if (error.response && error.response.data.message) {
+                toast(error.data.message)
+                return rejectWithValue(error.response.data.message)
+            } else {
+                toast(error.message)
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+
+)

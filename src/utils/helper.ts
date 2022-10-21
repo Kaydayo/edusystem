@@ -32,3 +32,30 @@ export const addZeroToSingle = (value: number): string => {
         useGrouping: false
     })
 }
+export interface Subscription {
+    numWeeks: number;
+    subscriptionName: string;
+    description: string;
+    information: string[];
+    price: string;
+    staySafe: boolean;
+    cultureClinic: boolean;
+    others: boolean;
+    noOfSeats: number;
+    amount: number;
+    selected: boolean;
+    course: string[];
+    createdAt: Date;
+    updatedAt: Date;
+    __v: number;
+    id: string;
+}
+
+export interface CourseSub {
+    subscription: Subscription
+}
+export const calNoOfSlotTotal = (courses: CourseSub[]): number => {
+
+    return courses.reduce((prev,curr) => prev + curr.subscription.noOfSeats, 0)
+    
+}
