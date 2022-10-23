@@ -51,13 +51,18 @@ function App() {
 
     const storeToken = localStorage.getItem('userToken') ?
       localStorage.getItem('userToken') : null
+    
+    const storeDetails = localStorage.getItem('userDetails') ?
+      localStorage.getItem('userDetails') : null
+    
+    
 
     if (userToken || storeToken) {
 
       dispatch(getUserDetails())
     }
 
-    if (userToken === undefined || storeToken === undefined) {
+    if (userToken === undefined || storeToken === undefined ) {
       localStorage.clear()
     }
 
