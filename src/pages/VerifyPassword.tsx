@@ -56,7 +56,7 @@ const VerifyPassword = () => {
         
         getData(params.token)
         setIdToken(params.token)
-        dispatch(getNameByVeify(params.token))
+        // dispatch(getNameByVeify(params.token))
     }, [])
 
     if (loading) {
