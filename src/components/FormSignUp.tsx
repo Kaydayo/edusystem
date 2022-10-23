@@ -80,7 +80,7 @@ const FormSignUp = ({ text }: FormType) => {
                 navigate('/employeeDashboard/courses')
             } else {
                 localStorage.setItem('userDetails', payload)
-                localStorage.setItem('userToken', payload.token)
+                localStorage.setItem('userToken', payload.accessToken)
                 navigate('/dashboard/bio')
             }
             
@@ -92,58 +92,23 @@ const FormSignUp = ({ text }: FormType) => {
         
         console.log(data, "jsbgckgdgqwdugqwdah")
         
-        // if (!data.success) {
-        //     navigate('/')
-        //     toast("Signup failed")
-        // } else {
+        if (!data.success) {
+            navigate('/')
+            toast("Signup failed")
+        } else {
             localStorage.setItem('userToken', data.payload.accessToken)
-            // localStorage.setItem('userDetails', data.payload)
+            localStorage.setItem('userDetails', data.payload)
             navigate('/company-onboarding')
-        // }
+        }
         
     }
 
 
-    // automatically authenticate user if token is found
-
-
-    useEffect(() => {
-
-
-        // if (success) {
-        //     // alert("signed up successfully")
-
-        //     if (profileInfo === null || !profileInfo.company || profileInfo.company.length === 0) {
-        //         if (profileInfo.user.isEmployee) {
-        //             navigate('/employeeDashboard/courses')
-        //         } else {
-
-        //             navigate('/dashboard/bio')
-        //         }
-
-        //     } else {
-        //         if (profileInfo.user.isEmployee) {
-        //             navigate('/employeeDashboard/courses')
-        //         } else {
-        //             navigate('/company-onboarding')
-        //         }
-
-        //     }
-
-
-        // }
-
-    }, [navigate, userInfo, userToken, success, error])
-
-
-    const onFailure = (err: any) => {
-
-    };
     return (
         <div className={signUpStyle.mainBox}>
             <ToastContainer />
             <h4>{text}</h4>
-            {error && <p className={signUpStyle.setRed}>🔺 {error}</p>}
+           {/* <p className={signUpStyle.setRed}>{error}</p> */}
             <div className={signUpStyle.formInput}>
                 <label htmlFor="email">Email Address<sup>*</sup></label>
                 <input type="email" name="email" id="email" placeholder='Email Address' value={userInfo.email}
@@ -177,7 +142,6 @@ const FormSignUp = ({ text }: FormType) => {
                             dispatch(googleLogin(res))
                             dispatch(getUserDetails())
                         }}
-                        onFailure={onFailure}
                         cookiePolicy={'single_host_origin'}
                         render={renderProps => (
                             <button onClick={renderProps.onClick} disabled={renderProps.disabled} className={signUpStyle.gbtn}><img src={googleIcon} alt="google-onculture" /> {text} with Google</button>
