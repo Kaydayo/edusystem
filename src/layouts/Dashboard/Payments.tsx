@@ -1,10 +1,13 @@
 import React from 'react'
 import EmptyState from './EmptyStates/EmptyState'
 import emptStateBio from '../../Assets/Images/Payment.svg'
+import boardStyle from '../../styles/Dashboard/Dashboard.module.css'
+
+
 const Payments = () => {
   return (
-      <div>
-          < EmptyState imag={emptStateBio} text="Click here to Subscribe" />
+    <div className={boardStyle.centerEmptyState}>
+      < EmptyState imag={emptStateBio} text="Click <a href='/' classname='markLink'>here</a> to Subscribe" />
     </div>
   )
 }

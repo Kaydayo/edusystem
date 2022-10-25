@@ -1,0 +1,84 @@
+.table {
+  border-collapse: collapse;
+  border: none;
+  width: 100%;
+}
+
+.tableRowHeader {
+  background-color: transparent;
+  transition: all 0.25s ease;
+  border-radius: 10px;
+}
+
+.tableHeader {
+  background-color: #f1f1f1;
+  padding: 12px;
+  font-weight: 600;
+  text-align: left;
+  font-size: 16px;
+  
+}
+
+/* .tableHeader:first-child {
+  border-top-left-radius: 15px;
+}
+
+.tableHeader:last-child {
+  border-top-right-radius: 15px;
+} */
+
+.tableRowItems {
+  cursor: pointer;
+  border-bottom: 1px solid #EEF1FF;
+}
+
+/* .tableRowItems:nth-child(odd) {
+  background-color: #f9f9f9;
+} */
+
+.tableCell {
+  padding: 12px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.nameData{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    /* justify-content: center; */
+}
+
+.nameData:last-child p{
+    margin: 0;
+}
+
+.nameData:last-child p:first-of-type{
+    color: #5C00DD;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nameData:last-child:last-child{
+     font-size: 10px;
+    font-weight: 400;
+    color: #BBC4D9;
+}
+
+.gradeCell{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gradeCell div{
+    color: #BBC4D9;
+    font-size: 1.5rem;
+}
+
+.nameImage{
+     width: 52px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: contain;
+}

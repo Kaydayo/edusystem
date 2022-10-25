@@ -233,19 +233,26 @@ font-weight: 700;
     box-sizing: border-box;
     display: flex;
     gap: 5px;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
     align-content: center;
-    text-align: center ;
+    /* text-align: center ; */
 }
 
+.centerEmptyState{
+    height: fit-content;
+    margin: auto auto;
+    text-align: center;
+
+}
 .emptyState{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0;
-    margin: 0 auto;
+    margin: auto auto;
+    position: relative;
 }
 
 .emptyState h4{
@@ -400,4 +407,63 @@ font-weight: 700;
     display: flex;
     width: 40%;
     gap: 1rem;
+}
+
+.bioMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: left !important;
+    align-items: left !important;
+    text-align: left !important;
+    width: 100%;  
+    padding: 0;
+    position: relative;
+    /* margin-top: -15rem; */
+}
+
+.employeeMain{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    /* margin-top: -15rem; */
+}
+
+.employeeMain:first-child{
+    display: flex;
+    
+}
+
+.searchInput{
+    width: 352px;
+    height: 32px;
+    padding: 0 1rem;
+    border-radius: 4px;
+    border: 1px solid #8790A3;
+}
+
+.icoSearch{
+    margin-left: -2rem;
+    font-family: 5rem;
+    color: #8790A3;
+}
+
+.findBars{
+    display: flex;
+    align-items: center;
+    width:fit-content;
+    height: fit-content;
+    float: right !important;
+    color: #8790A3;
+    gap: 2rem;
+    padding: 0 2rem;
+    justify-content: right !important;
+    margin: 0 55%;
+}
+
+.searchBar{
+    display: flex;
+    align-items: center;
+    width:fit-content;
+    height: fit-content;
 }

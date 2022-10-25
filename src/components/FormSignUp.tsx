@@ -46,11 +46,14 @@ const FormSignUp = ({ text }: FormType) => {
 
     const navigate = useNavigate()
 
+    useEffect(() => {
+        toast(error)
+    },[error, success, userToken])
+
 
     const onSignUp = async (data: { email: string, password: string }) => {
         if (text === FormName.SIGNUP) {
             dispatch(registerUser(data))
-            toast(error)
             dispatch(handleFormInput({ key: CompanyFormEnum.EMAIL, value: data.email }))
             await userSignUpFetch(data.email, data.password)
         } else {
@@ -59,7 +62,7 @@ const FormSignUp = ({ text }: FormType) => {
             dispatch(getUserDetails())
             dispatch(handleFormInput({ key: CompanyFormEnum.EMAIL, value: data.email }))
             await userLoginFetch(data.email, data.password)
-            toast(error)
+            
 
         }
     }
@@ -74,14 +77,14 @@ const FormSignUp = ({ text }: FormType) => {
             navigate('/')
         } else {
             const { payload } = data
+            localStorage.setItem('userDetails', payload)
+            localStorage.setItem('userToken', payload.accessToken)
             if (payload.user.isEmployee) {
-                localStorage.setItem('userDetails', payload)
-                localStorage.setItem('userToken', payload.accessToken)
                 navigate('/employeeDashboard/courses')
-            } else {
-                localStorage.setItem('userDetails', payload)
-                localStorage.setItem('userToken', payload.accessToken)
+            } else if (payload.user.isAdmin && payload.user.regCompany) {
                 navigate('/dashboard/bio')
+            } else {
+                navigate('/company-onboarding')
             }
             
         }
@@ -92,14 +95,14 @@ const FormSignUp = ({ text }: FormType) => {
         
         console.log(data, "jsbgckgdgqwdugqwdah")
         
-        if (!data.success) {
-            navigate('/')
-            toast("Signup failed")
-        } else {
-            localStorage.setItem('userToken', data.payload.accessToken)
-            localStorage.setItem('userDetails', data.payload)
+        // if (!data.success) {
+        //     navigate('/')
+        //     toast("Signup failed")
+        // } else {
+            localStorage.setItem('userToken', data.payload.token)
+            toast(data.message)
             navigate('/company-onboarding')
-        }
+        // }
         
     }
 

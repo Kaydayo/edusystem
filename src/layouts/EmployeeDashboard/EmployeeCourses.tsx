@@ -2,6 +2,7 @@ import React from 'react'
 import employeeStyle from '../../styles/EmployeeDashboard/EmployeeDashboard.module.css'
 import EmployeeCourseCard from './EmployeeCourseCard'
 
+
 const EmployeeCourses = () => {
   return (
     <div className={employeeStyle.employeeCourseMain}>

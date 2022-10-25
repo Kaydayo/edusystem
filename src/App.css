@@ -3,7 +3,9 @@
 } */
 
 
-
+.markLink{
+  color: #5C00DD;
+}
 
 .fieldInput{
     display: flex;

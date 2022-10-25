@@ -1,0 +1,37 @@
+.tableFooter {
+  padding: 8px 0px;
+  width: fit-content;
+  font-weight: 500;
+  text-align: left;
+  font-size: 16px;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+  margin-top: 1rem;
+}
+.tableFooter p{
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+}
+.button {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.activeButton {
+  color: #5C00DD;
+  background: #E7F1FD;
+}
+
+.inactiveButton {
+  color: #2c3e50;
+  background: #ffffff;
+}
+
