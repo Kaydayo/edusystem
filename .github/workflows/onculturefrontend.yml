@@ -26,7 +26,6 @@ jobs:
           echo DANGEROUSLY_DISABLE_HOST_CHECK=${{secrets.DANGEROUSLY_DISABLE_HOST_CHECK}} >> .env
           cat .env
       - run: |
-          npm install
+          npm install --force
           npm run build
-         
           
