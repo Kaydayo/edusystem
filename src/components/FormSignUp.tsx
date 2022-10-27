@@ -46,11 +46,14 @@ const FormSignUp = ({ text }: FormType) => {
 
     const navigate = useNavigate()
 
+    useEffect(() => {
+        toast(error)
+    },[error, success, userToken])
+
 
     const onSignUp = async (data: { email: string, password: string }) => {
         if (text === FormName.SIGNUP) {
             dispatch(registerUser(data))
-            toast(error)
             dispatch(handleFormInput({ key: CompanyFormEnum.EMAIL, value: data.email }))
             await userSignUpFetch(data.email, data.password)
         } else {
@@ -59,7 +62,7 @@ const FormSignUp = ({ text }: FormType) => {
             dispatch(getUserDetails())
             dispatch(handleFormInput({ key: CompanyFormEnum.EMAIL, value: data.email }))
             await userLoginFetch(data.email, data.password)
-            toast(error)
+            
 
         }
     }
@@ -74,14 +77,14 @@ const FormSignUp = ({ text }: FormType) => {
             navigate('/')
         } else {
             const { payload } = data
+            localStorage.setItem('userDetails', JSON.stringify(payload))
+            localStorage.setItem('userToken', payload.accessToken)
             if (payload.user.isEmployee) {
-                localStorage.setItem('userDetails', payload)
-                localStorage.setItem('userToken', payload.accessToken)
                 navigate('/employeeDashboard/courses')
-            } else {
-                localStorage.setItem('userDetails', payload)
-                localStorage.setItem('userToken', payload.token)
+            } else if (payload.user.isAdmin && payload.user.regCompany) {
                 navigate('/dashboard/bio')
+            } else {
+                navigate('/company-onboarding')
             }
             
         }
@@ -96,54 +99,19 @@ const FormSignUp = ({ text }: FormType) => {
         //     navigate('/')
         //     toast("Signup failed")
         // } else {
-            localStorage.setItem('userToken', data.payload.accessToken)
-            // localStorage.setItem('userDetails', data.payload)
+            localStorage.setItem('userToken', data.payload.token)
+            toast(data.message)
             navigate('/company-onboarding')
         // }
         
     }
 
 
-    // automatically authenticate user if token is found
-
-
-    useEffect(() => {
-
-
-        // if (success) {
-        //     // alert("signed up successfully")
-
-        //     if (profileInfo === null || !profileInfo.company || profileInfo.company.length === 0) {
-        //         if (profileInfo.user.isEmployee) {
-        //             navigate('/employeeDashboard/courses')
-        //         } else {
-
-        //             navigate('/dashboard/bio')
-        //         }
-
-        //     } else {
-        //         if (profileInfo.user.isEmployee) {
-        //             navigate('/employeeDashboard/courses')
-        //         } else {
-        //             navigate('/company-onboarding')
-        //         }
-
-        //     }
-
-
-        // }
-
-    }, [navigate, userInfo, userToken, success, error])
-
-
-    const onFailure = (err: any) => {
-
-    };
     return (
         <div className={signUpStyle.mainBox}>
             <ToastContainer />
             <h4>{text}</h4>
-            {error && <p className={signUpStyle.setRed}>🔺 {error}</p>}
+           {/* <p className={signUpStyle.setRed}>{error}</p> */}
             <div className={signUpStyle.formInput}>
                 <label htmlFor="email">Email Address<sup>*</sup></label>
                 <input type="email" name="email" id="email" placeholder='Email Address' value={userInfo.email}
@@ -177,7 +145,6 @@ const FormSignUp = ({ text }: FormType) => {
                             dispatch(googleLogin(res))
                             dispatch(getUserDetails())
                         }}
-                        onFailure={onFailure}
                         cookiePolicy={'single_host_origin'}
                         render={renderProps => (
                             <button onClick={renderProps.onClick} disabled={renderProps.disabled} className={signUpStyle.gbtn}><img src={googleIcon} alt="google-onculture" /> {text} with Google</button>

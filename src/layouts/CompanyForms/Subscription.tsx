@@ -52,6 +52,4 @@ const Subscription = () => {
 
 export default Subscription
 
-function postAllSubcriptions(subScriptionCourse: { id: string; subscriptionName: string; description: string; information: string[]; price: string; staySafe: boolean; cultureClinic: boolean; others: boolean; noOfSeats: number; amount: number; selected: boolean }[]): any {
-    throw new Error('Function not implemented.')
-}
+

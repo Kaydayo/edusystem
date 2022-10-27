@@ -286,7 +286,7 @@ export const subScriptionCourse = [
 
 
 export const dashboardLinks = [
-    "bio", "courses", "employees", "teams", "report", "subscription"
+    "bio", "employees", "teams", "report", "subscription"
 ]
 
 export const employeeLinks = [
@@ -644,4 +644,168 @@ export const users = [
         id: "ramsesmiron",
         display: "ramsesmiron"
     }
+]
+
+export const companyEmployees = [
+    {
+        "_id": "635589f786f5a8d46510f33b",
+        "email": "olukayodedayo100@gmail.com",
+        "isAdmin": true,
+        "password": "$2b$10$1wmTCyEjqqmt4x/SAyQ4juetDTy0Nf3p1bDcWg6tLt4vSkFIhk4uK",
+        "isGoogleAuthenticated": false,
+        "isEmployee": false,
+        "isActive": true,
+        "regCompany": true,
+        "createdAt": "2022-10-23T18:37:43.223Z",
+        "updatedAt": "2022-10-23T18:49:50.158Z",
+        "__v": 0,
+        "firstName": "Adebowale",
+        "phoneNumber": "08188441180",
+        "surnName": "Olukayode"
+    },
+    {
+        "_id": "635589f786f5a8d46510f33b",
+        "email": "olukayodedayo100@gmail.com",
+        "isAdmin": true,
+        "password": "$2b$10$1wmTCyEjqqmt4x/SAyQ4juetDTy0Nf3p1bDcWg6tLt4vSkFIhk4uK",
+        "isGoogleAuthenticated": false,
+        "isEmployee": false,
+        "isActive": true,
+        "regCompany": true,
+        "createdAt": "2022-10-23T18:37:43.223Z",
+        "updatedAt": "2022-10-23T18:49:50.158Z",
+        "__v": 0,
+        "firstName": "Kehinde",
+        "phoneNumber": "08188441180",
+        "surnName": "Olukayode"
+    },
+    {
+        "_id": "635589f786f5a8d46510f33b",
+        "email": "olukayodedayo100@gmail.com",
+        "isAdmin": true,
+        "password": "$2b$10$1wmTCyEjqqmt4x/SAyQ4juetDTy0Nf3p1bDcWg6tLt4vSkFIhk4uK",
+        "isGoogleAuthenticated": false,
+        "isEmployee": false,
+        "isActive": true,
+        "regCompany": true,
+        "createdAt": "2022-10-23T18:37:43.223Z",
+        "updatedAt": "2022-10-23T18:49:50.158Z",
+        "__v": 0,
+        "firstName": "mujeeb",
+        "phoneNumber": "08188441180",
+        "surnName": "Olukayode"
+    },
+    {
+        "_id": "635589f786f5a8d46510f33b",
+        "email": "olukayodedayo100@gmail.com",
+        "isAdmin": true,
+        "password": "$2b$10$1wmTCyEjqqmt4x/SAyQ4juetDTy0Nf3p1bDcWg6tLt4vSkFIhk4uK",
+        "isGoogleAuthenticated": false,
+        "isEmployee": false,
+        "isActive": true,
+        "regCompany": true,
+        "createdAt": "2022-10-23T18:37:43.223Z",
+        "updatedAt": "2022-10-23T18:49:50.158Z",
+        "__v": 0,
+        "firstName": "Malik",
+        "phoneNumber": "08188441180",
+        "surnName": "Olukayode"
+    },
+    {
+        "_id": "635589f786f5a8d46510f33b",
+        "email": "olukayodedayo100@gmail.com",
+        "isAdmin": true,
+        "password": "$2b$10$1wmTCyEjqqmt4x/SAyQ4juetDTy0Nf3p1bDcWg6tLt4vSkFIhk4uK",
+        "isGoogleAuthenticated": false,
+        "isEmployee": false,
+        "isActive": true,
+        "regCompany": true,
+        "createdAt": "2022-10-23T18:37:43.223Z",
+        "updatedAt": "2022-10-23T18:49:50.158Z",
+        "__v": 0,
+        "firstName": "Taiwo",
+        "phoneNumber": "08188441180",
+        "surnName": "Olukayode"
+    },
+    {
+        "_id": "635589f786f5a8d46510f33b",
+        "email": "olukayodedayo100@gmail.com",
+        "isAdmin": true,
+        "password": "$2b$10$1wmTCyEjqqmt4x/SAyQ4juetDTy0Nf3p1bDcWg6tLt4vSkFIhk4uK",
+        "isGoogleAuthenticated": false,
+        "isEmployee": false,
+        "isActive": true,
+        "regCompany": true,
+        "createdAt": "2022-10-23T18:37:43.223Z",
+        "updatedAt": "2022-10-23T18:49:50.158Z",
+        "__v": 0,
+        "firstName": "Olatunji",
+        "phoneNumber": "08188441180",
+        "surnName": "Olukayode"
+    },
+    {
+        "_id": "635589f786f5a8d46510f33b",
+        "email": "olukayodedayo100@gmail.com",
+        "isAdmin": true,
+        "password": "$2b$10$1wmTCyEjqqmt4x/SAyQ4juetDTy0Nf3p1bDcWg6tLt4vSkFIhk4uK",
+        "isGoogleAuthenticated": false,
+        "isEmployee": false,
+        "isActive": true,
+        "regCompany": true,
+        "createdAt": "2022-10-23T18:37:43.223Z",
+        "updatedAt": "2022-10-23T18:49:50.158Z",
+        "__v": 0,
+        "firstName": "Tomiwa",
+        "phoneNumber": "08188441180",
+        "surnName": "Olukayode"
+    },
+    {
+        "_id": "635589f786f5a8d46510f33b",
+        "email": "olukayodedayo100@gmail.com",
+        "isAdmin": true,
+        "password": "$2b$10$1wmTCyEjqqmt4x/SAyQ4juetDTy0Nf3p1bDcWg6tLt4vSkFIhk4uK",
+        "isGoogleAuthenticated": false,
+        "isEmployee": false,
+        "isActive": true,
+        "regCompany": true,
+        "createdAt": "2022-10-23T18:37:43.223Z",
+        "updatedAt": "2022-10-23T18:49:50.158Z",
+        "__v": 0,
+        "firstName": "Eunice",
+        "phoneNumber": "08188441180",
+        "surnName": "Olukayode"
+    },
+    {
+        "_id": "635589f786f5a8d46510f33b",
+        "email": "olukayodedayo100@gmail.com",
+        "isAdmin": true,
+        "password": "$2b$10$1wmTCyEjqqmt4x/SAyQ4juetDTy0Nf3p1bDcWg6tLt4vSkFIhk4uK",
+        "isGoogleAuthenticated": false,
+        "isEmployee": false,
+        "isActive": true,
+        "regCompany": true,
+        "createdAt": "2022-10-23T18:37:43.223Z",
+        "updatedAt": "2022-10-23T18:49:50.158Z",
+        "__v": 0,
+        "firstName": "Gbolahan",
+        "phoneNumber": "08188441180",
+        "surnName": "Olukayode"
+    },
+    {
+        "_id": "635589f786f5a8d46510f33b",
+        "email": "olukayodedayo100@gmail.com",
+        "isAdmin": true,
+        "password": "$2b$10$1wmTCyEjqqmt4x/SAyQ4juetDTy0Nf3p1bDcWg6tLt4vSkFIhk4uK",
+        "isGoogleAuthenticated": false,
+        "isEmployee": false,
+        "isActive": true,
+        "regCompany": true,
+        "createdAt": "2022-10-23T18:37:43.223Z",
+        "updatedAt": "2022-10-23T18:49:50.158Z",
+        "__v": 0,
+        "firstName": "Michael",
+        "phoneNumber": "08188441180",
+        "surnName": "Olukayode"
+    }
+    
 ]

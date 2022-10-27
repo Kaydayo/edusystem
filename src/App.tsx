@@ -38,8 +38,9 @@ import EditAdminProfile from './layouts/Dashboard/EditAdminProfile';
 
 
 function App() {
-  const { userInfo, userToken } = useAppSelector((state: RootState) => state.user)
+  const { userInfo, userToken, profileInfo } = useAppSelector((state: RootState) => state.user)
   const dispatch = useAppDispatch()
+  
 
 
 
@@ -124,9 +125,9 @@ function App() {
               <Route path='company-onboarding' element={<CompanyOnBoarding />} />
 
               <Route path='/dashboard' element={<Dashboard />}>
-                <Route path="bio" element={<Bio />} />
+                <Route path="bio" element={<Bio />}/>
                 <Route path="courses" element={<Courses />} />
-                <Route path="employees" element={<BoardEmployee />} />
+                <Route path="employees" element={<BoardEmployee/>} />
                 <Route path="teams" element={<Team />} />
                 <Route path="report" element={<Report />} />
                 <Route path="subscription" element={<Payments />} />

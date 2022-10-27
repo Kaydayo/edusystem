@@ -33,7 +33,7 @@ export const paySubscription = createAsyncThunk(
                 config
             )
 
-            
+            console.log(data, "pay subscription")
             
         } catch (error:any) {
             if (error.response && error.response.data.message) {
@@ -44,3 +44,4 @@ export const paySubscription = createAsyncThunk(
         }
     }
 )
+

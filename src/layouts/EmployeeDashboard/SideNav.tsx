@@ -21,15 +21,20 @@ const SideNav = () => {
     const [currentContent, setCurrentContent] = useState<any>({})
     const [allCourses, setAllCourses] = useState<any>([])
     
-    const { courses } = useAppSelector((state: RootState) => state.courses)
+    // const { courses } = useAppSelector((state: RootState) => state.courses)
+    const { profileInfo } = useAppSelector((state: RootState) => state.user)
+    const { user } = profileInfo
+    const courses = user.courses[0].course
     const dispatch = useAppDispatch()
 
-    console.log(courses, progressCourse, subProgress, 'lojjo')
+    
 
     const trackProgress = () => {
-        
+        console.log(courses,"oshit")
         let newCourse = courses[progressCourse]
+        console.log(newCourse,"track am")
         let newContent = newCourse.contents[subProgress]
+        console.log(newContent, "baba ra am")
         console.log(newContent)
         setCurrentContent(newContent)
     }

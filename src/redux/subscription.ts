@@ -37,6 +37,8 @@ const subscriptionSlice = createSlice({
                 return item
             })
             state.subscriptions = [...updateSubscriptions]
+
+            console.log(state.selections, "check selections here")
         },
         addAmountToSelect: (state, action: PayloadAction<{ id: string, amount: number, noOfSeat: number }>) => {
             const updateSelected = state.selections.map((item) => {
@@ -59,6 +61,8 @@ const subscriptionSlice = createSlice({
 
             state.selections = [...updateSelected]
             state.subscriptions = [...updateSubscriptions]
+
+            console.log(state.selections, 'add ammount to select')
         },
         postAllSubscriptions: (state, action: PayloadAction<ISubCourse[]>) => {
             state.subscriptions = action.payload
