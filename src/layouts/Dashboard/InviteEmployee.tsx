@@ -17,6 +17,9 @@ const InviteEmployee = () => {
     const getErrors = useAppSelector((state: RootState) => state.inviteEmployee.errors)
     const errorFound = useAppSelector((state: RootState) => state.inviteEmployee.errorfound)
     const error = useAppSelector((state: RootState) => state.inviteEmployee.error)
+
+    const { profileInfo } = useAppSelector((state: RootState) => state.user)
+    const {company} = profileInfo
     
     const submitInvite = () => {
         toast(error)
@@ -90,8 +93,10 @@ const InviteEmployee = () => {
                             dispatch(handleInviteInput({ key: InviteFormEnum.COURSE, value: e.target.value }))
                             dispatch(handleInviteErrors())
                         }} >
-                        <option value="Workplace Harrassment">Work Place Harrassment</option>
-                        <option value="Workplace Culture">Work Place Culture</option>
+                        {company[0].courses.map((course: any, index: any) => {
+                            
+                            return<option key={index} value={course.id}>{course.title}({course.subscriptionName})</option>
+                        })}
                     </select>
                 </div>
                 <div>

@@ -11,6 +11,7 @@ import { calculateTotalSelect } from '../../utils/helper'
 import { paySubscription } from '../../redux/actions/subscriptionAction'
 import { toast, ToastContainer } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 type CheckoutProp = {
   step: number;
@@ -23,9 +24,35 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
   const [totalCost, setTotalCost] = useState<number>(0)
   const [tax, setTax] = useState<number>(9)
   const { selections, subscriptions, error, success } = useAppSelector((state: RootState) => state.subscription)
+  const {userToken} = useAppSelector((state:RootState)=> state.user)
  
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+
+  const submitPaidCourse = async () => {
+    try {
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-control': 'no-cache',
+          'mode': 'cors',
+          Authorization: `Bearer ${userToken}`
+        },
+      }
+
+      const { data } = await axios.post(
+        '/users/payCourse',
+        {
+          courses: selections
+        },
+        config
+      )
+
+    } catch (error) {
+
+    }
+  }
 
   useEffect(() => {
     
@@ -35,13 +62,16 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
 
     
 
+    
+
     setSubTotal(additions)
     setTotalCost(additions+tax)
    
   }, [selections])
 
   const handlePaySubscription = () => {
-    dispatch(paySubscription())
+    // dispatch(paySubscription())
+    submitPaidCourse()
     
     if (error) {
       toast(error)

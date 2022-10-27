@@ -77,7 +77,7 @@ const FormSignUp = ({ text }: FormType) => {
             navigate('/')
         } else {
             const { payload } = data
-            localStorage.setItem('userDetails', payload)
+            localStorage.setItem('userDetails', JSON.stringify(payload))
             localStorage.setItem('userToken', payload.accessToken)
             if (payload.user.isEmployee) {
                 navigate('/employeeDashboard/courses')

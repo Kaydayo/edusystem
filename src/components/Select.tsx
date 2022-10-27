@@ -10,14 +10,17 @@ type SelectProp = {
     change:(e:React.ChangeEvent<HTMLSelectElement>)=>void
 }
 
-const Select = ({data, tittle, name, placeHolder, change}:SelectProp) => {
+const Select = ({data, tittle, name, placeHolder, change, value}:SelectProp) => {
   return (
       <div className='fieldInput'>
           <label htmlFor={name}>{tittle}</label>
-          <select name={name} id={name} value={data[0].value} placeholder={placeHolder} onChange={(e)=>change(e)} >
-              {data.map((opt, indx) => (
-                  <option value={opt.key} key={indx}>{opt.value}</option>
-              ))}
+          <select name={name} id={name} value={value} placeholder={placeHolder} onChange={(e)=>change(e)} >
+              {data.map((opt, indx) => {
+                  return <option value={opt.key} key={indx}>{opt.value}</option>
+              }
+              )
+              
+            }
           </select>
     </div>
   )

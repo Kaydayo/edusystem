@@ -4,6 +4,7 @@ import { stat } from 'fs'
 import { AdminSignup, CompanyFInal, CompanyFormEnum, InputValue, InviteData, InviteInput} from '../types/interfaces'
 import { act } from 'react-dom/test-utils'
 import { inviteEmployees } from './actions/inviteEmployeeAction'
+import * as immer from 'immer'
 
 
 
@@ -72,8 +73,15 @@ export const inviteEmployeeSlice = createSlice({
         },
        
         handleInviteInput: (state, action: PayloadAction<InviteInput>) => {
-            let key = action.payload.key
-            state.info[key] = action.payload.value
+            // let key = action.payload.key
+            // state.info[key] = action.payload.value
+            // console.log(state.inf:o, "shalalala")
+
+            state.info = immer.produce(state.info, draftState => {
+                draftState[action.payload.key] = action.payload.value
+            })
+
+            
         },
     },
     extraReducers: {

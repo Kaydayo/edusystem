@@ -2,19 +2,21 @@
   border-collapse: collapse;
   border: none;
   width: 100%;
+  text-align: center;
 }
 
 .tableRowHeader {
   background-color: transparent;
   transition: all 0.25s ease;
   border-radius: 10px;
+  text-align: center;
 }
 
 .tableHeader {
   background-color: #f1f1f1;
   padding: 12px;
   font-weight: 600;
-  text-align: left;
+  text-align: center;
   font-size: 16px;
   
 }
@@ -30,6 +32,7 @@
 .tableRowItems {
   cursor: pointer;
   border-bottom: 1px solid #EEF1FF;
+  text-align: center;
 }
 
 /* .tableRowItems:nth-child(odd) {
@@ -39,14 +42,15 @@
 .tableCell {
   padding: 12px;
   font-size: 14px;
-  text-align: left;
+  text-align: center;
 }
 
 .nameData{
     display: flex;
     align-items: center;
     gap: 1rem;
-    /* justify-content: center; */
+    text-align: center;
+    justify-content: center;
 }
 
 .nameData:last-child p{
@@ -69,11 +73,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-align: center;
 }
 
 .gradeCell div{
     color: #BBC4D9;
     font-size: 1.5rem;
+    text-align: center;
+}
+
+.gradeCellSub{
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    text-align: center;
+}
+
+.gradeCellSub div{
+    color: #BBC4D9;
+    font-size: 1.5rem;
+    text-align: center;
 }
 
 .nameImage{

@@ -50,7 +50,8 @@ const Table = ({ data, rowsPerPage, showMore }: TableProp) => {
                                   "borderRadius": "4px",
                                 //   "height": "24px",
                                   "fontWeight": "600",
-                                  "fontSize": "12px"
+                                  "fontSize": "12px",
+                                  "margin":"0 auto"
                               }}>Pending</p>
                           </td>
                           <td className={tableStyles.tableCell}>
