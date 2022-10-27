@@ -49,6 +49,8 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
         config
       )
 
+      console.log(data,"the big bug")
+
     } catch (error) {
 
     }
@@ -70,7 +72,7 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
   }, [selections])
 
   const handlePaySubscription = () => {
-    dispatch(paySubscription())
+    // dispatch(paySubscription())
     submitPaidCourse()
     
     if (error) {
