@@ -70,7 +70,7 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
   }, [selections])
 
   const handlePaySubscription = () => {
-    // dispatch(paySubscription())
+    dispatch(paySubscription())
     submitPaidCourse()
     
     if (error) {
