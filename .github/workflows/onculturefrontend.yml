@@ -26,12 +26,7 @@ jobs:
           echo DANGEROUSLY_DISABLE_HOST_CHECK=${{secrets.DANGEROUSLY_DISABLE_HOST_CHECK}} >> .env
           cat .env
       - run: |
-          npm i --force --legacy-peer-deps
-          npm audit fix --force
           npm install
           npm run build
-          pm2 stop 0
-          pm2 start 0
-          pm2 save
-          sudo service nginx restart
+         
           
