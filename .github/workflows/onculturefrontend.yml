@@ -27,6 +27,7 @@ jobs:
           cat .env
       - run: |
           npm i --force --legacy-peer-deps
+          npm audit fix --force
           npm install
           npm run build
           pm2 stop 0
