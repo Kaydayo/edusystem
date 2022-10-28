@@ -52,7 +52,7 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
       console.log(data,"the big bug")
 
     } catch (error) {
-
+      console.log(error,"an error")
     }
   }
 
