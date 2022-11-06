@@ -4,7 +4,7 @@ import { IoCloseCircle } from 'react-icons/io5'
 type ModalProp = {
   show: boolean;
   children?: JSX.Element;
-  setShowModal:(showModal:boolean) => void
+  setShowModal:(showModal:boolean) => void;
 }
 const  Modal = ({show,children,setShowModal}:ModalProp) => {
   return (

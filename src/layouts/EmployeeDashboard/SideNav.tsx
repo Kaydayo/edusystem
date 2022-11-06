@@ -30,11 +30,11 @@ const SideNav = () => {
     
 
     const trackProgress = () => {
-        console.log(courses,"oshit")
+        // console.log(courses,"oshit")
         let newCourse = courses[progressCourse]
-        console.log(newCourse,"track am")
+        // console.log(newCourse,"track am")
         let newContent = newCourse.contents[subProgress]
-        console.log(newContent, "baba ra am")
+        // console.log(newContent, "baba ra am")
         console.log(newContent)
         setCurrentContent(newContent)
     }

@@ -809,3 +809,55 @@ export const companyEmployees = [
     }
     
 ]
+
+export const createTeams = [
+    {
+        firstName: "Gloria Richards",
+        email:"hello@thepeoplepracice"
+    },
+    {
+        firstName: "Gloria Richards",
+        email: "hello@thepeoplepracice"
+    },
+    {
+        firstName: "Gloria Richards",
+        email: "hello@thepeoplepracice"
+    },
+    {
+        firstName: "Gloria Richards",
+        email: "hello@thepeoplepracice"
+    },
+    {
+        firstName: "Gloria Richards",
+        email: "hello@thepeoplepracice"
+    },
+    {
+        firstName: "Gloria Richards",
+        email: "hello@thepeoplepracice"
+    },
+    {
+        firstName: "Gloria Richards",
+        email: "hello@thepeoplepracice"
+    },
+    {
+        firstName: "Gloria Richards",
+        email: "hello@thepeoplepracice"
+    },
+    {
+        firstName: "Gloria Richards",
+        email: "hello@thepeoplepracice"
+    },
+    {
+        firstName: "Gloria Richards",
+        email: "hello@thepeoplepracice"
+    },
+    {
+        firstName: "Gloria Richards",
+        email: "hello@thepeoplepracice"
+    },
+    {
+        firstName: "Gloria Richards",
+        email: "hello@thepeoplepracice"
+    }
+
+]

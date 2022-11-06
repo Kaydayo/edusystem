@@ -130,3 +130,9 @@ export enum SingUp{
     EMAIL = 'email',
     PASSWORD='password'
 }
+
+export enum SwitchModalTeam {
+    DELETE = 'delete',
+    ASSIGN = 'assign',
+    RENAME='rename'
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import Modal from '../components/ Modal'
 import Nav from '../components/Nav'
+import TeamModal from '../components/TeamModal'
 import DashboardNav from '../layouts/Dashboard/DashboardNav'
 import DashboardPages from '../layouts/Dashboard/DashboardPages'
 import InviteEmployee from '../layouts/Dashboard/InviteEmployee'
@@ -13,6 +14,7 @@ import { calNoOfSlotTotal } from '../utils/helper'
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
+  const [showTeamModal, setShowTeamModal] = useState<boolean>(false)
   const { profileInfo, userToken } = useAppSelector((state: RootState) => state.user)
 
   const navigate = useNavigate()
@@ -43,7 +45,7 @@ console.log(profileInfo,"juju")
     return (
       <div className={dashBoardStyle.mainBoard}>
         <div>
-          <DashboardNav setShowModal={setShowModal} profileImage={profileInfo.user.profilePicture} />
+          <DashboardNav setShowModal={setShowModal} profileImage={profileInfo.user.profilePicture} setShowTeamModal={setShowTeamModal} />
         </div>
         <div>
           <Profile
@@ -66,6 +68,9 @@ console.log(profileInfo,"juju")
         </div>
         <div>
           <Modal show={showModal} setShowModal={setShowModal} children={<InviteEmployee />} />
+        </div>
+        <div>
+          <TeamModal show={showTeamModal} setShowTeamModal={setShowTeamModal} />
         </div>
       </div>
     )
