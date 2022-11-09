@@ -4,7 +4,7 @@ import buttonStyle from '../styles/Home/Button.module.css'
 type ButtonProps = {
   className?: string ,
   onClick?: () => void,
-  children?: string,
+  children?: any,
   type?: any,
   disabled?: boolean 
     

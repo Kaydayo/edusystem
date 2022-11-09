@@ -23,6 +23,7 @@ import { gapi } from 'gapi-script'
 import useGoogleAuthentication from '../hooks/useGoogleAuthentication'
 import { GoogleLogin } from 'react-google-login'
 import { unwrapResult } from '@reduxjs/toolkit'
+import { ThreeDots } from 'react-loader-spinner'
 // import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
 
 
@@ -40,6 +41,7 @@ const FormSignUp = ({ text }: FormType) => {
     const [showPassword, setShowPassword] = useState<boolean>(false)
 
 
+
     const { handleSuccess } = useGoogleAuthentication();
     const { loading, error, userInfo, success, userToken, profileInfo } = useAppSelector((state: RootState) => state.user)
     const dispatch = useAppDispatch()
@@ -48,6 +50,7 @@ const FormSignUp = ({ text }: FormType) => {
 
     useEffect(() => {
         toast(error)
+       
     },[error, success, userToken])
 
 
@@ -132,11 +135,22 @@ const FormSignUp = ({ text }: FormType) => {
             </div>
             <div className={signUpStyle.formBtns}>
                 {/* <Link to="/company-onboarding"> */}
-                <Button disabled={loading} onClick={() =>
+                <Button disabled={loading} onClick={() =>{
+                   
+
                     onSignUp({ email: userInfo.email, password: userInfo.password })
+                }
 
                 }>
-                    {text}
+                    {loading ? <ThreeDots
+                        height="40"
+                        width="40"
+                        radius="9"
+                        color="#fff"
+                        ariaLabel="three-dots-loading"
+                        wrapperClass={signUpStyle.loaders}
+                        visible={true}
+                    /> :text}
                 </Button>
                 {/* </Link> */}
                 <div>
