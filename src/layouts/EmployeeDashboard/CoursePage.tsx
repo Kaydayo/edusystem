@@ -1,16 +1,17 @@
-import React from 'react'
-import EmployeeNav from './EmployeeNav'
-import SideNav from './SideNav'
+import React from "react";
+import EmployeeNav from "./EmployeeNav";
+import SideNav from "./SideNav";
+import courseStyle from "../../styles/EmployeeDashboard/EmployeeDashboard.module.css";
 
 const CoursePage = () => {
-    return (
-        <div>
-            <EmployeeNav />
+  return (
+    <div>
+      <div className={courseStyle.employeeHeader}>
+        <EmployeeNav />
+      </div>
+      <SideNav />
+    </div>
+  );
+};
 
-            <SideNav />
-
-        </div>
-    )
-}
-
-export default CoursePage
+export default CoursePage;
