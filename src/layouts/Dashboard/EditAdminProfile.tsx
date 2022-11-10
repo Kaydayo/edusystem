@@ -63,6 +63,7 @@ const MyTextArea = ({ label, className, ...props }: any) => {
 
 const EditAdminProfile = () => {
     const [showModal, setShowModal] = useState<boolean>(false)
+    const [showTeamModal, setShowTeamModal] = useState<boolean>(false)
     const { profileInfo, userToken } = useAppSelector((state: RootState) => state.user)
     const [preview, setPreview] = useState<string>(profileInfo.user.profilePicture)
 
@@ -102,7 +103,7 @@ const EditAdminProfile = () => {
 
     return (
         <div className={dashboardStyle.editProfileMain}>
-            <DashboardNav setShowModal={setShowModal} profileImage={preview} />
+            <DashboardNav setShowModal={setShowModal} profileImage={preview} setShowTeamModal={setShowTeamModal} />
             <ToastContainer/>
             <div className={dashboardStyle.editProfileBody}>
                 <div className={dashboardStyle.editProfileForm}>

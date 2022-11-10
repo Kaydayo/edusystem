@@ -68,13 +68,13 @@ function App() {
     }
 
 
-    // const onUnload = () => {
-    //   localStorage.clear()
-    // };
-    // window.addEventListener('beforeunload', onUnload);
-    // return () => {
-    //   window.removeEventListener('beforeunload', onUnload);
-    // };
+    const onUnload = () => {
+      localStorage.clear()
+    };
+    window.addEventListener('beforeunload', onUnload);
+    return () => {
+      window.removeEventListener('beforeunload', onUnload);
+    };
 
     // window.addEventListener('beforeunload', handleTabClose);
 

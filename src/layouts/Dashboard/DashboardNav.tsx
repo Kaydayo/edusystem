@@ -6,10 +6,11 @@ import avatar from '../../Assets/Images/companyAvatar.svg'
 
 type BoardProp = {
     profileImage?: any;
-    setShowModal: (showModal:boolean) => void;
+    setShowModal: (showModal: boolean) => void;
+    setShowTeamModal: (showAdminModal: boolean) => void;
 }
 
-const DashboardNav = ({ profileImage, setShowModal }: BoardProp) => {
+const DashboardNav = ({ profileImage, setShowModal, setShowTeamModal }: BoardProp) => {
     
     const navigate = useNavigate()
   return (
@@ -18,11 +19,11 @@ const DashboardNav = ({ profileImage, setShowModal }: BoardProp) => {
             <img src={onCultureLogo} alt="onculture-logo" onClick={()=> navigate('/')}/>
           </div>
           <div className={boardStyle.boardBtn}>
-              <Link to="/create-team">
-                  <button className={boardStyle.createTeam}>
+              {/* <Link to="/create-team"> */}
+                  <button className={boardStyle.createTeam} onClick={() => setShowTeamModal(true)}>
                       Create a Team
                   </button>
-              </Link>
+              {/* </Link> */}
               <button className={boardStyle.inviteEmployee} onClick={()=> setShowModal(true)}>
                   Invite Employee
               </button>

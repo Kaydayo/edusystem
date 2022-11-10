@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Nav from '../components/Nav'
 import Carousel from '../layouts/Home/Carousel'
 import Companys from '../layouts/Home/Companys'
@@ -9,6 +9,11 @@ import Label from '../layouts/Home/Label'
 import Review from '../layouts/Home/Review'
 
 const Home = () => {
+
+  useEffect(() => {
+    localStorage.clear()
+  }, [])
+  
   return (
     <div className='homepage'>
       <Nav />

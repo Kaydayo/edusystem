@@ -1,6 +1,6 @@
 {
   "name": "onculture-frontend",
-  "proxy": "https://api.onculture.io",
+  "proxy": "http://localhost:4000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -26,6 +26,7 @@
     "react-dom": "^18.0.17",
     "react-google-login": "^5.2.2",
     "react-icons": "^4.4.0",
+    "react-loader-spinner": "^5.3.4",
     "react-mentions": "^4.4.7",
     "react-moment": "^1.1.2",
     "react-password-strength-bar": "^0.4.1",
