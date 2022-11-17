@@ -29,7 +29,7 @@ const EmployeeNav = () => {
 
   console.log(employee, "1st attepmt");
   useEffect(() => {
-    getEmployee(profileInfo.company[0].employees, profileInfo.user._id);
+    // getEmployee(profileInfo.company[0].employees, profileInfo.user._id);
   }, [profileInfo]);
 
   return (

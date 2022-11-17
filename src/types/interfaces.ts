@@ -27,6 +27,7 @@ export enum CompanyFormEnum {
   MISSION = "mission",
   VISION = "vision",
   VALUES = "values",
+  ABOUTCOMPANY="aboutCompany"
   // SUBSCRIOTION="subscription"
 }
 
@@ -49,6 +50,7 @@ export interface CompanyFInal {
     mission: string;
     vision: string;
     values: string;
+    aboutCompany:string
     // subscription: [],
   };
   errors: any;
@@ -95,6 +97,7 @@ export interface UserState {
 export interface SubscriptionState {
   selections: ISubCourse[];
   subscriptions: ISubCourse[];
+  coursesToPay: string[];
   loading: boolean;
   error: any;
   success: boolean;

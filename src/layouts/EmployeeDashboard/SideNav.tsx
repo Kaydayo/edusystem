@@ -11,11 +11,16 @@ import CustomComment from "../../components/CustomComment";
 import Button from "../../components/Button";
 import { RootState, useAppDispatch, useAppSelector } from "../../redux/store";
 import { completeCourse } from "../../redux/actions/coursesAction";
+import { courseModules, postBody } from "../../constants/data";
+import urlBuilder from '@sanity/image-url'
 
 type ContentParams = {
   id: number;
   subId: number;
 };
+
+
+const urlFor = (source: any) => urlBuilder({ projectId: "hc076t78", dataset: "production" }).image(source)
 
 const SideNav = () => {
   const [showComment, setShowComment] = useState<boolean>(false);
@@ -25,35 +30,45 @@ const SideNav = () => {
   const [allCourses, setAllCourses] = useState<any>([]);
   const [currentCourseId, setCurrentCourseId] = useState<string>("");
 
+  const serializer = {
+    types: {
+      image: (props: any) => <div>
+        // <img src={urlFor(props.asset)} alt="onculture-sanity-img" style={{ width: "20px" }} />
+      </div>
+
+    }
+  }
+
+
+
   const { activeCourseIndex, loading, success } = useAppSelector(
     (state: RootState) => state.courses
   );
-  const { profileInfo } = useAppSelector((state: RootState) => state.user);
-  const { user } = profileInfo;
-  // console.log(profileInfo);
+  // const { profileInfo } = useAppSelector((state: RootState) => state.user);
+  // const { user } = profileInfo;
+
 
   const dispatch = useAppDispatch();
 
-  const courses = user.courses[activeCourseIndex].course;
+  // const courses = user.courses[activeCourseIndex].course;
 
   const trackProgress = () => {
-    // console.log(courses, "oshit");
-    let newCourse = courses[progressCourse];
-    // console.log(newCourse, "track am");
-    setCurrentCourseId(newCourse.constId);
-    let newContent = newCourse.contents[subProgress];
 
-    // console.log(newContent, "baba ra am");
-    // console.log(newContent);
-    setCurrentContent(newContent);
+    // let newCourse = courses[progressCourse];
+
+    // setCurrentCourseId(newCourse.constId);
+    // let newContent = newCourse.contents[subProgress];
+    // setCurrentContent(newContent);
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    setAllCourses(courses);
+    // setAllCourses(courses);
+    setAllCourses(courseModules);
     trackProgress();
-  }, [subProgress, user]);
+    // }, [subProgress, user]);
+  }, [subProgress, currentCourseId]);
 
   if (loading) {
     console.log("loading", loading);
@@ -61,7 +76,7 @@ const SideNav = () => {
 
   const handleContentChange = ({ id, subId }: ContentParams) => {
     // console.log(id, subId);
-    setCurrentContent(courses[id].contents[subId]);
+    // setCurrentContent(courses[id].contents[subId]);
   };
 
   return (
@@ -74,6 +89,7 @@ const SideNav = () => {
             progress={progressCourse}
             allCourses={allCourses}
             handleClick={handleContentChange}
+            setCurrentLesson={setCurrentCourseId}
           />
         </div>
       </div>
@@ -108,9 +124,17 @@ const SideNav = () => {
               <CustomComment />
             ) : (
               <div className={courseStyle.contentText}>
-                {allCourses && <p>{currentContent.note}</p>}
+                {allCourses && <div>
+                  <PortableText
+                    dataset={process.env.REACT_APP_SANITY_DATASET}
+                    projectId={process.env.REACT_APP_SANITY_PROJECT_ID}
+                    content={postBody}
+                    serializers={serializer}
+                  />
+                </div>
+                }
                 <div>
-                  <Button
+                  {/* <Button
                     className={courseStyle.completeBtn}
                     onClick={() => {
                       if (success) {
@@ -144,7 +168,7 @@ const SideNav = () => {
                     // disabled={currentContent.complete}
                   >
                     Complete
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             )}

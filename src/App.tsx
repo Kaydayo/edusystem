@@ -84,16 +84,16 @@ function App() {
 
   }, [userToken])
 
-  useEffect(() => {
-    const SCOPES = "https://www.googleapis.com/auth/drive.metadata.readonly"
-    const initClient = () => {
-      gapi.auth2.init({
-        clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        scope: SCOPES
-      });
-    };
-    gapi.load('client:auth2', initClient);
-  });
+  // useEffect(() => {
+  //   const SCOPES = "https://www.googleapis.com/auth/drive.metadata.readonly"
+  //   const initClient = () => {
+  //     gapi.auth2.init({
+  //       clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+  //       scope: SCOPES
+  //     });
+  //   };
+  //   gapi.load('client:auth2', initClient);
+  // });
 
 
 
@@ -108,6 +108,7 @@ function App() {
             <Route path='faq' element={<Faq />} />
 
             {/* TODO: move to protected route */}
+            <Route path='coursePage' element={<CoursePage />} />
            
 
 
@@ -137,7 +138,7 @@ function App() {
                 <Route path="courses" element={<EmployeeCourses />} />
               </Route>
 
-              <Route path='coursePage' element={<CoursePage />} />
+              {/* <Route path='coursePage' element={<CoursePage />} /> */}
             </Route>
 
 

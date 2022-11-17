@@ -14,7 +14,7 @@ const initialState:InviteData = {
         email: '',
         jobRole: '',
         department: '',
-        course:'Work Place Culture'
+        course:'',
     },
     errors: {
         fullName: false,

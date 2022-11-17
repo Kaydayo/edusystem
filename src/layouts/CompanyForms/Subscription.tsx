@@ -9,7 +9,7 @@ const Subscription = () => {
     const dispatch = useAppDispatch()
 
     const { subscriptions } = useAppSelector((state: RootState) => state.subscription)
-   
+   console.log(subscriptions,"subscriptions")
    
     
 
@@ -24,9 +24,9 @@ const Subscription = () => {
                 <div className={companyStyle.popSub}>
                     {subscriptions.filter((courses) => {
                         if (checkTwo) {
-                            return !courses.cultureClinic && courses.staySafe && !courses.others
+                            return !courses.cultureClinic && courses.harrassment && !courses.others
                         } else {
-                            return courses.cultureClinic && courses.staySafe && !courses.others
+                            return courses.cultureClinic && courses.harrassment && !courses.others
                         }
                     }).map((element, idex) => (
                         <SubscriptionCourse data={element} key={idex} />
@@ -36,9 +36,9 @@ const Subscription = () => {
                 <div className={companyStyle.popSubDown}>
                     {subscriptions.filter((courses) => {
                         if (checkTwo) {
-                            return !courses.cultureClinic && courses.staySafe && courses.others
+                            return !courses.cultureClinic && courses.harrassment && courses.others
                         } else {
-                            return courses.cultureClinic && courses.staySafe && courses.others
+                            return courses.cultureClinic && courses.harrassment && courses.others
                         }
                     }).map((element, idex) => (
                         <SubscriptionCourse data={element} key={idex}/>

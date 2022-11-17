@@ -19,6 +19,7 @@ const initialState: CompanyFInal = {
         mission: '',
         vision: '',
         values: '',
+        aboutCompany:''
         // subscription: [],
     },
     errors: {

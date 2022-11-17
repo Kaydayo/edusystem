@@ -340,7 +340,7 @@
 }
 
 .accordTitle h4:nth-of-type(2) {
-  width: 118px;
+  width: 150px;
 }
 
 .accordTitle div {
@@ -369,6 +369,7 @@
 .rev {
   border-bottom: 1px solid #8790a3;
   padding: 1rem 2rem;
+  cursor: pointer;
 }
 
 .accordComplete {

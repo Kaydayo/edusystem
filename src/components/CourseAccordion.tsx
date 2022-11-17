@@ -11,19 +11,21 @@ type ContentParams = {
 };
 
 type FaqProp = {
-  allCourses: FaqData[];
+  allCourses: any[];
+  // allCourses: FaqData[];
   //   index: number;
   progress: number;
   subProgress: number;
   setProgress?: (progress: number) => void;
   handleClick: (data: ContentParams) => void;
+  setCurrentLesson: (id: string) => void;
 };
-interface FaqData {
-  constId: string;
-  name: string;
-  step: number;
-  contents: ContentCourse[];
-}
+// interface FaqData {
+//   constId: string;
+//   name: string;
+//   step: number;
+//   contents: ContentCourse[];
+// }
 
 interface ContentCourse {
   id: string;
@@ -39,6 +41,7 @@ const CourseAccordion = ({
   progress,
   subProgress,
   handleClick,
+  setCurrentLesson
 }: FaqProp) => {
   console.log(";progress subtopic", progress, subProgress);
   const [currentView, setCurrentView] = useState<number>(1);
@@ -67,11 +70,12 @@ const CourseAccordion = ({
           <div key={index}>
             <div
               className={`${accordStyle.accordTitle} ${
-                progress + 1 === course.step ? accordStyle.accordActive : ""
+                progress  === index ? accordStyle.accordActive : ""
               }`}
             >
               <h4>{addZeroToSingle(index)}</h4>
-              <h4>{capitalizeFirstLetter(course.name)}</h4>
+              {/* <h4>{capitalizeFirstLetter(course.name)}</h4> */}
+              <h4>{course.moduleTitle}</h4>
               <div>
                 {currentView === index + 1 ||
                 activeArr.some(
@@ -101,13 +105,15 @@ const CourseAccordion = ({
               (item: any) => item.name === course.name && item.active
             ) || currentView === index + 1 ? (
               <div className={`${accordStyle.rev}`}>
-                {course.contents.map((data: any, i: number) => {
+                {course.lesson.map((data: any, i: number) => {
                   return (
                     <div
-                      key={data.id}
+                      key={i}
                       className={accordStyle.accodList}
                       onClick={() => {
+                        console.log("i clickced")
                         handleClick({ id: index, subId: i });
+                        setCurrentLesson(data._id)
                       }}
                       // style={{
                       //   pointerEvents: "none",
@@ -123,7 +129,7 @@ const CourseAccordion = ({
                         )}
                       </div>
                       <div>
-                        <p> {capitalizeFirstLetter(data.subTopic)}</p>
+                        <p> {capitalizeFirstLetter(data.lessonTitle)}</p>
                       </div>
                     </div>
                   );
