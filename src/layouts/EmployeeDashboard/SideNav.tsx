@@ -12,7 +12,13 @@ import Button from "../../components/Button";
 import { RootState, useAppDispatch, useAppSelector } from "../../redux/store";
 import { completeCourse } from "../../redux/actions/coursesAction";
 import { courseModules, postBody } from "../../constants/data";
-import urlBuilder from '@sanity/image-url'
+import urlBuilder from '@sanity/image-url';
+import { PortableText } from '@portabletext/react'
+import PortableTextComponents from "./PortableTextComponents";
+import { Player, PosterImage } from 'video-react'
+import ReactPlayer from 'react-player'
+import videoStyle from '../../styles/Home/Video.module.css'
+import videoPoster from '../../Assets/Images/courseVideoPoster.svg'
 
 type ContentParams = {
   id: number;
@@ -20,7 +26,7 @@ type ContentParams = {
 };
 
 
-const urlFor = (source: any) => urlBuilder({ projectId: "hc076t78", dataset: "production" }).image(source)
+
 
 const SideNav = () => {
   const [showComment, setShowComment] = useState<boolean>(false);
@@ -33,7 +39,7 @@ const SideNav = () => {
   const serializer = {
     types: {
       image: (props: any) => <div>
-        // <img src={urlFor(props.asset)} alt="onculture-sanity-img" style={{ width: "20px" }} />
+      
       </div>
 
     }
@@ -90,13 +96,22 @@ const SideNav = () => {
             allCourses={allCourses}
             handleClick={handleContentChange}
             setCurrentLesson={setCurrentCourseId}
+            currentLesson={currentCourseId}
           />
         </div>
       </div>
 
       <div className={courseStyle.videoContent}>
-        <div>
-          <CourseVideo />
+        <div className={videoStyle.container}>
+          {/* <CourseVideo /> */}
+          <div className={videoStyle.courseVideo}>
+            <ReactPlayer url='https://www.youtube.com/watch?v=QIH1WQo1RXQ'
+              config={{ youtube: { playerVars: { disablekb: 1 } } }}
+              width='100%'
+              height='28rem'
+              // light={videoPoster}
+              />
+          </div>
         </div>
 
         <div className={courseStyle.contentContainer}>
@@ -125,50 +140,48 @@ const SideNav = () => {
             ) : (
               <div className={courseStyle.contentText}>
                 {allCourses && <div>
-                  <PortableText
-                    dataset={process.env.REACT_APP_SANITY_DATASET}
-                    projectId={process.env.REACT_APP_SANITY_PROJECT_ID}
-                    content={postBody}
-                    serializers={serializer}
+                    <PortableText
+                      value={postBody}
+                      components={PortableTextComponents}
                   />
                 </div>
                 }
                 <div>
-                  {/* <Button
+                  <Button
                     className={courseStyle.completeBtn}
                     onClick={() => {
-                      if (success) {
-                        setSubProgress((prev) => prev + 1);
-                      }
+                      // if (success) {
+                      //   setSubProgress((prev) => prev + 1);
+                      // }
 
-                      if (
-                        allCourses[progressCourse].contents.length - 1 ===
-                          subProgress &&
-                        success
-                      ) {
-                        setProgressCourse((prev) => prev + 1);
-                        setSubProgress(0);
-                      }
+                      // if (
+                      //   allCourses[progressCourse].contents.length - 1 ===
+                      //     subProgress &&
+                      //   success
+                      // ) {
+                      //   setProgressCourse((prev) => prev + 1);
+                      //   setSubProgress(0);
+                      // }
 
-                      trackProgress();
+                      // trackProgress();
 
-                      //actual
-                      dispatch(
-                        completeCourse({
-                          courseId: currentCourseId,
-                          contentId: currentContent.id,
-                        })
-                      );
+                      // //actual
+                      // dispatch(
+                      //   completeCourse({
+                      //     courseId: currentCourseId,
+                      //     contentId: currentContent.id,
+                      //   })
+                      // );
 
-                      console.log({
-                        id: progressCourse,
-                        subId: subProgress,
-                      });
+                      // console.log({
+                      //   id: progressCourse,
+                      //   subId: subProgress,
+                      // });
                     }}
                     // disabled={currentContent.complete}
                   >
                     Complete
-                  </Button> */}
+                  </Button>
                 </div>
               </div>
             )}

@@ -360,7 +360,9 @@
 
 .accodList {
   display: flex;
+  width: 100%;
   align-items: center;
+  padding: 1rem 2rem;
 }
 
 .accodList div:nth-of-type(2) {
@@ -368,8 +370,13 @@
 }
 .rev {
   border-bottom: 1px solid #8790a3;
-  padding: 1rem 2rem;
+  /* padding: 1rem 2rem; */
   cursor: pointer;
+}
+
+.revMark{
+  background-color: #b7b9bd;
+  /* width: 130%; */
 }
 
 .accordComplete {

@@ -19,6 +19,7 @@ type FaqProp = {
   setProgress?: (progress: number) => void;
   handleClick: (data: ContentParams) => void;
   setCurrentLesson: (id: string) => void;
+  currentLesson: string
 };
 // interface FaqData {
 //   constId: string;
@@ -41,12 +42,13 @@ const CourseAccordion = ({
   progress,
   subProgress,
   handleClick,
-  setCurrentLesson
+  setCurrentLesson,
+  currentLesson
 }: FaqProp) => {
   console.log(";progress subtopic", progress, subProgress);
   const [currentView, setCurrentView] = useState<number>(1);
   const [activeArr, setActiveArr] = useState<any>([]);
-
+  const [markCureent, setMarkCurrent] = useState<boolean>(false)
   useEffect(() => {
     let p = allCourses.map((item, i) =>
       i === progress
@@ -104,15 +106,16 @@ const CourseAccordion = ({
             {activeArr.some(
               (item: any) => item.name === course.name && item.active
             ) || currentView === index + 1 ? (
-              <div className={`${accordStyle.rev}`}>
+            <div className={`${accordStyle.rev}`}>
                 {course.lesson.map((data: any, i: number) => {
                   return (
                     <div
                       key={i}
-                      className={accordStyle.accodList}
+                      className={`${accordStyle.accodList} ${data._id === currentLesson && accordStyle.revMark}`}
                       onClick={() => {
-                        console.log("i clickced")
+                        console.log("i clickced", data._id)
                         handleClick({ id: index, subId: i });
+                        setMarkCurrent(!markCureent)
                         setCurrentLesson(data._id)
                       }}
                       // style={{
@@ -135,9 +138,9 @@ const CourseAccordion = ({
                   );
                 })}
               </div>
-            ) : (
+             ) : (
               ""
-            )}
+            )} 
           </div>
         );
       })}
