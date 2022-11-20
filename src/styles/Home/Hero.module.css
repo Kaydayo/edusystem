@@ -1,46 +1,77 @@
-.homeHero{
-    background-attachment: fixed;
-    background: url('../../Assets/Images/home-hero-background.png');
-    height: 820px;
-    background-size: 100% 100%;
-    
-    /* width: auto; */
-    
+.homeHero {
+  background-attachment: fixed;
+  background: url("../../Assets/Images/home-hero-background.png");
+  /* height: 820px; */
+  height: 750px;
+  background-size: 100% 100%;
 }
-.heroContent{
-    display: flex;
-    align-items: flex-start;
-    gap: 10rem;
-    justify-content: center;
-    padding: 48px;
+.heroContent {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 2rem 48px;
+  width: 100%;
+  max-width: 1330px;
+  margin: 0 auto;
+  /* border: 1px solid red; */
 }
-.leftContent{
-    width: 617px;
-    text-align: left;
-    gap: 1.5rem;
-}
-
-.leftContent h1{
-    font-size: 60px;
-    text-align: left;
-    line-height: 67px;
-    font-weight: 600;
-    font-stretch: condensed;
-    letter-spacing: 0px;
-    /* height: 245px; */
+.leftContent {
+  max-width: 650px;
+  width: 100%;
+  padding-top: 50px;
 }
 
-.leftContent p{
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
+.leftContent h1 {
+  /* font-size: 60px;
+  text-align: left;
+  line-height: 67px;
+  font-weight: 600;
+  font-stretch: condensed;
+  letter-spacing: 0px; */
+  /* height: 245px; */
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -2px;
+  line-height: 55.6px;
+  margin: 0;
 }
 
-@media all and (max-width:900px){
+.leftContent p {
+  font-weight: 400;
+  font-size: 20px;
+}
 
-    .homeHero{
+.heroBtn {
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  padding: 15px 60px;
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  border-radius: 4px;
+}
+
+.heroBtn:hover {
+  transition: 0.4s;
+  transform: scale(0.9);
+}
+
+/* .vid {
+  border: 1px solid green;
+} */
+/* @media all and (max-width: 1100px) {
+  .heroContent {
+    padding: 40px 20px;
+  }
+} */
+
+@media all and (max-width: 1000px) {
+  .homeHero {
     /* background-attachment: fixed; */
-    background: url('../../Assets/Images/home-hero-background.png');
+    background: url("../../Assets/Images/home-hero-background.png");
     /* height: fit-content; */
     /* width: fit-content; */
     background-repeat: no-repeat;
@@ -55,67 +86,66 @@
     margin: 0;
     /* margin-left: -2rem; */
     background-size: 100% 50%;
-    }
+  }
 
-    .heroContent{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* text-align: center; */
-        /* padding: 2rem; */
-        /* gap: 1rem; */
-        padding: 0;
-        width: 374px;
-        height: fit-content;
-        text-align: center;
-        justify-content: center;
-        gap: 20rem;
-    }
+  .heroContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: fit-content; */
+    text-align: center;
+    justify-content: center;
+    gap: 20rem;
+  }
 
-    .leftContent{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 0;
-        gap: 1rem;
-        width: 375px;
-        
-    }
+  .leftContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+  }
 
-    .leftContent h1{
-        width: 370px;
-        height: 116px;
-        text-align: center;
-        line-height: 38.4px;
-        font-size: 32px;
-        margin: 0;
-        
-    }
-    .leftContent p{
-        font-weight: 400;
-        font-size: 16px;
-        width: 304px;
-        height: 64px;
-        text-align: center;
-        margin: 0;
-        height: 96px;
-    }
-    .heroBtn{
-       margin: 0;
-     
-          width: 244px;
-    height: 74px;
+  .leftContent h1 {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    line-height: 38.4px;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  .leftContent p {
+    font-weight: 400;
+    font-size: 16px;
+    max-width: 400px;
+    height: 64px;
+    text-align: center;
+    margin: 0;
+  }
+  .heroBtn {
+    margin: 0;
+    width: 244px;
     background-color: var(--primary-color);
     color: white;
     border-radius: 4px;
     border: none;
     cursor: pointer;
     font-weight: 600;
-        
-    }
-
-  
+  }
 }
 
+@media all and (max-width: 450px) {
+  .heroContent {
+    gap: 19rem;
+    padding: 0 1.25rem;
+  }
+
+  .leftContent h1 {
+    letter-spacing: -1px;
+  }
+  .leftContent p {
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+}

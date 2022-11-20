@@ -1,0 +1,44 @@
+.templateTag_Container {
+  padding: 25px 0;
+}
+
+.main {
+  box-sizing: border-box;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.main h2 {
+  font-size: 30px;
+  margin-bottom: 0;
+  max-width: 370px;
+  width: 100%;
+}
+
+.main p {
+  max-width: 520px;
+  width: 100%;
+}
+
+.main h4 {
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+
+.tag_card {
+  display: flex;
+  gap: 10px;
+  background: #f5f8fe;
+  border-radius: 4px;
+  padding: 0px 2rem;
+  margin-bottom: 15px;
+  max-width: 500px;
+}
+
+@media all and (max-width: 900px) {
+  .main {
+    padding: 0 1.25rem;
+  }
+}

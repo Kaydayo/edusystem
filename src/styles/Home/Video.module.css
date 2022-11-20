@@ -131,7 +131,7 @@ video {
   color: white;
 }
 
-@media all and (max-width: 900px) {
+@media all and (max-width: 1000px) {
   .container {
     padding: 0;
     width: fit-content;

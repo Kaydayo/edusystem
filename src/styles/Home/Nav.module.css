@@ -1,163 +1,156 @@
-.headers{
-    display: flex;
-    padding: var(--padding-gap);
-    justify-content: space-between;
-    font-weight: 600;
-    align-items: center
-
+.headers {
+  display: flex;
+  padding: var(--padding-gap);
+  justify-content: space-between;
+  font-weight: 600;
+  align-items: center;
 }
-.sidebar{
+.sidebar {
+  display: none;
+}
+.links ul li {
+  list-style: none;
+  list-style-type: none;
+}
+
+.linkTo {
+  text-decoration: none;
+  font-size: 14px;
+  color: black;
+}
+
+.linksElement li {
+  display: inline;
+  margin: 2rem;
+  text-decoration: none;
+}
+
+.linksElement li:hover,
+.linkTo:hover {
+  color: #ff22ff;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.signUpBtn {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  height: var(--button-height);
+  width: var(--button-width);
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.signUpBtn:hover {
+  transition: all 0.8s;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.bookADemo {
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  height: 56px;
+  width: 155px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+}
+
+.bookADemo:hover {
+  transition: 0.4s;
+  transform: scale(0.9);
+}
+
+.addShadow {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  height: 119px;
+  box-sizing: border-box;
+}
+
+@media all and (max-width: 950px) {
+  .headers {
     display: none;
-}
-.links ul li{
-    list-style: none;
-    list-style-type: none;
+  }
 
-}
-
-.linkTo{
-    text-decoration: none;
-    font-size: 14px;
-    color: black;
-}
-
-
-
-.linksElement li{
-    display: inline;
-    margin: 2rem;
-    text-decoration: none;
-}
-
-
-
-.linksElement li:hover, .linkTo:hover{
-    color: #FF22FF;
-    cursor: pointer;
-}
-
-.buttons{
+  .sidebar {
     display: flex;
-    gap: 0.6rem;
-}
+    flex-direction: column;
+    /* width: 1005; */
+    padding: 2rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    align-items: left;
+    height: fit-content;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: white; */
+    border: none;
+    /* width: 100%; */
+  }
 
-.signUpBtn{
-    background-color: transparent;
-    border: 2px solid var(--primary-color);
-    height: var(--button-height);
-    width: var(--button-width);
-    box-sizing: border-box;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--primary-color);
+  .logoSide {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+    width: 100%;
+    align-items: center;
     cursor: pointer;
-}
+  }
 
-.signUpBtn:hover{
-    transition: all 0.8s;
-    background-color: var(--primary-color);
-    color: white;
-}
+  .logoSide img {
+    width: 40%;
+    height: 40%;
+  }
 
-.bookADemo{
-    background-color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    height: 56px;
-    width: 155px;
-    box-sizing: border-box;
-    border-radius: 4px;
+  .linkSide ul {
+    list-style: none;
+    gap: 3rem;
+    margin-left: -10%;
+    color: black !important;
     font-weight: 600;
-    font-size: 14px;
-    color: white;
-    cursor: pointer;
+  }
 
-}
+  .linkSide ul li {
+    margin: 2rem 0;
+    color: black !important;
+  }
 
-.bookADemo:hover{
-    transition: 0.4s;
-    transform: scale(0.9);
+  .activateSide {
+    display: flex;
+    flex-direction: column;
+    height: 0%;
+    transition: 20s;
+    position: absolute;
+    z-index: 55;
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .activateSide div {
+    background-color: white;
+    padding: 1rem;
+    text-align: left;
+  }
 
-}
-
-.addShadow{
-     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-     height: 119px;
-     box-sizing: border-box;
-}
-
-@media all and (max-width:900px){
-    .headers{
-        display: none;
-    }
-
-    .sidebar{
-        display: flex;
-        flex-direction: column;
-        /* width: 1005; */
-        padding: 2rem;
-        align-items: left;
-        height: fit-content;
-        justify-content: space-between;
-        align-items: center;
-        /* background-color: white; */
-        border: none;
-        /* width: 100%; */
-    }
-
-    .logoSide{
-        display: flex;
-        justify-content: space-between;
-        font-size: 2rem;
-        width: 100%;
-        align-items: center;
-        cursor: pointer;
-
-    }
-
-    .logoSide img{
-        width: 40%;
-        height: 40%;
-    }
-
-    .linkSide ul{
-        list-style: none;
-        gap: 3rem;
-        margin-left: -10%;
-        color: black !important;
-        font-weight: 600;
-    }
-
-    .linkSide ul li{
-        margin: 2rem 0;
-        color: black !important;
-    }
-
-    .activateSide{
-        display: flex;
-        flex-direction: column;
-        height: 0%;
-        transition: 20s;
-        position: absolute;
-        z-index: 55;
-        width: 100%;
-        margin-top: 2rem;
-    }
-    .activateSide div{
-        background-color: white;
-        padding: 1rem;
-        text-align: left;
-    }
-
-    .buttonSide{
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        padding: 0;
-        margin: 0;
-    }
-    .buttonSide div{
-        padding: 0;
-    }
-    
+  .buttonSide {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+  }
+  .buttonSide div {
+    padding: 0;
+  }
 }

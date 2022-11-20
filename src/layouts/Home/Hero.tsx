@@ -1,35 +1,31 @@
-import React from 'react'
-import Button from '../../components/Button'
-import Video from '../../components/Video'
-import heroStyles from '../../styles/Home/Hero.module.css'
-
+import React from "react";
+import Button from "../../components/Button";
+import Video from "../../components/Video";
+import heroStyles from "../../styles/Home/Hero.module.css";
+// import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-      <div className={heroStyles.homeHero}>
-          <div className={heroStyles.heroContent}>
-               <div className={heroStyles.leftContent}>
-              <h1>
-                  Interactive Learning Platform for
-                  Culture-Aligned Teams
-              </h1>
-              <p>
-                  OnCulture helps organizations educate employees
-                  on healthy workplace practices while uniting
-                  teams, even across different locations.
-              </p>
-              <div className={heroStyles.heroBtn}>
-                  <Button>
-                  Book a Demo
-              </Button>
-              </div>
-          </div>
-          <div>
-              <Video/>
-          </div>
-         </div>
-    </div>
-  )
-}
+    <div className={heroStyles.homeHero}>
+      <div className={heroStyles.heroContent}>
+        <div className={heroStyles.leftContent}>
+          <h1>
+            An interactive and learning platform that transforms employees into
+            culture-aligned teams.
+          </h1>
+          <p>
+            Educates and align employees to purposes and goals, while connecting
+            teams.
+          </p>
 
-export default Hero
+          <Button className={heroStyles.heroBtn}>Book a Demo</Button>
+        </div>
+        {/* <div className={heroStyles.vid}> */}
+        <Video />
+        {/* </div> */}
+      </div>
+    </div>
+  );
+};
+
+export default Hero;
