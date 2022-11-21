@@ -5,7 +5,11 @@ import PortableImageCOmponent from './PortableImageCOmponent'
 
 const PortableTextComponents = {
     types: {
-        image: PortableImageCOmponent
+        image: PortableImageCOmponent,
+    },
+    block: {
+        span: ({ children }: any) => <span style={{ fontSize:"32px"}}> {children}</span>
+
     }
   
 }

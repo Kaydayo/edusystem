@@ -41,6 +41,7 @@ export enum InviteFormEnum {
 
 export interface CompanyFInal {
   info: {
+    id: string;
     firstName: string;
     surnName: string;
     email: string;

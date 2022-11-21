@@ -10,8 +10,8 @@ import SpecialButton from "../../components/SpecialButton";
 import CustomComment from "../../components/CustomComment";
 import Button from "../../components/Button";
 import { RootState, useAppDispatch, useAppSelector } from "../../redux/store";
-import { completeCourse } from "../../redux/actions/coursesAction";
-import { courseModules, postBody } from "../../constants/data";
+import { completeCourse, completeCourseSanity } from "../../redux/actions/coursesAction";
+// import { courseModules, postBody } from "../../constants/data";
 import urlBuilder from '@sanity/image-url';
 import { PortableText } from '@portabletext/react'
 import PortableTextComponents from "./PortableTextComponents";
@@ -19,6 +19,7 @@ import { Player, PosterImage } from 'video-react'
 import ReactPlayer from 'react-player'
 import videoStyle from '../../styles/Home/Video.module.css'
 import videoPoster from '../../Assets/Images/courseVideoPoster.svg'
+import axios from "axios";
 
 type ContentParams = {
   id: number;
@@ -26,16 +27,23 @@ type ContentParams = {
 };
 
 
-
+export type ProgressType = {
+  moduleIndex: number;
+  lessonIndex: number;
+  lessonId: string;
+}
 
 const SideNav = () => {
   const [showComment, setShowComment] = useState<boolean>(false);
-  const [progressCourse, setProgressCourse] = useState<number>(0);
+  const [courseTitle, setCourseTitle] = useState<string>("");
   const [subProgress, setSubProgress] = useState<number>(0);
-  const [currentContent, setCurrentContent] = useState<any>({});
+  const [currentVideo, setCurrentVideo] = useState<string>("");
+  const [postBody, setPostBody] = useState<any>([])
   const [allCourses, setAllCourses] = useState<any>([]);
   const [currentCourseId, setCurrentCourseId] = useState<string>("");
+  const [progress, setProgress] = useState<ProgressType>({moduleIndex:0, lessonIndex:0, lessonId:""})
 
+  const { userInfo, userToken, profileInfo } = useAppSelector((state: RootState) => state.user)
   const serializer = {
     types: {
       image: (props: any) => <div>
@@ -45,41 +53,55 @@ const SideNav = () => {
     }
   }
 
-
-
   const { activeCourseIndex, loading, success } = useAppSelector(
     (state: RootState) => state.courses
   );
-  // const { profileInfo } = useAppSelector((state: RootState) => state.user);
-  // const { user } = profileInfo;
 
 
   const dispatch = useAppDispatch();
 
-  // const courses = user.courses[activeCourseIndex].course;
+  const getCourseModule = async () => {
+    const { data } = await axios.get(`subscription/getCourse/${profileInfo.user.courses[0].sanityId}`)
+    console.log(data, "DATA")
+    setAllCourses(data.module);
+    setCourseTitle(data.title)
+    setProgress({ moduleIndex: 0, lessonIndex: 0, lessonId: data.module[0].lesson[0]._id });
+  }
 
-  const trackProgress = () => {
+  const getCourseLesson = async () => {
+    const { data } = await axios.get(`subscription/getLesson/${progress.lessonId}`)
+    setPostBody(data.body)
+    if (data.videoUrl) {
+      setCurrentVideo(data.videoUrl)
+    } else {
+      setCurrentVideo("")
+    }
+    
 
-    // let newCourse = courses[progressCourse];
+  }
+  
 
-    // setCurrentCourseId(newCourse.constId);
-    // let newContent = newCourse.contents[subProgress];
-    // setCurrentContent(newContent);
-  };
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    getCourseModule()
+   console.log(allCourses, "ALL COIRSES")
+    // setAllCourses(courseModules);
+    
 
-    // setAllCourses(courses);
-    setAllCourses(courseModules);
-    trackProgress();
-    // }, [subProgress, user]);
-  }, [subProgress, currentCourseId]);
+  }, []);
+
+  useEffect(() => {
+    getCourseLesson()
+    
+  }, [progress])
 
   if (loading) {
     console.log("loading", loading);
   }
 
+  console.log(progress,"PROGRESS ")
   const handleContentChange = ({ id, subId }: ContentParams) => {
     // console.log(id, subId);
     // setCurrentContent(courses[id].contents[subId]);
@@ -88,15 +110,17 @@ const SideNav = () => {
   return (
     <div className={courseStyle.sideNav}>
       <div className={courseStyle.navigations}>
-        <p className={courseStyle.firstP}>Harassment in the Workplace</p>
+        <p className={courseStyle.firstP}>{courseTitle}</p>
         <div className={courseStyle.mainNavs}>
           <CourseAccordion
             subProgress={subProgress}
-            progress={progressCourse}
+            progress={progress}
+            setProgress={setProgress}
             allCourses={allCourses}
             handleClick={handleContentChange}
             setCurrentLesson={setCurrentCourseId}
             currentLesson={currentCourseId}
+
           />
         </div>
       </div>
@@ -105,12 +129,12 @@ const SideNav = () => {
         <div className={videoStyle.container}>
           {/* <CourseVideo /> */}
           <div className={videoStyle.courseVideo}>
-            <ReactPlayer url='https://www.youtube.com/watch?v=QIH1WQo1RXQ'
+            {currentVideo && <ReactPlayer url={currentVideo}
               config={{ youtube: { playerVars: { disablekb: 1 } } }}
               width='100%'
               height='28rem'
-              // light={videoPoster}
-              />
+            // light={videoPoster}
+            />}
           </div>
         </div>
 
@@ -150,33 +174,35 @@ const SideNav = () => {
                   <Button
                     className={courseStyle.completeBtn}
                     onClick={() => {
-                      // if (success) {
-                      //   setSubProgress((prev) => prev + 1);
-                      // }
+                      if (progress.moduleIndex + 1 === allCourses.length
+                        && progress.lessonIndex + 1 === allCourses[progress.moduleIndex].lesson.length) {
+                        setProgress({
+                          ...progress,
+                          moduleIndex: 0,
+                          lessonIndex: 0,
+                          lessonId: allCourses[0].lesson[0]._id
+                        })
+                      } else {
+                        if (progress.lessonIndex + 1 === allCourses[progress.moduleIndex].lesson.length) {
+                          setProgress(
+                            {
+                              ...progress,
+                              moduleIndex: progress.moduleIndex +1,
+                              lessonIndex:0,
+                              lessonId: allCourses[progress.moduleIndex + 1].lesson[0]._id
+                            })
+                        } else {
+                          setProgress(
+                            {
+                              ...progress,
+                              lessonIndex: progress.lessonIndex + 1,
+                              lessonId: allCourses[progress.moduleIndex].lesson[progress.lessonIndex + 1]._id
+                            })
+                        }
+                      
+                      }
 
-                      // if (
-                      //   allCourses[progressCourse].contents.length - 1 ===
-                      //     subProgress &&
-                      //   success
-                      // ) {
-                      //   setProgressCourse((prev) => prev + 1);
-                      //   setSubProgress(0);
-                      // }
-
-                      // trackProgress();
-
-                      // //actual
-                      // dispatch(
-                      //   completeCourse({
-                      //     courseId: currentCourseId,
-                      //     contentId: currentContent.id,
-                      //   })
-                      // );
-
-                      // console.log({
-                      //   id: progressCourse,
-                      //   subId: subProgress,
-                      // });
+                      dispatch(completeCourseSanity(progress))
                     }}
                     // disabled={currentContent.complete}
                   >

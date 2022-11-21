@@ -392,7 +392,7 @@
   border-radius: 4px;
   /* cursor: pointer; */
   font-weight: 600;
-  /* left: -2rem; */
+  /* right: -2rem; */
 }
 
 .logout p {
@@ -403,4 +403,9 @@
 
 .logout p:hover {
   background-color: rgb(245, 245, 245);
+}
+
+.lessonText{
+  width: 20px;
+  margin-right: 3rem;
 }

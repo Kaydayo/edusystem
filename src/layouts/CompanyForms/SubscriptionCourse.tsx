@@ -52,6 +52,7 @@ const SubscriptionCourse = ({ data }: SubCourseProp) => {
                     <p>{data.harrassment && "Harrassment in the workplace"} {data.cultureClinic && "& Culture Clinic"}</p>
                     <button onClick={() => {
                         // setClick(!click)
+                        console.log(data, "DATABUMBUM")
                         dispatch(addCourseToSelectList({ ...data, selected:!data.selected}))
 
                     }} >

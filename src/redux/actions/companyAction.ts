@@ -85,6 +85,7 @@ export const registerCompany = createAsyncThunk(
                 return rejectWithValue(data.message)
             }
             localStorage.setItem('userDetails', JSON.stringify(data.payload))
+            localStorage.setItem('userToken', data.payload.accessToken)
             dispatch(getUserDetails())
 
            

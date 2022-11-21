@@ -19,7 +19,8 @@ const EmployeeCourses = () => {
               id={course.id}
               courseTitle={course.title}
               value={45}
-              duration={`${course.numWeeks}Wks`}
+              duration={`2Wks`}
+              // duration={`${course.numWeeks}Wks`}
               timeLeft={"5 Days"}
               classes={12}
               description={"60% done with the course but 1 week behind."}

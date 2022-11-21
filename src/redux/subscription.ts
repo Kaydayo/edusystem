@@ -28,12 +28,12 @@ const subscriptionSlice = createSlice({
                 state.selections = [...state.selections, action.payload]
                 
             } else {
-                state.selections = state.selections.filter((x) => x.id !== action.payload.id)
+                state.selections = state.selections.filter((x) => x._id !== action.payload._id)
             }
 
 
             const updateSubscriptions = state.subscriptions.map((item) => {
-                if (item.id === action.payload.id) {
+                if (item._id === action.payload._id) {
                     item = action.payload
                 }
                 return item

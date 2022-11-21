@@ -24,6 +24,9 @@ const Dashboard = () => {
 console.log(profileInfo,"juju")
   useEffect(() => {
 
+    if (userToken === undefined ) {
+      navigate('/')
+    }
     if (profileInfo === null) {
       dispatch(getUserDetails())
     }
@@ -37,6 +40,8 @@ console.log(profileInfo,"juju")
     if (!profileInfo && userToken) {
       dispatch(getUserDetails())
     }
+
+    
 
 
   }, [profileInfo, userToken])

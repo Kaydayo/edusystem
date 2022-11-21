@@ -25,11 +25,12 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
   const [tax, setTax] = useState<number>(9)
   const { selections, subscriptions, error, success } = useAppSelector((state: RootState) => state.subscription)
   const {userToken, profileInfo} = useAppSelector((state:RootState)=> state.user)
+  const {info} = useAppSelector((state:RootState)=> state.companyonboard)
  
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  console.log(selections,"selections")
+  console.log(profileInfo,"PROFILE INFO")
   const submitPaidCourse = async () => {
     try {
 
@@ -46,12 +47,24 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
         '/users/payCourse',
         {
           courses: selections,
-          companyId: profileInfo.company[0].id
+          companyId: info.id
         },
         config
       )
 
       console.log(data, "skibo")
+      localStorage.setItem('userDetails', JSON.stringify(data.payload))
+      localStorage.setItem('userToken', data.accessToken)
+
+      if (error) {
+        toast(error)
+      }
+
+      if (data.success) {
+        navigate('/dashboard/bio')
+      } else {
+        toast(error)
+      }
      
 
     } catch (error) {
@@ -73,14 +86,7 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
   const handlePaySubscription = () => {
     // dispatch(paySubscription())
     submitPaidCourse()
-    
-    if (error) {
-      toast(error)
-    }
-
-    // if (success) {
-      navigate('/dashboard/bio')
-    // }
+  
 }
   
   

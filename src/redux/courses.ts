@@ -23,7 +23,7 @@ import {
 // import { paySubscription } from "./actions/subscriptionAction";
 // import { string } from "prop-types";
 // import * as immer from "immer";
-import { completeCourse } from "./actions/coursesAction";
+import { completeCourse, completeCourseSanity } from "./actions/coursesAction";
 
 // const courses = [...courseContent];
 // const courses = localStorage.getItem("courseDetails")
@@ -73,16 +73,30 @@ const courseSlice = createSlice({
   },
 
   extraReducers: {
-    [completeCourse.pending.toString()]: (state) => {
+    // [completeCourse.pending.toString()]: (state) => {
+    //   state.loading = true;
+    //   state.error = null;
+    // },
+    // [completeCourse.fulfilled.toString()]: (state, { payload }) => {
+    //   console.log(payload, "lllll");
+    //   state.loading = false;
+    //   state.success = true;
+    // },
+    // [completeCourse.rejected.toString()]: (state, { payload }) => {
+    //   state.loading = false;
+    //   state.error = payload;
+    //   state.success = false;
+    // },
+    [completeCourseSanity.pending.toString()]: (state) => {
       state.loading = true;
       state.error = null;
     },
-    [completeCourse.fulfilled.toString()]: (state, { payload }) => {
+    [completeCourseSanity.fulfilled.toString()]: (state, { payload }) => {
       console.log(payload, "lllll");
       state.loading = false;
       state.success = true;
     },
-    [completeCourse.rejected.toString()]: (state, { payload }) => {
+    [completeCourseSanity.rejected.toString()]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
       state.success = false;
