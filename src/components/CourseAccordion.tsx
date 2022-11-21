@@ -4,6 +4,8 @@ import accordStyle from "../styles/EmployeeDashboard/EmployeeDashboard.module.cs
 import { addZeroToSingle, capitalizeFirstLetter } from "../utils/helper";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { GiCircle } from "react-icons/gi";
+import { ProgressType } from "../layouts/EmployeeDashboard/SideNav";
+import { RootState, useAppSelector } from "../redux/store";
 
 type ContentParams = {
   id: number;
@@ -11,19 +13,22 @@ type ContentParams = {
 };
 
 type FaqProp = {
-  allCourses: FaqData[];
+  allCourses: any[];
+  // allCourses: FaqData[];
   //   index: number;
-  progress: number;
+  progress: ProgressType;
   subProgress: number;
-  setProgress?: (progress: number) => void;
+  setProgress: (progress: ProgressType) => void;
   handleClick: (data: ContentParams) => void;
+  setCurrentLesson: (id: string) => void;
+  currentLesson: string
 };
-interface FaqData {
-  constId: string;
-  name: string;
-  step: number;
-  contents: ContentCourse[];
-}
+// interface FaqData {
+//   constId: string;
+//   name: string;
+//   step: number;
+//   contents: ContentCourse[];
+// }
 
 interface ContentCourse {
   id: string;
@@ -39,19 +44,27 @@ const CourseAccordion = ({
   progress,
   subProgress,
   handleClick,
+  setCurrentLesson,
+  currentLesson,
+  setProgress
 }: FaqProp) => {
   console.log(";progress subtopic", progress, subProgress);
   const [currentView, setCurrentView] = useState<number>(1);
+  const [currentModule, setCurrentModule] = useState<number>(0)
+  const [currentLessonIndex, setCurrentLessonIndex] = useState<number>(0)
   const [activeArr, setActiveArr] = useState<any>([]);
+  const [markCureent, setMarkCurrent] = useState<boolean>(false) 
+  const [dropAccodIcon, setDropAccodIcon] = useState<boolean>(true)
 
-  useEffect(() => {
-    let p = allCourses.map((item, i) =>
-      i === progress
-        ? { id: i, name: item.name, active: true }
-        : { id: i, name: item.name, active: false }
-    );
-    setActiveArr(p);
-  }, [allCourses, progress]);
+  const { userInfo, userToken, profileInfo } = useAppSelector((state: RootState) => state.user)
+  // useEffect(() => {
+  //   let p = allCourses.map((item, i) =>
+  //     i === progress
+  //       ? { id: i, name: item.name, active: true }
+  //       : { id: i, name: item.name, active: false }
+  //   );
+  //   setActiveArr(p);
+  // }, [allCourses, progress]);
 
   const handleDisplayLessons = (course: any) => {
     let ind = activeArr.findIndex((item: any) => item.name === course.name);
@@ -66,55 +79,85 @@ const CourseAccordion = ({
         return (
           <div key={index}>
             <div
-              className={`${accordStyle.accordTitle} ${
-                progress + 1 === course.step ? accordStyle.accordActive : ""
-              }`}
+              className={`${accordStyle.accordTitle} ${progress.moduleIndex === index ? accordStyle.accordActive : ""
+                }`}
+              
+              onClick={() => {
+                setProgress({
+                  ...progress,
+                  moduleIndex: index,
+                  lessonId: course.lesson[0]._id,
+                  lessonIndex: 0
+                })
+
+                if (index === progress.moduleIndex) {
+                  setDropAccodIcon(!dropAccodIcon)
+                } else {
+                  setDropAccodIcon(true)
+                }
+               
+              }}
             >
               <h4>{addZeroToSingle(index)}</h4>
-              <h4>{capitalizeFirstLetter(course.name)}</h4>
+              {/* <h4>{capitalizeFirstLetter(course.name)}</h4> */}
+              <h4>{course.moduleTitle}</h4>
               <div>
-                {currentView === index + 1 ||
+                {/* {currentView === index + 1 ||
                 activeArr.some(
                   (item: any) => item.name === course.name && item.active
-                ) ? (
+                ) ? ( */}
+                {dropAccodIcon && progress.moduleIndex === index?
                   <FaAngleDown
                     onClick={() => {
-                      handleDisplayLessons(course);
-                      if (currentView === index + 1) {
-                        setCurrentView(0);
+                      // handleDisplayLessons(course);
+                      // if (currentView === index + 1) {
+                      //   setCurrentView(0);
+                      // }
+                      if (index === progress.moduleIndex) {
+                        setDropAccodIcon(!dropAccodIcon)
                       }
+                     
                     }}
                   />
-                ) : (
+                  :
                   <FaAngleUp
                     onClick={() => {
-                      setCurrentView(index + 1);
+                      // setCurrentView(index + 1);
 
-                      handleDisplayLessons(course);
+                      if (index === progress.moduleIndex) {
+                        setDropAccodIcon(!dropAccodIcon)
+                      }
+
+                      // handleDisplayLessons(course);
                     }}
                   />
-                )}
+            
+                  }
               </div>
             </div>
 
-            {activeArr.some(
-              (item: any) => item.name === course.name && item.active
-            ) || currentView === index + 1 ? (
+            {dropAccodIcon && progress.moduleIndex === index ? (
               <div className={`${accordStyle.rev}`}>
-                {course.contents.map((data: any, i: number) => {
+                {course.lesson.map((data: any, i: number) => {
                   return (
                     <div
-                      key={data.id}
-                      className={accordStyle.accodList}
+                      key={i}
+                      className={`${accordStyle.accodList} ${data._id === progress.lessonId && accordStyle.revMark}`}
                       onClick={() => {
-                        handleClick({ id: index, subId: i });
+                        // console.log("i clickced", data._id)
+                        // handleClick({ id: index, subId: i });
+                        // setMarkCurrent(!markCureent)
+                        // setCurrentLesson(data._id)
+                        // setCurrentModule(index)
+                        // setCurrentLessonIndex(i)
+                        setProgress({...progress, moduleIndex:index, lessonId:data._id, lessonIndex:i})
                       }}
-                      // style={{
-                      //   pointerEvents: "none",
-                      // }}
+                    // style={{
+                    //   pointerEvents: "none",
+                    // }}
                     >
                       <div>
-                        {data.complete ? (
+                        {profileInfo.user.completedCourse.includes(data._id) ? (
                           <AiFillCheckCircle
                             className={accordStyle.accordComplete}
                           />
@@ -122,8 +165,8 @@ const CourseAccordion = ({
                           <GiCircle />
                         )}
                       </div>
-                      <div>
-                        <p> {capitalizeFirstLetter(data.subTopic)}</p>
+                      <div className={accordStyle.lessonText}>
+                        <p> {capitalizeFirstLetter(data.lessonTitle)}</p>
                       </div>
                     </div>
                   );

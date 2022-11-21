@@ -6,17 +6,19 @@ import { useAppDispatch } from '../../redux/store';
 import { addCourseToSelectList } from '../../redux/subscription';
 
 export interface ISubCourse {
+    _id: string;
     id: string;
     subscriptionName: string;
     description: string;
     information: string[];
     price: string;
-    staySafe: boolean;
+    harrassment: boolean;
     cultureClinic: boolean;
     others: boolean;
     noOfSeats: number;
     amount: number;
-    selected: boolean
+    selected: boolean;
+    title:string
 }
 
 type SubCourseProp = {
@@ -47,9 +49,10 @@ const SubscriptionCourse = ({ data }: SubCourseProp) => {
             <div>
                 <hr />
                 <div className={`${companyStyle.pickBtn} ${data.selected && companyStyle.btnPicked}`}>
-                    <p>{data.staySafe && "Harrassment in the workplace"} {data.cultureClinic && "& Culture Clinic"}</p>
+                    <p>{data.harrassment && "Harrassment in the workplace"} {data.cultureClinic && "& Culture Clinic"}</p>
                     <button onClick={() => {
                         // setClick(!click)
+                        console.log(data, "DATABUMBUM")
                         dispatch(addCourseToSelectList({ ...data, selected:!data.selected}))
 
                     }} >

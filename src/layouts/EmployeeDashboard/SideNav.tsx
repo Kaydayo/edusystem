@@ -10,77 +10,132 @@ import SpecialButton from "../../components/SpecialButton";
 import CustomComment from "../../components/CustomComment";
 import Button from "../../components/Button";
 import { RootState, useAppDispatch, useAppSelector } from "../../redux/store";
-import { completeCourse } from "../../redux/actions/coursesAction";
+import { completeCourse, completeCourseSanity } from "../../redux/actions/coursesAction";
+// import { courseModules, postBody } from "../../constants/data";
+import urlBuilder from '@sanity/image-url';
+import { PortableText } from '@portabletext/react'
+import PortableTextComponents from "./PortableTextComponents";
+import { Player, PosterImage } from 'video-react'
+import ReactPlayer from 'react-player'
+import videoStyle from '../../styles/Home/Video.module.css'
+import videoPoster from '../../Assets/Images/courseVideoPoster.svg'
+import axios from "axios";
 
 type ContentParams = {
   id: number;
   subId: number;
 };
 
+
+export type ProgressType = {
+  moduleIndex: number;
+  lessonIndex: number;
+  lessonId: string;
+}
+
 const SideNav = () => {
   const [showComment, setShowComment] = useState<boolean>(false);
-  const [progressCourse, setProgressCourse] = useState<number>(0);
+  const [courseTitle, setCourseTitle] = useState<string>("");
   const [subProgress, setSubProgress] = useState<number>(0);
-  const [currentContent, setCurrentContent] = useState<any>({});
+  const [currentVideo, setCurrentVideo] = useState<string>("");
+  const [postBody, setPostBody] = useState<any>([])
   const [allCourses, setAllCourses] = useState<any>([]);
   const [currentCourseId, setCurrentCourseId] = useState<string>("");
+  const [progress, setProgress] = useState<ProgressType>({moduleIndex:0, lessonIndex:0, lessonId:""})
+
+  const { userInfo, userToken, profileInfo } = useAppSelector((state: RootState) => state.user)
+  const serializer = {
+    types: {
+      image: (props: any) => <div>
+      
+      </div>
+
+    }
+  }
 
   const { activeCourseIndex, loading, success } = useAppSelector(
     (state: RootState) => state.courses
   );
-  const { profileInfo } = useAppSelector((state: RootState) => state.user);
-  const { user } = profileInfo;
-  // console.log(profileInfo);
+
 
   const dispatch = useAppDispatch();
 
-  const courses = user.courses[activeCourseIndex].course;
+  const getCourseModule = async () => {
+    const { data } = await axios.get(`subscription/getCourse/${profileInfo.user.courses[0].sanityId}`)
+    console.log(data, "DATA")
+    setAllCourses(data.module);
+    setCourseTitle(data.title)
+    setProgress({ moduleIndex: 0, lessonIndex: 0, lessonId: data.module[0].lesson[0]._id });
+  }
 
-  const trackProgress = () => {
-    // console.log(courses, "oshit");
-    let newCourse = courses[progressCourse];
-    // console.log(newCourse, "track am");
-    setCurrentCourseId(newCourse.constId);
-    let newContent = newCourse.contents[subProgress];
+  const getCourseLesson = async () => {
+    const { data } = await axios.get(`subscription/getLesson/${progress.lessonId}`)
+    setPostBody(data.body)
+    if (data.videoUrl) {
+      setCurrentVideo(data.videoUrl)
+    } else {
+      setCurrentVideo("")
+    }
+    
 
-    // console.log(newContent, "baba ra am");
-    // console.log(newContent);
-    setCurrentContent(newContent);
-  };
+  }
+  
+
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    getCourseModule()
+   console.log(allCourses, "ALL COIRSES")
+    // setAllCourses(courseModules);
+    
 
-    setAllCourses(courses);
-    trackProgress();
-  }, [subProgress, user]);
+  }, []);
+
+  useEffect(() => {
+    getCourseLesson()
+    
+  }, [progress])
 
   if (loading) {
     console.log("loading", loading);
   }
 
+  console.log(progress,"PROGRESS ")
   const handleContentChange = ({ id, subId }: ContentParams) => {
     // console.log(id, subId);
-    setCurrentContent(courses[id].contents[subId]);
+    // setCurrentContent(courses[id].contents[subId]);
   };
 
   return (
     <div className={courseStyle.sideNav}>
       <div className={courseStyle.navigations}>
-        <p className={courseStyle.firstP}>Harassment in the Workplace</p>
+        <p className={courseStyle.firstP}>{courseTitle}</p>
         <div className={courseStyle.mainNavs}>
           <CourseAccordion
             subProgress={subProgress}
-            progress={progressCourse}
+            progress={progress}
+            setProgress={setProgress}
             allCourses={allCourses}
             handleClick={handleContentChange}
+            setCurrentLesson={setCurrentCourseId}
+            currentLesson={currentCourseId}
+
           />
         </div>
       </div>
 
       <div className={courseStyle.videoContent}>
-        <div>
-          <CourseVideo />
+        <div className={videoStyle.container}>
+          {/* <CourseVideo /> */}
+          <div className={videoStyle.courseVideo}>
+            {currentVideo && <ReactPlayer url={currentVideo}
+              config={{ youtube: { playerVars: { disablekb: 1 } } }}
+              width='100%'
+              height='28rem'
+            // light={videoPoster}
+            />}
+          </div>
         </div>
 
         <div className={courseStyle.contentContainer}>
@@ -108,38 +163,46 @@ const SideNav = () => {
               <CustomComment />
             ) : (
               <div className={courseStyle.contentText}>
-                {allCourses && <p>{currentContent.note}</p>}
+                {allCourses && <div>
+                    <PortableText
+                      value={postBody}
+                      components={PortableTextComponents}
+                  />
+                </div>
+                }
                 <div>
                   <Button
                     className={courseStyle.completeBtn}
                     onClick={() => {
-                      if (success) {
-                        setSubProgress((prev) => prev + 1);
-                      }
-
-                      if (
-                        allCourses[progressCourse].contents.length - 1 ===
-                          subProgress &&
-                        success
-                      ) {
-                        setProgressCourse((prev) => prev + 1);
-                        setSubProgress(0);
-                      }
-
-                      trackProgress();
-
-                      //actual
-                      dispatch(
-                        completeCourse({
-                          courseId: currentCourseId,
-                          contentId: currentContent.id,
+                      if (progress.moduleIndex + 1 === allCourses.length
+                        && progress.lessonIndex + 1 === allCourses[progress.moduleIndex].lesson.length) {
+                        setProgress({
+                          ...progress,
+                          moduleIndex: 0,
+                          lessonIndex: 0,
+                          lessonId: allCourses[0].lesson[0]._id
                         })
-                      );
+                      } else {
+                        if (progress.lessonIndex + 1 === allCourses[progress.moduleIndex].lesson.length) {
+                          setProgress(
+                            {
+                              ...progress,
+                              moduleIndex: progress.moduleIndex +1,
+                              lessonIndex:0,
+                              lessonId: allCourses[progress.moduleIndex + 1].lesson[0]._id
+                            })
+                        } else {
+                          setProgress(
+                            {
+                              ...progress,
+                              lessonIndex: progress.lessonIndex + 1,
+                              lessonId: allCourses[progress.moduleIndex].lesson[progress.lessonIndex + 1]._id
+                            })
+                        }
+                      
+                      }
 
-                      console.log({
-                        id: progressCourse,
-                        subId: subProgress,
-                      });
+                      dispatch(completeCourseSanity(progress))
                     }}
                     // disabled={currentContent.complete}
                   >

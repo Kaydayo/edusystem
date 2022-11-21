@@ -13,7 +13,8 @@ export interface companyData {
     mission: string;
     vision: string;
     values: string;
-    email: string
+    email: string;
+    aboutCompany: string;
 }
 
 export interface companyUpdate {
@@ -43,7 +44,8 @@ export const registerCompany = createAsyncThunk(
         mission,
         vision,
         values,
-        email
+        email,
+        aboutCompany
     }: companyData, { getState, rejectWithValue, dispatch }) => {
         try {
 
@@ -71,7 +73,8 @@ export const registerCompany = createAsyncThunk(
                     mission,
                     vision,
                     values,
-                    email
+                    email,
+                    aboutCompany
                 },
                 config
             )
@@ -82,6 +85,7 @@ export const registerCompany = createAsyncThunk(
                 return rejectWithValue(data.message)
             }
             localStorage.setItem('userDetails', JSON.stringify(data.payload))
+            localStorage.setItem('userToken', data.payload.accessToken)
             dispatch(getUserDetails())
 
            

@@ -340,7 +340,7 @@
 }
 
 .accordTitle h4:nth-of-type(2) {
-  width: 118px;
+  width: 150px;
 }
 
 .accordTitle div {
@@ -360,7 +360,9 @@
 
 .accodList {
   display: flex;
+  width: 100%;
   align-items: center;
+  padding: 1rem 2rem;
 }
 
 .accodList div:nth-of-type(2) {
@@ -368,7 +370,13 @@
 }
 .rev {
   border-bottom: 1px solid #8790a3;
-  padding: 1rem 2rem;
+  /* padding: 1rem 2rem; */
+  cursor: pointer;
+}
+
+.revMark{
+  background-color: #b7b9bd;
+  /* width: 130%; */
 }
 
 .accordComplete {
@@ -384,7 +392,7 @@
   border-radius: 4px;
   /* cursor: pointer; */
   font-weight: 600;
-  /* left: -2rem; */
+  /* right: -2rem; */
 }
 
 .logout p {
@@ -395,4 +403,9 @@
 
 .logout p:hover {
   background-color: rgb(245, 245, 245);
+}
+
+.lessonText{
+  width: 20px;
+  margin-right: 3rem;
 }

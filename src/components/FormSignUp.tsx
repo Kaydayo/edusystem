@@ -71,7 +71,7 @@ const FormSignUp = ({ text }: FormType) => {
     }
 
    
-    const userLoginFetch = async (email:string, password:string) => {
+ const userLoginFetch = async (email:string, password:string) => {
         const { data } = await axios.post(
             '/users/login',
             { username: email, password }

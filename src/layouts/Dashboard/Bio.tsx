@@ -14,7 +14,7 @@ const Bio = () => {
   const [hasBio, setHasBio] = useState<boolean>(false)
 
   const { profileInfo, userToken } = useAppSelector((state: RootState) => state.user)
-  const {mission, vision, values} = profileInfo.company[0]
+  const {mission, vision, values, aboutCompany} = profileInfo.company[0]
 
   if (!mission && !vision && !values) {
     return (
@@ -25,6 +25,10 @@ const Bio = () => {
   } else {
     return (
       <div className={boardBioStyle.bioMain}>
+        <div>
+          <h4>About Your Company </h4>
+          <p>{aboutCompany ? aboutCompany : ""}</p>
+        </div>
         <div>
           <h4>Mission </h4>
           <p>{mission?mission:""}</p>

@@ -33,6 +33,7 @@ import EmployeeDashboard from './pages/EmployeeDashboard';
 import EmployeeCourses from './layouts/EmployeeDashboard/EmployeeCourses';
 import CoursePage from './layouts/EmployeeDashboard/CoursePage';
 import EditAdminProfile from './layouts/Dashboard/EditAdminProfile';
+import axios from 'axios';
 
 
 
@@ -41,8 +42,10 @@ function App() {
   const { userInfo, userToken, profileInfo } = useAppSelector((state: RootState) => state.user)
   const dispatch = useAppDispatch()
   
-
-
+  const storeToken = localStorage.getItem('userToken') ?
+    localStorage.getItem('userToken') : null
+  
+  
 
   // automatically authenticate user if token is found
   useEffect(() => {
@@ -50,8 +53,7 @@ function App() {
       localStorage.clear()
     };
 
-    const storeToken = localStorage.getItem('userToken') ?
-      localStorage.getItem('userToken') : null
+    
     
     const storeDetails = localStorage.getItem('userDetails') ?
       localStorage.getItem('userDetails') : null
@@ -68,13 +70,13 @@ function App() {
     }
 
 
-    const onUnload = () => {
-      localStorage.clear()
-    };
-    window.addEventListener('beforeunload', onUnload);
-    return () => {
-      window.removeEventListener('beforeunload', onUnload);
-    };
+    // const onUnload = () => {
+    //   localStorage.clear()
+    // };
+    // window.addEventListener('beforeunload', onUnload);
+    // return () => {
+    //   window.removeEventListener('beforeunload', onUnload);
+    // };
 
     // window.addEventListener('beforeunload', handleTabClose);
 
@@ -84,16 +86,18 @@ function App() {
 
   }, [userToken])
 
-  useEffect(() => {
-    const SCOPES = "https://www.googleapis.com/auth/drive.metadata.readonly"
-    const initClient = () => {
-      gapi.auth2.init({
-        clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        scope: SCOPES
-      });
-    };
-    gapi.load('client:auth2', initClient);
-  });
+  
+
+  // useEffect(() => {
+  //   const SCOPES = "https://www.googleapis.com/auth/drive.metadata.readonly"
+  //   const initClient = () => {
+  //     gapi.auth2.init({
+  //       clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+  //       scope: SCOPES
+  //     });
+  //   };
+  //   gapi.load('client:auth2', initClient);
+  // });
 
 
 
@@ -103,11 +107,12 @@ function App() {
         <ScrollToTop>
           <Routes>
             {/* Home */}
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home userToken={storeToken}/>} />
 
             <Route path='faq' element={<Faq />} />
 
             {/* TODO: move to protected route */}
+            {/* <Route path='coursePage' element={<CoursePage />} /> */}
            
 
 

@@ -36,6 +36,7 @@ const CompanyOnBoarding = () => {
   const getAllSubscriptions = async () => {
     const { data } = await axios.get('subscription/all')
 
+    console.log(data, "all Data")
   
       dispatch(postAllSubscriptions(data))
     
