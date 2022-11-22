@@ -323,29 +323,36 @@
 
 .accordMain {
   color: black;
+  padding-bottom: 2rem;
 }
 
 .accordActive {
   background-color: #5c00dd;
   color: white;
-  cursor: pointer;
 }
 
 .accordTitle {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: flex-start;
   font-size: 20px;
-  align-items: center;
+  padding: 1rem 2rem;
   cursor: pointer;
 }
 
-.accordTitle h4:nth-of-type(2) {
-  width: 150px;
+.accordNum {
+  display: flex;
+  gap: 1rem;
 }
 
-.accordTitle div {
-  height: fit-content;
+.accordTitle h4 {
+  margin: 0;
 }
+
+/* .accordTitle div {
+  height: fit-content;
+  cursor: pointer;
+} */
 
 .accodContent {
   width: 345px;
@@ -360,21 +367,22 @@
 
 .accodList {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
+  gap: 1rem;
 }
 
-.accodList div:nth-of-type(2) {
+/* .accodList div:nth-of-type(2) {
   width: fit-content;
-}
+} */
 .rev {
   border-bottom: 1px solid #8790a3;
   /* padding: 1rem 2rem; */
   cursor: pointer;
 }
 
-.revMark{
+.revMark {
   background-color: #b7b9bd;
   /* width: 130%; */
 }
@@ -405,7 +413,9 @@
   background-color: rgb(245, 245, 245);
 }
 
-.lessonText{
-  width: 20px;
-  margin-right: 3rem;
+.lessonText p {
+  /* width: 20px; */
+  /* margin-right: 3rem; */
+  margin: 0;
+  padding-left: 0 !important;
 }

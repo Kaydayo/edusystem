@@ -21,7 +21,7 @@ type FaqProp = {
   setProgress: (progress: ProgressType) => void;
   handleClick: (data: ContentParams) => void;
   setCurrentLesson: (id: string) => void;
-  currentLesson: string
+  currentLesson: string;
 };
 // interface FaqData {
 //   constId: string;
@@ -46,17 +46,19 @@ const CourseAccordion = ({
   handleClick,
   setCurrentLesson,
   currentLesson,
-  setProgress
+  setProgress,
 }: FaqProp) => {
   console.log(";progress subtopic", progress, subProgress);
   const [currentView, setCurrentView] = useState<number>(1);
-  const [currentModule, setCurrentModule] = useState<number>(0)
-  const [currentLessonIndex, setCurrentLessonIndex] = useState<number>(0)
+  const [currentModule, setCurrentModule] = useState<number>(0);
+  const [currentLessonIndex, setCurrentLessonIndex] = useState<number>(0);
   const [activeArr, setActiveArr] = useState<any>([]);
-  const [markCureent, setMarkCurrent] = useState<boolean>(false) 
-  const [dropAccodIcon, setDropAccodIcon] = useState<boolean>(true)
+  const [markCureent, setMarkCurrent] = useState<boolean>(false);
+  // const [dropAccodIcon, setDropAccodIcon] = useState<boolean>(true);
 
-  const { userInfo, userToken, profileInfo } = useAppSelector((state: RootState) => state.user)
+  const { userInfo, userToken, profileInfo } = useAppSelector(
+    (state: RootState) => state.user
+  );
   // useEffect(() => {
   //   let p = allCourses.map((item, i) =>
   //     i === progress
@@ -66,8 +68,17 @@ const CourseAccordion = ({
   //   setActiveArr(p);
   // }, [allCourses, progress]);
 
-  const handleDisplayLessons = (course: any) => {
-    let ind = activeArr.findIndex((item: any) => item.name === course.name);
+  useEffect(() => {
+    let p = allCourses.map((item, i) =>
+      i === progress.moduleIndex
+        ? { id: i, active: true }
+        : { id: i, active: false }
+    );
+    setActiveArr(p);
+  }, [allCourses]);
+
+  const handleDisplayLessons = (index: number) => {
+    let ind = activeArr.findIndex((item: any) => item.id === index);
     let upd = [...activeArr];
     upd[ind].active = !upd[ind].active;
     setActiveArr(upd);
@@ -79,70 +90,62 @@ const CourseAccordion = ({
         return (
           <div key={index}>
             <div
-              className={`${accordStyle.accordTitle} ${progress.moduleIndex === index ? accordStyle.accordActive : ""
-                }`}
-              
-              onClick={() => {
-                setProgress({
-                  ...progress,
-                  moduleIndex: index,
-                  lessonId: course.lesson[0]._id,
-                  lessonIndex: 0
-                })
+              className={`${accordStyle.accordTitle} ${
+                progress.moduleIndex === index ? accordStyle.accordActive : ""
+              }`}
 
-                if (index === progress.moduleIndex) {
-                  setDropAccodIcon(!dropAccodIcon)
-                } else {
-                  setDropAccodIcon(true)
-                }
-               
-              }}
+              // onClick={() => {
+              //   setProgress({
+              //     ...progress,
+              //     moduleIndex: index,
+              //     lessonId: course.lesson[0]._id,
+              //     lessonIndex: 0
+              //   })
+              //   if (index === progress.moduleIndex) {
+              //     setDropAccodIcon(!dropAccodIcon);
+              //   } else {
+              //     setDropAccodIcon(true);
+              //   }
+              // }}
             >
-              <h4>{addZeroToSingle(index)}</h4>
-              {/* <h4>{capitalizeFirstLetter(course.name)}</h4> */}
-              <h4>{course.moduleTitle}</h4>
+              <div className={accordStyle.accordNum}>
+                <h4>{addZeroToSingle(index)}</h4>
+
+                <h4>{course.moduleTitle} </h4>
+              </div>
               <div>
-                {/* {currentView === index + 1 ||
-                activeArr.some(
-                  (item: any) => item.name === course.name && item.active
-                ) ? ( */}
-                {dropAccodIcon && progress.moduleIndex === index?
+                {/* {dropAccodIcon && progress.moduleIndex === index ? ( */}
+                {activeArr.some(
+                  (item: any) => item.id === index && item.active
+                ) ? (
                   <FaAngleDown
                     onClick={() => {
-                      // handleDisplayLessons(course);
-                      // if (currentView === index + 1) {
-                      //   setCurrentView(0);
-                      // }
-                      if (index === progress.moduleIndex) {
-                        setDropAccodIcon(!dropAccodIcon)
-                      }
-                     
+                      handleDisplayLessons(index);
                     }}
                   />
-                  :
+                ) : (
                   <FaAngleUp
                     onClick={() => {
-                      // setCurrentView(index + 1);
-
-                      if (index === progress.moduleIndex) {
-                        setDropAccodIcon(!dropAccodIcon)
-                      }
-
-                      // handleDisplayLessons(course);
+                      handleDisplayLessons(index);
                     }}
                   />
-            
-                  }
+                )}
               </div>
             </div>
 
-            {dropAccodIcon && progress.moduleIndex === index ? (
+            {activeArr.some((item: any) => item.id === index && item.active) ||
+            (progress.moduleIndex === index &&
+              activeArr.some(
+                (item: any) => item.id === index && item.active
+              )) ? (
               <div className={`${accordStyle.rev}`}>
                 {course.lesson.map((data: any, i: number) => {
                   return (
                     <div
                       key={i}
-                      className={`${accordStyle.accodList} ${data._id === progress.lessonId && accordStyle.revMark}`}
+                      className={`${accordStyle.accodList} ${
+                        data._id === progress.lessonId && accordStyle.revMark
+                      }`}
                       onClick={() => {
                         // console.log("i clickced", data._id)
                         // handleClick({ id: index, subId: i });
@@ -150,11 +153,16 @@ const CourseAccordion = ({
                         // setCurrentLesson(data._id)
                         // setCurrentModule(index)
                         // setCurrentLessonIndex(i)
-                        setProgress({...progress, moduleIndex:index, lessonId:data._id, lessonIndex:i})
+                        setProgress({
+                          ...progress,
+                          moduleIndex: index,
+                          lessonId: data._id,
+                          lessonIndex: i,
+                        });
                       }}
-                    // style={{
-                    //   pointerEvents: "none",
-                    // }}
+                      // style={{
+                      //   pointerEvents: "none",
+                      // }}
                     >
                       <div>
                         {profileInfo.user.completedCourse.includes(data._id) ? (
