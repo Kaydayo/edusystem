@@ -6,6 +6,7 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import rocket from "../../Assets/Images/Rocket.svg";
 import templateStyle from "../../styles/Template/templateFeature.module.css";
 import Nav from "../../components/Nav";
+import Slackteam from "../../../src/Assets/Images/slack-team.svg";
 
 const textContent = [
   "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
@@ -59,14 +60,16 @@ const TemplateFeature = () => {
               </div>
             </div>
 
-            <div>
+            <div className={templateStyle.textContent}>
               {textContent.map((txt, i) => (
                 <p key={i}>{txt}</p>
               ))}
             </div>
             <Button className={templateStyle.featureBtn}>Get Started</Button>
           </div>
-          <div>ijuhjnkl</div>
+          <div className={templateStyle.illustration}>
+            <img src={Slackteam} alt="slack" />
+          </div>
         </div>
       </div>
     </>

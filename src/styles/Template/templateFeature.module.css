@@ -11,6 +11,7 @@
 .feature_content {
   max-width: 600px;
   width: 100%;
+  padding-top: 2rem;
 }
 
 .feature_nav {
@@ -48,6 +49,10 @@
   cursor: pointer;
 }
 
+.textContent {
+  padding-right: 1rem;
+}
+
 .featureBtn {
   background-color: var(--primary-color);
   border: 2px solid var(--primary-color);
@@ -62,7 +67,16 @@
   margin-top: 20px;
 }
 
-@media (max-width: 800px) {
+.illustration {
+  margin-right: -2rem;
+}
+
+.illustration img {
+  max-width: 650px;
+  height: 100%;
+}
+
+@media (max-width: 1100px) {
   .feature_container {
     flex-direction: column;
     gap: 2rem;
@@ -70,11 +84,26 @@
   .feature_content {
     max-width: unset;
     width: 100%;
+    padding-top: 0;
+  }
+  .textContent {
+    padding-right: unset;
+  }
+  .illustration {
+    margin-right: unset;
+    margin: 0 auto;
+  }
+  .illustration img {
+    max-width: unset;
+    width: 100%;
   }
 }
 
 @media (max-width: 500px) {
   .feature_container {
-    padding: 2rem 1.25rem;
+    padding: 1rem 1.25rem 2rem;
+  }
+  .feature_nav {
+    gap: 5px;
   }
 }
