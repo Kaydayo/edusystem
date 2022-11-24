@@ -5,6 +5,7 @@ import videoStyle from '../styles/Home/Video.module.css'
 import videoPoster from '../Assets/Images/courseVideoPoster.svg'
 import { BsFillPlayCircleFill, BsFillPauseCircleFill } from 'react-icons/bs'
 import { ImPlay2, ImPause } from 'react-icons/im'
+import { Player, PosterImage } from 'video-react'
 
 const CourseVideo = () => {
     const videoElement = useRef(null)

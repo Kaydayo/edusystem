@@ -25,6 +25,8 @@ video {
   /* height: fit-content; */
   /* border: 3px solid rgb(255, 0, 149); */
   padding: 20px 20px;
+  width: auto;
+  height: auto;
 }
 
 .controls {

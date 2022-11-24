@@ -24,11 +24,13 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
   const [totalCost, setTotalCost] = useState<number>(0)
   const [tax, setTax] = useState<number>(9)
   const { selections, subscriptions, error, success } = useAppSelector((state: RootState) => state.subscription)
-  const {userToken} = useAppSelector((state:RootState)=> state.user)
+  const {userToken, profileInfo} = useAppSelector((state:RootState)=> state.user)
+  const {info} = useAppSelector((state:RootState)=> state.companyonboard)
  
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
+  console.log(profileInfo,"PROFILE INFO")
   const submitPaidCourse = async () => {
     try {
 
@@ -40,16 +42,30 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
           Authorization: `Bearer ${userToken}`
         },
       }
-
+      
       const { data } = await axios.post(
         '/users/payCourse',
         {
-          courses: selections
+          courses: selections,
+          companyId: info.id
         },
         config
       )
 
-      console.log(data,"the big bug")
+      console.log(data, "skibo")
+      localStorage.setItem('userDetails', JSON.stringify(data.payload))
+      localStorage.setItem('userToken', data.accessToken)
+
+      if (error) {
+        toast(error)
+      }
+
+      if (data.success) {
+        navigate('/dashboard/bio')
+      } else {
+        toast(error)
+      }
+     
 
     } catch (error) {
       console.log(error,"an error")
@@ -62,10 +78,6 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
 
     const additions = calculateTotalSelect(selections)
 
-    
-
-    
-
     setSubTotal(additions)
     setTotalCost(additions+tax)
    
@@ -74,14 +86,7 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
   const handlePaySubscription = () => {
     // dispatch(paySubscription())
     submitPaidCourse()
-    
-    if (error) {
-      toast(error)
-    }
-
-    // if (success) {
-      navigate('/dashboard/bio')
-    // }
+  
 }
   
   
@@ -99,7 +104,7 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
         return (<div key={index} className={companyStyle.entryCourse}>
           <div className={companyStyle.course}>
             <p>For {element.subscriptionName}</p>
-            <h3>{element.staySafe && "StaySafe"} {element.cultureClinic && "& Culture Clinic"}</h3>
+            <h3>{element.title}</h3>
           </div>
 
           <div>
