@@ -1,173 +1,192 @@
-.mainBox{
-    background-color: white;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: left;
-    padding: 1.5rem;
-    text-align: left;
-    width: 380px;
-    height: 185px;
-    cursor: pointer;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    box-sizing: border-box;
-    padding-bottom: 3rem;
-
+.mainBox {
+  background-color: white;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: left;
+  padding: 1.5rem;
+  text-align: left;
+  /* width: 380px; */
+  /* width: 300px; */
+  width: 100%;
+  height: 185px;
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-sizing: border-box;
+  padding-bottom: 3rem;
 }
-.boxSub{
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-
+.boxSub {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
-.mainBox img{
-    width:3rem;
-    height: 3rem;
-}
-
-.hidBox{
-    opacity: 0%;
-    visibility: hidden;
+.mainBox img {
+  width: 3rem;
+  height: 3rem;
 }
 
-.mainBox h2{
-    font-weight: 700;
-    font-size: 16px;
-    width: 190px;
+.hidBox {
+  opacity: 0%;
+  visibility: hidden;
 }
 
-
-
-.boxHoverEfx{
-    /* transition: all 0.8s; */
-    background-color: var(--primary-color);
+.mainBox h2 {
+  font-weight: 700;
+  font-size: 16px;
+  width: 190px;
 }
 
-
-
-
-.moveUp{
-    
-    animation-name: movementUp;
-    animation-duration: 0.8s;
-    position: relative;
-    color: black;
-    opacity: 0%;
-}
-.moveDown{
-    
-    animation-name: movementDown;
-    animation-duration: 0.8s;
-    transform: translateY(-50px);
-    position: relative;
-    top: -5rem;
-    color: white;
-    visibility:visible;
-    
-    /* opacity: 0%; */
+.boxHoverEfx {
+  /* transition: all 0.8s; */
+  background-color: var(--primary-color);
 }
 
-.move{
-    animation-name: move;
-    animation-duration: 0.8s;
-    position: relative;
-    transform: translateY(-30px);
-    opacity: 0%;
+.moveUp {
+  animation-name: movementUp;
+  animation-duration: 0.8s;
+  position: relative;
+  color: black;
+  opacity: 0%;
+}
+.moveDown {
+  animation-name: movementDown;
+  animation-duration: 0.8s;
+  transform: translateY(-50px);
+  position: relative;
+  top: -5rem;
+  color: white;
+  visibility: visible;
+  opacity: 100%;
+
+  /* opacity: 0%; */
+}
+
+.move {
+  animation-name: move;
+  animation-duration: 0.8s;
+  position: relative;
+  transform: translateY(-30px);
+  opacity: 0%;
 }
 .resDown {
-     animation-name: restoreUp;
-    animation-duration: 0.8s;
-    transform: translateY(0);
+  animation-name: restoreUp;
+  animation-duration: 0.8s;
+  transform: translateY(0);
 }
 
-.restore{
-    animation-name: restoreDown;
-    animation-duration: 0.8s;
-    transform: translateY(0);
+.restore {
+  animation-name: restoreDown;
+  animation-duration: 0.8s;
+  transform: translateY(0);
 }
-
-
 
 @keyframes movementDown {
-    0%{transform: translateY(0); opacity: 0%; visibility: visible;}
-    100%{transform: translateY(-50px); opacity: 100%;}
+  0% {
+    transform: translateY(0);
+    opacity: 0%;
+    visibility: visible;
+  }
+  100% {
+    transform: translateY(-50px);
+    opacity: 100%;
+  }
 }
 
 @keyframes movementUp {
-    0%{transform: translateY(0); opacity: 100%;}
-    100%{transform: translateY(50px); opacity: 0%;}
+  0% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
+  100% {
+    transform: translateY(50px);
+    opacity: 0%;
+  }
 }
 
 @keyframes move {
-    0%{transform: translateY(0); opacity: 100%;}
-    100%{transform: translateY(-30px); opacity: 0%;}
+  0% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0%;
+  }
 }
 
 @keyframes restoreDown {
-    0%{transform: translateY(30px); opacity: 0%;}
-    100%{transform: translateY(0); opacity: 100%;}
+  0% {
+    transform: translateY(30px);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
 }
 
-@keyframes restoreUp{
-    0%{transform: translateY(-30px); opacity: 0%;}
-    100%{transform: translateY(0); opacity: 100%;}
-    
+@keyframes restoreUp {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
 }
 
-
-@media all and (max-width:900px){
-    .mainBox{
-        width: 305px;
-        height: 280px;
-        gap: 0;
-    }
-    .boxHoverEfx{
+@media all and (max-width: 900px) {
+  .mainBox {
+    /* width: 305px; */
+    min-height: 280px;
+    gap: 0;
+  }
+  .boxHoverEfx {
     /* transition: all 0.8s; */
     background-color: white;
-    }
-    .moveUp{
-    
+  }
+  .moveUp {
     animation-name: none;
     animation-duration: none;
     position: relative;
     color: black;
     opacity: 100%;
-}
-.moveDown{
-    
+  }
+  .moveDown {
     animation-name: none;
     animation-duration: 0.8s;
     transform: none;
     position: relative;
     top: 0;
     color: black;
-    
-    /* opacity: 0%; */
-}
 
-.move{
+    /* opacity: 0%; */
+  }
+
+  .move {
     animation-name: none;
     animation-duration: 0.8s;
     position: relative;
     transform: none;
     opacity: 100%;
-}
-.resDown {
-     animation-name: none;
-    animation-duration: 0.8s;
-    transform: none;
-}
-
-.restore{
+  }
+  .resDown {
     animation-name: none;
     animation-duration: 0.8s;
     transform: none;
-}
+  }
 
-.hidBox{
+  .restore {
+    animation-name: none;
+    animation-duration: 0.8s;
+    transform: none;
+  }
+
+  .hidBox {
     opacity: 100%;
     visibility: visible;
     font-weight: 200;
-}
+  }
 }

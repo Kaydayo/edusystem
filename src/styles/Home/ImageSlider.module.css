@@ -1,141 +1,111 @@
-.boxContent{
-    padding: 5rem;
-    background-color:  #EEF1FF;
-    align-items: center;
-    text-align: center;
-    background-image: url('../../Assets/Images/quote.png');
-    background-repeat: no-repeat;
-    background-position: right;
-    background-position-y: 2rem;
-   
+.container {
+  background-image: url("../../Assets/Images/quote.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-position-y: 2rem;
+  background-color: #eef1ff;
+  padding: 5rem 0;
 }
 
+.boxContent {
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  max-width: 1150px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 2rem;
+}
 
-
-/* .callout{
-    width: 540px;
-    height:220px;
-    background-color: white;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 10px;
-    margin: 0 auto;
-   
-} */
-
-.callout{
-    display: inline-block;
+.callout {
+  display: inline-block;
   position: relative;
-	 width: fit-content;
-    height:fit-content;
-   padding: 1rem;
-	background-color: #fff;
-	border-radius: 4px;
-    margin-bottom: 2em;
-     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
+  padding: 1.5rem 1.8rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 10px 0px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .callout:before {
-	content: "";
-	position: absolute;
-	width: 0;
-	height: 0;
-	left: auto;
-	bottom: -42px;
-  border: 30px solid transparent;
-  z-index: 20;
-}
-
-.callout:after {
   content: "";
-	position: absolute;
-	width: 0;
-	height: 0;
-	left: auto;
-	bottom: -40px;
-  border: 30px solid transparent;
-  border-top: 24px solid #fff;
-  z-index: 99;
- 
-}
-.callout h4{
-    font-size: 18px;
-    font-weight: 700;
+  position: absolute;
+  height: 1rem;
+  width: 1rem;
+  background-color: #fff;
+  left: 50%;
+  bottom: -0.5rem;
+  transform: rotate(45deg);
 }
 
-.callout h5{
-    font-weight: 400;
-    line-height: 24px;
-    max-width: 474px;
+.callout h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 0.5rem;
 }
 
-.boxContent p{
-    color:  #5C00DD;
+.callout p {
+  font-weight: 400;
+  line-height: 24px;
+  font-size: 14px;
+  margin: 0;
 }
 
-.firstP{
-    font-weight: 700;
-    font-size: 18px;
+.boxContent p {
+  margin: 0;
 }
 
-@media all and (max-width:900px){
-  .boxContent{
-    padding: 3rem;
-    height: 1196px;
-    /* width: 375px; */
+.firstP {
+  font-weight: 700;
+  font-size: 18px;
+  color: #5c00dd;
+  margin: 1.8rem 0 0.3rem !important;
+}
+
+.role {
+  color: #5c00dd;
+}
+
+@media all and (max-width: 1100px) {
+  .boxContent {
+    padding: 3rem 2.5rem;
   }
-  
-  .callout{
+
+  .callout {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media all and (max-width: 900px) {
+  .container {
+    background-position: top center;
+  }
+  .boxContent {
+    padding: 0 1.25rem;
+    padding: 0 2rem;
+  }
+
+  .callout {
     display: flex;
     flex-direction: column;
-    gap: -0.1rem;
-  /* position: relative; */
-	 width: 304.1px;
-    /* height:fit-content; */
-   padding: 1rem;
-	background-color: #fff;
-	border-radius: 4px;
+    padding: 1rem;
     margin-bottom: 0;
-     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
 
-}
-
-.callout:before {
-	content: "";
-	position: absolute;
-	width: 0;
-	height: 0;
-	left: 90px;
-	bottom: -42px;
-  border: 30px solid transparent;
-  z-index: 20;
-}
-
-.callout:after {
-  content: "";
-	position: absolute;
-	width: 0;
-	height: 0;
-	left: 120px;
-	bottom: -40px;
-  border: 30px solid transparent;
-  border-top: 24px solid #fff;
-  z-index: 99;
- 
-}
-  .callout h4{
+  .callout h4 {
     font-size: 16px;
     font-weight: 700;
-    width: 259px;
   }
 
-.callout h5{
-    font-weight: 400;
-    line-height: 24px;
-    max-width: 261px;
-    font-size: 16px;
+  .boxContent div {
+    margin-top: 0;
   }
-
-  .boxContent div{
-    margin-top: 0
 }
+
+@media all and (max-width: 500px) {
+  .boxContent {
+    padding: 0 1.25rem;
+  }
 }
