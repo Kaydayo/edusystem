@@ -33,7 +33,9 @@ export const paySubscription = createAsyncThunk(
                 config
             )
 
-            
+            console.log(data, "pay subscription")
+            localStorage.setItem('userDetails', JSON.stringify(data.payload))
+            localStorage.setItem('userToken', data.accessToken)
             
         } catch (error:any) {
             if (error.response && error.response.data.message) {
@@ -44,3 +46,4 @@ export const paySubscription = createAsyncThunk(
         }
     }
 )
+

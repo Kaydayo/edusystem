@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import companyStyle from '../../styles/CompanyOnboarding/Company.module.css'
-import SubscriptionCourse from './SubscriptionCourse' 
+import SubscriptionCourse, { ISubCourse } from './SubscriptionCourse' 
 import { RootState, useAppDispatch, useAppSelector } from '../../redux/store'
 import { postAllSubscriptions } from '../../redux/subscription'
 
 const Subscription = () => {
     const [checkTwo, setCheckTwo] = useState<boolean>(false)
+    const [sanityCourses, setSanityCourses] = useState<any>([])
     const dispatch = useAppDispatch()
 
     const { subscriptions } = useAppSelector((state: RootState) => state.subscription)
-   
+    console.log(subscriptions, "subscriptions")
+
+    useEffect(() => {
+        setSanityCourses(subscriptions)
+    }, [subscriptions])
+    
+
    
     
 
@@ -24,9 +31,9 @@ const Subscription = () => {
                 <div className={companyStyle.popSub}>
                     {subscriptions.filter((courses) => {
                         if (checkTwo) {
-                            return !courses.cultureClinic && courses.staySafe && !courses.others
+                            return !courses.cultureClinic && courses.harrassment && !courses.others
                         } else {
-                            return courses.cultureClinic && courses.staySafe && !courses.others
+                            return courses.cultureClinic && courses.harrassment && !courses.others
                         }
                     }).map((element, idex) => (
                         <SubscriptionCourse data={element} key={idex} />
@@ -34,13 +41,13 @@ const Subscription = () => {
                 </div>
                 <hr className={companyStyle.lines}/>
                 <div className={companyStyle.popSubDown}>
-                    {subscriptions.filter((courses) => {
+                    {sanityCourses.filter((courses: { cultureClinic: any; harrassment: any; others: any }) => {
                         if (checkTwo) {
-                            return !courses.cultureClinic && courses.staySafe && courses.others
+                            return !courses.cultureClinic && courses.harrassment && courses.others
                         } else {
-                            return courses.cultureClinic && courses.staySafe && courses.others
+                            return courses.cultureClinic && courses.harrassment && courses.others
                         }
-                    }).map((element, idex) => (
+                    }).map((element: ISubCourse, idex: React.Key | null | undefined) => (
                         <SubscriptionCourse data={element} key={idex}/>
                     ))}
                 </div>
@@ -52,6 +59,4 @@ const Subscription = () => {
 
 export default Subscription
 
-function postAllSubcriptions(subScriptionCourse: { id: string; subscriptionName: string; description: string; information: string[]; price: string; staySafe: boolean; cultureClinic: boolean; others: boolean; noOfSeats: number; amount: number; selected: boolean }[]): any {
-    throw new Error('Function not implemented.')
-}
+

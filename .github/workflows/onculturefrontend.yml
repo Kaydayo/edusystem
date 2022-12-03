@@ -24,9 +24,12 @@ jobs:
           echo REACT_APP_GOOGLE_CLIENT_ID=${{secrets.REACT_APP_GOOGLE_CLIENT_ID}} >> .env
           echo REACT_APP_BACKEND=${{secrets.REACT_APP_BACKEND}} >> .env
           echo DANGEROUSLY_DISABLE_HOST_CHECK=${{secrets.DANGEROUSLY_DISABLE_HOST_CHECK}} >> .env
+          echo REACT_APP_SANITY_DATASET=${{secrets.REACT_APP_SANITY_DATASET}} >> .env
+          echo REACT_APP_SANITY_PROJECT_ID=${{secrets.REACT_APP_SANITY_PROJECT_ID}} >> .env
+
           cat .env
       - run: |
-          npm install
+          npm install --force
           npm run build
           pm2 stop 0
           pm2 start 0

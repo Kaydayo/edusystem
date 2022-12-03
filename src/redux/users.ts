@@ -40,7 +40,7 @@ const userSlice = createSlice({
         },
         updateProfileInfo: (state, action: PayloadAction<any>) => {
             state.profileInfo = action.payload
-        }
+        },
     },
     extraReducers: {
         [registerUser.pending.toString()]: (state) => {

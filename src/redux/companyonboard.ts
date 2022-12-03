@@ -10,6 +10,7 @@ import { getUserDetails, userLogin } from './actions/usersAction'
 
 const initialState: CompanyFInal = {
     info: {
+        id:'',
         firstName: '',
         surnName: '',
         email: '',
@@ -19,6 +20,7 @@ const initialState: CompanyFInal = {
         mission: '',
         vision: '',
         values: '',
+        aboutCompany:''
         // subscription: [],
     },
     errors: {
@@ -114,7 +116,7 @@ export const companyonboardSlice = createSlice({
         [registerCompany.fulfilled.toString()]: (state, { payload }) => {
             state.loading = false
             state.error = false
-            state.info= payload.company
+            state.info= payload.company[0]
         },
         [registerCompany.rejected.toString()]: (state, { payload }) => {
             state.loading = false

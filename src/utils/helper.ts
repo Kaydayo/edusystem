@@ -54,8 +54,8 @@ export interface Subscription {
 export interface CourseSub {
     subscription: Subscription
 }
-export const calNoOfSlotTotal = (courses: CourseSub[]): number => {
+export const calNoOfSlotTotal = (courses: Subscription[]): number => {
 
-    return courses.reduce((prev,curr) => prev + curr.subscription.noOfSeats, 0)
+    return courses.reduce((prev,curr) => prev + curr.noOfSeats, 0)
     
 }

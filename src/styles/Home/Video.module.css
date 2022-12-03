@@ -1,6 +1,6 @@
 video {
   width: 100%;
- 
+  /* border: 3px solid red; */
 }
 
 .videoWrapper {
@@ -22,7 +22,11 @@ video {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: fit-content;
+  /* height: fit-content; */
+  /* border: 3px solid rgb(255, 0, 149); */
+  padding: 20px 20px;
+  width: auto;
+  height: auto;
 }
 
 .controls {
@@ -45,94 +49,97 @@ video {
   transition: all 0.3s ease-in-out;
 }
 
-.actions{
+.actions {
   background-color: none;
   color: white;
-} 
+  /* border: 3px solid blue; */
+}
 
-.actions button{
+.actions button {
   background-color: transparent;
   border: none;
   color: white;
+  /* border: 3px solid blue; */
 }
 
-.playBtn{
+.playBtn {
   font-size: 2rem;
   cursor: pointer;
 }
 
-.customControl{
+.customControl {
   display: flex;
   align-items: center;
   padding: 1rem;
   gap: 1rem;
+  /* border: 3px solid blue; */
 }
 
-.btnText{
+.btnText {
   text-align: left;
 }
-.btnText p{
-  font: 'Raleway', sans-serif;
+.btnText p {
+  font: "Raleway", sans-serif;
   font-weight: 100;
   font-size: 14px;
 }
-.btnText p:first-of-type{
+.btnText p:first-of-type {
   font-weight: 700;
   margin-bottom: -0.5rem;
   font-size: 16px;
 }
 
-.courseVideo{
-    width: 9170px;
+.courseVideo {
+  width: 9170px;
   max-width: 917px;
   position: relative;
   display: flex;
   justify-content: center;
   overflow: hidden;
-  border-radius: 10px;
-  height: 35rem;
+  /* border-radius: 10px; */
+  /* height: 35rem; */
+  height: auto;
+
+  /* border: 3px solid blue; */
 }
 
-
-.courseControls{
+.courseControls {
   display: flex;
- 
+
   position: absolute;
   justify-content: center;
-  top:35%;
- 
+  top: 35%;
+
   width: fit-content;
   margin: 0 auto;
   text-align: center;
- align-items: center;
+  align-items: center;
   transition: all 0.3s ease-in-out;
 }
 
-.coursePlayBtn{
-   font-size: 8rem;
+.coursePlayBtn {
+  font-size: 8rem;
   cursor: pointer;
 }
 
-.courseActions{
-   background-color: none;
+.courseActions {
+  background-color: none;
   color: white;
 }
 
-.courseActions Button{
-background-color: transparent;
+.courseActions Button {
+  background-color: transparent;
   border: none;
   color: white;
- 
 }
 
-@media all and (max-width:900px){
-  .container{
+@media all and (max-width: 1000px) {
+  .container {
     padding: 0;
     width: fit-content;
     margin: 0 auto;
-
   }
-  video{
+  video {
     /* width: 304px; */
     margin: 0 auto;
     width: 304px;
@@ -144,44 +151,44 @@ background-color: transparent;
   }
 
   .videoWrapper {
-  /* width: 25rem; */
-  /* width: 100%; */
-  text-align: center;
-  margin-top: -15rem;
-  /*margin-left: -0.1rem; */
-  width: fit-content;
-  height: fit-content;
-  max-width: 700px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 10px;
-  /* height: 35rem; */
-}
-.actions{
-  color: white;
-}
-.actions button{
-  color:white;
-  padding: 0;
-}
-.controls{
-  position: absolute;
-  top: 30%;
-  left: 15%;
-  width: fit-content;
-  height: fit-content;
-  padding: 0;
-}
-.customControl{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
-  padding: 0;
-}
-.btnText{
-  text-align: center;
-}
+    /* width: 25rem; */
+    /* width: 100%; */
+    text-align: center;
+    margin-top: -15rem;
+    /*margin-left: -0.1rem; */
+    width: fit-content;
+    height: fit-content;
+    max-width: 700px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 10px;
+    /* height: 35rem; */
+  }
+  .actions {
+    color: white;
+  }
+  .actions button {
+    color: white;
+    padding: 0;
+  }
+  .controls {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+  }
+  .customControl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    padding: 0;
+  }
+  .btnText {
+    text-align: center;
+  }
 }

@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import boardStyle from '../../styles/Dashboard/Dashboard.module.css';
 import onCultureLogo from "../../Assets/Images/onculture-logo.png"
 import { Link, useNavigate } from 'react-router-dom';
 import avatar from '../../Assets/Images/companyAvatar.svg'
+import { RiArrowDropDownLine } from 'react-icons/ri';
 
 type BoardProp = {
     profileImage?: any;
-    setShowModal: (showModal:boolean) => void;
+    setShowModal: (showModal: boolean) => void;
+    setShowTeamModal: (showAdminModal: boolean) => void;
 }
 
-const DashboardNav = ({ profileImage, setShowModal }: BoardProp) => {
-    
+const DashboardNav = ({ profileImage, setShowModal, setShowTeamModal }: BoardProp) => {
+    const [logout, setLogout] = useState<boolean>(false)
     const navigate = useNavigate()
   return (
       <div className={boardStyle.mainNav}>
@@ -18,11 +20,11 @@ const DashboardNav = ({ profileImage, setShowModal }: BoardProp) => {
             <img src={onCultureLogo} alt="onculture-logo" onClick={()=> navigate('/')}/>
           </div>
           <div className={boardStyle.boardBtn}>
-              <Link to="/create-team">
-                  <button className={boardStyle.createTeam}>
+              {/* <Link to="/create-team"> */}
+                  <button className={boardStyle.createTeam} onClick={() => setShowTeamModal(true)}>
                       Create a Team
                   </button>
-              </Link>
+              {/* </Link> */}
               <button className={boardStyle.inviteEmployee} onClick={()=> setShowModal(true)}>
                   Invite Employee
               </button>
@@ -30,6 +32,21 @@ const DashboardNav = ({ profileImage, setShowModal }: BoardProp) => {
                   {profileImage ? <img src={profileImage} alt="onculture-user" className={boardStyle.picBoxImg} /> :
                       <img src={avatar} alt="onculture-user-image" className={boardStyle.picBoxImg}/>}
               </div>
+              <div className={boardStyle.drpDown}>
+                  <RiArrowDropDownLine onClick={() => setLogout(!logout)} />
+              </div> 
+              {logout && (
+                  <div className={boardStyle.logout}>
+                      <p
+                          onClick={() => {
+                              localStorage.clear();
+                              window.location.reload();
+                          }}
+                      >
+                          Logout
+                      </p>
+                  </div>
+              )}
           </div>
     </div>
   )

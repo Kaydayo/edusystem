@@ -1,63 +1,90 @@
-.content{
-    display: flex;
-    flex-direction: column;
-    padding: 4rem;
-    text-align: center;
-    height: auto;
-    gap: 2rem;
-
-}
-.content h2{
-    font-weight: 700;
-    font-size: 32px;
-}
-
-.content p{
-    width: 718px;
-    margin: 0 auto;
-    font-weight: 400;
-    line-height: 24px;
-    
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0 4rem;
+  text-align: center;
+  height: auto;
+  /* gap: 2rem; */
+  background: url("../../Assets/Images/line.svg");
+  background-repeat: no-repeat;
+  background-position: 0px 210px;
+  position: relative;
+  box-sizing: border-box;
 }
 
-.tags{
-    display: flex;
-    gap: 3rem;
-    margin: 3rem auto;
+.content_container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1182px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.content h2 {
+  font-weight: 700;
+  font-size: 32px;
 }
 
-.bgObjectline{
-    position: absolute;
-    left: -4rem;
-    z-index: -5;
+.content p {
+  width: 420px;
+  margin: 0 auto;
+  font-weight: 400;
+  line-height: 24px;
 }
 
-.bgBlurObject{
-   background-color: rgba(92, 0, 221, 0.712);
-   width: 240px;
-   height: 240px; 
-   filter: blur(16rem);
-   position: absolute;
-   left: -4rem;
-   z-index: -5;
-   bottom: -55rem;
+.tags {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 3rem auto;
+  row-gap: 30px;
 }
 
-@media all and (max-width:900px){
-    .content{
-        display: flex;
-        flex-direction: column;
-        width: 100vw;
-        padding: 0;
-    }
-    .tags{
-        flex-direction: column;
-    }
-    .bgObjectline{
-        display: none;
-    }
+/* .bgObjectline {
+  position: absolute;
+  left: -4rem;
+  z-index: -5;
+}
 
-    .content p{
-        width: 305px;
-    }
+*/
+
+.bgBlurObject {
+  background-color: rgba(92, 0, 221, 0.712);
+  width: 240px;
+  height: 240px;
+  filter: blur(16rem);
+  position: absolute;
+  left: -4rem;
+  z-index: -5;
+  bottom: 0;
+}
+
+@media all and (max-width: 900px) {
+  .content {
+    padding: 2rem 0;
+    background: unset;
+  }
+  .content h2 {
+    margin-bottom: 20px;
+  }
+
+  .content p {
+    margin-bottom: 0;
+  }
+  .content_container {
+    padding: 0 1.25rem;
+  }
+  .tags {
+    margin: 2rem 0;
+  }
+  .bgObjectline {
+    display: none;
+  }
+
+  .content p {
+    width: 305px;
+  }
+  .bgBlurObject {
+    display: none;
+  }
 }

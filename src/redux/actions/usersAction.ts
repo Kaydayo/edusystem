@@ -28,7 +28,9 @@ export const registerUser = createAsyncThunk(
                 `/users/sign-up`,
                 { email, password },
                 config
-            )
+                )
+            
+            console.log(data,"i got it here")
             localStorage.setItem('userToken', data.payload.token)
            
             if (data.success === false) {

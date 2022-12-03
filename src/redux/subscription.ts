@@ -13,6 +13,7 @@ const subscriptions = subScriptionCourse
 const initialState: SubscriptionState = {
     selections: [],
     subscriptions: [],
+    coursesToPay:[],
     loading: false,
     error: null,
     success: false,
@@ -25,18 +26,21 @@ const subscriptionSlice = createSlice({
         addCourseToSelectList: (state, action: PayloadAction<ISubCourse>) => {
             if (action.payload.selected === true) {
                 state.selections = [...state.selections, action.payload]
+                
             } else {
-                state.selections = state.selections.filter((x) => x.id !== action.payload.id)
+                state.selections = state.selections.filter((x) => x._id !== action.payload._id)
             }
 
 
             const updateSubscriptions = state.subscriptions.map((item) => {
-                if (item.id === action.payload.id) {
+                if (item._id === action.payload._id) {
                     item = action.payload
                 }
                 return item
             })
             state.subscriptions = [...updateSubscriptions]
+
+            console.log(state.selections, "check selections here")
         },
         addAmountToSelect: (state, action: PayloadAction<{ id: string, amount: number, noOfSeat: number }>) => {
             const updateSelected = state.selections.map((item) => {
@@ -59,8 +63,11 @@ const subscriptionSlice = createSlice({
 
             state.selections = [...updateSelected]
             state.subscriptions = [...updateSubscriptions]
+
+            console.log(state.selections, 'add ammount to select')
         },
         postAllSubscriptions: (state, action: PayloadAction<ISubCourse[]>) => {
+
             state.subscriptions = action.payload
         }
 

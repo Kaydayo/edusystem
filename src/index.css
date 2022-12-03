@@ -1,25 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-:root{
-  --primary-color: #5C00DD;
+:root {
+  --primary-color: #5c00dd;
   --padding-gap: 1rem;
   --button-height: 56px;
   --button-width: 116px;
-
 }
 
-html{
+html {
   width: 100vw;
   margin: 0;
 }
 body {
   margin: 0;
-  font-family:  'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   /* height: 100%; */
   width: auto;
   height: auto;
-  
 }
 
 /* .homepage{
@@ -36,47 +34,40 @@ body {
   font-size: 0.75rem !important;
 }
 
-.slick-slide{
+.slick-slide {
   padding: 0 -5px !important;
-   margin-bottom: 6rem;
+  margin-bottom: 3rem;
 }
 
-.slick-list{
+.slick-list {
   margin-bottom: 6rem;
 }
-
 
 body::-webkit-scrollbar {
   display: none;
 }
 
-
-
-
-
-
-
-@media all and (max-width:900px){
-  body{
+@media all and (max-width: 900px) {
+  body {
     height: auto;
     width: 100%;
   }
   .slick-dots li.slick-active button:before {
-  color: var(--primary-color) !important;
-  font-size: 0.75rem;
-}
+    color: var(--primary-color) !important;
+    font-size: 0.75rem;
+  }
 
-.slick-dots li button:before {
-  color: var(--primary-color) !important;
-  font-size: 0.75rem !important;
-}
+  .slick-dots li button:before {
+    color: var(--primary-color) !important;
+    font-size: 0.75rem !important;
+  }
 
-.slick-slide{
-  padding: 0 -5px !important;
-   margin-bottom: 1rem;
-}
+  .slick-slide {
+    padding: 0 -5px !important;
+    margin-bottom: 1rem;
+  }
 
-.slick-list{
-  margin-bottom: 1rem;
-}
+  .slick-list {
+    margin-bottom: 1rem;
+  }
 }

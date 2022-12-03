@@ -17,6 +17,9 @@ const InviteEmployee = () => {
     const getErrors = useAppSelector((state: RootState) => state.inviteEmployee.errors)
     const errorFound = useAppSelector((state: RootState) => state.inviteEmployee.errorfound)
     const error = useAppSelector((state: RootState) => state.inviteEmployee.error)
+
+    const { profileInfo } = useAppSelector((state: RootState) => state.user)
+    const {company} = profileInfo
     
     const submitInvite = () => {
         toast(error)
@@ -25,6 +28,13 @@ const InviteEmployee = () => {
             setSuccess(false)
 
         } else {
+            console.log({
+                fullName: inviteFormData.fullName,
+                email: inviteFormData.email,
+                role: inviteFormData.jobRole,
+                department: inviteFormData.department,
+                course: inviteFormData.course
+            }, "EMIII REEEEE OOOO")
             dispatch(inviteEmployees({
                 fullName: inviteFormData.fullName,
                 email: inviteFormData.email,
@@ -86,12 +96,21 @@ const InviteEmployee = () => {
                     <label htmlFor="course">Course*</label>
                     <select name='course' id='course'
                         className={`${getErrors.course ? inviteStyle.redError : ''}`}
-                        placeholder='Please select' value={inviteFormData.course} onChange={(e) => {
-                            dispatch(handleInviteInput({ key: InviteFormEnum.COURSE, value: e.target.value }))
+                        placeholder='Please select' value={inviteFormData.course} onClick={(e) => {
+                            dispatch(handleInviteInput({ key: InviteFormEnum.COURSE, value: e.currentTarget.value }))
                             dispatch(handleInviteErrors())
-                        }} >
-                        <option value="Workplace Harrassment">Work Place Harrassment</option>
-                        <option value="Workplace Culture">Work Place Culture</option>
+                        }}
+
+                        onChange={(e) => {
+                            dispatch(handleInviteInput({ key: InviteFormEnum.COURSE, value: e.currentTarget.value }))
+                            dispatch(handleInviteErrors())
+                        }}
+                    
+                    >
+                        {company[0].courses.map((course: any, index: any) => {
+                            
+                            return<option key={index} value={course.sanityId}>{course.title}({course.subscriptionName})</option>
+                        })}
                     </select>
                 </div>
                 <div>

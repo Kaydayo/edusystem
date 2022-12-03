@@ -103,6 +103,13 @@ text-decoration: none;
 
 }
 
+.loaders{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .setRed{
     color: red;
     margin-top: -2rem;
