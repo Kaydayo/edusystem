@@ -3,6 +3,7 @@ import companyStyle from '../../styles/CompanyOnboarding/Company.module.css'
 import SubscriptionCourse, { ISubCourse } from './SubscriptionCourse' 
 import { RootState, useAppDispatch, useAppSelector } from '../../redux/store'
 import { postAllSubscriptions } from '../../redux/subscription'
+import { ToastContainer } from 'react-toastify'
 
 const Subscription = () => {
     const [checkTwo, setCheckTwo] = useState<boolean>(false)
@@ -22,6 +23,7 @@ const Subscription = () => {
 
     return (
         <div className={companyStyle.admin}>
+            <ToastContainer />
             <div className={companyStyle.toggleSub}>
                 <h4 className={!checkTwo ?  companyStyle.hashCol : ''}>Harrassment in the workplace & Culture Clinic <span>(Recommended)</span> </h4>
                 <input type="checkbox" id="switch" onClick={() => setCheckTwo(!checkTwo)} /><label htmlFor="switch">Toggle</label>

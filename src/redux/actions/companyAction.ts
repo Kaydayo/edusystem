@@ -12,7 +12,7 @@ export interface companyData {
     employeeCount: string;
     mission: string;
     vision: string;
-    values: string;
+    values: string[];
     email: string;
     aboutCompany: string;
 }
@@ -25,7 +25,7 @@ export interface companyUpdate {
     employeeCount: string,
     mission: string,
     vision: string,
-    values: string,
+    values: string[],
     file: any,
 
 }

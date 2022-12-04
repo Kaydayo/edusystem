@@ -20,6 +20,8 @@
     align-items: center;
 }
 
+
+
 @media all and (max-width:900px){
     .main{
     padding: 3rem;
