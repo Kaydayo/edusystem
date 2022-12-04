@@ -111,7 +111,7 @@ function App() {
               <Route path="faq" element={<Faq />} />
 
               {/* TODO: move to protected route */}
-              <Route path='test' element={<CompanyOnBoarding />} />
+              {/* <Route path='test' element={<CompanyOnBoarding />} /> */}
 
               <Route path="signup" element={<Signup />} />
               <Route path="login" element={<Login />} />
