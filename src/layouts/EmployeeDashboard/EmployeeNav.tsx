@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import onCultureLogo from "../../Assets/Images/onculture-logo.svg";
+import onCultureLogo from "../../Assets/Images/oncultureLogo.svg";
 import { FaRegBell } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import employeeStyle from "../../styles/EmployeeDashboard/EmployeeDashboard.module.css";

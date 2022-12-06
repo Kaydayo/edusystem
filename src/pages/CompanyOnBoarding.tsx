@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import onCulture from "../Assets/Images/onculture-logo.svg"
+import onCulture from "../Assets/Images/oncultureLogo.svg"
 import FieldType from '../components/FieldType'
 import Stepper from '../components/Stepper'
 import Nav from '../components/Nav'
