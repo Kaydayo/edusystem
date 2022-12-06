@@ -50,7 +50,7 @@ const SubscriptionsTable = ({ data, rowsPerPage, showMore }: TableProp) => {
                                 </div>
                             </td>
                             <td className={tableStyles.tableCell}>{capitalizeFirstLetter(el.subscriptionName)} Plan</td>
-                            <td>
+                            <td className={tableStyles.tableCell}>
                                 <p>${el.amount}.00</p>
                             </td>
                             <td className={tableStyles.tableCell}>

@@ -93,7 +93,7 @@ const EmployeeProfile = ({
 
       <div className={employeeStyle.progressSection}>
         <div>
-          <Link to="/edit-profile">
+          <Link to="/edit-employeeProfile">
             <button className={employeeStyle.editInfo}>
               <CgPen />
               Edit
