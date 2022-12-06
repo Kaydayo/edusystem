@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import boardStyle from '../../styles/Dashboard/Dashboard.module.css';
-import onCultureLogo from "../../Assets/Images/onculture-logo.svg"
+import onCultureLogo from '../../Assets/Images/oncultureLogo.svg';
 import { Link, useNavigate } from 'react-router-dom';
-import avatar from '../../Assets/Images/companyAvatar.svg'
+import avatar from '../../Assets/Images/companyAvatar.svg';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 
 type BoardProp = {

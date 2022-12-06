@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import navStyle from '../styles/Home/Nav.module.css'
-import OncultureLogo from '../Assets/Images/onculture-logo.svg'
+import OncultureLogo from '../Assets/Images/oncultureLogo.svg'
 import Button from './Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { navData } from '../constants/data'
