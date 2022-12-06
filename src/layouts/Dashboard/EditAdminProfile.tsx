@@ -26,7 +26,7 @@ interface Values {
     employeeCount: string,
     mission: string,
     vision: string,
-    values: string,
+    values: string[],
     file: any,
 
 }
@@ -41,7 +41,7 @@ const editProfileSchema = Yup.object().shape({
     employeeCount: Yup.string().required(),
     mission: Yup.string().required(),
     vision: Yup.string().required(),
-    values: Yup.string().required(),
+    values: Yup.array().of(Yup.string()).required(),
     file: Yup.mixed()
         .nullable()
         .test("FILE_FORMAT", "Uploaded file has unsupported format", (value) => !value || (value && supportedFormats.includes(value.type)))
@@ -61,11 +61,71 @@ const MyTextArea = ({ label, className, ...props }: any) => {
     );
 };
 
+const CustomMultipleField = ({ label, className,setFieldValue,currentValue,setCurrentValue, ...props }: any) => {
+    const [field, meta] = useField(props);
+    
+    return (
+        <div className={dashboardStyle.formBoxes}>
+            <label htmlFor={props.id || props.name}>{label}*</label>
+            <div className={dashboardStyle.valuesContainer}>
+                {
+                    field.value.map((val: string, index: any) => {
+                        return (<div className={dashboardStyle.wrapInput}>
+                            <input className={className} value={val} {...props} onChange={(e) => {
+                                const updateValue = field.value.map((item: string, idx: any) => {
+                                    if (idx === index) {
+                                        return e.target.value
+                                    } else {
+                                        return item
+                                    }
+                                })
+
+                                if (e.target.value === "") {
+                                    const newList = field.value.filter((currValue: string) => currValue !== val)
+                                    setFieldValue("values", newList)
+                                } else {
+                                    setFieldValue("values", updateValue)
+                                }
+
+                            }} />
+                            <button onClick={() => {
+                                const newList = field.value.filter((currValue: string) => currValue !== val)
+                                setFieldValue("values", newList)
+                            }}>
+                                remove
+                            </button>
+                        </div>
+                        )
+                    })
+                }
+                <div className={dashboardStyle.wrapInput}>
+                    <input className={className} value={currentValue} onChange={(e) => setCurrentValue(e.target.value)} />
+                    <button onClick={() => {
+                        if (currentValue !== "") {
+                            setFieldValue("values",[...field.value, currentValue])
+                            setCurrentValue("")
+                        } else {
+                            toast("Values field Cannot be empty")
+                        }
+
+                    }}>
+                        add
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    )
+    
+}
+
 const EditAdminProfile = () => {
     const [showModal, setShowModal] = useState<boolean>(false)
     const [showTeamModal, setShowTeamModal] = useState<boolean>(false)
     const { profileInfo, userToken } = useAppSelector((state: RootState) => state.user)
     const [preview, setPreview] = useState<string>(profileInfo.user.profilePicture)
+    const [currValue, setCurrValue] = useState<string>("")
+    
 
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
@@ -243,14 +303,19 @@ const EditAdminProfile = () => {
                                         </div>
 
                                         <div className={dashboardStyle.wtttest}>
-                                            <MyTextArea
+                                            <CustomMultipleField
                                                 label="Values"
                                                 name="values"
                                                 id="values"
-                                                className={dashboardStyle.textAreaField}
+                                                className={dashboardStyle.inputField}
                                                 placeholder="values"
+                                                valuesData={profileInfo.company[0].values}
+                                                setFieldValue={setFieldValue}
+                                                currentValue={currValue}
+                                                setCurrentValue={setCurrValue}
 
                                             />
+
                                         </div>
                                     </div>
 

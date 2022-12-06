@@ -50,7 +50,7 @@ export interface CompanyFInal {
     employeeCount: string;
     mission: string;
     vision: string;
-    values: string;
+    values: string[];
     aboutCompany:string
     // subscription: [],
   };

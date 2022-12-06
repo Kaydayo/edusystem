@@ -16,7 +16,7 @@ const Bio = () => {
   const { profileInfo, userToken } = useAppSelector((state: RootState) => state.user)
   const {mission, vision, values, aboutCompany} = profileInfo.company[0]
 
-  if (!mission && !vision && !values) {
+  if (!mission && !vision && !values.length) {
     return (
       <div className={boardBioStyle.centerEmptyState}>
         <EmptyState imag={emptstateBio} text="Looks like you have not completed your profile yet Click <a href='/editProfile' classname='markLink'>here</a> to get it completed." />
@@ -39,7 +39,10 @@ const Bio = () => {
        </div>
         <div>
           <h4>Value</h4>
-          <p>{values?values:""}</p>
+          {values.map((value: string) => {
+            return (<p>{value ? value : ""}</p>)
+          })}
+         
        </div>
       </div>
     )

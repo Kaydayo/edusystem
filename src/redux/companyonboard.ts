@@ -5,22 +5,23 @@ import { AdminSignup, CompanyFInal, CompanyFormEnum, InputValue } from '../types
 import { act } from 'react-dom/test-utils'
 import { registerCompany } from './actions/companyAction'
 import { getUserDetails, userLogin } from './actions/usersAction'
+import { FormName } from '../components/FormSignUp'
 
 
 
 const initialState: CompanyFInal = {
     info: {
-        id:'',
+        id: '',
         firstName: '',
         surnName: '',
         email: '',
         phoneNumber: '',
         companyName: '',
-        employeeCount: '',
+        employeeCount: '1-20',
         mission: '',
         vision: '',
-        values: '',
-        aboutCompany:''
+        values: [],
+        aboutCompany: ''
         // subscription: [],
     },
     errors: {
@@ -48,7 +49,7 @@ export const companyonboardSlice = createSlice({
         handleErrors: (state) => {
             if (state.info.firstName === '') {
                 state.errors.firstName = 'First name is required';
-                
+
             } else {
                 state.errors.firstName = ''
             }
@@ -87,9 +88,9 @@ export const companyonboardSlice = createSlice({
                 state.error = true
                 state.errorfound = true
             }
-            
+
         },
-        handleAdminStep: (state, action:PayloadAction<AdminSignup>) => {
+        handleAdminStep: (state, action: PayloadAction<AdminSignup>) => {
             state.info.firstName = action.payload.firstName
             state.info.email = action.payload.email
             state.info.surnName = action.payload.surnName
@@ -97,7 +98,10 @@ export const companyonboardSlice = createSlice({
         },
         handleFormInput: (state, action: PayloadAction<InputValue>) => {
             let key = action.payload.key
-            state.info[key] = action.payload.value
+            if (key !== CompanyFormEnum.VALUES) {
+                state.info[key] = action.payload.value
+            }
+
         },
         adminStepError: (state) => {
             const checkIsEmpty = Object.values(state.errors).every(x => x !== '')
@@ -106,6 +110,12 @@ export const companyonboardSlice = createSlice({
         companyStepError: (state) => {
             const checkIsEmpty = state.errors.companyName !== ''
             state.errorfound = checkIsEmpty
+        },
+        addValuesList: (state, action: PayloadAction<string[]>) => {
+            state.info.values = action.payload
+        },
+        updateCompanyInfo: (state, action: PayloadAction<any>) => {
+            state.info = action.payload.company[0]
         }
     },
     extraReducers: {
@@ -116,26 +126,27 @@ export const companyonboardSlice = createSlice({
         [registerCompany.fulfilled.toString()]: (state, { payload }) => {
             state.loading = false
             state.error = false
-            state.info= payload.company[0]
+
+            state.info = payload.company[0]
         },
         [registerCompany.rejected.toString()]: (state, { payload }) => {
             state.loading = false
-         
+
             state.error = payload
         },
         [getUserDetails.fulfilled.toString()]: (state, { payload }) => {
-            state.info.email = payload.user.email? payload.user.email:""
-            state.info.firstName = payload.user.firstName?payload.user.firstName: ""
+            state.info.email = payload.user.email ? payload.user.email : ""
+            state.info.firstName = payload.user.firstName ? payload.user.firstName : ""
             state.info.surnName = payload.user.surnName ? payload.user.surnName : ""
             console.log(payload.company, "jghjgfjgyeg")
             if (payload.company && payload.company.length) {
-                state.info.companyName = payload.company[0].companyName?payload.company.companyName:""
+                state.info.companyName = payload.company[0].companyName ? payload.company.companyName : ""
             }
         }
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { handleAdminStep,handleErrors,handleFormInput, adminStepError, companyStepError} = companyonboardSlice.actions
+export const { handleAdminStep, handleErrors, handleFormInput, adminStepError, companyStepError, addValuesList, updateCompanyInfo } = companyonboardSlice.actions
 
 export default companyonboardSlice.reducer

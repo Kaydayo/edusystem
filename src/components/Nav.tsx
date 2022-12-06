@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import navStyle from '../styles/Home/Nav.module.css'
-import OncultureLogo from '../Assets/Images/onculture-logo.png'
+import OncultureLogo from '../Assets/Images/onculture-logo.svg'
 import Button from './Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { navData } from '../constants/data'
@@ -22,36 +22,36 @@ const Nav = ({ pure, board }: NavProp) => {
     return (
         <>
             <div className={`${navStyle.headers} ${pure && navStyle.addShadow}`}>
-            <div className={navStyle.logo}>
-                <img src={OncultureLogo} alt="onculture logo" onClick={()=> navigate('/')}/>
-            </div>
-            {!pure && <>
-                <div className={navStyle.links}>
-                    <ul className={navStyle.linksElement}>
-                        {navData.map((navs, index) => (
-                            <li key={index}><Link to={navs.to} className={navStyle.linkTo}>{navs.title}</Link></li>
-                        ))}
-                    </ul>
+                <div className={navStyle.logo}>
+                    <img src={OncultureLogo} alt="onculture logo" onClick={() => navigate('/')} />
                 </div>
-                <div className={navStyle.buttons}>
-                    <div>
-                        <Link to='/signup'>
-                            <Button className={navStyle.signUpBtn}>
-                                Sign up
-                            </Button>
-                        </Link>
+                {!pure && <>
+                    <div className={navStyle.links}>
+                        <ul className={navStyle.linksElement}>
+                            {navData.map((navs, index) => (
+                                <li key={index}><Link to={navs.to} className={navStyle.linkTo}>{navs.title}</Link></li>
+                            ))}
+                        </ul>
                     </div>
-                    <div>
-                        <Link to='/login'>
-                            <Button className={navStyle.bookADemo}>
-                                Login
-                            </Button>
-                        </Link>
-                    </div>
+                    <div className={navStyle.buttons}>
+                        <div>
+                            <Link to='/signup'>
+                                <Button className={navStyle.signUpBtn}>
+                                    Sign up
+                                </Button>
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to='/login'>
+                                <Button className={navStyle.bookADemo}>
+                                    Login
+                                </Button>
+                            </Link>
+                        </div>
                     </div>
                 </>
-            }    
-        </div>
+                }
+            </div>
             <div className={navStyle.sidebar}>
                 <div className={navStyle.logoSide}>
                     <img src={OncultureLogo} alt="onculture logo" />
@@ -82,14 +82,14 @@ const Nav = ({ pure, board }: NavProp) => {
                                 </Link>
                             </div>
                         </div>
-                   </div>
+                    </div>
                 </div>
-                
+
                 }
 
             </div>
-            </>
-  )
+        </>
+    )
 }
 
 export default Nav

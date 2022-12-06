@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import onCulture from "../Assets/Images/onculture-logo.png"
+import onCulture from "../Assets/Images/onculture-logo.svg"
 import FieldType from '../components/FieldType'
 import Stepper from '../components/Stepper'
 import Nav from '../components/Nav'
@@ -12,7 +12,7 @@ import Button from '../components/Button'
 import { useSelector } from 'react-redux'
 import { RootState, useAppDispatch, useAppSelector } from '../redux/store'
 import { useDispatch } from 'react-redux'
-import { handleErrors } from '../redux/companyonboard'
+import { handleErrors, updateCompanyInfo } from '../redux/companyonboard'
 import Checkout from '../layouts/CompanyForms/Checkout'
 import { registerCompany } from '../redux/actions/companyAction'
 import { ToastContainer, toast } from 'react-toastify';
@@ -31,36 +31,49 @@ const CompanyOnBoarding = () => {
   const getCompanyField = useAppSelector((state: RootState) => state.companyonboard.info.companyName)
   const { errorfound, info } = useAppSelector((state: RootState) => state.companyonboard)
   const { selections } = useAppSelector((state: RootState) => state.subscription)
-  const { error } = useAppSelector((state: RootState) => state.user)
+  const { error, userToken } = useAppSelector((state: RootState) => state.user)
 
   const getAllSubscriptions = async () => {
     const { data } = await axios.get('subscription/all')
 
     console.log(data, "all Data")
-  
-      dispatch(postAllSubscriptions(data))
-    
+
+    dispatch(postAllSubscriptions(data))
+
   }
   // dispatch(handleErrors())
 
- 
+
   useEffect(() => {
     dispatch(handleErrors)
     getAllSubscriptions()
 
   }, [])
 
-  const skipBtn = () => {
+  const skipBtn = async () => {
     dispatch(getUserDetails())
-    if (!error) {
+
+    const config = {
+      headers: {
+        'Cache-control': 'no-cache'
+      },
+    }
+    const { data } = await axios.post('/users/find-me', {
+      token: userToken
+    }, config)
+
+    if (data.success) {
+      localStorage.setItem('userDetails', JSON.stringify(data.payload))
       navigate('/dashboard/bio')
     } else {
-      toast(error)
-      return
+      toast(data.message)
     }
+
+
+
   }
- 
-  const nextBtn = () => {
+
+  const nextBtn = async () => {
     dispatch(handleErrors())
     if (step > 1) {
       toast(error)
@@ -68,7 +81,33 @@ const CompanyOnBoarding = () => {
 
 
     if (step === 1) {
-      dispatch(registerCompany(getCompany))
+      // console.log(getCompany, "GET COMAPNY")
+      // toast("CLICKED NEXT")
+      // dispatch(registerCompany(getCompany))
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        },
+      }
+      console.log(getCompany)
+      const { data } = await axios.post(
+        '/account/company',
+        getCompany,
+        config
+      )
+      console.log(data, "DATA")
+      if (data.success) {
+        dispatch(updateCompanyInfo(data.payload))
+        localStorage.setItem('userDetails', JSON.stringify(data.payload))
+        localStorage.setItem('userToken', data.payload.accessToken)
+        toast(data.message)
+      } else {
+        toast(data.message)
+        return
+      }
+
     }
     if (step >= 1 && getCompanyField === '') {
       return
