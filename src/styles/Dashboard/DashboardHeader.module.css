@@ -1,0 +1,12 @@
+.main {
+  background: #fff;
+  position: fixed;
+  left: calc(256px + 2%);
+  right: 2%;
+  padding: 2rem 2.5rem 1rem;
+  border-bottom: 2px solid #ebeff2;
+  font-weight: 600;
+  font-size: 20px;
+  color: #000000;
+  z-index: 1;
+}

@@ -287,7 +287,7 @@ export const dashboardLinks = [
   "bio",
   "employees",
   "teams",
-  "report",
+  // "report",
   "subscription",
 ];
 
