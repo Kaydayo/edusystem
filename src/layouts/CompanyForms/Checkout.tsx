@@ -59,7 +59,7 @@ const Checkout = ({ step, setStep }: CheckoutProp) => {
     if (data.success) {
       localStorage.setItem("userDetails", JSON.stringify(data.payload));
       dispatch(updateProfileInfo(data.payload));
-      navigate("/dashboard/company/bio");
+      navigate("/dashboard/company/profile/bio");
     } else {
       toast("Payment Failed");
     }

@@ -74,7 +74,7 @@ const CompanyOnBoarding = () => {
 
     if (data.success) {
       localStorage.setItem("userDetails", JSON.stringify(data.payload));
-      navigate("/dashboard/company/bio");
+      navigate("/dashboard/company/profile/bio");
     } else {
       toast(data.message);
     }

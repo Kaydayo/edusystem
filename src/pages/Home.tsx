@@ -32,7 +32,7 @@ const Home = ({ userToken }: { userToken: string | null }) => {
     if (payload.user.isEmployee) {
       navigate("/employeeDashboard/courses");
     } else if (payload.user.isAdmin && payload.user.regCompany) {
-      navigate("/dashboard/company/bio");
+      navigate("/dashboard/company/profile/bio");
     } else {
       navigate("/company-onboarding");
     }
