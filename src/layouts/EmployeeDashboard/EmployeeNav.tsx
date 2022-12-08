@@ -59,11 +59,19 @@ const EmployeeNav = () => {
         <div className={employeeStyle.groupNav}>
           {/* avatar */}
           <div>
-            <img
-              src={avatar}
-              alt="onculture-avatar"
-              className={employeeStyle.navImage}
-            />
+            {profileInfo.user.profilePicture ? (
+              <img
+                src={profileInfo.user.profilePicture}
+                alt="onculture-avatar"
+                className={employeeStyle.navImage}
+              />
+            ) : (
+              <img
+                src={avatar}
+                alt="onculture-avatar"
+                className={employeeStyle.navImage}
+              />
+            )}
           </div>
 
           {/* dropdown */}

@@ -49,14 +49,27 @@ const EmployeeProfile = ({
       <div className={employeeStyle.bioSection}>
         {/* image and edit icon */}
         <div className={employeeStyle.ppBoard}>
-          <img
+          {profileInfo.user.profilePicture ? (
+            <img
+              src={profileInfo.user.profilePicture}
+              alt="onculture-avatar"
+              className={employeeStyle.rmPP}
+            />
+          ) : (
+            <img
+              src={avatar}
+              alt="onculture-avatar"
+              className={employeeStyle.rmPP}
+            />
+          )}
+          {/* <img
             src={avatar}
             alt="onculture-avatar"
             className={employeeStyle.rmPP}
           />
           <span>
             <img src={editIcon} alt="onculture-edit-icon" />
-          </span>
+          </span> */}
         </div>
 
         {/* employee information */}
@@ -96,7 +109,7 @@ const EmployeeProfile = ({
           <Link to="/edit-employeeProfile">
             <button className={employeeStyle.editInfo}>
               <CgPen />
-              Edit
+              <span>Edit</span>
             </button>
           </Link>
         </div>

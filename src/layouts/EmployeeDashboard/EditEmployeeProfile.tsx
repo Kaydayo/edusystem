@@ -63,14 +63,14 @@ const EditEmployeeProfile = () => {
 
   const { user } = profileInfo;
 
-  console.log(user);
-  console.log(profileInfo);
+  // console.log(user);
+  // console.log(profileInfo);
 
   const employeeProfileUpdate = async (
     payload: Values | Omit<Values, "file">,
     token: string | null
   ) => {
-    console.log(payload);
+    // console.log(payload);
 
     const config = {
       headers: {
@@ -113,8 +113,6 @@ const EditEmployeeProfile = () => {
               { setSubmitting }: FormikHelpers<Values>
             ) => {
               const { file, ...others } = values;
-              console.log(file);
-              console.log(others);
 
               if (file) {
                 employeeProfileUpdate(values, userToken);
@@ -128,15 +126,35 @@ const EditEmployeeProfile = () => {
             {({ errors, touched, values, setFieldValue, handleChange }) => (
               <Form>
                 <div className={styles.editPic}>
-                  {/* <img
-                    src={`https://images.unsplash.com/photo-1670264736611-7d9866f51c19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1370&q=80`}
-                    alt=""
-                  /> */}
-                  {/* <img src={avatar} alt="lkj" /> */}
-                  {values.file ? (
+                  {profileInfo.user.profilePicture ? (
+                    values.file ? (
+                      <PreviewImage
+                        file={values.file}
+                        defaultImage={profileInfo.user.profilePicture}
+                      />
+                    ) : (
+                      <img
+                        src={
+                          profileInfo.user.profilePicture
+                            ? profileInfo.user.profilePicture
+                            : avatar
+                        }
+                        alt="preview"
+                        className={styles.rmPP}
+                      />
+                    )
+                  ) : values.file ? (
                     <PreviewImage file={values.file} defaultImage={avatar} />
                   ) : (
-                    <img src={avatar} alt="kk" />
+                    <img
+                      src={
+                        profileInfo.user.profilePicture
+                          ? profileInfo.user.profilePicture
+                          : avatar
+                      }
+                      alt="preview"
+                      className={styles.rmPP}
+                    />
                   )}
 
                   <span>
