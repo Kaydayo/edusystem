@@ -20,9 +20,9 @@ const Hero = () => {
 
           <Button className={heroStyles.heroBtn}>Book a Demo</Button>
         </div>
-        {/* <div className={heroStyles.vid}> */}
-        <Video />
-        {/* </div> */}
+        <div className={heroStyles.vid}>
+          <Video />
+        </div>
       </div>
     </div>
   );

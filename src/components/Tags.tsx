@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import tagImae from "../Assets/Images/tags.png";
 import Button from "./Button";
 import tagsStyle from "../styles/Home/Tags.module.css";
+import { Link, useNavigate } from "react-router-dom";
+
 type TagProps = {
   mainTxt: string;
   subText: string;
@@ -34,7 +36,9 @@ const Tags = ({ mainTxt, subText }: TagProps) => {
           <h4>{mainTxt}</h4>
           <h5>{subText}</h5>
         </div>
-        <Button className={tagsStyle.contentBtn}>See details</Button>
+        <Link to="programs/sexual">
+          <Button className={tagsStyle.contentBtn}>See details</Button>
+        </Link>
       </div>
     </div>
   );

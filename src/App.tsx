@@ -41,6 +41,8 @@ import axios from "axios";
 import Templates from "./pages/Templates";
 import TemplateCategory from "./layouts/Templates/templateCategory";
 import TemplateFeature from "./layouts/Templates/templateFeature";
+import FeaturedProgram from "./layouts/Home/FeaturedProgram";
+import EditEmployeeProfile from "./layouts/EmployeeDashboard/EditEmployeeProfile";
 import CompanyForm from "./layouts/CompanyForms/CompanyForm";
 
 function App() {
@@ -125,6 +127,7 @@ function App() {
                 path="templates/category/:id"
                 element={<TemplateCategory />}
               />
+              <Route path="programs/:id" element={<FeaturedProgram />} />
               <Route path="/resource" element={<Resources />}>
                 <Route path="articles" element={<Articles />} />
                 <Route path="books" element={<Books />} />
@@ -150,6 +153,10 @@ function App() {
                 >
                   <Route path="courses" element={<EmployeeCourses />} />
                 </Route>
+                <Route
+                  path="edit-employeeProfile"
+                  element={<EditEmployeeProfile />}
+                />
 
                 <Route path="coursePage" element={<CoursePage />} />
               </Route>
