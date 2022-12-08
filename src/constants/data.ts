@@ -286,8 +286,8 @@ export const subScriptionCourse = [
 export const dashboardLinks = [
   "bio",
   "employees",
+  // "report",
   // "teams",
-  "report",
   "subscription",
 ];
 

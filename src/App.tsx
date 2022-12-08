@@ -10,14 +10,14 @@ import {
 } from "react-router-dom";
 import Signup from "./pages/Signup";
 import CompanyOnBoarding from "./pages/CompanyOnBoarding";
-import Dashboard from "./pages/Dashboard";
-import Bio from "./layouts/Dashboard/Bio";
+import CompanyPage from "./pages/AdminDashboard/company/CompanyPage";
+import Bio from "./pages/AdminDashboard/company/bio/Bio";
 import Courses from "./layouts/Dashboard/Courses";
-import BoardEmployee from "./layouts/Dashboard/BoardEmployee";
-import Team from "./layouts/Dashboard/Team";
+import BoardEmployee from "./pages/AdminDashboard/company/employees/BoardEmployee";
+import Team from "./pages/AdminDashboard/company/teams/Team";
 import Report from "./layouts/Dashboard/Report";
 import Subscription from "./layouts/CompanyForms/Subscription";
-import Payments from "./layouts/Dashboard/Payments";
+import Payments from "./pages/AdminDashboard/company/subscription/Payments";
 import Login from "./components/Login";
 import { useDispatch } from "react-redux";
 import { RootState, useAppDispatch, useAppSelector } from "./redux/store";
@@ -44,6 +44,11 @@ import TemplateFeature from "./layouts/Templates/templateFeature";
 import FeaturedProgram from "./layouts/Home/FeaturedProgram";
 import EditEmployeeProfile from "./layouts/EmployeeDashboard/EditEmployeeProfile";
 import CompanyForm from "./layouts/CompanyForms/CompanyForm";
+import DashboardLayout from "./layouts/Dashboard/DashboardPageLayout";
+import Learning from "./pages/AdminDashboard/learning/learning";
+import Overview from "./pages/AdminDashboard/overview/overview";
+import DashboardTemplates from "./pages/AdminDashboard/templates/templates";
+import Profile from "./pages/AdminDashboard/company/profile/Profile";
 
 function App() {
   const { userInfo, userToken, profileInfo } = useAppSelector(
@@ -137,16 +142,23 @@ function App() {
                   path="company-onboarding"
                   element={<CompanyOnBoarding />}
                 />
-
-                <Route path="/dashboard" element={<Dashboard />}>
-                  <Route path="bio" element={<Bio />} />
-                  <Route path="courses" element={<Courses />} />
-                  <Route path="employees" element={<BoardEmployee />} />
-                  <Route path="teams" element={<Team />} />
-                  <Route path="report" element={<Report />} />
-                  <Route path="subscription" element={<Payments />} />
+                <Route path="/dashboard" element={<DashboardLayout />}>
+                  <Route path="company" element={<CompanyPage />}>
+                    <Route path="profile" element={<Profile />}>
+                      <Route path="bio" element={<Bio />} />
+                      <Route path="courses" element={<Courses />} />
+                      <Route path="employees" element={<BoardEmployee />} />
+                      <Route path="teams" element={<Team />} />
+                      <Route path="report" element={<Report />} />
+                      <Route path="subscription" element={<Payments />} />
+                    </Route>
+                    <Route path="editProfile" element={<EditAdminProfile />} />
+                  </Route>
+                  <Route path="learning" element={<Learning />} />
+                  <Route path="overview" element={<Overview />} />
+                  <Route path="templates" element={<DashboardTemplates />} />
                 </Route>
-                <Route path="editProfile" element={<EditAdminProfile />} />
+
                 <Route
                   path="/employeeDashboard"
                   element={<EmployeeDashboard />}
