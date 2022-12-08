@@ -286,8 +286,8 @@ export const subScriptionCourse = [
 export const dashboardLinks = [
   "bio",
   "employees",
-  "teams",
   // "report",
+  // "teams",
   "subscription",
 ];
 
@@ -2350,3 +2350,46 @@ export const TemplateCategories = {
     ],
   },
 };
+
+export const ProgramSummary = [
+  {
+    title: "Harassment in the Workplace.",
+    path: "harrassment-in-the-workplace",
+    intro: [
+      "A safe and healthy workplace is a productive one.",
+
+      "A lack of awareness and silence around workplace harassment has significantly impacted employee mental health and well-being, leading to reduced productivity and retention rates.",
+
+      "How do you create a safe and healthy workplace?",
+
+      "This is where OnCulture comes in.",
+    ],
+    subs: [
+      {
+        title: "In this interactive course, you will learn to:",
+        items: [
+          "Identify sexual and non-sexual types of harassment in the workplace.",
+          "Prevent workplace harassment.",
+          "Develop comprehensive responsive measures around workplace harassment.",
+        ],
+      },
+      {
+        title: "Through relatable:",
+        items: [
+          "Videos.",
+          "Real-life scenarios.",
+          "Case studies.",
+          "Interactive quizzes.",
+        ],
+      },
+      {
+        title: "What you will stand to gain:",
+        items: [
+          "A toxic-free company.",
+          "Employee behaviors that buttress company values.",
+          "A happier and more productive workforce.",
+        ],
+      },
+    ],
+  },
+];

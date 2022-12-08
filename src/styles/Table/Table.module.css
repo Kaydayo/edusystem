@@ -16,9 +16,8 @@
   background-color: #f1f1f1;
   padding: 12px;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
   font-size: 16px;
-  
 }
 
 /* .tableHeader:first-child {
@@ -31,7 +30,7 @@
 
 .tableRowItems {
   cursor: pointer;
-  border-bottom: 1px solid #EEF1FF;
+  border-bottom: 1px solid #eef1ff;
   text-align: center;
 }
 
@@ -42,62 +41,62 @@
 .tableCell {
   padding: 12px;
   font-size: 14px;
+  text-align: left;
+}
+
+.nameData {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.nameData:last-child p {
+  margin: 0;
+}
+
+.nameData:last-child p:first-of-type {
+  color: #5c00dd;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nameData:last-child:last-child {
+  font-size: 10px;
+  font-weight: 400;
+  color: #bbc4d9;
+}
+
+.gradeCell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   text-align: center;
 }
 
-.nameData{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    text-align: center;
-    justify-content: center;
+.dots {
+  color: #bbc4d9;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
-.nameData:last-child p{
-    margin: 0;
+.gradeCellSub {
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  text-align: left;
 }
 
-.nameData:last-child p:first-of-type{
-    color: #5C00DD;
-    font-size: 14px;
-    font-weight: 600;
+.gradeCellSub div {
+  color: #bbc4d9;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
-.nameData:last-child:last-child{
-     font-size: 10px;
-    font-weight: 400;
-    color: #BBC4D9;
-}
-
-.gradeCell{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-}
-
-.gradeCell div{
-    color: #BBC4D9;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.gradeCellSub{
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: space-between; */
-    text-align: center;
-}
-
-.gradeCellSub div{
-    color: #BBC4D9;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.nameImage{
-     width: 52px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: contain;
+.nameImage {
+  width: 52px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: contain;
 }
