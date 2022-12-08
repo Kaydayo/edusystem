@@ -43,6 +43,7 @@ import TemplateCategory from "./layouts/Templates/templateCategory";
 import TemplateFeature from "./layouts/Templates/templateFeature";
 import FeaturedProgram from "./layouts/Home/FeaturedProgram";
 import EditEmployeeProfile from "./layouts/EmployeeDashboard/EditEmployeeProfile";
+import CompanyForm from "./layouts/CompanyForms/CompanyForm";
 
 function App() {
   const { userInfo, userToken, profileInfo } = useAppSelector(
@@ -112,7 +113,7 @@ function App() {
               <Route path="faq" element={<Faq />} />
 
               {/* TODO: move to protected route */}
-              {/* <Route path='coursePage' element={<CoursePage />} /> */}
+              {/* <Route path='test' element={<CompanyOnBoarding />} /> */}
 
               <Route path="signup" element={<Signup />} />
               <Route path="login" element={<Login />} />

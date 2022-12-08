@@ -12,6 +12,8 @@ import { paySubscription } from '../../redux/actions/subscriptionAction'
 import { toast, ToastContainer } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { getUserDetails } from '../../redux/actions/usersAction'
+import { updateProfileInfo } from '../../redux/users'
 
 type CheckoutProp = {
   step: number;
@@ -30,10 +32,8 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  console.log(profileInfo,"PROFILE INFO")
+  console.log(info,"PROFILE INFO")
   const submitPaidCourse = async () => {
-    try {
-
       const config = {
         headers: {
           'Content-Type': 'application/json',
@@ -52,24 +52,13 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
         config
       )
 
-      console.log(data, "skibo")
-      localStorage.setItem('userDetails', JSON.stringify(data.payload))
-      localStorage.setItem('userToken', data.accessToken)
-
-      if (error) {
-        toast(error)
-      }
-
       if (data.success) {
+        localStorage.setItem('userDetails', JSON.stringify(data.payload))
+        dispatch(updateProfileInfo(data.payload))
         navigate('/dashboard/bio')
       } else {
-        toast(error)
+        toast("Payment Failed")
       }
-     
-
-    } catch (error) {
-      console.log(error,"an error")
-    }
   }
 
   useEffect(() => {
@@ -159,7 +148,7 @@ const Checkout = ({step, setStep}:CheckoutProp) => {
           </div>
           {/* button */}
           <div>
-            <Button className={companyStyle.subTotalBtn} onClick={handlePaySubscription}>
+            <Button className={companyStyle.subTotalBtn} onClick={()=>submitPaidCourse()}>
               Pay
             </Button>
           </div>
