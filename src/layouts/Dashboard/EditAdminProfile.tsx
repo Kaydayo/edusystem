@@ -78,14 +78,13 @@ const CustomMultipleField = ({
   ...props
 }: any) => {
   const [field, meta] = useField(props);
-
   return (
     <div className={dashboardStyle.formBoxes}>
       <label htmlFor={props.id || props.name}>{label}*</label>
       <div className={dashboardStyle.valuesContainer}>
         {field.value.map((val: string, index: any) => {
           return (
-            <div className={dashboardStyle.wrapInput}>
+            <div key={index} className={dashboardStyle.wrapInput}>
               <input
                 className={className}
                 value={val}
@@ -131,6 +130,7 @@ const CustomMultipleField = ({
             onChange={(e) => setCurrentValue(e.target.value)}
           />
           <button
+            type="button"
             onClick={() => {
               if (currentValue !== "") {
                 setFieldValue("values", [...field.value, currentValue]);
@@ -169,6 +169,7 @@ const EditAdminProfile = () => {
     payload: Values | Omit<Values, "file">,
     token: string | null
   ) => {
+    console.log(payload,"PAYLOAD")
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -177,14 +178,16 @@ const EditAdminProfile = () => {
         Authorization: `Bearer ${token}`,
       },
     };
-    const { data } = await axios.post("/updateCompany", payload, config);
+    const payloadData = {...payload, values:JSON.stringify(payload.values)}
+    const { data } = await axios.post("/updateCompany", payloadData, config);
 
-    console.log(data.payload, "data payload");
+    console.log(data, "data payload");
     localStorage.setItem("userDetails", JSON.stringify(data.payload));
     localStorage.setItem("userToken", data.payload.accessToken);
     console.log(data, "what i got");
-    toast(data.message);
+    
     if (data.success) {
+      toast(data.message);
       dispatch(updateProfileInfo(data.payload));
     }
   };
@@ -192,8 +195,8 @@ const EditAdminProfile = () => {
   return (
     <div className={dashboardStyle.editProfileMain}>
       {/* <DashboardNav setShowModal={setShowModal} profileImage={preview} setShowTeamModal={setShowTeamModal} /> */}
-      {/* <DashboardHeader>Company</DashboardHeader>
-      <ToastContainer /> */}
+      {/* <DashboardHeader>Company</DashboardHeader> */}
+      <ToastContainer />
       <div className={dashboardStyle.editProfileBody}>
         <div className={dashboardStyle.editProfileForm}>
           <Formik
@@ -221,10 +224,10 @@ const EditAdminProfile = () => {
                 companyUpdate(others, userToken);
               }
 
-              setSubmitting(false);
+              setSubmitting(true);
             }}
           >
-            {({ errors, touched, values, setFieldValue, handleChange }) => (
+            {({ errors, touched, values, setFieldValue, handleChange, handleSubmit }) => (
               <Form className={dashboardStyle.mainEditForm}>
                 <div className={dashboardStyle.editPicBoard}>
                   {profileInfo.user.profilePicture ? (
@@ -419,12 +422,13 @@ const EditAdminProfile = () => {
                   <button
                     type="submit"
                     className={dashboardStyle.inviteEmployee}
+                    // onSubmit={(e)=>handleSubmit()}
                   >
                     Submit
                   </button>
                   <button
                     className={dashboardStyle.createTeam}
-                    onClick={() => navigate("/dashboard/bio")}
+                    onClick={() => navigate("/dashboard/company/profile/bio")}
                   >
                     Cancel
                   </button>

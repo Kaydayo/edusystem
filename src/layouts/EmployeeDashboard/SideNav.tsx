@@ -20,6 +20,9 @@ import ReactPlayer from 'react-player'
 import videoStyle from '../../styles/Home/Video.module.css'
 import videoPoster from '../../Assets/Images/courseVideoPoster.svg'
 import axios from "axios";
+import Quiz from "./Quiz";
+import { ToastContainer } from "react-toastify";
+import { ThreeDots } from "react-loader-spinner";
 
 type ContentParams = {
   id: number;
@@ -41,13 +44,16 @@ const SideNav = () => {
   const [postBody, setPostBody] = useState<any>([])
   const [allCourses, setAllCourses] = useState<any>([]);
   const [currentCourseId, setCurrentCourseId] = useState<string>("");
-  const [progress, setProgress] = useState<ProgressType>({moduleIndex:0, lessonIndex:0, lessonId:""})
+  const [progress, setProgress] = useState<ProgressType>({ moduleIndex: 0, lessonIndex: 0, lessonId: "" })
+  const [lessonType, setLessonType] = useState<boolean | undefined>(false)
+  const [quizData, setQuizData] = useState<any>({})
+
 
   const { userInfo, userToken, profileInfo } = useAppSelector((state: RootState) => state.user)
   const serializer = {
     types: {
       image: (props: any) => <div>
-      
+
       </div>
 
     }
@@ -69,39 +75,75 @@ const SideNav = () => {
   }
 
   const getCourseLesson = async () => {
-    const { data } = await axios.get(`subscription/getLesson/${progress.lessonId}`)
-    setPostBody(data.body)
-    if (data.videoUrl) {
-      setCurrentVideo(data.videoUrl)
-    } else {
-      setCurrentVideo("")
-    }
-    
+    console.log(progress, "PROGRESS")
+    axios.get(`subscription/getLesson/${progress.lessonId}`).then((res) => {
+      console.log(res.data.quiz, "OUR DATA")
+      setPostBody(res.data.body)
+      setLessonType(res.data.lessonType)
+      setQuizData(res.data)
+      if (res.data.videoUrl) {
+        setCurrentVideo(res.data.videoUrl)
+      } else {
+        setCurrentVideo("")
+      }
+    }).catch((err) => console.log(err))
 
   }
-  
 
-  
+  const handleCompleteCourse = (progress:ProgressType, allCourses:[any]) => {
+    if (progress.moduleIndex + 1 === allCourses.length
+      && progress.lessonIndex + 1 === allCourses[progress.moduleIndex].lesson.length) {
+      setProgress({
+        ...progress,
+        moduleIndex: 0,
+        lessonIndex: 0,
+        lessonId: allCourses[0].lesson[0]._id
+      })
+    } else {
+      if (progress.lessonIndex + 1 === allCourses[progress.moduleIndex].lesson.length) {
+        setProgress(
+          {
+            ...progress,
+            moduleIndex: progress.moduleIndex + 1,
+            lessonIndex: 0,
+            lessonId: allCourses[progress.moduleIndex + 1].lesson[0]._id
+          })
+      } else {
+        setProgress(
+          {
+            ...progress,
+            lessonIndex: progress.lessonIndex + 1,
+            lessonId: allCourses[progress.moduleIndex].lesson[progress.lessonIndex + 1]._id
+          })
+      }
+
+    }
+
+    dispatch(completeCourseSanity(progress))
+  }
+
+
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
     getCourseModule()
-   console.log(allCourses, "ALL COIRSES")
+    console.log(allCourses, "ALL COIRSES")
     // setAllCourses(courseModules);
-    
+
 
   }, []);
 
   useEffect(() => {
     getCourseLesson()
-    
+
   }, [progress])
 
   if (loading) {
     console.log("loading", loading);
   }
 
-  console.log(progress,"PROGRESS ")
+  console.log(progress, "PROGRESS ")
   const handleContentChange = ({ id, subId }: ContentParams) => {
     // console.log(id, subId);
     // setCurrentContent(courses[id].contents[subId]);
@@ -122,98 +164,82 @@ const SideNav = () => {
             currentLesson={currentCourseId}
 
           />
+          <ToastContainer />
         </div>
       </div>
 
-      <div className={courseStyle.videoContent}>
-        <div className={videoStyle.container}>
-          {/* <CourseVideo /> */}
-          <div className={videoStyle.courseVideo}>
-            {currentVideo && <ReactPlayer url={currentVideo}
-              config={{ youtube: { playerVars: { disablekb: 1 } } }}
-              width='100%'
-              height='28rem'
-            // light={videoPoster}
-            />}
-          </div>
-        </div>
+      {
+        (() => {
+          switch (lessonType) {
+            case true:
+              return <>
+                <div className={courseStyle.videoContent}>
+                  <div className={videoStyle.container}>
+                    {/* <CourseVideo /> */}
+                    <div className={videoStyle.courseVideo}>
+                      {currentVideo && <ReactPlayer url={currentVideo}
+                        config={{ youtube: { playerVars: { disablekb: 1 } } }}
+                        width='100%'
+                        height='28rem'
+                      // light={videoPoster}
+                      />}
+                    </div>
+                  </div>
 
-        <div className={courseStyle.contentContainer}>
-          <div className={courseStyle.chatBtns}>
-            <SpecialButton
-              className={courseStyle.commentBtn}
-              onClick={() => setShowComment(true)}
-            >
-              <div className={courseStyle.comment}>
-                <RiChat1Line />
-                <p>Comment</p>
-              </div>
-            </SpecialButton>
-            {showComment && (
-              <SpecialButton
-                className={courseStyle.commentBack}
-                onClick={() => setShowComment(false)}
-              >
-                <p>Back</p>
-              </SpecialButton>
-            )}
-          </div>
-          <div className={courseStyle.commentBox}>
-            {showComment ? (
-              <CustomComment />
-            ) : (
-              <div className={courseStyle.contentText}>
-                {allCourses && <div>
-                    <PortableText
-                      value={postBody}
-                      components={PortableTextComponents}
-                  />
+                  <div className={courseStyle.contentContainer}>
+                    <div className={courseStyle.chatBtns}>
+                      <SpecialButton
+                        className={courseStyle.commentBtn}
+                        onClick={() => setShowComment(true)}
+                      >
+                        <div className={courseStyle.comment}>
+                          <RiChat1Line />
+                          <p>Comment</p>
+                        </div>
+                      </SpecialButton>
+                      {showComment && (
+                        <SpecialButton
+                          className={courseStyle.commentBack}
+                          onClick={() => setShowComment(false)}
+                        >
+                          <p>Back</p>
+                        </SpecialButton>
+                      )}
+                    </div>
+                    <div className={courseStyle.commentBox}>
+                      {showComment ? (
+                        <CustomComment />
+                      ) : (
+                        <div className={courseStyle.contentText}>
+                          {allCourses && <div>
+                            <PortableText
+                              value={postBody}
+                              components={PortableTextComponents}
+                            />
+                          </div>
+                          }
+                          <div>
+                            <Button
+                              className={courseStyle.completeBtn}
+                              onClick={()=>handleCompleteCourse(progress, allCourses)}
+                            // disabled={currentContent.complete}
+                            >
+                              Complete
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                }
-                <div>
-                  <Button
-                    className={courseStyle.completeBtn}
-                    onClick={() => {
-                      if (progress.moduleIndex + 1 === allCourses.length
-                        && progress.lessonIndex + 1 === allCourses[progress.moduleIndex].lesson.length) {
-                        setProgress({
-                          ...progress,
-                          moduleIndex: 0,
-                          lessonIndex: 0,
-                          lessonId: allCourses[0].lesson[0]._id
-                        })
-                      } else {
-                        if (progress.lessonIndex + 1 === allCourses[progress.moduleIndex].lesson.length) {
-                          setProgress(
-                            {
-                              ...progress,
-                              moduleIndex: progress.moduleIndex +1,
-                              lessonIndex:0,
-                              lessonId: allCourses[progress.moduleIndex + 1].lesson[0]._id
-                            })
-                        } else {
-                          setProgress(
-                            {
-                              ...progress,
-                              lessonIndex: progress.lessonIndex + 1,
-                              lessonId: allCourses[progress.moduleIndex].lesson[progress.lessonIndex + 1]._id
-                            })
-                        }
-                      
-                      }
-
-                      dispatch(completeCourseSanity(progress))
-                    }}
-                    // disabled={currentContent.complete}
-                  >
-                    Complete
-                  </Button>
-                </div>
+              </>;
+            case false:
+              return <div className={courseStyle.quizWrapper}>
+                <Quiz data={quizData} handleComplete={handleCompleteCourse} progress={progress} allCourses={allCourses} />
               </div>
-            )}
-          </div>
-        </div>
-      </div>
+          }
+        })()
+      }
     </div>
   );
 };

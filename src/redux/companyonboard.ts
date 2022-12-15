@@ -75,6 +75,12 @@ export const companyonboardSlice = createSlice({
                 state.errors.phoneNumber = '';
             }
 
+            if (!(/^(?:(?:(?:\+?234(?:\h1)?|01)\h*)?(?:\(\d{3}\)|\d{3})|\d{4})(?:\W*\d{3})?\W*\d{4}$/.test(state.info.phoneNumber))) {
+                state.errors.phoneNumber = 'Invalid Phone number'
+            } else {
+                state.errors.phoneNumber = '';
+            }
+
             if (state.info.email === '' || !(/\S+@\S+\.\S+/.test(state.info.email))) {
                 state.errors.email = 'Email is invalid';
             } else {
