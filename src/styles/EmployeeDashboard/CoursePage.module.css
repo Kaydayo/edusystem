@@ -122,3 +122,17 @@
   float: right;
   margin-top: 2rem;
 }
+
+.quizWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 90vh;
+  margin-left: 345px;
+  width: calc(100% - 345px);
+  padding-top: 0.8rem;
+  padding-bottom: 3.5rem;
+  flex-direction: column;
+  margin-top: 2rem;
+}
