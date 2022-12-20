@@ -16,10 +16,15 @@ const FeaturedPrograms = () => {
           <Tags
             mainTxt="Harassment in the Workplace"
             subText="Sexual and Non-sexual"
+            to="/programs/harrassment-in-the-workplace"
           />
-          <Tags mainTxt="Everyday Culture" subText="Coming soon" />
-          <Tags mainTxt="Culture Clinic" subText="Coming soon" />
-          <Tags mainTxt="Leadership Amp" subText="Coming soon" />
+          <Tags mainTxt="Everyday Culture" subText="Coming soon" to="/" />
+          <Tags
+            mainTxt="Culture Clinic"
+            subText="Coming soon"
+            to="/programs/culture-clinic"
+          />
+          <Tags mainTxt="Leadership Amp" subText="Coming soon" to="/" />
         </div>
       </div>
       {/* <div className={fProgramStyles.bgObjectline}>

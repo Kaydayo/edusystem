@@ -2354,7 +2354,8 @@ export const TemplateCategories = {
 export const ProgramSummary = [
   {
     title: "Harassment in the Workplace.",
-    path: "harrassment-in-the-workplace",
+    path: "/programs/harrassment-in-the-workplace",
+    // path: "/programs/sexual",
     intro: [
       "A safe and healthy workplace is a productive one.",
 
@@ -2388,6 +2389,48 @@ export const ProgramSummary = [
           "A toxic-free company.",
           "Employee behaviors that buttress company values.",
           "A happier and more productive workforce.",
+        ],
+      },
+    ],
+  },
+
+  {
+    title: "Culture Clinic",
+    path: "/programs/culture-clinic",
+    intro: [
+      " Companies with aligned, positive cultures improve work lives, retain the best people, and generally perform better.",
+
+      "  Imagine a workforce with similar values and behaviors, focused on the same business goals.",
+
+      "This is where OnCulture comes in.",
+    ],
+    subs: [
+      {
+        title: "In this interactive course, you will learn to:",
+        items: [
+          "Reinforce the company’s purpose and mission.",
+          "Identify Value Stars among employees. ",
+          "Influence culturally-aligned behaviours of teams.",
+          "Strengthen connections between employees as they learn together. ",
+        ],
+      },
+      {
+        title: "Through relatable:",
+        items: [
+          "Videos.",
+          "Real-life scenarios.",
+          "Case studies.",
+          "Interactive quizzes.",
+        ],
+      },
+      {
+        title: "What you will stand to gain:",
+        items: [
+          "Better (designed) workplace culture.",
+          "Diverse, yet clearer interpretation of the company’s culture.",
+          "A workforce of Culture Champions.",
+          "Stronger team collaboration and connections.",
+          "A culture-fit layer to your existing onboarding process.",
         ],
       },
     ],

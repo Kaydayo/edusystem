@@ -7,8 +7,9 @@ import { Link, useNavigate } from "react-router-dom";
 type TagProps = {
   mainTxt: string;
   subText: string;
+  to: string;
 };
-const Tags = ({ mainTxt, subText }: TagProps) => {
+const Tags = ({ mainTxt, subText, to }: TagProps) => {
   //   const [hover, setHover] = useState<boolean>(true);
   return (
     //   <div className={tagsStyle.main}
@@ -36,7 +37,7 @@ const Tags = ({ mainTxt, subText }: TagProps) => {
           <h4>{mainTxt}</h4>
           <h5>{subText}</h5>
         </div>
-        <Link to="programs/sexual">
+        <Link to={to}>
           <Button className={tagsStyle.contentBtn}>See details</Button>
         </Link>
       </div>
