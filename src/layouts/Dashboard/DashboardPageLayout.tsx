@@ -6,9 +6,9 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import InviteEmployee from "./InviteEmployee";
 import TeamModal from "../../components/TeamModal";
 import Modal from "../../components/ Modal";
-import { MdOutlineDashboard } from "react-icons/md";
+import { MdOutlineDashboard, MdSplitscreen } from "react-icons/md";
 import { FiBook } from "react-icons/fi";
-import { RiBuilding2Line } from "react-icons/ri";
+import { RiBuilding2Line, RiGroupLine, RiGroup2Line } from "react-icons/ri";
 
 // interface nav {
 //   label: string;
@@ -18,7 +18,7 @@ import { RiBuilding2Line } from "react-icons/ri";
 const sideBar_navLinks = [
   { icon: MdOutlineDashboard, label: "Overview", path: "overview" },
   { icon: FiBook, label: "Learning", path: "learning" },
-  { icon: MdOutlineDashboard, label: "Templates", path: "templates" },
+  { icon: MdSplitscreen, label: "Templates", path: "templates" },
   // {
   //   label: "Report",
   //   path: "report",
@@ -62,12 +62,14 @@ const DashboardLayout = () => {
 
         <ul className={styles.midNav}>
           <li className={styles.labelNormal} onClick={() => setShowModal(true)}>
+            <RiGroupLine fontSize={25} />
             Invite Employees
           </li>
           <li
             className={styles.labelNormal}
             onClick={() => setShowTeamModal(true)}
           >
+            <RiGroup2Line fontSize={25} />
             Create Team
           </li>
         </ul>
