@@ -59,7 +59,7 @@ function App() {
   const storeToken = localStorage.getItem("userToken")
     ? localStorage.getItem("userToken")
     : null;
-
+    console.log(storeToken)
   // automatically authenticate user if token is found
   useEffect(() => {
     const handleTabClose = () => {
