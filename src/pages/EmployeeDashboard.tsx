@@ -9,7 +9,7 @@ import employeeStyle from '../styles/EmployeeDashboard/EmployeeDashboard.module.
 const EmployeeDashboard = () => {
   const { profileInfo, userToken } = useAppSelector((state: RootState) => state.user)
 
- 
+ console.log(profileInfo)
   
   return (
     <div className={employeeStyle.main}>
