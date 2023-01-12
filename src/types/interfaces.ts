@@ -27,7 +27,7 @@ export enum CompanyFormEnum {
   MISSION = "mission",
   VISION = "vision",
   VALUES = "values",
-  ABOUTCOMPANY="aboutCompany"
+  ABOUTCOMPANY = "aboutCompany",
   // SUBSCRIOTION="subscription"
 }
 
@@ -51,7 +51,7 @@ export interface CompanyFInal {
     mission: string;
     vision: string;
     values: string[];
-    aboutCompany:string
+    aboutCompany: string;
     // subscription: [],
   };
   errors: any;
@@ -95,10 +95,19 @@ export interface UserState {
   profileInfo: any;
 }
 
+export interface planState {
+  benefits: any[];
+  planName: string;
+  price: number;
+  recommend: boolean;
+  _createdAt: string;
+  _id: string;
+}
+
 export interface SubscriptionState {
-  selections: ISubCourse[];
-  subscriptions: ISubCourse[];
-  coursesToPay: string[];
+  // selections: ISubCourse[];
+  plans: planState[];
+  selectedPlan: planState;
   loading: boolean;
   error: any;
   success: boolean;
@@ -130,14 +139,13 @@ export interface Content {
   completed: boolean;
 }
 
-
-export enum SingUp{
-    EMAIL = 'email',
-    PASSWORD='password'
+export enum SingUp {
+  EMAIL = "email",
+  PASSWORD = "password",
 }
 
 export enum SwitchModalTeam {
-    DELETE = 'delete',
-    ASSIGN = 'assign',
-    RENAME='rename'
+  DELETE = "delete",
+  ASSIGN = "assign",
+  RENAME = "rename",
 }
