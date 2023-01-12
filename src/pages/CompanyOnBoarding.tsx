@@ -18,10 +18,12 @@ import { registerCompany } from "../redux/actions/companyAction";
 import { ToastContainer, toast } from "react-toastify";
 import { getUserDetails } from "../redux/actions/usersAction";
 import axios from "axios";
-import { postAllSubscriptions } from "../redux/subscription";
+import { postAllPlans } from "../redux/subscription";
 
 const CompanyOnBoarding = () => {
   const [step, setStep] = useState<number>(0);
+
+  const [plans, setPlans] = useState([]);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -37,48 +39,59 @@ const CompanyOnBoarding = () => {
   const { errorfound, info } = useAppSelector(
     (state: RootState) => state.companyonboard
   );
-  const { selections } = useAppSelector(
-    (state: RootState) => state.subscription
-  );
+  // const { selections } = useAppSelector(
+  //   (state: RootState) => state.subscription
+  // );
   const { error, userToken } = useAppSelector((state: RootState) => state.user);
 
-  const getAllSubscriptions = async () => {
-    const { data } = await axios.get("subscription/all");
+  // const getAllSubscriptions = async () => {
+  //   const { data } = await axios.get("subscription/all");
+
+  //   console.log(data, "all Data");
+
+  //   dispatch(postAllSubscriptions(data));
+  // };
+  // dispatch(handleErrors())
+
+  const fetchPricingData = async () => {
+    const { data } = await axios.get("subscription/allPlans");
 
     console.log(data, "all Data");
-
-    dispatch(postAllSubscriptions(data));
+    setPlans(data);
+    dispatch(postAllPlans(data));
   };
-  // dispatch(handleErrors())
 
   useEffect(() => {
     dispatch(handleErrors);
-    getAllSubscriptions();
+    // getAllSubscriptions();
+    fetchPricingData();
   }, []);
 
-  const skipBtn = async () => {
-    dispatch(getUserDetails());
+  console.log("PLANS", plans);
 
-    const config = {
-      headers: {
-        "Cache-control": "no-cache",
-      },
-    };
-    const { data } = await axios.post(
-      "/users/find-me",
-      {
-        token: userToken,
-      },
-      config
-    );
+  // const skipBtn = async () => {
+  //   dispatch(getUserDetails());
 
-    if (data.success) {
-      localStorage.setItem("userDetails", JSON.stringify(data.payload));
-      navigate("/dashboard/company/profile/bio");
-    } else {
-      toast(data.message);
-    }
-  };
+  //   const config = {
+  //     headers: {
+  //       "Cache-control": "no-cache",
+  //     },
+  //   };
+  //   const { data } = await axios.post(
+  //     "/users/find-me",
+  //     {
+  //       token: userToken,
+  //     },
+  //     config
+  //   );
+
+  //   if (data.success) {
+  //     localStorage.setItem("userDetails", JSON.stringify(data.payload));
+  //     navigate("/dashboard/company/profile/bio");
+  //   } else {
+  //     toast(data.message);
+  //   }
+  // };
 
   const nextBtn = async () => {
     dispatch(handleErrors());
@@ -123,17 +136,10 @@ const CompanyOnBoarding = () => {
     }
   };
 
-  const prevBtn = () => {
-    if (step <= 0) {
-      setStep(0);
-    } else {
-      setStep(step - 1);
-    }
-  };
   const multiSteps = [
     <AdminForm />,
     <CompanyForm />,
-    <Subscription />,
+    <Subscription step={step} setStep={setStep} />,
     <Checkout step={step} setStep={setStep} />,
   ];
 
@@ -144,34 +150,15 @@ const CompanyOnBoarding = () => {
       <div className={companyStyle.main}>
         <div className={companyStyle.header}>
           <h4>Create Company Profile</h4>
-          <p>
-            Already have an account?{" "}
-            <span>
-              <Link className={companyStyle.setLink} to="/login">
-                Login
-              </Link>
-            </span>
-          </p>
         </div>
         <div className={companyStyle.mainStepper}>
           <Stepper step={step} setStep={setStep} />
         </div>
         <div className={companyStyle.allForm}>{multiSteps[step]}</div>
         <div className={companyStyle.btnSteps}>
-          {step > 0 && (
-            <Button className={companyStyle.btnBack} onClick={prevBtn}>
-              Back
-            </Button>
-          )}
-          {step > 1 && (
-            <Button className={companyStyle.btnSkip} onClick={skipBtn}>
-              Skip
-            </Button>
-          )}
-
-          {step !== 3 && (
+          {step <= 1 && (
             <Button
-              type={step === 3 ? "submit" : ""}
+              // type={step === 3 ? "submit" : ""}
               className={companyStyle.btnNext}
               onClick={nextBtn}
             >

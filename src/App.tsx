@@ -36,7 +36,7 @@ import VerifyPassword from "./pages/VerifyPassword";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import EmployeeCourses from "./layouts/EmployeeDashboard/EmployeeCourses";
 import CoursePage from "./layouts/EmployeeDashboard/CoursePage";
-import EditAdminProfile from "./layouts/Dashboard/EditAdminProfile";
+import EditAdminProfile from "./pages/AdminDashboard/company/profile/EditAdminProfile";
 import axios from "axios";
 import Templates from "./pages/Templates";
 import TemplateCategory from "./layouts/Templates/templateCategory";
@@ -49,6 +49,10 @@ import Learning from "./pages/AdminDashboard/learning/learning";
 import Overview from "./pages/AdminDashboard/overview/overview";
 import DashboardTemplates from "./pages/AdminDashboard/templates/templates";
 import Profile from "./pages/AdminDashboard/company/profile/Profile";
+import Pricing from "./pages/Pricing";
+
+import CourseListPage from "./pages/AdminDashboard/learning/courselist-page/courselist-page";
+import CourseDetail from "./pages/AdminDashboard/learning/course-detail/course-detail";
 
 function App() {
   const { userInfo, userToken, profileInfo } = useAppSelector(
@@ -59,7 +63,7 @@ function App() {
   const storeToken = localStorage.getItem("userToken")
     ? localStorage.getItem("userToken")
     : null;
-    console.log(storeToken)
+  console.log(storeToken);
   // automatically authenticate user if token is found
   useEffect(() => {
     const handleTabClose = () => {
@@ -124,6 +128,7 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="verify/:token" element={<VerifyPassword />} />
               <Route path="contact" element={<Contact />} />
+              <Route path="pricing" element={<Pricing />} />
               <Route path="book/:id" element={<Book />} />
               <Route path="article/:id" element={<Article />} />
               <Route path="templates" element={<Templates />} />
@@ -144,8 +149,8 @@ function App() {
                 />
                 <Route path="/dashboard" element={<DashboardLayout />}>
                   <Route path="company" element={<CompanyPage />}>
-                    <Route path="profile" element={<Profile />}>
-                      <Route path="bio" element={<Bio />} />
+                    <Route path="" element={<Profile />}>
+                      <Route path="" element={<Bio />} />
                       <Route path="courses" element={<Courses />} />
                       <Route path="employees" element={<BoardEmployee />} />
                       <Route path="teams" element={<Team />} />
@@ -154,7 +159,10 @@ function App() {
                     </Route>
                     <Route path="editProfile" element={<EditAdminProfile />} />
                   </Route>
-                  <Route path="learning" element={<Learning />} />
+                  <Route path="learning" element={<Learning />}>
+                    <Route path="" element={<CourseListPage />} />
+                    <Route path=":id" element={<CourseDetail />} />
+                  </Route>
                   <Route path="overview" element={<Overview />} />
                   <Route path="templates" element={<DashboardTemplates />} />
                 </Route>

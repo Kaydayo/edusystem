@@ -1,28 +1,34 @@
+.navContainer {
+  box-shadow: -4px 1px 30px rgba(28, 44, 64, 0.1);
+}
+
 .headers {
+  box-sizing: border-box;
   display: flex;
-  padding: var(--padding-gap);
+  /* padding: var(--padding-gap); */
   justify-content: space-between;
   font-weight: 600;
   align-items: center;
+  max-width: 1330px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.8rem 2rem;
 }
 .sidebar {
   display: none;
 }
-.links ul li {
+.links ul {
   list-style: none;
   list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 1.8rem;
 }
 
 .linkTo {
   text-decoration: none;
   font-size: 14px;
   color: black;
-}
-
-.linksElement li {
-  display: inline;
-  margin: 2rem;
-  text-decoration: none;
 }
 
 .linksElement li:hover,
@@ -39,14 +45,14 @@
 .signUpBtn {
   background-color: transparent;
   border: 2px solid var(--primary-color);
-  height: var(--button-height);
-  width: var(--button-width);
+  padding: 10px 24px;
   box-sizing: border-box;
   border-radius: 4px;
   font-weight: 600;
   font-size: 14px;
   color: var(--primary-color);
   cursor: pointer;
+  font-family: "Inter", sans-serif;
 }
 
 .signUpBtn:hover {
@@ -58,14 +64,14 @@
 .bookADemo {
   background-color: var(--primary-color);
   border: 2px solid var(--primary-color);
-  height: 56px;
-  width: 155px;
+  padding: 10px 32px;
   box-sizing: border-box;
   border-radius: 4px;
   font-weight: 600;
   font-size: 14px;
   color: white;
   cursor: pointer;
+  font-family: "Inter", sans-serif;
 }
 
 .bookADemo:hover {
@@ -74,8 +80,7 @@
 }
 
 .addShadow {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  height: 119px;
+  height: 80px;
   box-sizing: border-box;
 }
 
@@ -87,17 +92,9 @@
   .sidebar {
     display: flex;
     flex-direction: column;
-    /* width: 1005; */
-    padding: 2rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-    align-items: left;
-    height: fit-content;
+    padding: 1rem 1.25rem 2rem;
     justify-content: space-between;
     align-items: center;
-    /* background-color: white; */
-    border: none;
-    /* width: 100%; */
   }
 
   .logoSide {
@@ -109,17 +106,12 @@
     cursor: pointer;
   }
 
-  .logoSide img {
-    width: 40%;
-    height: 40%;
-  }
-
   .linkSide ul {
     list-style: none;
     gap: 3rem;
-    margin-left: -10%;
     color: black !important;
     font-weight: 600;
+    padding: 0;
   }
 
   .linkSide ul li {
@@ -135,12 +127,14 @@
     position: absolute;
     z-index: 55;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    padding: 0;
   }
   .activateSide div {
     background-color: white;
     padding: 1rem;
     text-align: left;
+    padding: 1.25rem;
   }
 
   .buttonSide {

@@ -1,0 +1,238 @@
+.pricing_container {
+  box-sizing: border-box;
+  max-width: 1330px;
+  width: 100%;
+  margin: 3rem auto 7rem;
+  padding: 0 2rem;
+}
+
+.pricing_container h2 {
+  text-align: center;
+  font-weight: 600;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 38px;
+  margin-bottom: 0;
+}
+
+.toggleSub label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 55px;
+  height: 25px;
+  background: #eef1ff;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.toggleSub label:after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 15px;
+  height: 15px;
+  background: #ff22ff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+.toggleSub input[type="checkbox"] {
+  display: none;
+}
+
+.toggleSub input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+.toggleSub label:active:after {
+  width: 30px;
+}
+
+.toggleSub {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  align-self: center;
+  margin: 2rem 0 3rem;
+}
+
+.toggleSub h4 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  opacity: 10%;
+}
+
+.toggleSub h4 > span {
+  font-weight: 400;
+}
+
+.toggleSub .hashCol {
+  color: black;
+  opacity: 100%;
+  transition: opacity 0.5s ease-in;
+}
+
+.pricing_content {
+  /* display: flex;
+  gap: 1rem; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+/* .pricing_content:nth-child(3n) {
+  display: none;
+} */
+
+.pricing_content .package {
+  padding: 2.5rem 0 1.5rem;
+  background: #f5f8fe;
+  box-shadow: 0px 1px 2px rgba(85, 105, 135, 0.1);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.5s ease;
+  /* min-width: 200px; */
+}
+.pricing_content .package:hover {
+  background: #5c00dd;
+  color: #fff;
+}
+
+.recommended {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: #5c00dd;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  padding: 5px 20px;
+}
+.package:hover .recommended {
+  background: #f5f8fe;
+  color: #5c00dd;
+}
+.top {
+  padding: 0 1.375rem 0.9rem;
+  border-bottom: 1px solid #eef1ff;
+}
+
+.package .name {
+  color: #060606;
+  font-weight: 500;
+  font-size: 17px;
+  display: block;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+}
+.package:hover .name {
+  color: #ff22ff;
+}
+
+.package .price {
+  font-weight: 600;
+  font-size: 48px;
+  color: #5c00dd;
+  display: block;
+}
+.package:hover .price {
+  color: #fff;
+}
+.package .pm {
+  font-weight: 500;
+  font-size: 15px;
+  color: #5c00dd;
+  margin: 0 0 0.5rem 0;
+}
+.package:hover .pm {
+  color: #fff;
+}
+.package .intro {
+  font-weight: 500;
+  font-size: 15px;
+  color: #8790a3;
+  margin: 0;
+}
+.package:hover .intro {
+  color: #fff;
+}
+
+.package ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 2rem;
+  padding: 0 1.375rem;
+  margin-bottom: 3.5rem;
+}
+
+.package .item {
+  display: flex;
+  gap: 0.8rem;
+  font-size: 15px;
+}
+
+.bottom {
+  padding: 1rem 1.375rem 0;
+  margin-top: auto;
+  border-top: 1px solid #eef1ff;
+}
+
+.bottom .btn {
+  background: #5c00dd;
+  border-radius: 4px;
+  padding: 12px 16px;
+  outline: none;
+  border: none;
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  width: 100%;
+  cursor: pointer;
+}
+.package:hover .bottom .btn {
+  background: #fff;
+  color: #5c00dd;
+}
+
+@media all and (max-width: 1000px) {
+  .pricing_content {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .pricing_container {
+    padding: 20px;
+  }
+
+  .pricing_content {
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 2rem;
+  }
+
+  .pricing_content .package {
+    padding: 1.5rem 0 1.5rem;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .pricing_container h2 {
+    font-size: 28px;
+  }
+  .pricing_content {
+    grid-template-columns: 1fr;
+  }
+}

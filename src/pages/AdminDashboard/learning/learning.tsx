@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Outlet } from "react-router-dom";
 import styles from "../../../styles/Dashboard/Dashboard.module.css";
-import DashboardHeader from "../components/DashboardHeader";
 
 const Learning = () => {
   return (
     <div className={styles.mainBoard}>
       <div className={styles.mainBoardContainer}>
-        <DashboardHeader>Learning</DashboardHeader>
+        <Outlet />
       </div>
     </div>
   );
