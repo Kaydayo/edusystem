@@ -18,7 +18,8 @@
 .leftContent {
   max-width: 650px;
   width: 100%;
-  padding-top: 50px;
+  padding-top: 90px;
+  /* border: 1px solid red; */
 }
 
 .leftContent h1 {
@@ -29,11 +30,14 @@
   font-stretch: condensed;
   letter-spacing: 0px; */
   /* height: 245px; */
-  font-size: 48px;
+  font-size: 50px;
   font-weight: 600;
   letter-spacing: -2px;
   line-height: 55.6px;
   margin: 0;
+  max-width: 480px;
+  width: 100%;
+  /* border: 1px solid blue; */
 }
 
 .leftContent p {
