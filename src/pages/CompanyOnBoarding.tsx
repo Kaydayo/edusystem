@@ -22,11 +22,21 @@ import { postAllPlans } from "../redux/subscription";
 
 const CompanyOnBoarding = () => {
   const [step, setStep] = useState<number>(0);
+  const [validateErrors, setValidateErrors] = useState<boolean>(false)
 
   const [plans, setPlans] = useState([]);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const errors = useAppSelector((state: RootState) => state.companyonboard.errors)
+  const getErrors = (obj: any) => {
+    let newObj = {...obj}
+    if (step === 0) {
+      delete newObj.companyName
+    }
+    
+    return !Object.values(newObj).every(x =>  x === '');
+  }
   const checkError = useAppSelector(
     (state: RootState) => state.companyonboard.errorfound
   );
@@ -66,6 +76,12 @@ const CompanyOnBoarding = () => {
     // getAllSubscriptions();
     fetchPricingData();
   }, []);
+  console.log(validateErrors,errors, getErrors(errors),"VVDF")
+  useEffect(() => {
+    dispatch(handleErrors);
+    // getAllSubscriptions();
+    setValidateErrors(getErrors(errors))
+  }, [errors]);
 
   console.log("PLANS", plans);
 
@@ -95,16 +111,21 @@ const CompanyOnBoarding = () => {
 
   const nextBtn = async () => {
     dispatch(handleErrors());
+    setValidateErrors(getErrors(errors))
     if (step > 1) {
-      toast(error);
+     
+      if (validateErrors) {
+        Object.keys(errors).map(err => {
+          if (errors[err] !== '') {
+            toast(errors[err])
+          }
+        })
+      }
     }
 
     if (step === 1) {
-      // console.log(getCompany, "GET COMAPNY")
-      // toast("CLICKED NEXT")
-      // dispatch(registerCompany(getCompany))
-
-      const config = {
+      if (!validateErrors) {
+        const config = {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${userToken}`,
@@ -121,6 +142,13 @@ const CompanyOnBoarding = () => {
       } else {
         toast(data.message);
         return;
+      }
+      } else {
+        Object.keys(errors).map(err => {
+          if (errors[err] !== '') {
+            toast(errors[err])
+          }
+        })
       }
     }
     if (step >= 1 && getCompanyField === "") {
@@ -158,9 +186,10 @@ const CompanyOnBoarding = () => {
         <div className={companyStyle.btnSteps}>
           {step <= 1 && (
             <Button
-              // type={step === 3 ? "submit" : ""}
-              className={companyStyle.btnNext}
+              type={step === 3 ? "submit" : ""}
+              className={`${validateErrors ? companyStyle.disable : companyStyle.btnNext}`}
               onClick={nextBtn}
+              disabled={validateErrors}
             >
               Next
             </Button>
