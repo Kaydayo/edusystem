@@ -9,13 +9,10 @@ const Hero = () => {
     <div className={heroStyles.homeHero}>
       <div className={heroStyles.heroContent}>
         <div className={heroStyles.leftContent}>
-          <h1>
-            An interactive and learning platform that transforms employees into
-            culture-aligned teams.
-          </h1>
+          <h1>Transform employees into culture aligned teams</h1>
           <p>
-            Educates and align employees to purposes and goals, while connecting
-            teams.
+            Onculture uses learning and process automation to promote
+            productivity, engagement and motivation across distributed teams.
           </p>
 
           <Button className={heroStyles.heroBtn}>Book a Demo</Button>

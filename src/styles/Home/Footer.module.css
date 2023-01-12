@@ -1,8 +1,7 @@
 .container {
   background-color: var(--primary-color);
   width: 100%;
-  height: 25rem;
-  padding: 5rem;
+  padding: 5rem 6rem;
   box-sizing: border-box;
   text-align: center;
   color: white;
@@ -12,38 +11,52 @@
 .companyImg {
   width: 10rem;
   height: 2rem;
+  margin-bottom: 0.8rem;
 }
 
 .content {
   display: flex;
-  align-items: flex-start;
-  gap: 10rem;
 }
 
 .oncultureFoot {
+  width: 40%;
   text-align: left;
   font-weight: 100;
   font-size: 14px;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+}
+
+.oncultureFoot p {
+  margin: 0;
+  padding-top: 5px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #bbc4d9;
 }
 
 .socialIcons {
   display: flex;
   gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.companyEmail {
+  color: #ffffff !important;
 }
 
 .contact {
   display: flex;
   align-items: flex-start;
-  gap: 4rem;
+  gap: 5rem;
 }
 
 .contact h4 {
   font-size: 24px;
   font-weight: 700;
   margin-top: 0;
+  margin-bottom: 20px;
   text-align: left;
 }
 .contact ul {
@@ -54,24 +67,28 @@
 .contact ul li {
   list-style: none;
   text-align: left;
-  font-weight: 100;
-  margin-top: 1rem;
+  font-weight: 400;
+  margin-top: 0.75rem;
   cursor: pointer;
+  color: #bbc4d9;
 }
 
 @media all and (max-width: 900px) {
   .container {
-    height: fit-content;
     padding: 5rem 2rem;
   }
   .content {
     display: flex;
     flex-direction: column-reverse;
-    gap: 1rem;
+    gap: 2rem;
+  }
+  .oncultureFoot {
+    width: unset;
   }
   .contact {
     display: flex;
     flex-direction: column;
+    gap: 1.6rem;
   }
 }
 

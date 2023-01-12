@@ -113,9 +113,10 @@ export const reviewData = [
 ];
 
 export const navData = [
-  { title: "The People", to: "/" },
+  { title: "The People Practice", to: "/" },
   { title: "Resource", to: "/resource/articles" },
   { title: "Contact", to: "/contact" },
+  { title: "Pricing", to: "/pricing" },
   { title: "FAQ", to: "/faq" },
 ];
 
@@ -284,11 +285,14 @@ export const subScriptionCourse = [
 ];
 
 export const dashboardLinks = [
-  "bio",
-  "employees",
+  { title: "bio", path: "" },
+  {
+    title: "employees",
+    path: "employees",
+  },
   // "report",
   // "teams",
-  "subscription",
+  { title: "subscription", path: "subscription" },
 ];
 
 export const employeeLinks = ["courses"];
@@ -2434,5 +2438,76 @@ export const ProgramSummary = [
         ],
       },
     ],
+  },
+];
+
+export const pricingData = [
+  {
+    planName: "Free",
+    price: "$0",
+    user: "per user per month",
+    intro: "For teams looking for better data visualization and customization",
+    benefits: [
+      "Team sum-up",
+      "Blog Articles",
+      "No of Sum-ups",
+      "List of sum-ups",
+    ],
+    recommended: false,
+  },
+  {
+    planName: "Basic",
+    price: "$1",
+    user: "per user per month",
+    intro: "For teams looking for better data visualization and customization",
+    benefits: [
+      "Team sum-up",
+      "Peer 1:1",
+      "Fireside Spark",
+      "No of Sum-ups",
+      "List of sum-ups",
+      "Mood checker",
+      "Absenteeism rate",
+    ],
+    recommended: false,
+  },
+  {
+    planName: "Standard",
+    price: "$2",
+    user: "per user per month",
+    intro: "For teams looking for better data visualization and customization",
+    benefits: [
+      "Sexual Harassment Course",
+      "Team sum-up",
+      "Peer 1:1",
+      "Fireside Spark",
+      "No of Sum-ups",
+      "List of sum-ups",
+      "Mood checker",
+      "Absenteeism rate",
+    ],
+    recommended: true,
+  },
+  {
+    planName: "Premium",
+    price: "$3.5",
+    user: "per user per month",
+    intro: "For teams looking for better data visualization and customization",
+    benefits: [
+      "Culture clinic",
+      "Sexual Harassment Course",
+      "Team sum-up",
+      "Peer 1:1",
+      "Fireside Spark",
+      "Complaint box",
+      "Value star votes",
+      "Peer Shout-outs",
+      "Avg sentiment",
+      "Mood checker",
+      "Engagement rate",
+      "Absenteeism rate",
+      "Recommendations",
+    ],
+    recommended: false,
   },
 ];
