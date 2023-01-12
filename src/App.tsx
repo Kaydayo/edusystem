@@ -36,7 +36,7 @@ import VerifyPassword from "./pages/VerifyPassword";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import EmployeeCourses from "./layouts/EmployeeDashboard/EmployeeCourses";
 import CoursePage from "./layouts/EmployeeDashboard/CoursePage";
-import EditAdminProfile from "./layouts/Dashboard/EditAdminProfile";
+import EditAdminProfile from "./pages/AdminDashboard/company/profile/EditAdminProfile";
 import axios from "axios";
 import Templates from "./pages/Templates";
 import TemplateCategory from "./layouts/Templates/templateCategory";
@@ -63,7 +63,7 @@ function App() {
   const storeToken = localStorage.getItem("userToken")
     ? localStorage.getItem("userToken")
     : null;
-    console.log(storeToken)
+  console.log(storeToken);
   // automatically authenticate user if token is found
   useEffect(() => {
     const handleTabClose = () => {
@@ -149,8 +149,8 @@ function App() {
                 />
                 <Route path="/dashboard" element={<DashboardLayout />}>
                   <Route path="company" element={<CompanyPage />}>
-                    <Route path="profile" element={<Profile />}>
-                      <Route path="bio" element={<Bio />} />
+                    <Route path="" element={<Profile />}>
+                      <Route path="" element={<Bio />} />
                       <Route path="courses" element={<Courses />} />
                       <Route path="employees" element={<BoardEmployee />} />
                       <Route path="teams" element={<Team />} />

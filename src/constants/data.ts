@@ -285,11 +285,14 @@ export const subScriptionCourse = [
 ];
 
 export const dashboardLinks = [
-  "bio",
-  "employees",
+  { title: "bio", path: "" },
+  {
+    title: "employees",
+    path: "employees",
+  },
   // "report",
   // "teams",
-  "subscription",
+  { title: "subscription", path: "subscription" },
 ];
 
 export const employeeLinks = ["courses"];

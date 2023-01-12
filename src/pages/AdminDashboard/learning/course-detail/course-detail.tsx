@@ -4,6 +4,7 @@ import DashboardHeader from "../../components/DashboardHeader";
 import { courseSummary } from "../../data/index";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import styles from "../../../../styles/Dashboard/Learning.module.css";
+import Bullet from "../../../../Assets/Images/bullet.svg";
 
 const CourseDetail = () => {
   const location = useLocation();
@@ -35,7 +36,9 @@ const CourseDetail = () => {
                 <h5>{sub.title}</h5>
                 {sub.items.map((item, i) => (
                   <div className={styles.listItem}>
-                    <div>{/* <img src={Bullet} alt="bullet" /> */}</div>
+                    <div>
+                      <img src={Bullet} alt="bullet" />
+                    </div>
 
                     <p>{item}</p>
                   </div>

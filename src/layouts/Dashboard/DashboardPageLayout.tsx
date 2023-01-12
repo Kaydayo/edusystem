@@ -23,7 +23,7 @@ const sideBar_navLinks = [
   //   label: "Report",
   //   path: "report",
   // },
-  { icon: RiBuilding2Line, label: "Company", path: "company/profile/bio" },
+  { icon: RiBuilding2Line, label: "Company", path: "company/" },
 ];
 
 const DashboardLayout = () => {

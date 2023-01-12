@@ -11,8 +11,8 @@ const CompanyPageLinks = () => {
       <div className={boardStyle.linkDashBoard}>
         {dashboardLinks.map((boardNavs, index) => (
           <NavLink
-            to={`/dashboard/company/profile/${boardNavs}`}
-            onClick={() => setCurr(boardNavs)}
+            to={`/dashboard/company/${boardNavs.path}`}
+            onClick={() => setCurr(boardNavs.title)}
             key={index}
             // className={`${boardStyle.linkDashLink} ${curr === boardNavs ? boardStyle.hoverLink : ''}`}
             className={({ isActive }) =>
@@ -21,7 +21,7 @@ const CompanyPageLinks = () => {
                 : `${boardStyle.linkDashLink}`
             }
           >
-            {capitalizeFirstLetter(boardNavs)}
+            {capitalizeFirstLetter(boardNavs.title)}
           </NavLink>
         ))}
       </div>

@@ -1,8 +1,12 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { RootState, useAppDispatch, useAppSelector } from "../../redux/store";
-import DashboardNav from "./DashboardNav";
-import dashboardStyle from "../../styles/Dashboard/Dashboard.module.css";
+import {
+  RootState,
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../redux/store";
+// import DashboardNav from "../../../../layouts/Dashboard/DashboardNav";
+import dashboardStyle from "../../../../styles/Dashboard/Dashboard.module.css";
 import {
   ErrorMessage,
   Field,
@@ -12,17 +16,17 @@ import {
   useField,
 } from "formik";
 import * as Yup from "yup";
-import sectionStyle from "../../styles/Contact/SectionContact.module.css";
-import avatar from "../../Assets/Images/companyAvatar.svg";
-import editIcon from "../../Assets/Images/edit-icon.svg";
-import PreviewImage from "./PreviewImage";
-import Modal from "../../components/ Modal";
-import InviteEmployee from "./InviteEmployee";
-import { updateCompany } from "../../redux/actions/usersAction";
+import sectionStyle from "../../../../styles/Contact/SectionContact.module.css";
+import avatar from "../../../../Assets/Images/companyAvatar.svg";
+import editIcon from "../../../../Assets/Images/edit-icon.svg";
+import PreviewImage from "../../../../layouts/Dashboard/PreviewImage";
+import Modal from "../../../../components/ Modal";
+import InviteEmployee from "../../../../layouts/Dashboard/InviteEmployee";
+import { updateCompany } from "../../../../redux/actions/usersAction";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import { updateProfileInfo } from "../../redux/users";
-import DashboardHeader from "../../pages/AdminDashboard/components/DashboardHeader";
+import { updateProfileInfo } from "../../../../redux/users";
+import DashboardHeader from "../../components/DashboardHeader";
 
 interface Values {
   adminName: string;
@@ -169,7 +173,7 @@ const EditAdminProfile = () => {
     payload: Values | Omit<Values, "file">,
     token: string | null
   ) => {
-    console.log(payload,"PAYLOAD")
+    console.log(payload, "PAYLOAD");
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -178,14 +182,14 @@ const EditAdminProfile = () => {
         Authorization: `Bearer ${token}`,
       },
     };
-    const payloadData = {...payload, values:JSON.stringify(payload.values)}
+    const payloadData = { ...payload, values: JSON.stringify(payload.values) };
     const { data } = await axios.post("/updateCompany", payloadData, config);
 
     console.log(data, "data payload");
     localStorage.setItem("userDetails", JSON.stringify(data.payload));
     localStorage.setItem("userToken", data.payload.accessToken);
     console.log(data, "what i got");
-    
+
     if (data.success) {
       toast(data.message);
       dispatch(updateProfileInfo(data.payload));
@@ -227,7 +231,14 @@ const EditAdminProfile = () => {
               setSubmitting(true);
             }}
           >
-            {({ errors, touched, values, setFieldValue, handleChange, handleSubmit }) => (
+            {({
+              errors,
+              touched,
+              values,
+              setFieldValue,
+              handleChange,
+              handleSubmit,
+            }) => (
               <Form className={dashboardStyle.mainEditForm}>
                 <div className={dashboardStyle.editPicBoard}>
                   {profileInfo.user.profilePicture ? (
