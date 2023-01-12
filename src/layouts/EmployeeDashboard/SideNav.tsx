@@ -50,6 +50,8 @@ const SideNav = () => {
 
 
   const { userInfo, userToken, profileInfo } = useAppSelector((state: RootState) => state.user)
+
+  
   const serializer = {
     types: {
       image: (props: any) => <div>
@@ -67,6 +69,7 @@ const SideNav = () => {
   const dispatch = useAppDispatch();
 
   const getCourseModule = async () => {
+    
     const { data } = await axios.get(`subscription/getCourse/${profileInfo.user.courses[0].sanityId}`)
     console.log(data, "DATA")
     setAllCourses(data.module);
